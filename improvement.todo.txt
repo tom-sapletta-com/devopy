@@ -1,0 +1,170 @@
+# IMPROVEMENT_TODO.TXT
+# Lista zadań do wykonania w celu ulepszenia projektu devopy na podstawie rozwiązań z evopy
+
+## 1. SYSTEM MONITOROWANIA ZASOBÓW
+- [ ] Przenieś moduł monitor_resources.py z projektu evopy do devopy
+  - Źródło: /home/tom/github/tom-sapletta-com/evopy/monitor_resources.py
+  - Cel: /home/tom/github/tom-sapletta-com/devopy/devopy/resource_monitor.py
+  - Polecenie: cp /home/tom/github/tom-sapletta-com/evopy/monitor_resources.py /home/tom/github/tom-sapletta-com/devopy/devopy/resource_monitor.py
+  - Dostosuj importy i ścieżki do struktury projektu devopy
+  - Zintegruj z API i CLI devopy
+
+- [ ] Dodaj skrypt uruchomieniowy dla monitora zasobów
+  - Utwórz skrypt /home/tom/github/tom-sapletta-com/devopy/scripts/run_monitor.sh
+  - Zawartość: python -m devopy.resource_monitor
+  - Nadaj uprawnienia wykonywania: chmod +x /home/tom/github/tom-sapletta-com/devopy/scripts/run_monitor.sh
+
+- [ ] Dodaj dokumentację monitora zasobów
+  - Utwórz plik /home/tom/github/tom-sapletta-com/devopy/docs/resource_monitor.md
+  - Opisz funkcjonalności i konfigurację monitora zasobów
+
+## 2. MENEDŻER ZALEŻNOŚCI
+- [ ] Przenieś moduł dependency_manager.py z projektu evopy do devopy
+  - Źródło: /home/tom/github/tom-sapletta-com/evopy/dependency_manager.py
+  - Cel: /home/tom/github/tom-sapletta-com/devopy/devopy/dependency_manager.py
+  - Polecenie: cp /home/tom/github/tom-sapletta-com/evopy/dependency_manager.py /home/tom/github/tom-sapletta-com/devopy/devopy/dependency_manager.py
+  - Dostosuj importy i ścieżki do struktury projektu devopy
+  - Zintegruj z istniejącym systemem auto_import.py
+
+- [ ] Rozszerz funkcjonalność auto_diag_import.py o analizę statyczną kodu
+  - Wykorzystaj funkcje z dependency_manager.py do analizy importów
+  - Dodaj wykrywanie zależności przed uruchomieniem kodu
+
+- [ ] Dodaj testy dla menedżera zależności
+  - Utwórz plik /home/tom/github/tom-sapletta-com/devopy/tests/test_dependency_manager.py
+  - Napisz testy dla różnych scenariuszy (brakujące importy, standardowe moduły, itp.)
+
+## 3. KONWERSJA TEKSTU NA KOD PYTHON
+- [ ] Przenieś moduł text2python.py z projektu evopy do devopy
+  - Źródło: /home/tom/github/tom-sapletta-com/evopy/text2python.py
+  - Cel: /home/tom/github/tom-sapletta-com/devopy/devopy/converters/text2python.py
+  - Polecenie: mkdir -p /home/tom/github/tom-sapletta-com/devopy/devopy/converters && cp /home/tom/github/tom-sapletta-com/evopy/text2python.py /home/tom/github/tom-sapletta-com/devopy/devopy/converters/text2python.py
+  - Dostosuj importy i ścieżki do struktury projektu devopy
+  - Zintegruj z API i CLI devopy
+
+- [ ] Dodaj inne konwertery z projektu evopy
+  - Przenieś text2shell.py, text2sql.py, text2regex.py do katalogu converters
+  - Utwórz plik __init__.py w katalogu converters, aby eksportować główne funkcje
+
+- [ ] Dodaj dokumentację konwerterów
+  - Utwórz plik /home/tom/github/tom-sapletta-com/devopy/docs/converters.md
+  - Opisz dostępne konwertery i ich użycie
+
+## 4. PIASKOWNICE DOCKER
+- [ ] Przenieś i zintegruj zaawansowane funkcje z docker_sandbox.py
+  - Źródło: /home/tom/github/tom-sapletta-com/evopy/docker_sandbox.py
+  - Porównaj z istniejącym /home/tom/github/tom-sapletta-com/devopy/devopy/sandbox/docker.py
+  - Dodaj brakujące funkcje do istniejącego modułu
+
+- [ ] Dodaj obsługę limitów zasobów dla kontenerów Docker
+  - Zaimplementuj ograniczenia CPU, RAM i dysku
+  - Dodaj konfigurowalność limitów
+
+- [ ] Dodaj automatyczne czyszczenie nieużywanych kontenerów
+  - Zaimplementuj funkcję czyszczenia kontenerów starszych niż X dni
+  - Dodaj harmonogram czyszczenia (np. raz dziennie)
+
+## 5. SYSTEM TESTOWANIA
+- [ ] Przenieś zaawansowane testy z projektu evopy
+  - Przeanalizuj katalog /home/tom/github/tom-sapletta-com/evopy/tests/
+  - Zidentyfikuj testy, które mogą być przydatne dla devopy
+  - Dostosuj i przenieś wybrane testy
+
+- [ ] Dodaj testy wydajnościowe
+  - Utwórz plik /home/tom/github/tom-sapletta-com/devopy/tests/performance/test_performance.py
+  - Zaimplementuj testy mierzące czas wykonania różnych operacji
+
+- [ ] Dodaj testy integracyjne dla całego systemu
+  - Utwórz plik /home/tom/github/tom-sapletta-com/devopy/tests/integration/test_integration.py
+  - Zaimplementuj testy sprawdzające współpracę wszystkich komponentów
+
+## 6. SKRYPTY POMOCNICZE
+- [ ] Przenieś i dostosuj użyteczne skrypty z projektu evopy
+  - Przeanalizuj skrypty w katalogu głównym evopy
+  - Dostosuj i przenieś wybrane skrypty do katalogu /home/tom/github/tom-sapletta-com/devopy/scripts/
+
+- [ ] Dodaj skrypt do generowania raportów
+  - Przenieś i dostosuj generate_report.py z projektu evopy
+  - Utwórz skrypt /home/tom/github/tom-sapletta-com/devopy/scripts/generate_report.sh
+
+- [ ] Dodaj skrypt do monitorowania i debugowania
+  - Przenieś i dostosuj monitor.py z projektu evopy
+  - Utwórz skrypt /home/tom/github/tom-sapletta-com/devopy/scripts/debug.sh
+
+## 7. DOKUMENTACJA
+- [ ] Zaktualizuj README.md o nowe funkcjonalności
+  - Dodaj sekcje opisujące nowe komponenty
+  - Dodaj przykłady użycia nowych funkcji
+
+- [ ] Utwórz dokumentację API dla nowych modułów
+  - Dodaj dokumentację w formacie Markdown dla każdego nowego modułu
+  - Umieść dokumentację w katalogu /home/tom/github/tom-sapletta-com/devopy/docs/
+
+- [ ] Dodaj diagramy architektury
+  - Przenieś i dostosuj diagramy z projektu evopy
+  - Utwórz nowe diagramy dla zaktualizowanej architektury
+
+## 8. INTEGRACJA Z MODELAMI LLM
+- [ ] Przenieś i dostosuj moduł llm.py z projektu evopy
+  - Źródło: /home/tom/github/tom-sapletta-com/evopy/evopy.py (część dotycząca LLM)
+  - Cel: /home/tom/github/tom-sapletta-com/devopy/devopy/llm.py
+  - Rozszerz istniejący moduł o nowe funkcjonalności
+
+- [ ] Dodaj obsługę różnych modeli LLM
+  - Zaimplementuj integrację z DeepSeek, Ollama i innymi modelami
+  - Dodaj konfigurowalność modeli
+
+## INSTRUKCJE SPRAWDZENIA
+
+Aby sprawdzić, czy przeniesione komponenty działają poprawnie, wykonaj następujące kroki:
+
+1. **Monitor zasobów**:
+   ```bash
+   cd /home/tom/github/tom-sapletta-com/devopy
+   source .venv/bin/activate
+   python -m devopy.resource_monitor --test
+   ```
+
+2. **Menedżer zależności**:
+   ```bash
+   cd /home/tom/github/tom-sapletta-com/devopy
+   source .venv/bin/activate
+   python -m devopy.dependency_manager "import numpy\nimport nieistniejacy_modul"
+   ```
+
+3. **Konwertery**:
+   ```bash
+   cd /home/tom/github/tom-sapletta-com/devopy
+   source .venv/bin/activate
+   python -m devopy.converters.text2python "Napisz funkcję, która liczy silnię"
+   ```
+
+4. **Piaskownice Docker**:
+   ```bash
+   cd /home/tom/github/tom-sapletta-com/devopy
+   source .venv/bin/activate
+   python -m devopy.cli run "uruchom prosty serwer HTTP" --docker
+   ```
+
+5. **Testy**:
+   ```bash
+   cd /home/tom/github/tom-sapletta-com/devopy
+   source .venv/bin/activate
+   python -m pytest tests/
+   ```
+
+## PRIORYTETY IMPLEMENTACJI
+
+1. **Wysoki priorytet**:
+   - Monitor zasobów
+   - Menedżer zależności
+   - Piaskownice Docker
+
+2. **Średni priorytet**:
+   - Konwertery
+   - System testowania
+   - Skrypty pomocnicze
+
+3. **Niski priorytet**:
+   - Dokumentacja
+   - Integracja z modelami LLM

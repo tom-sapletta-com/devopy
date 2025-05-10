@@ -1,0 +1,70 @@
+# BUGFIXING.TODO.TXT
+# Lista błędów do naprawienia w projekcie devopy
+
+## BŁĘDY KRYTYCZNE (WYSOKIE PRIORYTETY)
+- [x] PyPIRegistry.install_package() nie obsługuje parametru venv_path
+  - Naprawiono: Dodano obsługę parametru venv_path w metodzie install_package
+  - Plik: /devopy/registry/pypi.py
+
+- [x] AutoHealer nie ma metody heal_from_log
+  - Naprawiono: Dodano statyczną metodę heal_from_log do klasy AutoHealer
+  - Plik: /devopy/auto_heal.py
+
+- [x] Brak pliku autoheal_logs.py w głównym katalogu projektu
+  - Naprawiono: Dodano brakujący plik autoheal_logs.py
+  - Plik: /autoheal_logs.py
+
+- [x] Brak katalogu registry z plikiem pypi.py
+  - Naprawiono: Dodano katalog registry z plikiem pypi.py
+  - Plik: /devopy/registry/pypi.py
+
+## BŁĘDY DO NAPRAWIENIA (ŚREDNIE PRIORYTETY)
+- [ ] Testy e2e nie są w pełni dostosowane do nowej struktury projektu
+  - Częściowo naprawiono: Zaktualizowano niektóre testy, ale potrzebne są dalsze zmiany
+  - Pliki: /tests/test_devopy_e2e.py, /tests/test_e2e_api.py
+
+- [ ] Problemy z importami w niektórych modułach
+  - Opis: Niektóre moduły używają bezwzględnych importów zamiast względnych
+  - Pliki: Różne pliki w katalogu /devopy
+
+- [ ] Problemy z ścieżkami do plików w API
+  - Opis: API używa niepoprawnych ścieżek do niektórych plików
+  - Plik: /devopy/api.py
+
+- [ ] Brak obsługi błędów w niektórych funkcjach
+  - Opis: Niektóre funkcje nie obsługują wyjątków, co może prowadzić do awarii
+  - Pliki: Różne pliki w katalogu /devopy
+
+## BŁĘDY NIEKRYTYCZNE (NISKIE PRIORYTETY)
+- [ ] Niespójne nazewnictwo zmiennych i funkcji
+  - Opis: Niektóre zmienne i funkcje nie są zgodne z konwencją PEP 8
+  - Pliki: Różne pliki w katalogu /devopy
+
+- [ ] Brak typów dla niektórych funkcji i metod
+  - Opis: Niektóre funkcje i metody nie mają adnotacji typów
+  - Pliki: Różne pliki w katalogu /devopy
+
+- [ ] Dokumentacja nie jest w pełni aktualna
+  - Opis: Niektóre części dokumentacji odnoszą się do starej struktury projektu
+  - Pliki: README.md, docs/*.md
+
+- [ ] Duplikacja kodu w niektórych modułach
+  - Opis: Niektóre funkcje są duplikowane w różnych modułach
+  - Pliki: Różne pliki w katalogu /devopy
+
+## PROPOZYCJE ULEPSZEŃ (REFACTORING)
+- [ ] Refaktoryzacja modułu orchestrator.py
+  - Opis: Moduł jest zbyt złożony i powinien być podzielony na mniejsze komponenty
+  - Plik: /devopy/orchestrator.py
+
+- [ ] Lepsze zarządzanie konfiguracją
+  - Opis: Zastąpienie hardcodowanych wartości konfiguracją z pliku lub zmiennych środowiskowych
+  - Pliki: Różne pliki w katalogu /devopy
+
+- [ ] Wprowadzenie wzorca fabryki dla sandboxów
+  - Opis: Utworzenie fabryki sandboxów zamiast bezpośredniego tworzenia obiektów
+  - Pliki: /devopy/sandbox/venv.py, /devopy/sandbox/docker.py
+
+- [ ] Wprowadzenie interfejsów dla głównych komponentów
+  - Opis: Zdefiniowanie interfejsów dla głównych komponentów, aby ułatwić rozszerzanie
+  - Pliki: Różne pliki w katalogu /devopy
