@@ -1,0 +1,2 @@
+def execute(numbers):
+    return [n for n in numbers if n % 2 == 0]   # List comprehension to filter out even numbers. If we want only odd, just change "if" condition and list comprehension will become "[for n in nums]" instead of ["if"] part that checks whether the number is divisible by two or not

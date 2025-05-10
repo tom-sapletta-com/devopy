@@ -1,0 +1,9 @@
+Ten program jest zdefiniowany przez cztery funkcje. Wszystko to robi coś innego, w takim sensie nazywanym "wirtualnematerializacją". Kod składa się na lata sposobu zdefiniowanych metody:
+- `execute()` - Ta funkcja jest aktywna. Jedna osoba może uruchomić tę funkcję, która będzie wygenerować pojedycznym opisu podanego tekstu (`text = "Python jest wspaniały"`).
+- `re.findall(r'[aeiou]', text.lower())` - Ta funkcja szuka w teksie samogłoski i zwraca listę tych liter, które powinny być dodatnie do odpowiedzi (np: 'o' lub 'y').
+- `text.lower()` - Ta linijka robi tożsamokreselonym wszystkiej tekstu, aby nie powtarzała się samogłoski przy duzej i zwyklejsce (np: 'Python', jeśli jest uwzględnionym).
+- `f"Samogłoski w tekście ‘{text}’: {', '.join(vowels)}"` - Ta linijka zamienia listy samogłosek na łańcuch powtarzający nazwy tych liter, oddzielonych przecinkami.
+- `return f"Samogłoski w tekście ‘{text}’: {', '.join(vowels)}"` - Ta linijka zwraca samoobsługię dla użytkownika (za każdym razem, gdy uruchamiam funkcję).
+  
+Jednak wynik nie jest pokazywany po instrukcji `execute()`. To zmniejszenie obliczeń (przyczyny: moja implementacja to tylko dobrym przekątkiem dla wersji testowej) i sprowadza go jako napis tekstu odpowiadający. 
+   Można uruchomić ten kod za pomocą `execute()`, aby zobaczyć działanie programu i możliwości eksperymentalnych do testowania swojej wiedzy.

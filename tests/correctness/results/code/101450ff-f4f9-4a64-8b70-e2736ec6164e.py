@@ -1,0 +1,3 @@
+def execute(lst):  # to jest nazwa funkcji 'execute' i powinien zwrócić wynik działania. To są pozytywnie liczebnych pytań, ponieważ kod ten może realizować obliczenia lub równoległości (np nawięx cyklu i wpisywaniu danych do pamięci)
+    return [num for num in lst if not is_odd(int(str(abs(num))[-1]))]  # tutaj powinien być kod Python, bez dodatkowych wyjaśnień. Kody muszą zwracać poprawne wyniki do uruchomienia
+    return [abs(num) for num in lst if not is_odd((int)(str(abs(num))[-1]))] # tutaj powinien być kod Python, bez dodatkowych wyjaśnień. Kody muszą zwracać poprawne wyniki do uruchomienia

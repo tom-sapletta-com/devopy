@@ -1,0 +1,3 @@
+Ten kod Python pozwala na przesyłanie danych do funkcji `execute()`. W zadaniach, to jeden parametr - tekst (string) wejściowy o nazwie "text". 
+Jest on wywoływana i pozwala na przechwytywaniu danych potrzebnych do uruchomienia funkcji. Wynikem tej operacji jest opis znalezionego samogłoski w sformatowaneim napisie (text), oddzielonych przecinkami.
+Wywołaniu tego kodu, sprawdzonego na poniższej liście instrukcji i powitania mogą być uważane za dla osób niedawnieznajobnych z informatyki.

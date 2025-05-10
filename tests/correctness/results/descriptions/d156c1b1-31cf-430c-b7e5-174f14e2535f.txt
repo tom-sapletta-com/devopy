@@ -1,0 +1,10 @@
+Nazwa funkcji `filter_even_numbers` jest opisem dla tego, że ta funkcja ma przyjmować listę liczb (polecenia) i zwraca nową lista. Zadaniem tej fazy były filtrowanie pierwotnej liście do niego, a wynikiem jest tylko podana przedmiotowa lista liczb parzystzych (polecenia).
+    
+Przebieg funkcji: 
+1. Funkcja `filter_even_numbers` na wejśuje połowę wynikający z listy liczb całkiemu (liczy numer kartezysta). Po drugiej stronie, jako parametr przechodzi sama lista lub tablica do funkcji.
+2. W następnym passie w takim samym obecniku co liczba elementów wewnętrzny zacina się pokazywać list comprehension, czyli tworzenia nowej listy na bazie poprzednich danych.
+3. W takim samym obecniku co liczba elementów wewnętrzny zacina się pokazywać sprawdza, czy jest parzysta (`if num % 2 == 0: `), a następnie dodaje do nowej listy tylko liczby które spełnia ten warunek.
+4. Funkcja zwraca wynikowanej liście po prawej stronie, to jest tutaj podana przedmiotowa lista parzystzych (polecenia). Zatem tak więc moim celem było ograniczenić się do tylu sześciu liczb i zwraca listę 4 elementów.
+5. To jest przede wszystkim bardzo czytelne sposob, rozwiązało problem na temat filtracji (lub filtrowania) tablicy liczb - nie musi zwracać listej i potrzebuje tylko dla siebie wyniku.
+6. Najważniejszy element, kto spokoju odbieram jest pomysł na podstawowe pojęcia programowania Pythoni itd., zwane – listy i operacje matematyczne dla tablic.
+7. Wszystko to w niepowtarzalny sposób, uważałem za łatwe stosunku do języka imperacyjnego itd., poza tym mamy znaczenie dla naszejkich.

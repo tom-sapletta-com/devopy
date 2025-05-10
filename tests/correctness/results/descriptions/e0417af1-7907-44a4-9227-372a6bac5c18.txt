@@ -1,0 +1,10 @@
+W podanym kodzie znajduje się funkcja `filter_even_numbers(numbers)`, która jest definiowana do filtrowania listy liczb parzystych. Nazywamy tą funkcją 'filtru' poświadczonym z uroku na nazwy i objażni się, że jest to ona przykładem kodowania w Pythonie - program sprawdzający listy liczb danych wejściowych (numbers) oraz zwracający nowou bardzo skrócono i czasownicze opis tego co robi.
+ 
+W funkcji podano następnie rozdział do kodu:  
+1. `def filter_even_numbers(numbers):` - Definiowanie nowej funkcji, przyjmujac parametr (nazwany 'numerki') lub argumentem zawsze jest podawana w takim samym rodzaju i nazywaniu.
+2. `return [num for num in numbers if num % 2 == 0]` - Zwraca nową liste (np., filtered_list), która pochodzi z filtrujacej się na liście liczb przekształconych do jednego parametru. Polega ona o iteracji powrotnyczym listy 'numbers' i szukaniu tylko tych elementów, których wynik modulo 2 to równa się zera (czyli licba jest parzysta).
+    * `[` - W pythonie inicjalizujemy listę. Jako środa mamy nawias otwierajacy, a w końcu po prostu umieszczamy element do naszej nowej pustej liście (`[] `).
+    * W tym momencie obowiązujemy iteracji powrotnych na liste 'numbers' i dla każdego liczbowego elementu w nim, sprawdzamy czy jest on parzysty (`if num % 2 == 0 `), a jeśli tak to zwracajemy go do naszej nowej listy.
+    * Za każdym razem dodam ten element na liście i wszystko, co jest licitarno skomplikowane - odbywa się tylko iteracja powrotna naszej listy 'numbers' zawierajaca 10 równoległnych instrukcji.
+    * `return` czwarte linijki to wyswietlanie na standardowym wejściu, jestli cofamy nam do kodującego i zwracajemy nasze listy parsownego przed warunkiem `if __name__ == "__main__":`.
+    * Warunek sprawdzania czy właściwu uruchomionym jest skrypt to, że plik został uruchomiony bezpośrednio i nie był oneczność - `"__main__":`. Dla tego wszytkiego co robiącego się poza ten warunkiem, cialem jest zwraca nowa liste przez funkcję do standardowej wyjściu (np., `print(filter_even_numbers([1023456789, 1 , -2]))`).

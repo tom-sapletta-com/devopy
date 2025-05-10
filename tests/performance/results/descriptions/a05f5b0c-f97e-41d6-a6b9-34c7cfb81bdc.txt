@@ -1,0 +1,35 @@
+Here's a detailed explanation of the code:
+
+**What the code does**
+
+The code defines a single function called `execute` that returns the current date and time in a specific format. When you run this code, it will give you the exact moment when the execution started.
+
+**How it works**
+
+Let's break down the code step by step:
+
+1. The first line, `def execute():`, defines a new function named `execute`. This is where the magic happens!
+2. The next line, `import datetime`, imports the `datetime` module from Python's standard library. This module provides classes for manipulating dates and times.
+3. The line `now = datetime.datetime.now()` creates an object called `now` that represents the current date and time. Think of it like a snapshot of the moment when you ran this code!
+4. Finally, the line `return f"Aktualna data i czas: {now.strftime('%Y-%m-%d %H:%M:%S')}"` returns a string that includes the current date and time in a human-readable format.
+
+**What the return statement does**
+
+The return statement uses Python's new f-strings (introduced in Python 3.6) to create a formatted string. The `%Y-%m-%d %H:%M:%S` part is a format code that tells `strftime()` how to represent the date and time.
+
+Here's what each part of the format code means:
+
+* `%Y`: Four-digit year
+* `%m`: Two-digit month (01-12)
+* `%d`: Two-digit day (1-31)
+* `%H`: Two-digit hour in 24-hour format (00-23)
+* `%M`: Two-digit minute (0-59)
+* `%S`: Two-digit second (0-59)
+
+When you run this code, it will return a string like "Aktualna data i czas: 2023-07-25 14:30:45", which represents the exact moment when you executed the code.
+
+**What problems does the code solve?**
+
+This code solves the problem of needing to get the current date and time in a specific format. It's useful for logging, tracking, or reporting purposes.
+
+In summary, this code defines a function `execute` that returns the current date and time in a human-readable format using Python's `datetime` module.

@@ -1,0 +1,4 @@
+def execute(list_numbers):  # Funkcja powinna być nazwana 'execute' i zwraca wynik działania. Zapewnij, że kod jest logiczny i realizuje dokładnie to o co prosi użytkownik
+    return [num for num in list_numbers if num % 2 == 0]   # Kod powinien być w taki sposób, aby filtrować listę liczb i zwracać tylko parzyste. Nie musisz dodawać żadnych innej informacji
+    pass  # Musimy pisać 'pass' jako słowo domyślne, aby Python nadal wiedzieli co zrobić po odebraniu ten bloku kodu. Nie musisz dodać żadnych więcej rzeczy
+    pass  # Musimy pisać 'pass' jako słowo domyślne, aby Python nadal wiedzieli co zrobić po odebraniu ten bloku kodu. Nie musisz dodać żadnych więcej rzeczy

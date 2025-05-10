@@ -1,0 +1,11 @@
+Funkcja `filter_even_numbers(numbers)` to funkcja filtrowania listy liczb. W związku z tym, jako argument podałem odpowiedni przykład - tablica (list), którą chcemy wprowadzić do filtracji i potraktować parze numeryczne.
+ 
+Działanie tego co robi:  
+Nasza funkcja filtrowania po prostu zwraca listę liczb, które są podane jako argument do danej funkcji `filter_even_numbers`. Dla każdego elementu w liście (tablicy), sprawdza się czy go modulo 2 nie da liczbę całkowitą równą zero - to znaczy, czy ta liczba jest parzysta.
+
+Wskazuje ono na problemy rozwiązujące:  
+Problemy mogli wydarzyć gdy dane wejściowe nie były poprawne i brak odpowiednich typów. W kodzie powinny sledzić sytuacje, tak jak na przykład:
+- Brak argumentu do funkcji `filter_even_numbers` (sprzętna wywołanie zwraca błąd). 
+    - Wystarcza dodaj odpowiedni sygnał, by program powiodł się i sprawić coś tak: `filter_even_numbers()`.  
+- Wejście nie jest tablicą liczb całkowitych (np.: wejściu 5, '3', None). To mogliby obejrzeć w kodzie i sprawić coś tak: `if type(num) != list`.
+- Wewnętrznie użyto funkcji comprehension do przygotowania nowego tablicnego, a następnie zwracamy go (return). Ten sposób jest bardzo efektywnym i wygodny dla obu strat.

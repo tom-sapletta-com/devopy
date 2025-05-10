@@ -1,0 +1,1 @@
+Wygenerowany opis dla tego kodu Python jest następującym. Dotychczas oblicza sumę dwóch liczb całkowitych (`a + b`) i zwraca wynik do odpowiedzi, tj., ciało funkcji `add_numbers(...)`.

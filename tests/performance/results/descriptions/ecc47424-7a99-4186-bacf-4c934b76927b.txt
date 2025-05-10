@@ -1,0 +1,30 @@
+Here is a detailed explanation of the given Python code:
+
+**What does the code do?**
+
+This code defines a function called `execute()` that takes a string as input and returns the vowels (vocalic sounds) present in that string. The function uses regular expressions (regex) to find all the vowel characters (a, e, i, o, u) in the given text.
+
+**How does it work?**
+
+Here's a step-by-step breakdown of what the code does:
+
+1. `import re`: This line imports the `re` module, which provides support for regular expressions in Python.
+2. `text = "Python jest wspaniały"`: This sets the input string to be analyzed as `"Python jest wspaniały"`.
+3. `vowels = re.findall(r'[aeiou]', text.lower())`: This line uses the `re` module's `findall()` function to find all occurrences of vowel characters (a, e, i, o, u) in the input string. The regular expression `[aeiou]` matches any single character that is a vowel. The `text.lower()` part converts the entire text to lowercase before searching for vowels, so that the search is case-insensitive.
+4. `return f"Samogłoski w tekście '{text}': {', '.join(vowels)}"`: This line returns a formatted string that contains:
+	* The phrase "Samogłoski w tekście '..." (Polish for "Vowels in the text..."),
+	* The original input text,
+	* A list of vowel characters found, separated by commas.
+
+**What problems does it solve?**
+
+This code helps to:
+
+1. Extract vowel sounds from a given text.
+2. Provide a formatted output that shows the vowels present in the text.
+
+**How does it handle different inputs?**
+
+The code can be used with various input strings, and it will correctly extract vowel characters regardless of their case (uppercase or lowercase). For example, if you pass the string `"THIS IS AN EXAMPLE"` as input, the code will return `Samogłoski w tekście 'THIS IS AN EXAMPLE': i, e` (the vowels found in the text).
+
+Overall, this code demonstrates a simple yet useful application of regular expressions and string manipulation in Python.

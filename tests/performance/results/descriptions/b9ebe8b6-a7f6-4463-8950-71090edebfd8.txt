@@ -1,0 +1,24 @@
+**Kod Python analizujący tekst i wydobywający samogłoski**
+
+Ten kod Python definiuje funkcję `execute()`, która analizuje podany tekst i wydobywa wszystkie samogłoski (vowels) zaczynające się od liter "a", "e", "i", "o" lub "u". Funkcja zwraca wynik w postaci tekstu, który przedstawia wyodrębnione samogłoski.
+
+**Główne funkcje:**
+
+1. `execute()`: Główna funkcja, która wykonuje analizę tekstu i wydobywa samogłoski.
+2. `re` (Regular Expressions): Biblioteka Pythona, która umożliwia tworzenie regularnych wyrażeń (regex) do szukania patternów w danych.
+
+**Działanie:**
+
+1. Funkcja `execute()` importuje bibliotekę `re`, aby móć korzystać z funkcjonalności regex.
+2. Zmienna `text` jest przypisana wartością "Python jest wspaniały", które jest tekstem, który chcemy analizować.
+3. Funkcja `re.findall()` szuka patternu `[aeiou]` (samogłoski) w tekście `text`, ale tylko w przypadku, gdy tekst został przekształcony w formie małych liter (za pomocą metody `lower()`) dla przypadłościowej analizy.
+4. Wynik szukania jest zapisany w zmiennej `vowels` jako lista samogłosek.
+5. Funkcja zwraca wynik w postaci tekstu, który przedstawia wyodrębnione samogłoski, przestrzeniowane kropkami (`', '.join(vowels)`) i otoczone łańcuszkiem f-string `f"Samogłoski w tekście '{text}': {vowels}".
+
+**Rozwiązane problemy:**
+
+Ten kod rozwiązuje problem wyodrębnienia samogłosek z tekstu, co jest przydatne w różnych aplikacjach, takich jak analiza języka naturalnego, automatyczny analizator tekstu itp.
+
+**Jak działa:**
+
+Kod Python korzysta ze specjalistycznego biblioteki `re` do szukania patternów w danych. Regularne wyrażenie `[aeiou]` to specjalna notacja, która oznacza, że szukany jest każdy znak literowy, który zaczyna się od litery "a", "e", "i", "o" lub "u". Wynik szukania jest następnie przekształcony w postaci listy samogłosek, które są następnie zwrócone w formie tekstu.

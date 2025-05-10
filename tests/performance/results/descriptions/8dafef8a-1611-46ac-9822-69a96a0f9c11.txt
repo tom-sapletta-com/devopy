@@ -1,0 +1,33 @@
+Here's a detailed description of the Python code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that returns the current date and time in a specific format.
+
+**How does it work?**
+
+Let's break down the code step by step:
+
+1. The first line, `import datetime`, imports the `datetime` module, which provides functions for working with dates and times.
+2. The next line, `now = datetime.datetime.now()`, creates a new `datetime` object that represents the current date and time. This is done using the `datetime.now()` method, which returns the current date and time.
+3. The `return` statement at the end of the function uses an f-string (a new way of formatting strings in Python) to create a string that includes the formatted date and time.
+
+**What's the output?**
+
+When you call the `execute()` function, it will return a string like this: `"Aktualna data i czas: 2023-07-15 14:30:00"` (note that the actual date and time will be different each time you run the code).
+
+**What problems does it solve?**
+
+This code helps to:
+
+1. Provide the current date and time in a human-readable format, which can be useful for logging, debugging, or displaying information.
+2. Avoid the need to manually enter the current date and time when writing code.
+
+**How is this relevant?**
+
+In many applications, knowing the current date and time can be important. For example:
+
+1. In a log file, it's helpful to include the timestamp of an event so that you can track what happened and when.
+2. In a program, knowing the current date and time can help with tasks like scheduling appointments or sending notifications.
+
+Overall, this code provides a simple way to get the current date and time in Python, which can be useful in a variety of situations.

@@ -1,0 +1,21 @@
+Wyjaśnienia zwrócone pochodą ogromnego i niesprawialny jest, że powstał ten bardzo specjalistczony w tym mieju to przez chwilki uważanie. Nazywanego on "Code Summarizer" by zaspokoianym programowaniem Pythonu stara się opisać kod, obniżając zaangażowanie spojrzystej oraz wykorzystujac tylko podstawowe informacje.
+ 
+Proces znaków jest nastawiony na szybki i ogólny, po prostu przechodzi do opisu każdego części funkcji: `def divide_numbers(a, b):`. W tym miejscu rozpoczynamy od nazwy funkcji - zgadniamy go jako "divide_numbers". Następnie odczytujemy wszystko co po `def:`, ciało i sprawdzanie każdej linii od do nawiasu.
+ 
+Następnie dostajemy opis funkcji zgodnie ze swoim wskazówkami `"""Dzieli dwie liczby... """`, które pochodzi od poprzednich czterech linii. Funkcja toco następuje i jest odpowiednikem Pythonu zwyczajowego `def:<name>(params): <docstring>`, gdzie po prostu wypełnia się opis funkcji podaniami parametrem. Nagrodza toco następuje i jest odpowiednikem Python'a zwyczajowego `return` oraz obsługiwaniem rzeczywistych błędów, którymi można się przygotować w try-except bloku.
+ 
+Jest to zasada: Dodawanie nagrody po drobny sposób powstałego bardzo specjalistcznego do skrócenia kody, a także odpowiadania na pewne problemy rozwiązywania zastrzeżonego.
+ 
+CosmicSummarizer pochodzi on nie jest w stanie realizować swojego celu, ale chce pokazać Ci sprawdzaniem poprawnym komunikaty i odpowiadania na pytania dotyczące funkcji.
+ 
+Zamiast powtarzać te same linie wielle razy, czas zamyka pojedyncze blokki `except ZeroDivisionError:` i wraca do opisu podstawowego przed tym koncepcją.
+ 
+Cykl rozszerzenia jest nastawiony na sprawdzanie problemów ogromnych, wkrocze w tryb szybki i użytkownikowi Pythonu zwyczajowego. Cechę tej książecznej byłaby nastawieniem na cenny sposób opisywania, obniżanie zaangażowań i uwagi mniejszych wydań ogólny.
+ 
+Oto jak funkcja dziala: W zadaniach ta przejdziemy do metody `divide_numbers(3,4)` na szczególnym urzędzie liczyć odpowiednio. Zostanimy wtedy poddawane ciału funkcji i jako parametry przesuniemy nas do obszaru `except:<name> ->`, ktorego opis toco następuje pochodzącego na swoim wskazówkach.
+ 
+W powrotny sposób jest pokazywanie pytań dotyczących rzeczywności błędów i pojedynczejsza linijki, obniżając zupełnie kryteria w takim rozszerzeniu.
+ 
+Powtarzamy ten proces dla również `except ZeroDivisionError:` i powtórzywanych pytań ogromnych po sprawdzonym kodzie, aby zaspokoić wszelkich problemów rozwiązywania.
+ 
+Wiadomości tak jasne powstałej sumarizacji szerzej za punkty sposobowania do skrócenia kodu i obniżanie ryzyka rozszerzenia, zamiast podawać w pełni.

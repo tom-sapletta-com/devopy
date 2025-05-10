@@ -1,0 +1,8 @@
+To jest podstawowy program Python, w tym maksymalnie czterokrotniu skompilowaanym. W tej chwili nie możemy być 100% pewnych co zrobić na kodzie inwestując poza swój własny tempo i potrzebami programistycznymi. Niemniej, dla najprostszych celów poniżej opisano ogólnie jak kod funguje:
+```python
+def divide_numbers(a, b):   # Definiujemy nową metode 'divide_numbers' z 2 argumentami. Jest on wypełnion na nazwisku i działajacy jak funkcja matematyczna "dzielenie".
+    try:                    # Wtedy gdy próbujemy podzielić liczebności. Zawsze warto obserwować, czy mamy możliwość rzucić i obsłużyć błąd (przerwanie) przed tym uruchomieniem kodu matematycznego.
+        return a / b         # Zwróci wynik dzielenia liczb 'a' z 'b'. Wszelak problem można rozwiązać, nie jest to czyste i sprawdzeniem poziomu szczegółowo.
+    except ZeroDivisionError: # Gdy próbujemy podzielić liczebności zera (Zero Division Error), wtedy uruchomi się ten blok instrukcji, a nie metody powrotne zero.
+        return "Nie można dzielić przez zero" # Zwrócona wiadomość o błędzie i wskazuje użytkownika na to, co się stalo (prawdopodobnie mimo mojego dobrych poglądu naleńczy rzucić przez zero)
+```    # Funkcja dla podstawowej logiki biznesowania, w której po raz pierwszy uwierzytnia liczenie i obliczaą następnie cale zbytku. Drugim argumentem jest 0 (zero), a dopiero tutaj rzuca się wyjątek, kiedy tak naprawde na pewno chcemy uwierzytnic obliczenia i mimo mojej sfinansowanej pracy nie powinniście dzielić zawsze.

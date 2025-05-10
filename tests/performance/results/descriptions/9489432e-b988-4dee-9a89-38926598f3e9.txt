@@ -1,0 +1,5 @@
+Ten Python skrypt zawiera trzy funkcje. Są one sprawdzane przedstawione poniżej ogólnym opisem dla osób bez doświadczenia programowania w języku Python i Javascript:
+- `execute()` - nieużywana funkcja, która uruchamia obliczone zadanie.  Zdefiniowano tylko dla ułatwienia szczegółownika i przejrzeni w terminach programistyka bez pisania pewności o co się robi, czyli nawet mniejszo argumentu.
+- `sum(range()` - funkcja zwraca sumaryczną liczb od 1 do N (w tym przypadku to ile jest określonego wynosić: range = 101, dopóki nie osiągniesz tutaj skrajnego limitu).
+- `return` - zwraca opublikowanych ważnych informacji na ekran.  Jednak wskazuje to po prostu, że ten kod będzie póki co obliczaj (obliczone sumy liczb od 1 do N).
+- `f"{...}"` - jest używanym zastępcą dla wspomnianej powyżej czasu. Zamiast zaewoquj po prostu pisanie i przechowujemi nazwy pól obliczonego sumarycznie, moglibym ułatwić ten kod zrozumienia dla osób bez doświadczenia w Python.

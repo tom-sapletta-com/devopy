@@ -1,0 +1,27 @@
+Here's a detailed description of the code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that takes a string as input and returns a new string with information about the vowels (samogłoski) in the original text.
+
+**How does it work?**
+
+When you call the `execute()` function, it performs the following steps:
+
+1. **Importing a library**: The code starts by importing a Python library called `re`, which stands for "regular expressions". This library allows us to search for patterns (such as vowels) in text.
+2. **Defining the input text**: The code sets the variable `text` to a string containing some text, such as "Python jest wspaniały".
+3. **Converting the text to lowercase**: To make it easier to find the vowels, the code converts the entire text to lowercase using the `lower()` method.
+4. **Finding the vowels (samogłoski)**: Using the `re` library, the code searches for all occurrences of vowels (a, e, i, o, u) in the text using a regular expression pattern `[aeiou]`. The `findall()` function returns a list of all matches.
+5. **Joining the vowel results**: Finally, the code joins the list of vowels into a single string using the `join()` method, separated by commas.
+
+**What problems does the code solve?**
+
+This code solves several problems:
+
+* It helps to extract specific information (vowels) from a text.
+* It demonstrates how to use regular expressions (a powerful tool for pattern matching in text) in Python.
+* It shows how to convert text to lowercase and search for patterns using this converted text.
+
+**In summary**
+
+The `execute()` function takes some text as input, finds all the vowels in that text, and returns a new string with the vowel results. This code is useful when you need to extract specific information from a text or perform pattern matching tasks.

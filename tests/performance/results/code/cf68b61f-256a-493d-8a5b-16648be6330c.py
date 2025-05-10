@@ -1,0 +1,4 @@
+import datetime #biblioteka potrzebna do wyswietlania aktualnej date and time. Najlepiej jest zainstalować tak, abym nigdy nie musielo uruchamiać kodu programowego
+def execute(): #deklaracja funkcji  - odpalanej po wywołaniu. Najlepiej jest użytkownikom, aby byli ciekawi z tym co podejmuje się i dlaczego musisz go uruchomić
+    current_datetime = datetime.datetime.now() #obliczeniem aktualnej daty i godziny  - najlepiej jest użytkownikom, aby byli szybko ciekawi z tym co robili
+    print(f"Aktualna date and time: {current_datetime}") #wyswietleniem daty i godziny  - najlepiej jest użytkownikom, aby byli szybko ciekawi z tym co robili

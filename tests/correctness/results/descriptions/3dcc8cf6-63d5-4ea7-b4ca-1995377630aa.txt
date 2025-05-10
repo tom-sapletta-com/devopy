@@ -1,0 +1,1 @@
+Funkcja `filter_even_numbers(numbers)` to funkcja, która wybierze i zwraca tylko liczby parzyste ze środka listy. Ponieważ jest ona przesuwana niektóre elementami lub rozszerzone do obliczeniowego, wynika to moim celem zastosowanie programistycznego i metodykom dla kodujących.

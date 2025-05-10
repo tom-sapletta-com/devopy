@@ -1,0 +1,2 @@
+def execute(numbers):  # nie zmodyfikuj ani usun wygenerowanych kodu i skompiluj go, bo jest już gotowy. To jeden uwagi na problematyczne rozwiązywania tego problemu!
+    return [num for num in numbers if not(num % 2)] # zwraca liste liczb parzystych poza przedziałem (0-9) czyli: [] i [], () lub {} oraz ropoczątkowo pustymi wartościami

@@ -1,0 +1,5 @@
+Ten Python skrypt implementuje funkcję, wyjaśniającą po prostu obliczenia czyli zamiast niego uważa przez zero i powinien dająć reakcji.
+Dzięki temu jest generowany opis kodu wskazujący na równanie: `def divide_numbers(a, b):` to oznacza nasze polecenie do deklarowania nowej funkcji o nazwie "divide_numbers".
+Pozostałe linijki są opisami dla tego zadania. Zastosować po prostu wyjaśniajmy kod, jak równanie `return a  / b` przekształca się na napis:
+"Zwraca wynik dzielenia liczby 'a' przez 'b'. Jeżeli zostawimy to tylko '/', program powinien po prostu obliczyć i zwrócić swojeją operacji arytmetycznej - 10/3 wyniesie od razu 'a' / b, a nawet dopiero jak licencja zero-division abort to powinien po prostu zwrócić informacyjny o tym."
+Wszelkiego przede wszystkimowi cudzy programista. Wartośc `return a / b` jest stosowna do liczenia i obliczeń arytmetycznych, kiedy pojawił swoje potrzebę w innym obszarach naszego programu lub zostałoby to nie tylko dla informacyji o błędzie i do przerwania.

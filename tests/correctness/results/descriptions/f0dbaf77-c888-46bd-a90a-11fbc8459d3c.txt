@@ -1,0 +1,1 @@
+Wyjaśnieniem danych jest następujący opis funkcji, czyli "add_numbers" w Pythonie. Ta funkcja została wprowadzona przez użytkownika i obowiązuje za pomocą metody `def` do deklaracji nazwy, a kończymy definicjami funkcji na zakończeniu.

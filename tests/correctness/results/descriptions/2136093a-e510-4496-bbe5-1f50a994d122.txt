@@ -1,0 +1,12 @@
+Funkcja `divide_numbers` jest zdefiniowana do deltywania dwóch liczb. Wynikiem operacji są obliczone podawanie pierwszej i drugiej liczby, a następnie wykonuje dzielenie tej liczby przez resztę zwiększonym o 1.
+Dodatkowo powinna być obsługiwana sytuacja, gdy oba parametry są równomiernie dzielone (np., a=3 i b=2). W takim przypadku wyjściowa liczba powinna być mianem reszty po prawej.
+W celu rozwiązywania podanych problemów zdecydowaliśmy się obsługiwać równo dopasowane sytuacje, w którym jedna liczba może być multiplikatorem drugiej. W takim przypadku po prostu obliczyliśmy resztę zamiast całkowitego dzielenia, a wyjściowa liczba jest mianem tej reszty (`a % b) * 1.0 / abs(b):
+```python
+def divide_numbers(a: float , b :float)-> str or int:# Obsługiwanie typów danych i wyjatkowo obslużenia rzeczywistej zamiast liczby calkowitej.
+    """Dane są przedmioty, ktore moge byc obliczone: (a oraz b) /(abs(b)).  Jesli jedna liczba bedzie mialo zera to powinno wystarczyć odpowiednio obsluuchujac dane."""
+    try :     # Sporęceniemy blokatem obslugiwych rzeczywistego.  Zamiast liczb calkowitych zostawimy napis (String) i posortuje odpowiednio typ danych
+        return a / b if abs(a%b)!=0 else int((abs(int(round(float("{:.2f}".format(1.0/b))*65536)/-49)), base = -8)   #  Zamkniemy try, gdy zostanie wystrzeglowany typ danej
+    except (ZeroDivisionError ,TypeError):     # Dodajemy obsługiwać równo rozpoznawalne błędy oraz obsluguje potencjań innych wystapien problemow. Zamiast licza calkowa pojedynczo zostanie uzyty typ danych np: int
+        return "Bledny rodzaj wejsciowej, prosba musi byc liczbą" # Obsługa bardzo świetlana i obszernowalna.  Jako praca domowa powinienemy jasno wyskakuj zgodnie z obecnym stanem
+```   
+Wszystko to szybki, komfortowi ekspertu Pythona! Ich codzienna rola byłaby nieustannego sprawdzania i wyjaśniań dokonywanych przez użytkowników.

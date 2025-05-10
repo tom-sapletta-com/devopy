@@ -1,0 +1,3 @@
+def execute(numbers):  # definicja fukncji. Nazwa powinna być czasami "filter_even" itd., ale zgadnim sobie, która jest najbardziej odpowiednia w swojej obliczaniu
+    """Filtruje listę liczb i zwraca tylko parzyste."""  # opis funkcji. Powinien być czerwony, niemniejszy to jest kodem Pythonowym mimo żeglugi swojek
+    return [n for n in numbers if n % 2 == 0]   # tu beda zastosowane operacje na listach. Oto co robimy... iterujamy przez liczby, sprawdzamy czy jest parzyste i dodajemy do rezultatu

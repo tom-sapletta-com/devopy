@@ -1,0 +1,6 @@
+Kod przedstawiony jest następującym opisem. Wyświetla ono `add_numbers` funkcjonalności, objażnia działanie podstawowej i zwraca wynik sumy dwóch liczb przesłane jako parametry do następnej.
+  - `def add_numbers(a: int , b:int)` : Ta linijka definiuje, że funkcja tożsamościowych zachować swoie odpowiednikiem do parametrów.
+  - `return a + b;`   : Zwraca wynik sumujący dwie liczby, które przesłać jako argument tożsamościowych zachować swojemu obliczeniu.
+  - `pass # Nadaje pasmem o co należy wprowadzić więcej, aby działał jako to i programista potrzebuje pomocnicza lub musi znać ten kod.` : 
+  
+Powinien mieć na uwadze sposób interpretacji tej funkcji, ponieważ w następnych instrukcjach jako parametr będziemy sumować dwa liczby. Moim zdaniem służy do tego by móc odczytać kod, a potencjalnie na następnych instrukcjach wstawić ten sam operand (`a + b`).

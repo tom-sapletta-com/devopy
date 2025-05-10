@@ -1,0 +1,30 @@
+Let's break down this Python code and explain what it does.
+
+**What is this code for?**
+
+This code defines a function called `divide_numbers` that takes two numbers, `a` and `b`, as input. The purpose of this function is to divide the first number by the second, but with an added feature: it handles the situation where you try to divide by zero.
+
+**How does it work?**
+
+The code consists of a single block: a `try`-`except` statement. Here's what happens:
+
+1. The `try` block attempts to execute the division operation using the `/` operator, which divides `a` by `b`.
+2. If everything goes smoothly, the result of the division is returned as the output of the function.
+3. However, if you try to divide by zero (i.e., `b` is equal to zero), a `ZeroDivisionError` exception is raised.
+
+**What happens when an error occurs?**
+
+When the `try` block encounters a `ZeroDivisionError`, the code jumps to the `except` block. In this case, the `except` block catches the exception and returns a string "Nie można dzielić przez zero", which means "Cannot divide by zero" in Polish.
+
+**What problems does it solve?**
+
+This code solves two main issues:
+
+1. **Handling division by zero**: By using an `except` block to catch the `ZeroDivisionError`, the function ensures that it returns a meaningful error message instead of raising an exception, which can be difficult to handle.
+2. **Returning a useful result**: When the division operation is successful, the function returns the result as expected.
+
+**How does it fit into larger code?**
+
+This function could be used in a wider program or script that needs to perform divisions on user-input numbers. For example, if you're building a simple calculator app, this function would ensure that users don't try to divide by zero and get an unexpected error.
+
+Overall, this code is a great example of how to handle exceptions and return meaningful results when dealing with edge cases in programming.

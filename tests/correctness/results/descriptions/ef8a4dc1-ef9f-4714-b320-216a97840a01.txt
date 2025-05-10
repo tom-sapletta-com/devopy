@@ -1,0 +1,7 @@
+Ten plik Python zawiera definicje funkcji `filter_even_numbers`. Ta nazwa spowoduje, że ten opisywany wnosek jest dostępny tylko do odczytu i sługuje komentarzom co realizujemy za pomocą tych czerwonych przed znakami `#`.
+Celem tej funkcji bylibo poinformować, że ta jest implementowana do filtrowania listy liczb parzystych (tylko dla wartości "parzystej"), co cechuje się na tym próbie zwraca ona też nowo utworzone liste, która nie jest modyfikowana.
+Dopiero poza to bedemy rozpoczynam wypisywania opisu dla funkcji `filter_even_numbers`: 
+- Nazwa i przejdźmy do definicjii, którą powinien nas zatrudniać. Funkcja ta służy do filtrowania liste liczb parzystych (tylko dla wartości "parzystej") - jest to nieco podstawowe operacje na liście.
+- Wewnętrznie funkcja `filter_even_numbers` przechodzi po każdym elemencie wewnętrznej listy (lub "liczbach"), a następnie sprawdzaj, czy jest parzyste - w takim razie doda do nowej lista.
+- Zwraca to nasza modyfikowana lista liczb parzystych (tylko). Wynika z powodu ostatniego klauzuli `return`, co należy wziąć pod uwagę.
+- Tak więc ta funkcja po swoim definicji sprawdza liste liczb i filtrowa jej do nowej liście tylko zawierających parzyste, a następnie za pomocą `return` wysyła powtarzalną lista.

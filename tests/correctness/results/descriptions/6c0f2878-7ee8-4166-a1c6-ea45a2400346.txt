@@ -1,0 +1,27 @@
+Here's a detailed explanation of the code:
+
+**Function: `divide_numbers`**
+
+The `divide_numbers` function takes two arguments, `a` and `b`, which are expected to be numbers ( integers or floats). Its main purpose is to divide `a` by `b` and return the result.
+
+**What it does:**
+
+When you call the function with two arguments, it attempts to divide `a` by `b`. If this division is successful, the function returns the result as a number. However, if `b` is zero (i.e., you're trying to divide by zero), the function catches an exception and handles it in a special way.
+
+**Handling ZeroDivisionError:**
+
+When you try to divide by zero, Python raises a `ZeroDivisionError`. This error is caught by the `except` block in the code. In this case, instead of returning the usual result (i.e., `a / b`), the function returns a string "Nie można dzielić przez zero" which translates to "Cannot divide by zero".
+
+**Key benefits:**
+
+1. **Error handling**: By catching and handling the `ZeroDivisionError`, the code prevents the program from crashing or raising an error when trying to divide by zero.
+2. **Clear feedback**: When the division by zero occurs, the function returns a clear and informative message instead of an error, making it easier for users to understand what went wrong.
+
+**How it works:**
+
+1. The function is called with two arguments, `a` and `b`.
+2. The function attempts to divide `a` by `b`. If this succeeds, the result is returned.
+3. If `b` is zero (i.e., division by zero), a `ZeroDivisionError` is raised.
+4. The `except` block catches this error and returns a special message instead of the usual result.
+
+In summary, this code provides a robust way to divide numbers while handling the edge case of dividing by zero, making it more user-friendly and reliable.

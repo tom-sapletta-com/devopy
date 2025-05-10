@@ -1,0 +1,2 @@
+def execute():
+    return sum(range(1, 101))   # Suma wszystkich liczb od 1 do 100 jest zwracana bez dodatkowych większych instrukcji. Zamiast tego oblicza sumę mianem i nie potrzebuje nic nowego, co może być wg konwencjonalnego programistyka przypomina do pisania "Wynik to: ".

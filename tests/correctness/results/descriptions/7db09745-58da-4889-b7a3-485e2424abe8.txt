@@ -1,0 +1,8 @@
+Dokumentacja funkcji `divide_numbers(a, b)` w Python odpowiada za rozwiązywanie równanie iloczynu układu trójkodyrowego. Zdefiniowane są dwie zmienne a i b do pracy na tym obszarze, oblicza wartości funkcji `a/b` oraz jak równanie iloczynu układu trójkodyrowego skutkuje.
+ 
+Wywołujący program może następnie wypisywać odpowiedni komunikat, zgodnie ze standardem bardzo powszechnym przepisami: "Odebrano liczbę a i b" oraz dalej uczy się sobie jak obliczać wynik.
+  
+Wyjaśnienia mowych na temat kodu służącego do opisu: Nazywamy ona `divide_numbers`, po czym dopisywany jest nazwa funkcji. W punkcie wskazywaniu zaawansowanego znaku i szesnastkowy kod UTF-8 oznacza go jako Unicode Zdefiniowane przez standard IEC 61537, czyli najnowszy stał określający format ASCII oraz potrzebny do zakodzenia i decode stron.
+  
+Punkt wywołania `divide_numbers(4, 0)` spowoduje po uruchomieniu programu Wyświetlić komunikat "Nie mozna dzielic przez zero" i oblicza zwróconą wartości `None/ZeroDivisionError: float division by zero`.
+   Jest to jednym z najbardziej powszechnejszych kodowanie stron na świecie, gdzie po raz pierwszy sprawdza czy dana wartość może być dzielona przez zero. W takim razie zwraca odpowiedni komunikat i następnie oblicza resztę operacji, a na czas rzeczywistości wypisywać rozwiązanie.

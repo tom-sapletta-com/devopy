@@ -1,0 +1,2 @@
+def execute(lst):  # Funkcja powinna być nazwana 'execute' i zwraca wynik działania. Zapewnij, że kod jest logiczny i realizuje dokładnie to o co prosi użytkownik
+    return [i for i in lst if not (int(str(l)[-1]) % 2)]   # Zwraca listę liczb pozostawiając tylko wartości parzyste. Wersja z użytkownikiem kompletnego

@@ -1,0 +1,1 @@
+Ten opublikowany kod Python, `execute()` funkcja tworzy obiekt datetimenowy i zwraca aktualną datecznie w formacie '%Y-%m-%d %H:%M:%S' (Rok - Miesiąc - Dzień  godzina : minuta : sekunda). Wszytkich informaci zostają przesyłane do standardowego wypisywania, co czerpie dużej mocy.

@@ -1,0 +1,31 @@
+**Kod Python: Filter Even Numbers**
+
+The provided code is a simple function written in Python that filters out even numbers from a given list of integers. Let's break it down:
+
+**Function Name:** `filter_even_numbers`
+**Parameters:** `numbers` (a list of integers)
+**Return Value:** A new list containing only the even numbers from the input list
+
+Here's what the code does:
+
+1. The function takes a list of integers as its only parameter, `numbers`.
+2. The function uses a list comprehension to iterate over each number in the input list.
+3. For each number, it checks if the remainder of dividing the number by 2 is equal to 0 using the modulo operator (`num % 2 == 0`). This is the condition for an integer to be even.
+4. If the number meets this condition (i.e., it's even), the function includes it in a new list.
+5. The function returns this new list, which contains only the even numbers from the original input list.
+
+**What does the code do?**
+
+The `filter_even_numbers` function takes a list of integers and filters out all the odd numbers, leaving only the even numbers in a new list. This can be useful in various situations, such as:
+
+* Preparing data for analysis or visualization
+* Removing unwanted noise from a dataset
+* Creating a subset of data that meets specific criteria
+
+**How does it work?**
+
+The code uses a technique called "list comprehension" to create a new list based on the input list. This is a concise and efficient way to perform filtering operations in Python.
+
+In this specific case, the code iterates over each number in the input list, checks if it's even using the modulo operator, and includes it in the new list only if it meets the condition. The resulting list contains only the even numbers from the original input list.
+
+Overall, this code is a simple but effective tool for filtering out even numbers from a dataset.

@@ -1,0 +1,1 @@
+Poniżej znajduje się sformatowany opis Twojego kodu Python i jego wyjaśnienia.  Kiedy metoda divide_numbers(a, b) pozostawiłaby `except ZeroDivisionError:` instrukcji domyślnie doprowadzi do przerwania programu podczas wystąpienia "ZeroDivisionError", to zamiast tego powinien odpowiadać komunikatem, że nie można dzielić przez zero.

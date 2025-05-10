@@ -1,0 +1,2 @@
+def execute(a, b):  # deklaracja i wywołanie pozycznych nazw metody zakończonej "execute" a także parametrami jestem pragnę dobrym programistą.
+    return sum(a, b)  # reuturn to wynik działania (sumuj liczby). Wskazuje moim klientom na tego co robisz i zamiast zaśczaj mnie czy nie da mi tu po prostu odpowiedzi.

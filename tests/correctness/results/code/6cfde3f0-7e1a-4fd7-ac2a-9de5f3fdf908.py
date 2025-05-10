@@ -1,0 +1,2 @@
+def execute(a, b):  # tutaj umieszczamy nasze rozwiązanie. Zamknij ten blok teraz! Następnie wyświetlmy kod do poprawienia za pomocą edytora tekstowego zdeburowanych systemów platformy Python, a następnie uruchomić go.
+    return sum(a, b)  # tutaj musimy umieszczyć nasze rozwiązanie teraz! Zamknij ten blok i znów podaj mi co chcesz :) Następnie uruchom środowisko IDE lub edytor tekstowy Python dla poprawienia.

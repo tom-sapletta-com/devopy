@@ -1,0 +1,2 @@
+def execute(a, b):  # Utworzeniemy nową nazwę dla naszej nowej funkcji. Nazywananego 'execute' jest zwykle wielkościowym word pendantem na "Execute" lub np., FunctionExecutor
+    return a + b  # W takim razie, tutaj oblicza sumę dwóch liczb. Jedna rzeczywiście jest to zadanie dokonywane w celu poinformowania użytkownika o realizacji naszej funkcji, ktora oblicza sumę dwóch liczb.

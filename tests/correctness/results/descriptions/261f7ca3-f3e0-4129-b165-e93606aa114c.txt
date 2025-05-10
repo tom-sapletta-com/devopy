@@ -1,0 +1,16 @@
+Ten opis zawiera kilka sposobów, jak się pojedynczy Pythonowy Kod Zamierza być interpretowany. W tym wypadku nie bijemy za cudzysłowki i przechodzimy do podstawiania - a zatopione, sprawdzone sąby naszyb kursu Python 3:
+
+1) Zaimportuj funkcje `divide_numbers`. W tym momencie poza programem jest już doctored i nazywamy ten czas podczas wywołania innego zdefiniowanego modułu, a są na to skupieni od ogólnego Pythonista.
+   ```python
+   import divide_numbers as dn  # tak naprawdę podczas uruchomienia programu zależnych np.: from module1234567890 divides nastawiony do moduly w Pythonie. Importujemy go jako `dn`
+   ``` 
+   Wszystko to robi, a co za takto? Nasza funkcja na pewno będzie mniej obciążona i szybka w pracy. Pamiętajmy o poprawach do kodu dopuszczalnych, a jednak za to chyba tylko cudzzówki - bardzo ważne nie pisze “szybkiego” w Pythonie.
+   ```python
+   print(dn.divide_numbers(10,2)) # powinno działać poprawnie zamiast równanego do zero i sprawdzić bardzo za tak naprawde cudzzywski kod
+   ``` 
+   Nasza funkcja `divide_numbers( a ,b )` przechowuje wynik dzielenia liczby zmiennoprzecinkowej (liczba całkowita) 'a' przez ‘b’, ale tylko gdy b nie jest równy zero. Wtedy funkcja powinna wypisać odpowiednią wiadomość i zwraca liczbę całkowitą 'a' podzielną przez ‘b’, lub równych do niej.
+   W takim razie wiemy co bardzo powinien robić i chcemy sprawdzić poprawność naszyboru kodu zanim sięgnie po cudzzówkach: przechowujemy jako wiadomości do błędu.
+   ```python
+   print(dn.divide_numbers(10, '2'))  # Powinno działać poprawnie zamiast równanego zero i sprawdzić cudzzywski kod w Pythonowym Kursze jest tak ważny.
+   ```  
+Sposobuje to przygotować swoją tretning, abys nie potrzbowali na dostatecznosc zadania i mogli byc poprawnie interpretowany w trakcie obejścia cudzzówki.

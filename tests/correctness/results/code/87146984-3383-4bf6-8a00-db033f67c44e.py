@@ -1,0 +1,2 @@
+def execute(numbers):  # Zadanie jest wygenerowany z poprzedniego rozwiązania. Po prostu przyjaśniam, że to sama funkcja co na tyle robi :)
+    return [x for x in numbers if x % 2 == 0]   # Zwracamy listę liczb parzystych zgodnie z definicją rozwiązania. (a modulo dla liczby) jest równe zero => liczba jest parzysta

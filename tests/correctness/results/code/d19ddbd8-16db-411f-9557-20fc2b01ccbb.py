@@ -1,0 +1,3 @@
+def execute(numbers):  # Funkcja powinna być nazwana 'execute' i zwraca wynik działania. Zapewnij, że kod jest logiczny i realizuje dokładnie to o co prosi użytkownik
+    pass  # Usuń ten tekst powyżej naszej wersji zamiast tego pokaż będzie komunikat na stronie. Dopisz swój logika, aby dostać to odpowiednié rozwiązanie do tej funkcji!
+    ...  # Usuń ten sformatowany blok powyżej naszej wersji zamiast tego pokaż będzie komunikat na stronie. Dopisz swój logika, aby dostać to odpowiednié rozwiązanie do tej funkcji!

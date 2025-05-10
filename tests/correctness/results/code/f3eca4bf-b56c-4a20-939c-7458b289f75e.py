@@ -1,0 +1,2 @@
+def execute(a=0.0 , b=1.0): # funkcja odbiera 2 parametry (liczby rzeczywiste) i zwraca wynik dzielenia tego ciągu liczb rzeczywięzych przez zero
+    return a / b if b != 0.0 else 'Brak możliwości dzielenia przez zerę'  # obsługa awarytu, gdy użytkownik próbuje dzielić przez zero

@@ -1,0 +1,12 @@
+Funkcja `execute` jest gotowa do uruchomienia. Wynikiem obliczeniowym będzie zwrócony opis dla napisanego w Pythonie programu, sprawdzianych słownictw i ich liczby przekazanej jako argument.
+
+W funkcji `execute`:
+- Zmienna typu string o nazwie "text" została wstawiona do siebie tekst, który ma być sprawdzany dla słowników głosych. 
+   - Wspomniane jest użycie modułu `re` (zbędny w Pythonowym środowisku) do obsługi tekstu zgodnego ze specyfikacjami regulaminem regularnych.
+   - Metoda 'lower' użyta jest, aby uniknąć niepoprawnej interpretacji liter (np.: "Python" i "python") w przypadku obliczeń głosowych podczas rozpoznawania słownictw.
+- Zmienna typu list o nazwie 'vowels' została użyta do zapamiętania wszystkich samogłosków, które pojawiły się we wczytaniu tekstu.
+- Zwracana jest następnie fraza "Samoglosewy w tytej czesc '{text}' : {', '.join(vowels)}", która zawiera listy samogłoski oddzielonych przecinkami.
+  - Zwracana jest to string formatu f-string, pozwalający wpisywać dane wejściowe do ścieżek tekstowych i sformatujenia opublikować zawartość obliczonego pola.
+  - Udzielona jest to, aby pozostał komunikat "Samoglosewy w tytej czesc '{text}' : {', '.join(vowels)}", gdy są dodawane do niego samoglosewki.
+   - Zamiast tego zwraca informacje o liczbie przeszedranych w tekście i listach posiłkujacycyh pojawionych słownictwo głosów, a nazwy tych samoglosek.
+   - Udokumentowane jest rzeczywiście sprawdziane przez nas dla podanygo tekstu i wyjaśniające ogólnego cechunku głosnego obliczeniowego.

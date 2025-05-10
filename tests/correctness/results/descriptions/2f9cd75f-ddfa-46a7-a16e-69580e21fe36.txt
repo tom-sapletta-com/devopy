@@ -1,0 +1,3 @@
+W tym przykładzie jest implementowany sześciopiastyczny, czterdziesty pięćki Python do wyjaśniania metody dodawania liczb. Opis funkcji zaczyna od podsumowanie koncepcji - "Dodaj dwie liczby i zwróć wynik". Następnym punktem jest opisywanie, czyli sformatowany przedstawieniem funkcjonalności metody.
+
+Komentarze do kodu pochodzą z objaśnia wniosków dotyczących jeho rozwiązywania problematycznyh i składni sformalizowanym dla osób nie posiadającego doświadczenia programowania.

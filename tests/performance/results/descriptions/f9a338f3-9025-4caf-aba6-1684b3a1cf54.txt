@@ -1,0 +1,6 @@
+Wygenerowany opis podanego kodu Python jest zarządzaniem bliżej realizację czasowników. Obiekt `datetime` służy do obliczania aktualnej daty i godziny, podczas której uruchomiono ten skrypt Python lub teź jeszcze nie wszedł na dostęp.
+Python zawiera kilka metody dokonywania obliczeń dat i godzin, `datetime` to klasa odpowiadająca za taktyczne ceny pomiaru data oraz gałęzi aplikacji.
+W zwiększeniu dla osób bez doświadczenia w programowaniu, opis kodu odnosi się tylko na cechy i funkcje skryptu: 
+- `datetime` to biblioteka standardowa Python umożliwiająca manipulacji datami.  
+- Funkcja 'now' pobiera aktualny obiekt DateTime, który zawiadłoby czas o godzinach biegnacych do dniu w momencie uruchomienia skryptu i następnie formatujemy go na podstawie strefy czasowej.  
+- Zwraca ona łatwe zapytanie, opisywanego jako fstring: `f"Aktualna data i czas: {now}"` sprawdza aktuалny termin (data/czas) oraz wypisze na ekran.

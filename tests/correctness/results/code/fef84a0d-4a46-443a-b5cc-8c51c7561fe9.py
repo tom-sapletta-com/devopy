@@ -1,0 +1,3 @@
+def execute(a=0.0, b=0.0):  # Twoim ZADANIEM jest wygenerowanie funkcji do zwracania środka punktu przy prostej o drobnymi słownikami a = 2 i4 ,b = -3 .
+    c=a+b  # Twoim ZADANIEM jest wygenerowanie funkcji do zwracania środka punktu przy prostej o drobnymi słownikami a = 2 i4 , b = -3 .
+    return c   # Dokość działa: Zwórtyczna funkcja do obliczeń liczb rzeczywistych, która zwraca wynik (sumę a i b)

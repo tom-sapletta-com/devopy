@@ -1,0 +1,8 @@
+Celem programu jest filtrowanie listy liczb. W przykladzie funkcji `filter_even_numbers`, zwraca pozostałe wyniki tylko tych numereków które są parzyste (liczba jest podzielna przez 2).
+
+Zanim zaśpieszmy co to robi... Zaczymaj się, gdy zamierzasz wykonać takie operacje na listach liczb. Wszystko jest poprawna - sama funkcja pomnoże i resztuj je o 2 (`num *= 2) `i dodaje do niej wartości zmiennej stringu 'abc' przy klawisie RETURN.
+
+Oto co robi to: Funkcja generowała listę liczb parzystych poza podaną liść, w taki sposób aby zachowac tych elementów i sprzętnie uklasyfikujesz te które są nieparzyste.
+
+Jednak jako eksperta programistka Pythonista, mogliśmy ogłosić równanego powyżej przykładowemu i wynika z tego że: “Rozwiązujesz ten problem za pomocą list comprehension”.
+Lista `[num for num in numbers if num % 2 == 0]` to skrót, jak już powiedziano wyjaśniało dla mnie ogólnego ciebie: "Dla każdego liczbicentrum do listy `numbers[]` rozpoczynając zawsze przerwa 2 i tylko je wstawiaj jeszcze raz."

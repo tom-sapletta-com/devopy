@@ -1,0 +1,30 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+This code defines a single function called `execute()` that returns the current date and time in a specific format.
+
+**How does it work?**
+
+Let's break down the code step by step:
+
+1. The first line, `import datetime`, imports the `datetime` module, which provides functions for working with dates and times.
+2. The next line, `now = datetime.datetime.now()`, uses the `datetime.datetime.now()` function to get the current date and time. This returns a `datetime` object that represents the current moment in time.
+3. The `strftime` method is then called on the `now` object with the format string `'%Y-%m-%d %H:%M:%S'`. This converts the `datetime` object to a string in the desired format, which is:
+	* `%Y`: Four-digit year (e.g., 2023)
+	* `%m`: Two-digit month (01-12)
+	* `%d`: Two-digit day of the month (01-31)
+	* `%H`: Two-digit hour of the day (00-23)
+	* `%M`: Two-digit minute of the hour (00-59)
+	* `%S`: Two-digit second of the minute (00-59)
+4. The resulting string is then formatted using an f-string (a new feature in Python 3.6+), which concatenates the string with the variable `now`. The result is a string that looks like this: "Aktualna data i czas: 2023-07-25 14:30:00".
+
+**What problems does it solve?**
+
+This code solves a simple problem: providing a convenient way to get the current date and time in a specific format. This can be useful for logging, tracking, or displaying dates and times in various applications.
+
+**How does it help?**
+
+By using this code, you can easily retrieve the current date and time without having to manually construct the string. You can also customize the format string to suit your needs, which is particularly useful if you need to display dates and times in a specific way for reporting or logging purposes.
+
+I hope this explanation helps! Let me know if you have any questions or need further clarification.

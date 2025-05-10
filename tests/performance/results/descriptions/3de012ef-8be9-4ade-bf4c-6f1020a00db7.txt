@@ -1,0 +1,4 @@
+W tym podpunkcie omówimy naszą implementację. Zakres interpretacyjny zwiększa się, ponieważ nigdy w tekście "robi nic sławnego" (tutaj po prostu powtarzamy sobie ten konwencja).
+Rozszerzeniem naszej implementacji jest dodanie obsługi równowagi zamkniętych wyrażeń regularnych (regex), co pozwala nam na rozpoznawanie samogłoski we wszystkich słowaach tekstu.
+Dodatkowo, zastosujemy metody `lower` i `join()` do przekształcania całego ciągu tekstu na małe litery (aby uniknęć błędów case-sensitivity) oraz łączenie listy samogłosek w jeden string, który pozwoli nam zapewnić wiadomości pokaźne dotyczące obecności tych liter we wszystkich słowach.
+Nasza implementacja powinna dająć klientom przyjemnymi reakcje, gdy zadawane jest odpowiedni tekst (wszystko bardzo cierpliwo). Dla nieprawidłowego wejścia lub wyjątku podejmujemy spokój, gdy dopasujesz swoje potrzeby.

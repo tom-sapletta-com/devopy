@@ -1,0 +1,35 @@
+Here's a detailed description of the given Python code:
+
+**Function Explanation**
+
+The provided code defines a single function called `execute()`. This function has no input parameters and returns a string value.
+
+**What the Code Does**
+
+When you call the `execute()` function, it performs two main tasks:
+
+1. **Getting the current date and time**: The function uses the `datetime` module to get the current date and time. It creates a `datetime.datetime.now()` object, which represents the current date and time.
+2. **Formatting the date and time**: The function uses the `strftime()` method to format the date and time in a specific way. The format string `%Y-%m-%d %H:%M:%S` specifies that the output should be in the year-month-day hour-minute-second format (e.g., "2023-07-25 14:30:00").
+
+**What the Code Returns**
+
+The `execute()` function returns a formatted string that contains the current date and time. For example, if you call the function, it might return something like:
+
+"Aktualna data i czas: 2023-07-25 14:30:00"
+
+This string is returned as the result of calling the `execute()` function.
+
+**What Problems Does the Code Solve?**
+
+This code solves a simple problem by providing a way to get the current date and time in a formatted manner. This can be useful for logging purposes, tracking execution times, or displaying system information.
+
+**How the Code Works**
+
+Here's a step-by-step breakdown of how the code works:
+
+1. The `execute()` function is called, which triggers the execution of the code inside the function.
+2. The `import datetime` statement imports the `datetime` module, which provides functions for working with dates and times.
+3. The `now = datetime.datetime.now()` line creates a `datetime` object representing the current date and time.
+4. The `return f"Aktualna data i czas: {now.strftime('%Y-%m-%d %H:%M:%S')}"` line formats the date and time using the specified format string and returns the resulting string.
+
+Overall, this code provides a simple way to get the current date and time in a formatted manner, making it useful for various applications.

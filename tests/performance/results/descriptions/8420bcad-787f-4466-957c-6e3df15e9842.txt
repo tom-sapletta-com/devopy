@@ -1,0 +1,21 @@
+I'd be happy to help you understand the code!
+
+The code defines a function called `execute` that takes no arguments. This function does three main things:
+
+1. **Imports a module**: The first line, `import re`, imports a built-in Python library called `re`. This library provides regular expression (regex) matching operations.
+2. **Reads a text string**: The next line, `text = "Python jest wspaniały"`, sets a variable `text` to a string containing the phrase "Python is wonderful".
+3. **Finds vowels in the text**: The third line, `vowels = re.findall(r'[aeiou]', text.lower())`, uses the `re` library to search for all occurrences of vowels (A, E, I, O, U) in the `text` string. The `r'[aeiou]'` is a regex pattern that matches any vowel character, and the `lower()` method is used to convert the text to lowercase before searching.
+
+The function then returns a formatted string using an f-string (a new feature in Python 3.6+). The returned string has two parts:
+
+* "Samogłoski w tekście '..."": This is a Polish phrase, roughly translating to "Vowels in the text..."
+* {', '.join(vowels)}: This part joins the list of vowels found earlier using commas and spaces.
+
+When you run this code, it will execute the `execute` function and print out something like:
+```
+Samogłoski w tekście 'Python jest wspaniały': a, e
+```
+
+In summary, this code solves the problem of finding all vowels in a given text string and returns them as a formatted string. The main functionality is achieved through the use of regular expressions (regex) and f-strings.
+
+No prior programming experience required to understand this explanation!

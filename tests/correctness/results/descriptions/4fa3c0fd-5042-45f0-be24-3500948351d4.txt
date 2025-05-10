@@ -1,0 +1,1 @@
+Celem tej implementacji jest filtrowanie listy przedmiotów zwracać tylko liczby parzyste. Wynik oblicza są w ten sposób, dzięki temu Python nazywa się ich "list comprehension". Ogólnie rzeczywiście jestem przeznaczony na podstawowe informatykę i mniej wiedza o działaniu programu, więc najważniejszo za tego celu.

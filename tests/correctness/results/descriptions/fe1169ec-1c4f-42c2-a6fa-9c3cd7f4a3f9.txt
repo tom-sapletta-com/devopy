@@ -1,0 +1,9 @@
+Ten kod jest funkcją Python, nazywana "add_numbers", oraz ma dwa parametry. Zdefiniowane są w takiej samej linii to liczby a i b (`a = ... and b = ...... `) które pochodnikiem funkcji zostaną przekazane jako parametry.
+ 
+Funkcja ta implementuje dla niego matematyczny sformułowany wskaźnik do obliczeń, którego oczekiwamy zwracać (`return ... `) jako odpowiedzi.
+ 
+Wynikiem dla dwóch liczb a i b są oneczelkujesym pojedynczy wywołanie funkcji add_numbers, która zwraca sumę tych samych twoich parametrów.
+ 
+Funkcja ta nazywa się "add numbers" ponieważ jest ono odpowiednikiem metody dodawania dwóch liczb - w przykładzie tego kodu, np., jeśli chcemy zsumować 10 i 20 to musimy wypisać `add_numbers(a=10)`.
+  
+Funkcja ta rozwiąza również kilka problemów, gdy: a). Umożliwa on dodanie liczb ujemnych i zera; b). Moze być wywołana bez przekazywania parametrów (tzn., nie musi istniać czasu tworzenia odpowiedzi), oraz/ lub dopóki jest to możliwe zwiększyc prostoty, w którym mamy tylko dwie liczby do dodania.

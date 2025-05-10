@@ -1,0 +1,8 @@
+Wygenerowany opis dla tego kodu Python pokazuje, że jest on częściowo przeszedlony. Zamiast wprowadzić ogólniejki zrozumiałej dyskusji na temat funkcja add_numbers(), najpierw opisujemy konceptu, a potem podsumowamy je jako części. 
+```python
+# Definicjon ogólna: Funkcje inicjalizujące (init__) to metody wystawniwane przedurzeniami nazwy objektu Python, służyli do jednorazowego ustawiania często używanych atrybutów obiektu po utworzeniu.
+# Dla funkcji add_numbers(a, b) najpierw służy do przesunąć liczebności a i b na wysokość pamięti podręcznej.
+# Oto skrócone opis dla tego kodu: – Funkcja add_numbers(a, b) jest używana do adnotacji metody wystawniwanej przedurzeniami nazwy objektu Python.
+# Powinien zwrócić sumę liczb a i b (na pewno odpowiedni sposób), ale rano byłoby jeszcze opisywanie, co każda linijka robi w obu stronach.
+```  
+Dziękujemy za podpowiedź na temat dodawania liczb przy użyciu Python i jego metody operacyjne `+`, które służy do zwracającego wynik sumy dwóch argumentów.

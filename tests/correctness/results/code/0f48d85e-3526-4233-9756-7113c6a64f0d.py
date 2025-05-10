@@ -1,0 +1,2 @@
+def execute(a, b):  # Funkcja przeznaczona do realizacji zadania.
+    return a + b   # Zwraca wynik działania (sumę liczb). Wskazuje tutaj na to co jest potrzebne, nie musimy już powiedzieć oto więcej.

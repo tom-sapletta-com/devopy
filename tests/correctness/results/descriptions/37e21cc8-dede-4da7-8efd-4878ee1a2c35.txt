@@ -1,0 +1,27 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+The code defines a function called `divide_numbers` that takes two arguments, `a` and `b`, which are expected to be numbers. The function attempts to divide `a` by `b` and return the result.
+
+However, the function also includes error handling to handle a common scenario where division by zero is attempted. In such cases, the function returns a meaningful error message instead of raising an exception.
+
+**How does it work?**
+
+The code starts with the definition of the `divide_numbers` function, which takes two arguments: `a` and `b`. The function uses a `try`-`except` block to attempt to divide `a` by `b`.
+
+ Inside the `try` block, the code simply returns the result of the division using the `/` operator.
+
+If the division is successful, the function execution continues normally. However, if the division attempts to divide by zero (i.e., `b` is equal to 0), a `ZeroDivisionError` exception is raised.
+
+The `except` block catches this exception and returns an error message instead of raising another exception or stopping the program. The error message is simply "Nie można dzielić przez zero", which is Polish for "You can't divide by zero".
+
+**What problems does it solve?**
+
+This code solves a common problem in programming: handling division by zero errors. In many cases, attempting to divide by zero will raise an exception and crash the program. By including error handling, this code allows the program to provide a meaningful error message instead of crashing.
+
+**Why is it useful?**
+
+This code is useful in situations where you need to perform divisions with unknown or potentially invalid input data. For example, if you're writing a program that takes user input and attempts to divide two numbers, this code can help you handle the case where the user enters zero as one of the numbers.
+
+In summary, this code defines a function that divides two numbers while handling division by zero errors. It's useful for situations where you need to perform divisions with unknown or potentially invalid input data.

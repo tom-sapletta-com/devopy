@@ -1,0 +1,1 @@
+W podanym pliku Python jest definicja funkcji add_numbers(a,b). Wszystko co pojawiło się w nim to poniżej zdefiniowano swoje cel. Celem tego kodu były przechwytywanie dwóch liczb a i b (parametrów funkcji) do rejestru, dopisywalny po jej nazwie – "add_numbers", zwracający jako wynik sumę tych Liczb.

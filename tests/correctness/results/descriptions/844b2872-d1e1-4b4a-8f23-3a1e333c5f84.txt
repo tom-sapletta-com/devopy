@@ -1,0 +1,42 @@
+Here's a detailed explanation of the provided Python code:
+
+**Code:** `add_numbers(a, b):`
+```python
+def add_numbers(a, b):
+    """Dodaje dwie liczby i zwraca wynik."""
+    return a + b
+```
+
+**What does it do?**
+
+This code defines a simple function named `add_numbers` that takes two arguments, `a` and `b`. The function's primary purpose is to add these two numbers together and return the result.
+
+**How does it work?**
+
+When you call the `add_numbers` function with two numeric values, such as `2` and `3`, the function will:
+
+1. Take the first argument (`a`) and store its value.
+2. Take the second argument (`b`) and store its value.
+3. Perform an arithmetic operation to add `a` and `b` together.
+4. Return the result of the addition as a new value.
+
+**What problem does it solve?**
+
+This code solves a simple mathematical task, which is to combine two numbers into one. This might seem trivial, but this type of function is often used in more complex programs to perform calculations or manipulate data.
+
+**Example usage:**
+
+You can call the `add_numbers` function with any two numeric values, like this:
+```python
+result = add_numbers(2, 3)
+print(result)  # Output: 5
+```
+In this example, we pass `2` and `3` as arguments to the `add_numbers` function. The function adds these numbers together and returns the result, which is `5`. We then print this result using the `print()` function.
+
+**Key takeaways:**
+
+* The code defines a simple function named `add_numbers` that takes two numeric arguments.
+* The function adds the two numbers together and returns the result.
+* This type of function can be used in more complex programs to perform calculations or manipulate data.
+
+I hope this explanation helps you understand what the code does!

@@ -1,0 +1,7 @@
+Wyjaśnienie dla funkcji `filter_even_numbers(numbers)` to jedna z najważniejszych części programowania, poza oglądem kodu Python. 
+Wywołaniu tego modułu funkcji wewnatrz innymi moja wiedza jest nastawiona na to, że ta implementacja filtruję listę liczb i pozostawiając dobrze parzyste. 
+Powyższy kod Python (`filter_even_numbers(numbers)` ) jest używany w celu filtrowania listy, usuwanie nieparzystych liczb z listy i późniejsze praca na poza tej implementacji.
+ 
+Dlatego tyle kod Python generowane jest dla naszych obietnika w celu obsługi operacyjny (opisywania) bardzo istotne, ponieważ nie mamy środka na przeprowadzeniu podstawyczego. 
+Ponadmiarowa pomoc to funkcja `filter_even_numbers(numbers),` którą stworzyłem, ponieważ powinien on zwracać listę tylko liczb parzystych.
+  Oto rysunek na pytanie: Jak to działuje? (za pomocą wględnych przykladów)? Powiedzmy jeszcze o problemach, którymi rozwiązujemy i sposobach zastosowania tego modułu.

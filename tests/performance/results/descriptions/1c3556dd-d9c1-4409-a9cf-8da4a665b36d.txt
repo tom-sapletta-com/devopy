@@ -1,0 +1,9 @@
+Najpierw zobaczyliśmy poniżej opisy głóne funkcje, o ile nie być stosownego przede wszystkim. Teraz rozpukanę za dla cennych informacji:
+1) `def execute():` - Ta linijka zadania definiuje funkcję o nazwie 'execute' i obowiązuje tylko w przypadku, gdy kod uruchomi się jako aplikacja. To oznacza że to musimy robić skrypt Python do obsługi zdarzeń lub innej formie systematycznego wzbogaca programowanie, gdyby byliem uruchamiana jako moduł.
+2) `total = sum(range(1, 101))` - Ta linijka oblicza łączną liczbę od 1 do 100 przy użyciu funkcji 'sum' i iteracje powtarzającej się wartość zakresowaną poprzez `range(1, 101)`. Wynikiem obliczonego sumy jest przechowywany do zmiennej 'total'.
+3) `return f"Suma liczb od 1 do 100 wynosi: {total}"` - Ta linijka powinna być najpierw obliczałabyś odpowiednia komputerowa sumę na mianownie (np. 'Suma liczb od 2 do 10 dla range(2, 9) wynosi: ...') i po prostu zwracać tylko powstały tekstowości opisany jako string - przyciski na ekranie.
+4) `def sum_of_numbers():` to oznacza, że ta linijka inicjuje naszą funkcję o nazwie 'sum_of_numbers' i powinna zajmować 10% większości swoich wywołań, to jest punkt odbyty przez całe życie.
+5) Jak już natomiast pisaliśmy `sum_of_numbers(10):` - ta linijka powinna obliczać sumę liczb zawierających w podanym zakresie od 1 do <wskazane przez parametr>, gdzie jest użyty symbol `<wskazane przez parametr>`.
+6) Zamontowaliśmy na swoje dla naszych potencjalnych naruszeni: wszelkim kod zawierającym prawie tylko powtórzone operacje (np `range(1, 9)`), lub podobne metody obliczania sumy.
+7) Powtarzało się wszyscy ten poprzedni opis odpowiednimi skrótami i sufiąmi nazwami zgodnie z naszej użyteczności do osób bez duła.
+8) Najpierw potrudzićmy za pomyliki, że mamy 10 rutynowane obliczenia na nocne (np `range(2345679),`). To jest tylko minimalny szczegóły których potrzebujemy wszytkiego co do dostosowania nasza roba.

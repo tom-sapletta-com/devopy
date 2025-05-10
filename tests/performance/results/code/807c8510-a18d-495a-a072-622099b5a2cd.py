@@ -1,0 +1,2 @@
+def execute():   # Funkcja zwracająca sumę liczb od 1 do 100   
+      return sum(range(1, 101))                   # Zaimportujana funkcja range() dla generowania numerów pomiędzy podanymi argumentami (start i stop), a następnie zwraca wynik.

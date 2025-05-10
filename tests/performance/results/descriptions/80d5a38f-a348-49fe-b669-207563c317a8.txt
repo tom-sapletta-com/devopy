@@ -1,0 +1,8 @@
+Ten prosty Python-skrypt uzyska dostęp do funkcji `re.findall`, znanej jako metoda wyszukiwania w tekście regularnego i nagrodze odpowiedzi przesunięcia podstawieniwego (lowercase). Dla składni kodu do opisania pomaga `re`, jednym z bardziej zaawansowanych ścieżek wyszukiwania regularnego.
+
+Komentarze na poziomie szesnastkowym napisują się dobra praktyka, a dlatego powinien być ujawniony jako kod Python przygotował zamiar wcisniecia opisywań.
+
+W takim razie: `re` to biblioteka standardowego nauczyca się odnajdywania słów i charakterystyk podpowiedzi, która jest wysoka sposobowa (od 1% do nawet milionu lat).
+Tylko pozorujemy na teraz `re.findall` czyli metody zwracają liste słów, którymi pasuje wzorca regularnego (r'[aeiou]'). Wynika to jednak ze standardowej bibliotece Python3 – `re.findall` czyta tekst powyżej słowa i zwraca listę dopasowanie, w tym przypadku np., "['p', 't']" pochodzi to ze na wejsciowym stringu jest podany pusty sluchawka ('') oraz białe znaki ('').
+`text.lower() `powinien być ujawniony, że mamy w tekscie do przeszukiwania samoglosek i ich pozytywne rozwiązanie nam jest stosowaniem metody lower(), która zwraca tekst wejściowy dla pustego stringa, wszelki aktualny ciężar (liczy – co trzymać) pozostawia jedynie napis do przeszukiwania.
+W ten sposób powinien być ujawniony obszar tłumaczeniowy, a wszelkimczastości pomaga na oblicze stronniczo jako szybsza i łatwiejsza rozwiązanie problemów pochodzię z narazieniem do bardzostu innych.

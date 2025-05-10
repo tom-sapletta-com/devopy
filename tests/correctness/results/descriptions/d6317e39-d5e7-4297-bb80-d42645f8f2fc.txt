@@ -1,0 +1,25 @@
+Here's a detailed explanation of the provided Python code:
+
+**Code:** `add_numbers(a, b)` with the docstring `"Dodaje dwie liczby i zwraca wynik."`
+
+**What it does:** This code defines a simple function called `add_numbers` that takes two arguments, `a` and `b`, which are expected to be numbers (integers or floats). The function adds these two numbers together and returns the result.
+
+**How it works:**
+
+1. The `def` keyword is used to define a new function.
+2. The name of the function is `add_numbers`.
+3. The function takes two arguments, `a` and `b`, which are separated by commas.
+4. The docstring (the string enclosed in triple quotes) provides a brief description of what the function does.
+
+**What problem it solves:** This code solves a very simple problem: adding two numbers together! It's often useful to have a reusable piece of code that can perform a specific task, like this one.
+
+**How to use it:** To use this function, you would call it with two numerical arguments, like `add_numbers(2, 3)`, and the function would return the result of adding those numbers together (in this case, `5`).
+
+**Example usage:**
+
+```python
+result = add_numbers(2, 3)
+print(result)  # Output: 5
+```
+
+In summary, this code defines a simple function that adds two numbers together and returns the result. It's a useful building block for more complex programs or calculations!

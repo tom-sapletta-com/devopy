@@ -1,0 +1,2 @@
+def execute(numbers):   # Definicja funkcji o nazwie 'execute' zwracającej listę liczb poza którejszych jest podana lista numerów. Zwraca wynik działania (Lista tych samych elementow)
+    return [num for num in numbers if num % 2 == 0] # Funkcja listująca liczby parzyste znajdujące się na liście. Wynik jest powtarzać dla każdego elementu lub 'num' w przypadku, gdy num % 2 == 0 (liczba należy podzielić przez 2).

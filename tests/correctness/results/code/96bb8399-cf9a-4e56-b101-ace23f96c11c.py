@@ -1,0 +1,4 @@
+def execute(lst):  # Zadanie jest zakodowane w funkcji. Nasza obecna kod nazywa się 'execute'. Po prostu definiujemy, że ta lista powinien mieć liczby parzyste i musimy odwrócić listę tak byśmy posiłkowali to samo.
+    lst = [num for num in reversed(lst) if (len(str(abs(num))) % 2 == 0] # Tworzymy nowa liste z liczbami parzystymi, które mają długość równa do swojej wartości modulo rosnącego.
+    return lst  # Zwracamy lista przekształcona i filtrowana na liczbach parzystych (odwrotna). Nie potrzebujemu nagrod, konfictuj oraz wszelkich zastosowań.
+   # Zwracamy listę przed utworzeniem nowej lub obniżeniem ostatnio dodanych elementów i potrzebujemu nagrod, konfictuj oraz wszelkich zastosowań.

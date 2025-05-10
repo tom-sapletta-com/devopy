@@ -1,0 +1,32 @@
+Here's a detailed explanation of the code:
+
+**Function:** `add_numbers`
+**Purpose:** To take two numbers as input and return their sum.
+
+**How it works:**
+
+The `add_numbers` function takes two arguments, `a` and `b`, which are expected to be numbers (e.g., integers or floating-point numbers). The function then returns the result of adding these two numbers together using the `+` operator.
+
+**Code breakdown:**
+
+1. `def add_numbers(a, b):`: This line defines a new function called `add_numbers` that takes two arguments, `a` and `b`.
+2. `"Dodaje dwie liczby i zwraca wynik."`: This is a docstring (a special type of comment) that provides a brief description of what the function does.
+3. `return a + b`: This line calculates the sum of `a` and `b` using the `+` operator and returns the result.
+
+**What the code does:**
+
+The `add_numbers` function takes two numbers as input, adds them together, and returns the resulting value. For example, if you call the function with arguments `3` and `5`, it will return `8`.
+
+**Problem solved:**
+
+This code solves a simple problem of adding two numbers together. It's a basic building block for more complex calculations or data processing.
+
+**How it works in practice:**
+
+You can use this function in various ways, such as:
+
+* As a standalone function to calculate the sum of two numbers
+* As part of a larger program that requires adding multiple numbers
+* To simplify arithmetic operations and reduce code repetition
+
+Overall, the `add_numbers` function is a simple yet useful tool for performing basic mathematical calculations in Python.

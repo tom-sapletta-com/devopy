@@ -1,0 +1,1 @@
+Ten blok kodu Python przechowuje funkcję `add_numbers`, służącą do dodawania dwóch liczb. Wynik to wartość zwracana (wynikiem operacji), która jest przechowywanie pojedynczo podanych parametrów a i b, aby je dodać punkty szerokimi.

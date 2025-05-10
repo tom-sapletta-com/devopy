@@ -1,0 +1,36 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+This Python code defines a function called `execute()` that returns the current date and time in the format "YYYY-MM-DD HH:MM:SS".
+
+**How does it work?**
+
+The code starts by importing the `datetime` module, which provides functionality for working with dates and times. The `datetime.datetime.now()` function is then used to get the current date and time.
+
+The returned value is a `datetime` object, which represents a specific point in time. To convert this object into a string format that's easy to read, the code uses the `strftime()` method.
+
+**What does the `strftime()` method do?**
+
+The `strftime()` method takes a format string as an argument and returns a string representation of the date and time using that format. In this case, the format string is `'Y-%m-%d %H:%M:%S'`, which means:
+
+* `%Y` represents the four-digit year
+* `%m` represents the two-digit month (01-12)
+* `%d` represents the two-digit day of the month (01-31)
+* `%H` represents the two-digit hour in 24-hour format (00-23)
+* `%M` represents the two-digit minute (00-59)
+* `%S` represents the two-digit second (00-59)
+
+When `strftime()` is called with this format string, it returns a string representation of the current date and time in the specified format.
+
+**What problem does this code solve?**
+
+This code solves the problem of needing to display the current date and time in a specific format. It's useful for logging or auditing purposes, where you need to record the exact moment something happened.
+
+**How can I use this code?**
+
+You can call the `execute()` function from another part of your Python program, like so:
+```python
+print(execute())  # Output: "Aktualna data i czas: YYYY-MM-DD HH:MM:SS"
+```
+Alternatively, you could modify the code to return a dictionary or other structured data type containing the current date and time.

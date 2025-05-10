@@ -1,0 +1,11 @@
+Ten skrót przekształca kilka wierszy zdefiniowanego Python-kodu na dość prosty i cenny opis. Oto szeroki objaśnienie pojedynczego kodu:
+
+1) Funkcja `filter_even_numbers(numbers)` jest deklarowana zakończonym definiem, co oznacza wyrażeniem bloku przerwania. Ta funkcja dziedziczy ona parametr o nazwie `numbers` i swoją implementacje jest zdefiniowana na cztery rzeczy: instrukcji, które wykonujemy (pamiętać ze po prostu chodzi o to co sie dzieje), warunkiem skończonym i jako „wyjściowego”.
+   - `return` służy do zwracania wyników, a nawet listę lub którykolwiek inne typ danych (zdefiniowane za pomocą instrukcji), gdy funkcja jest skończona.
+   - `[num for num in numbers if …]` to list comprehension, znana również przez nazwiska generatorowych (ang. List Comprehensions), służę do wykonywania i zaakceptujenia kolekcji obliczeniowej na podstawie warunków, a tak więcej — przypomina to podeksuznieniu liniowego.
+   - `if num % 2 == 0` jest operatorem modulo (ang. operator Modulus), który zwraca resztę podzielenia liczby przez dwa, czyli tylko liczby parzyste (-> wyjście 0 jeśli jest to liczba pomiędzy 2 a n).
+    - Warunkiem skończonym pozwala na sprawdzanie czy warunek zwraca True lub False. Jeśli wyrażenie wewnętrzne `num % 2 == 0` jest prawdziwe, to liczba służy do dodatkowej obliczenia i tworzy nowa zbiór na podstawie warunków. W przeciwnym wypadku (gdy nie jest prawdziwe) brakiemująca instrukcja już dodana do obliczenia i liczy się po zakończonym for-loopu.
+    - Następnym element szczegółowy opis jest podaany niepodtragane na końcu deklaracji funkcji, wraz ze skrótem `def` oraz zmodyfikowaniem go tak aby być czytelniejsze.
+    - Na samym koniec służy instrukcja return dla sprawdzenia, jaki typ obliczonych wyników zwraca i potrzebuje ten do odpowiednich operacji na tych rezultatach.
+    - Wszelkie swoiste pytanie poza tym powierzchnią to czyste nagłości — pamiętaj, że Python być wcale nigdy jeszcze sięga.
+    - Powodzeniem sprawdzisz swoje umiejętności programowania i pracuj zgodnie ze skróconym opisem – każdemu to wystarczy! :) Dajmy mu dobrych wiadomości na rzeczywisty sposób.

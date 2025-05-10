@@ -1,0 +1,28 @@
+Here is a detailed explanation of the Python code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that calculates and returns the sum of numbers from 1 to 100.
+
+**How does it work?**
+
+To understand how this works, let's break down the code step by step:
+
+1. The first line inside the `execute()` function is `total = sum(range(1, 101))`. This line uses a built-in Python function called `sum()` to calculate the sum of numbers from 1 to 100.
+2. The `range(1, 101)` part generates a sequence of numbers from 1 to 100 (inclusive).
+3. The `sum()` function then adds up all these numbers and assigns the result to a variable named `total`.
+4. Finally, the code returns a string that says "Suma liczb od 1 do 100 wynosi: {total}" (which translates to "The sum of numbers from 1 to 100 is: "). This string includes the calculated value of `total`.
+
+**What problems does this code solve?**
+
+This code solves the problem of calculating a simple arithmetic operation, which is useful in many real-world applications where you need to perform calculations or data processing.
+
+**How does it work technically?**
+
+From a technical perspective, the code uses three main concepts:
+
+1. **Functions**: The `execute()` function is defined using the `def` keyword. This allows us to wrap up a block of code and reuse it later.
+2. **Built-in functions**: The `sum()` function is a built-in Python function that takes an iterable (like our range) as input and returns the sum of its elements.
+3. **String formatting**: The code uses f-strings to format a string with the calculated value of `total`. This allows us to include variables inside a string without using concatenation.
+
+Overall, this code demonstrates some basic concepts in Python programming, such as defining functions, using built-in functions, and working with strings.

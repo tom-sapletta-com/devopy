@@ -1,0 +1,7 @@
+Wygenerowany opis dla tego srodka kodu obejmuje dwie główne funkcje. Poniżej znajduję się często występujące elementy:
+1) `execute` - nazwa, dlatego jest ona rozszerzeniem innego słowa "executive" na Python. Rozumiemy to za sposób uruchamiania naszej funkcji (nazywanej przedmiotem).
+2) `sum` - nazwa, dlatego jest ona rozszerzeniem innego słowa "aggregate" na Python. To wywołanie sum konwertuje liczy do ciągu od 1 (argument range(1, N)) przechowywania wewnatrza funkcji `sum` obliczeniwa i zwraca jako "total" tylko pojedynczalnego wyniku.
+3) `range()' - to sama nazwa, dlatego powinien on mnie pokazać odpowiednią funkcje na stronie Pythoni z dobrymi opisami parametrów i rozwiązań.
+4) `return` - klauzula służaca do powrotu wyników, po jego uruchomieniu nalezy odpowiednio zwracany obiekt (wartosc lub ciąg znaków).
+5) Funkcja `f"..."` - to string method oraz przypisanie do wartosci, poza głównym sferą dynamyczna tego programu. Zamiast używania zwyklihch cudowic (np., `print()`) musimy obliczyć i przypisywać do niejedynek, co pozwoli wydrukować opis powitalny.
+6) Funkcja argumentu wewnętrznego to licza calkowita zakres od 1 do którego musimy obliczyć sumę (`range(1, N), gdzie `N` jest parametrem funkcji).

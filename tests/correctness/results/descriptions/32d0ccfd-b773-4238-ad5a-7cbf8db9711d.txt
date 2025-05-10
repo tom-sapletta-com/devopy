@@ -1,0 +1,15 @@
+I'd be happy to explain this code to you!
+
+This is a simple Python function called `add_numbers`. It takes two numbers, `a` and `b`, as inputs and returns their sum.
+
+Let's break it down:
+
+* The first line, `def add_numbers(a, b):`, defines the function. `def` is short for "define", and `add_numbers` is the name of the function. The `(a, b)` part specifies that this function takes two inputs, which are called `a` and `b`.
+* The second line, `"Dodaje dwie liczby i zwraca wynik."`, is a docstring. A docstring is a special kind of comment that provides a brief description of what the function does.
+* The third line, `return a + b`, is where the magic happens! This is the body of the function. It takes the two input numbers and adds them together using the `+` operator. Then, it returns the result.
+
+So, when you call this function with two numbers, like `add_numbers(2, 3)`, it will return the sum of those numbers, which in this case would be `5`.
+
+This code is useful for solving problems that require adding two numbers together, such as calculating a total cost or combining two quantities. It's also a great example of how Python functions can make your code more organized and reusable.
+
+One potential issue with this code is if you try to add non-numeric values (like strings or lists) instead of numbers. In that case, the function would raise an error because it can't perform arithmetic operations on those types of data. But in general, this code works well as long as you're adding numbers!

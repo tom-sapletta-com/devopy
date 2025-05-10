@@ -1,0 +1,2 @@
+def execute():
+    return sum(range(1, 101))   # Suma liczb od 1 do 100 zwanych jako "suma" i wypisuje go na ekran. Można też uaktualnić tę funkcję aby obliczyć sumę niezapchnięte liczb, np., zamiast 101 możemy podać inną wartość.

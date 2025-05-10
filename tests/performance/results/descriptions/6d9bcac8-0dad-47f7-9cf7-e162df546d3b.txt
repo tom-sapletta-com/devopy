@@ -1,0 +1,10 @@
+Ten podany kod jest wykonywaniem polegającym zwracaniu bieżącej daty i godziny. Dzięki temu, można obliczyć aktualny czas oraz date swojej utworów w Pythonowej pracy nad programem.
+  
+W funkcji `execute()` zdefinirowana jest potrzebne pakiety, które mogą być użytecznymi dla naszych aplikacji: 1) Datetime do obsługi dat i godzin;2) F-string (w Pythonie służy do wypisywania ścisłej formultatowanej sygnatury czasowej).
+   
+Zdefiniowano zmienną `now` i jako niego przerwa, po uruchomieniu programu - punktem wykonywania. W trakcie tego czasu (na szczegółach), oblicza się datę/godzinę i zwraca ją za pośrednictwem `f-string`, który symuluje formatowanie wypisywania na ekran powitalnego czerwonym.
+   
+Wszelkich problemów rozwiązałych ten program pojdzić najbardziej o zgodnych sygnaturach (pamięta, że sygnaatura `%Y-%m-%d %H:%M` pokaźnie obliczy czas w formacie RFC 3339).
+   
+Wszelkich problemów związanych ze strumieniami i obsługi bardzo przez użytkownika, tak jako gdy korzystamy w funkcji `datetime.now()` powinno być moimu na razie dodane sposobom zamiast oblicza datę/godziny (tzn.: data=str(now).replace(" ", "").replace(':',''), czas = str((datetime.time)(now)).split('.')[0] ), jak wyżej, ponieważ Python nie uwzględnia problemów z obsługą dat i godzin na podstawowym poziomie).
+    Zamiast tego powinni być stosownik poprawienia danych, co można wykonać za pomocą SQL lub innych mniejszych obciążeń. Moim skrótyem nazwiskiem jest to odpowiednikiem kilku lat temu i szeroko uogólnionym w programie Python, który bardzo głębok przekazywa na zagadkach technicznych.

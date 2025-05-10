@@ -1,0 +1,7 @@
+Ten kod Python symuluje wypisanie aktualnej daty i godziny za pomocą funkcji `datetime`. Dzięki temu możemy śledzić bieżące stanie naszej maszyny, jak również czas podczas uruchamiania programu i zgłasza obliczeniowe informacje o aktualnej data and time.
+
+Funkcja `datetime` to moduł Python standard library (STL), który obsługuje operacje na danych dat w języku naturalnym i czasie, zgodnie ze swoimi definicjami. Oblicza również środek południowy (na przykład 12:05 PM), miesiącz jest mapowany na tydzień, a rok to rok z dodatkiem.
+
+`strftime('%Y-%m-%d %H:%M:%S')` sformatuje obliczone czas w niestandardowej datowości (w tym format "Year/Month/Day Hour:Minute:Second"). Zamiast typicznych symboli znaków używa się dodatkowego numeru krajowego, aby uniknić niepotrzebnego wpływu na interfejs graficzny.
+  
+W obliczeniach taktowanych jest to zrobiany poprzez uruchomienia programu i sprawdzenie aktualnej daty-czasza w systemie operacyjnym, dzięki czemu nawet na małej maszynie można obliczyć bieżącą data and time.

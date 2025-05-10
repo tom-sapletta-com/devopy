@@ -1,0 +1,2 @@
+def execute(list):  # Zakładam że jesteśmy przygotowani do implementacji funkcji filtrujących listy liczb.
+    return [i for i in list if i % 2 == 0]   # Funkcja zwraca nowa lista, która wynika po dodaniu warunku do list comprehension (parycznego) oraz modulo operator jest równy 0.

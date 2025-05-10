@@ -1,0 +1,5 @@
+Co to robi? --> Opisanie całego programu. Oblicza sumę liczb od 1 do 100 i zwraca opis powyższej operacji w formacie łańcucha (string).
+W jaki sposób rozwiązuje się ten problem? --> Rozwiązałem go poprzez używanie metody sum() zwraca wyniki obliczonej przez list(range()) oraz formatowanie opisu powstałego stringiem.
+Jak działa? --> Funkcja `sum` sumeje dokonujące operacji na kolekcie liczb, w tym zadanym przez nas range(101) (to jest maksimum 101 natomiast musimy obliczać sumę od 1 do 100). Wynikiem tej operacji są liczby całkowite, które znajdują się w przedziale [start(range), end(range)). Sume tych Liczb dodaje do siebie (sum) i formatuje powstały string.
+Jak obliczać sumę liczb od 1 do N? --> Suma jest sumejna przez nastawienie parametru startowego na range() wskazujacego dalej niżej, gdzie mamy podstawiony limit (w tym razie od 1 do 100), a zwracana licba jest średnia sumą tych Liczb.
+Jak obliczać potencjalny problem? --> Dla bardzo podstawowego przedsiębiorca nie widomym powodu, ale zamiast liczyć od 1 do N (w tym razie to daleko mniejsza sumy).

@@ -1,0 +1,25 @@
+Here is a detailed explanation of the provided Python code:
+
+**Code Overview**
+
+The code defines a function called `execute()` that takes no arguments. This function uses regular expressions (regex) to extract and count vowels from a given text string.
+
+**What the Code Does**
+
+When you run the `execute()` function, it performs the following steps:
+
+1. It imports the `re` module, which provides support for working with regular expressions in Python.
+2. It defines a variable `text` with the value `"Python jest wspaniały"`, which is the text string that we want to analyze.
+3. It uses the `re.findall()` function to find all occurrences of vowels (the characters 'a', 'e', 'i', 'o', and 'u') in the `text` variable, converted to lowercase using the `.lower()` method. This is done by specifying a regular expression pattern `r'[aeiou]'`, which matches any vowel character.
+4. The `re.findall()` function returns a list of all matches found in the text, which are then assigned to the `vowels` variable.
+5. Finally, the code returns a string that combines the original text with the extracted vowels, separated by commas using the `f-string` formatting feature. The resulting string has the format `"Samogłoski w tekście '{text}': {', '.join(vowels)}"`.
+
+**What Problems Does the Code Solve**
+
+This code solves the problem of extracting and counting vowels from a given text string. This can be useful in natural language processing (NLP) applications, such as text analysis, sentiment analysis, or machine learning models that require vowel information.
+
+**How the Code Works**
+
+The code works by using regular expressions to search for vowel patterns in the input text. The `re.findall()` function is used to find all occurrences of vowels in the text, and the resulting list of matches is then processed to extract the individual vowels. The code uses the `.lower()` method to convert the text to lowercase before searching for vowels, which ensures that the search is case-insensitive.
+
+Overall, this code provides a simple way to extract and count vowels from a given text string using Python's regular expression capabilities.

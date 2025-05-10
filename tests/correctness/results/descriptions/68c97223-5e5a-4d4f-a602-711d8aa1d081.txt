@@ -1,0 +1,8 @@
+Kod ten pokazuje, jak wygląda szybki opis. Zamówiono zrozumienie pośrednika dla osób bez doświadczenia programowania i objaśniającego nacisk na jednoduchym rozszerzeniu większości praktycznych przedsiębiorów.
+
+Poniżej znajduje się opis kodu: 
+- Funkcja `filter_even_numbers(numbers)` to wybrana funkcja, ponieważ jest ona pozostawiana tylko dla liczb parzystych. Wynika to z głównego przeznaczenia tej implementacji: generowanie listy `numbers` i ograniczać się do tych, których jest % 2 równa 0 (czwartek w takim podejściu liczb zwraca oni parze).
+- Zdefiniowany było `num for num in numbers if...`. Ten skrócony podpis używa swojej formy do konstrukcji list comprehension'ów w Python, jednak zamiast tego potrzebuje nawiązywania ściśle dla nas ogromnych iteracji. 
+- `if num % 2 == 0` sprawdza czy liczba (num) jest parzysta, to znaczy równie dobrze wliczone są tylko te nr., ktore mają residu stosunku modulo dla 2.
+- `return` umożliwia wrzucanie gotowej listy na etap eksportacji do miejsca docelowego (np, w momencie gdy to jest potrzebne zastosować lub używać).
+- W reakcie tymu nigdy niema ograniczeniem sprawdzamy czy podane obiekt 'numbers' ma być listą liczb naturalnych (np., całe swoje, co jest iterowany przez nas), i to cel zadania wyjasniania programu należy dostosować do potrzeby.

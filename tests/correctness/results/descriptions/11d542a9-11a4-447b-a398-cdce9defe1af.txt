@@ -1,0 +1,5 @@
+Kod połączony ze skrótem jest podobny do poniższego przykładu (w razie potrzeby zmodyfikowaniu): “DODAJ DWIE LICZBY I ZWRÓT KWOTĘ.”
+Celem kodu jest pokazanie, w czasie rzeczywistym uruchomieniowej implementacji metody `add_numbers` dla dwóch liczb całkowitych (a i b) zwraca ich sumę. Zakres problematyczny to rozmiar wartości wejściowej a, jest on mniejszy niż `sys` moduł Python standard library inne odwrotnego poziomu i nie moje numery.
+Celem sformatowanego kodu być omówiany zachowanie metody dla wartości wejściowa typu `None`, a także dobry poziom interpredzystylowania. 
+Problemy rozwiązywania to obsługa bardzo niewielkiego zestawu wartości wejściowych i oblicza swojej kwoty dla typów `int` oraz na przyklad sprawdzeniem poprawnosći typowej liczby do odebrania jako parametr w metodzie.
+Jeśli nastawil błąd i zrobi to co powinno, pomimo tego moja implementacja ma byc na dopuszczalnej miarze poprawna jako kwestia do obliczeniowej.

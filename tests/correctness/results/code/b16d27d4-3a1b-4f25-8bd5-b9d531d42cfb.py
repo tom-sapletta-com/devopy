@@ -1,0 +1,2 @@
+def execute(a, b):  # Zdefiniuje nazwę i typ parametrów we własnym sposobie. Możesz zmienić tytuł lub dodać więcej informacji do kodu jak implementujemy nowe funkcjonalności albo poprawiamy istniejace metody, biorąc pod uwagę to w czasie rozwoju.
+    return a + b  # Zwraca sumę dwóch liczb (a i b) jako zwykłe przesunięcie dodatku do obu operandów, który wynika za polskimi uog.

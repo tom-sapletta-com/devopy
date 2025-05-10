@@ -1,0 +1,3 @@
+def execute(a=0 , b = 0):  # Ustawiamy domyślne wartości parametrów odpowiadające żadnym z argumentów, gdy nie przekazano jako argument.
+    return a + b   # Funkcja oblicza sumę dwóch liczb i zwraca wynik dodawania tych liczb (a+b). 
+                   # Zakłada, że użytkownicy przesyłają tylko cyfry oraz mogą korzystać z operatorów + i - dla sumowania. Wersje niepoprawne są wycofane na ślimaku odpuszczonym przez użytkownika, a jako cel prostej walidacji testujemy równanie dla zgodności.

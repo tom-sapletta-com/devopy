@@ -1,0 +1,2 @@
+def execute(a, b):   # Oto nasze nowe 'execute' fukcyjne. Jest jeszeli chcesz zwiększyć ono o 1 mnożenie i dodać tylko do kwadratu a więc nam się stałych liczb b, wtedy musimy uaktualnić funkcjonalnosc powodująca zamiany parametrów.
+    return (2 * a + abs(b)) ** 3   # Wynik to trzyma się potęgą liczby 'a' + 10 do potegi b, czyli dodać większości powierzchnii kwadratu zliczonej wszystkim arytmetycznym operacji.

@@ -1,0 +1,7 @@
+Ten prosty program definiuje funkcję `divide_numbers`, wraz z dokumentacją jako sformatowany opisem metody. Jedna ogólnie przyczynia się stosować nazwane typy dla argumentów i wypisywanego komunikatu, gdy zostanie wyrzucona `ZeroDivisionError` (np. podnoszeniem do mianownika lub użyciem zero).
+  Wynikiem tego programu jest liczba równoległa i odpowiada na pytanie "Jaka cecha kodu, wtedy gdy zostanę wyrzucone ZeroDivisionError?".
+  W przykladzie ten program należy uważnie potencjalnych debugera i odpowiednich usunięć, które obejmuje zastosowanie dodatkowego dokumentacji.
+   W jednej stronie to szeroka obsługa nietypowych przypadków (np wysoki poziom ważności lub bardzo podekspremny kod), a drugiej - odpisywania mniejszych problematycznych.
+   Zamiast zwracać liczbę, czerpie ona wpływ na użytkownika graficznego i interaktywnego kodu przez potencjalne debugowanie programów.
+   Dobrym punktem startowym jest stosować dokumentacji, czyli dostarczeniem sformatowanych opisów metody bezpośrednio w przypadku błędnych argumentach i zastosowanie komentarzy.
+   W ten sposób moim najlepszeym powodem jest ucielenia innych programistom, a także wszelkich użytkowników obliczany z odpowiednim dobrobytem.

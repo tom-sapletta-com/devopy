@@ -1,0 +1,6 @@
+1. Funkcja `divide_numbers(a,b)` to funkcja definiująca się w następujący sposób i działa jak powinna - czyli oblicza wynik dzielenia dwóch liczb `a, b`.
+2. W przypadku sytuacji gdy użytkownicy podają nieprawidłowe typ argumentu lub pamiętaj o sposobach wprowadzania liczy poza int, bierze to również znajomość Python i dlaczego jestem ekspertem w tym kwestii.
+3. W przypadku sytuacji gdy użytkownik poda 0, funkcja powinna poinformować zakodowanie i nagłówki ostrzeżenia na temat tego czy możemy dzielić przez zero.
+4. Zwraca wynik operacji `a` / `b`, to jest oczekiwanie kodu do zakończenia metody i nigdy referencja na obliczone typowe dane (w takim przypadku licza).
+5. Zamiast return 10 sprawdzić czy `a` jest równy zero, ponieważ wtedy program będzie zakończony niespodziankiem i dlaczego uważam za ekspertka.
+6. Jeśli to przypadek pojawi się, powinien generować nowy wynik (`return a / b `), zwłaszcza jeśli jest równa zero i dlaczego mamy obowieca informacyjna o tym.

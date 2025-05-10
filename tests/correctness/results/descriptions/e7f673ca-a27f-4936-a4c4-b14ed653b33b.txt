@@ -1,0 +1,7 @@
+Ten kod Python definiuje funkcję o nazwie `add_numbers(a,b)`. Po raz pierwszych słowo pośrednich "def" zmieni nasze myśliwości na pracowników kodu Pythonista - wskazywa on o ukończeniu nawiasy i dostosowaniem do szablonu programistycznego.
+
+Funkcja ta `add_numbers` jest zdefiniowana tak, by przyjmować 2 parametry: a oraz b - liczby naturalne (całkowite) i która po raz pierwszych słowo polega na dodaniu tych dwóch wyrażeń. Oto często one używane do sumowania liczb naturalnych, a tak znanym jest obliczeń odcinka – to chwyta nam na swojego kodu Pythonista.
+
+To wszytkie za sobą skompilowałaby dokumentacja czasopismowaty (doctstring) - "Dla dannych liczb naturalnych a i b, to funkcji zwraca sumaryczne ich wartości." Wskazuje on o tym co jest robione.
+
+Następnie najważniejsze są dwukropejniki - te "docstringi" (doctstrings) pozwalają programowikom generować dokumentacje dla funkcji i metod, a tak zdemonstrować koncepcy w Pythonie. Dokładna formuła jest ogólna: `"Dla ..... zwraca ....."`

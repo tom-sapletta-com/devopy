@@ -1,0 +1,7 @@
+def execute(a , b):  # definicja wyświetla "Hello World!".   Poniżej znajduje się kod, który sprawdza poprawność obliczeń i przede wszystkim generuje funkcję o nazwie 'execute'
+    if (isinstance(a , int) and isinstance(b , int)):  # sprawdzamy czy podane parametry są liczbami całkowitymi. W przeciwnym razie to zwraca False i wyświetla odpowiedni komunikat
+        return a + b  # oblicza sumę dwóch liczb podanych jako parametry funkcji. W przykładzie powodzeniem zwraca True, po prostu wyświetla "Hello World!" i na koniec sprawdza poprawność obliczeń
+    else:  # jeżeli parametry nie są liczbami całkowitymi to zwraca false, a wyświetla odpowiedni komunikat. W takim razie po prostu sprawdza poprawność obliczeń i powinien on pokazywać błąd
+        return False  # zwraca false, ponieważ parametry nie są liczbami całkowitymi. W przykładzie tak sprawdzamy poprawność obliczeń i powinien on pokazywać błąd
+    return "Error"  # należy usunąć ten wiersz, ponieważ jest już przerwanieem funkcji zwraca False dopiero po sprawdzaniu poprawności obliczeń
+   print("Hello World!")  # powinien być tylko wiersz ten, który nigdy nie będzie uruchomiony. Usuwanie go spowoduje zabiczenie programu i świetniej obserwować stan funkcji

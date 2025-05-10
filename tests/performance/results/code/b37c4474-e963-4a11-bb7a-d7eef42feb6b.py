@@ -1,0 +1,2 @@
+def execute():   # Funkcja powinna być nazwana 'execute' i powinien zwracać wynik działania. Zapewnij, że kod jest logiczny i realizuje dokładnie to o co prosi użytkownik
+    return sum(range(1, 101))   # Oblicza sumę liczb od 1 do 100. Zwraca wynik działania jako suma tych liczb (logiczne i prawidłowe)

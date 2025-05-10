@@ -1,0 +1,6 @@
+Ten skrypt Python został urzędziany do obliczenia i przedstawiania liczby samoglosek wystepujacych na dostepnej we wcześniejsiej tekście. 
+Dobrane założeniem jest, że należy zamiast sygna (np., 'a' lub 'i') użyć pozbawionego równoległej tablicy we wcześniej tekstowym. 
+Wskazuje, że sposob na obliczenie liczby samoglosek był najprostszy i znaczący - za pomocą operatywności matematycznych. 
+Przed wypisywaniem tej metody kodu, dopisano opcje do automatycznego generowania nagłówków (tylko zgodnie jak to są twośći) i funkcyjne wypisywanie ich.
+Problemy rozwiązałe przechodziły do sprawdzania, czy po wcześniejsim tekście należało liczone samogloseki i zwracanego formatu.
+Dwukropekt jest uznawany za łatwy problem - potrzebujemy przesunąć się w tablicy we wcześniejsiej tekstowym i zwrócić liczy samogloseki. Moim celem jest dostosowanie kodu, aby był on bardzo proste do rozwiązywania oraz przerobione w celu narzucenia informacji o problemach i pomaganie zwrotem.

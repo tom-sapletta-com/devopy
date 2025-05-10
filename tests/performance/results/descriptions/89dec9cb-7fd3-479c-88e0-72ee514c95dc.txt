@@ -1,0 +1,23 @@
+Here's a detailed explanation of the provided Python code:
+
+**What does the code do?**
+
+The code defines a single function called `execute()` that takes no input parameters. When you call this function, it will return a string that contains the vowels (A, E, I, O, U) found in a given text.
+
+**How does it work?**
+
+To achieve this, the code uses two main concepts: regular expressions and string manipulation. Here's a breakdown of what happens:
+
+1. **Importing the `re` module**: The first line, `import re`, imports the built-in Python module called `re` (short for "regular expression"). This module provides support for working with regular expressions in Python.
+2. **Defining the text to process**: The code sets a string variable `text` to the value `"Python jest wspaniały"`. This is the text that we want to extract vowels from.
+3. **Converting the text to lowercase**: To make the vowel extraction easier, the code converts the `text` to lowercase using the `lower()` method. This ensures that we don't miss any vowels that might be uppercase in the original text.
+4. **Using regular expressions to find vowels**: The code uses the `findall()` function from the `re` module to search for all occurrences of vowels (A, E, I, O, U) in the converted `text`. The regular expression pattern used is `[aeiou]`, which matches any single vowel character. The `findall()` function returns a list of all matching substrings.
+5. **Joining the vowel results**: Finally, the code uses the `join()` method to concatenate the vowel strings found in step 4 into a single string, separated by commas.
+
+**What's returned?**
+
+When you call the `execute()` function, it will return a string that looks like this: `"Samogłoski w tekście 'Python jest wspaniały': a, e, i"`. This is the result of extracting and concatenating all the vowels found in the original text.
+
+**What problems does it solve?**
+
+This code solves the problem of extracting specific characters (in this case, vowels) from a given string. It's a simple yet effective example of how regular expressions can be used to manipulate strings in Python.

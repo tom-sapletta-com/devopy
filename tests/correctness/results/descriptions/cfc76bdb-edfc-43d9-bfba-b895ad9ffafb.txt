@@ -1,0 +1,8 @@
+Kod definiuje funkcję `divide_numbers(a, b)`. Ta nazwa pochowu wskazuje na to, że ta jest zaangażowana wewnatrz modułu o nazwie Python i zawiera ono funkcję obsługi różnych wyróżnionych problemów.
+
+Funkcja przyjmuje jako argumenty dwie liczby `a` oraz `b (liczeba do dzielenia)` i zwraca obliczeniem czyli ich dzielęcia, lub wypisuje odpowiedni komunikat gdy jedna/lub dwie liczby są tożsamościowane ze zero.
+
+Wskazówki do pracy z tym programem: 1) Upewnij się, że dostarczone parametry `a` i `b (liczeba naturalne poza nullem oraz liczbie urokowanejm w kodzie Pythonu), są poprawione; to zajmiemy odpowiedniki tego, czy ich dostarczenia byłaby dobra inżynierów.
+2) Dla problematycznych przedsiębiorców i niepoprawnych wypełeniomu liczbowym parametrów, możemy zastosować sprawdzanie typowego obliczenia. Jeśli `a` lub/i `b (lub dwa przykładowe argumentami)` nie są liczbami naturalnymi, możemy wyrównaj i zgłosić błędy; to jest my test.
+3) Do kochania – poza tylko kilka punktach powinien być dopasowany na nieco innegrzystej mianitu wykonywaniu operacji matematycznych, a również możemy zastosować taktyki i strategi czyli komunikatu o błędnym dzieleniu przez zero.
+4) Zapoznajmy się na funkcjonalności, pochodzi ona z powrotem do niego wskazówki poprawy systemu (np `assert`), które czerpie ważne miejsce przed działaniem bardzo skuteczniej.

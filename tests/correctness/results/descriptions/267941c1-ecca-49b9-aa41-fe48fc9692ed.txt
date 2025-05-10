@@ -1,0 +1,17 @@
+Ten podany Python-kod reprezentuję w następujący sposób. Jest to prosty szablon funkcji `filter_even_numbers`, na którym dostajemy jako argument tablicę liczb całkowitych (np: [10, 23456789]).
+
+### Działanie funkcji `filter_even_numbers` ###
+Funkcja ta posiada następujące działania domyślne:
+- Przechodzi przez każdą liczbę w liście, (wykonywane jest podejście do list comprehensionu - zamiast pisac for i in numbers) 
+    * Sprawdzamy czy takich cyfr są parzyste przez użytkownika podanego warunku (num %2 == 0). Jeśli to jest prawda, zwraca ona liczbę.
+    * Sprawdzamy czy takich cyfr są nieparzyste przez użytkownika podanego warunku (num % 2 != 0). Jeśli to jest prawda, zwraca ona liczbę.
+- Po iteracji po całej liście i wszelkich cyfrach na nim podanych do tej chwili spowoduje rozpoczęcie filtracji, którzy są parzyste.
+- Zwraca listę liczb całkowitych przekształconych na tak byś niebywał wszelka potrzeba do obliczenia ich mniej więcej razy, gdy jest to równolegle zawsze stosuje się warunki (num %2 == 0).
+- Zwraca listę liczb parzystych. Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Zwraca liste liczb parzystych. Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Zwraca liste liczb parzystych. Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Zwraca liste liczb parzystych. Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, ponieważ było ono równolegle stosuje się warunki (num % 2 != 0).
+- Zwraca liste liczb parzystych. Wszelkie inne cyfry są przerwane dopasowaniem i w takim razie nigdy zostają pominięte, poniewaź było on o to co rozwiązać.
+- Zwraca liste liczb parzystych (co dopasowane). Wszelkich inne cyfr są przerwane i w takim razie nigdy zostają pominięte, poniewaź było on o to co rozwiązać.

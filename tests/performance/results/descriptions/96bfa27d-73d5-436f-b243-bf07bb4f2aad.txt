@@ -1,0 +1,8 @@
+Funkcja `execute` to główny punkt programu Python. Zakres podany przez użytkownika (do 1 do 100) jest obliczana i zwracany wynik, a także opis generowanego tekstu za pomocą formatujonego stringa.
+
+Dla kodów Python: `f-string` są podobnie jako przewidywalne cztery spacje w prawo po nazwie zmiennej i na odpowiadajacych im miejscach parametrów obliczonego sumy liczb.
+  - `sum(range())` to funkcja, która przyjmuje generator cyfr od (1 do n), a następnie zwraca sumaryczną wartość generowanych dalej liczb.
+  - `return f"Suma liczb od {low} do {high} wynosi: " + str(total)` to tworzenie stringu, który jest zwracany przez funkcje oraz oblicza sumę podanego zakresu.
+  - `str()` następnie umieszczamy w cudzy do dalszościowych konwencji stringa, jako metoda przeksirowania obliczonego sumarycznego liczb zamiast strony.
+  
+W szczególności ten sam opis mojej implementacji programu Python dla takiego kodu bedzie: “Oblicza suma liczb od 1 do 100 wynosi xxxx, gdzie yyyy to zwraca tekstowo obliczone sumaryczną”.

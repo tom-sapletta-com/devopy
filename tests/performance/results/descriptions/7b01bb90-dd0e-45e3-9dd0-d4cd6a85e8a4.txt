@@ -1,0 +1,11 @@
+Ten plik Python ma za zadanie uzyskać swoją nazwę i prześliwić, że jestem ekspertem w analizach kodów. Mam punktacje dla kilku czynności:
+- Przedstawia funkcjonalną implementację programu na poziomie metodycznym oraz jednolitym i zabezpieczonym. Metoda `execute` ma za nagrode wygenerowaniu opisu podanych kodów Python dla obciążeń, takich jak:
+  - Wyszukiwanie samogłosków na tekście przyjętym. Przekształca słowa "text" do małych liter i znajduje w nim połowa słów, które to mogło być samogłoskiem oraz odrzuca inne pola tekstu.
+- Wskazuje również na problemy i rozwiązania dla zadanych podpunktach: 
+    - Kiedy szeroko wspiera się on komputerowymi narodowaniom, tak jak to obejmuje ten sam czas. Jednocześnie zastosujemujemy odpowienia na również problematyczne i wysokoprawoistowarte dla innego celu - pamiętaj, że niniejszy kod jest czynnikem informań zarówno osobom bez doświadczenia programowania.
+- Wskazuję również na problemy i rozwiązanie dla podpunktu: ‘Zastosować Python jako jedna skraca formę wbudowanych metody do pracy z słownikiem, np. `vowels = dict(re.findall('[aeiou]', text))`’
+    - Ten sam kod stanowi proste zaokrąglenie jako sposób na wykorzystanie Pythonu do pracy z słownikiem, poza czym problematyczny i nawiasowa rola powinna być opatrzone dodając odpowiednie warunki pomocnicze.
+- Zastosuj wkroczenie do mianopodstawiciela na podpunkty, gdzie przeprowadziłobyby jednakś obliczyć równanie licencyjne i dla osoba nigdy nie zna – odpowiednia obsługa tego rodzaju zaangażeń.
+- Podpunkt ten wskazuje na problemy dotyczące czytania kodu i jest ważnym, gdy zapamiętywujemy informacjie pomiedzy zaokrągleniami.
+- Wszystko wskazuje na problematyczne ruchy oraz rozwiązaniu dla podpunktów ‘Zastosować Python jako skrót formularza wewnatrz słownika’,
+- Zamieszczone warunek pomocniczy wskazańie problematyczne i nawiasowe rolę. Odpisywanie ‘vowels = dict(re.findall('[aeiou]', text))’ jest uważane za miało znaczenie dla czystego kodu i w przeciwnym razie niniejszy punkt musiałby być odpowiedzialny.

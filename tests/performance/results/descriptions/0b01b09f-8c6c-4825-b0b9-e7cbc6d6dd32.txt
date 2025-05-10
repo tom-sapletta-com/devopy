@@ -1,0 +1,8 @@
+Celem tego programu jest znalezienie samogłosek (i.e., słowa, gdzie występuje litera 'a', 'e' , 'i' lub ‘o’ i 'u') wejściowej frasy "Python is cool", na podstawie znanych dla programistów reguł. Następnie wyświetlam te samogłoski jako listę, oddzielony przecinkami i umieszczane wewnatrzy napisowego ciągu znakowego ogólnego.
+
+Opis kodu: 
+1) Wcześniejsza linia importujemy moduł `re`, co pozwala na obsługiwianywanie wzorów związanych z rejestrami. Zmodyfikowana fraza "import re" umożliwil nam uzyskaniu dostępu do funkcji potrzebnych na naszym programie, w takim razie jako: `re` (przy pomocy metody findall zwróci listę wszystkich instancji odpowiednich słowa).
+2) Zmienna text przechowuje napis, który czwarte polecenie ma zaśczędzać. W takim razie jako: `text = "Python is cool"` – wybieramy pojedynczy słowo zwracanymi przechodzi do następnego polecenia i powtarza się, gdy program rozszerzenie dopasuje tekst.
+3) Zmienna `vowels` oblicza listę wystąpień samogłosek wejściowych znaków (litery 'a', ‘e’, ‘i' lub 'o') poprzez użycie metody `findall` i jako argument przyjmuje wyrażenie regularne słowa samogłoski. W takim razie: "re.findall(r'[aeiou]', text.lower())".
+4) Zmienna `f-string` zwraca napis, gdzie wyświetla na koncu tekst wejściowej oraz samogłoski jako listę oddzielonych przecinkami. W takim razie: `f"Samogłoski w tekście '{text}': {', '.join(vowels)}"` – sprawdza, które samogłoski znajdują się we wstępnych i szczegółach.
+5) Wszelkie przesyłane polecenia musi być rozpoznawane jako: `print(execute())`, gdzie po prawej stronie zastosowano jeśli chodzi o wyswietlanie na ekranie.

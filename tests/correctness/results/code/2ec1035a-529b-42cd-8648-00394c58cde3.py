@@ -1,0 +1,2 @@
+def execute(a, b):  # Funkcja do wyświetlania suma zwracająca dwa parametry a i b. Obsługuje również typowe ujemne liczby czyli -3 oraz 4
+    return abs(a + b)   # Zwaraca moduł sumy dwóch argumentów, w przeciwnym razie powinien zwrócić bezpieczniejsze i poprawiono stanowisko (np. dla liczb ujemnych odejmuje od siebie).

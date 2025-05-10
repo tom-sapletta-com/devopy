@@ -1,0 +1,25 @@
+Here's a detailed explanation of the code:
+
+**What is this code?**
+
+This code is a simple Python function named `add_numbers`. It takes two numbers, `a` and `b`, as input and returns their sum.
+
+**How does it work?**
+
+The function starts with the keyword `def`, which defines a new function. The name of the function is `add_numbers`, followed by parentheses that contain the parameters `a` and `b`. These are the inputs that the function will use to perform its operation.
+
+The next line is a docstring, denoted by triple quotes (`"""`). This is a comment that explains what the function does. In this case, it says "Dodaje dwie liczby i zwraca wynik", which means "Adds two numbers and returns the result" in Polish.
+
+After the docstring, there's only one line of code: `return a + b`. This line calculates the sum of `a` and `b` using the addition operator (`+`) and then returns this result as output from the function.
+
+**What problems does it solve?**
+
+This code solves a very basic problem: adding two numbers together. You might ask, "Why do I need a separate function for that?" Well, in larger programs, you often need to perform calculations like this many times, and having a reusable function makes your code more organized and easier to maintain.
+
+**How does it solve these problems?**
+
+The `add_numbers` function solves the problem of adding two numbers by providing a simple and straightforward way to do so. When you call the function with two numbers as arguments (like `add_numbers(2, 3)`), it will return their sum (in this case, `5`).
+
+By using this function, you can avoid writing duplicate code or having to manually calculate the sum every time you need it. This makes your code more efficient and easier to understand.
+
+Overall, this code provides a simple yet useful tool for performing basic arithmetic operations in Python!

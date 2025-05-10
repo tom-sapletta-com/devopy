@@ -1,0 +1,7 @@
+Ten program Python (`execute()`) służy do wypisywania aktualnej daty i godziny jako ciąg znaków. Funkcja `datetime` pochodzi od biblioteki standardowej dla obliczeń Python, która obsługuje operacje dotyczące czasu i daty oraz mniej pracy z systemami Linux/Unix.
+
+W programie `datetime` są definiowane dwie najbardziej wspólne funkcje: 
+- now() : Zwraca obliczeniowe czas, który jest równy aktualnym czasie. Jeśli chodzi o teraz (np `datetime(2019,8,5)`), zostaną podpowiednie wyniki pomnożone przez 365 dni i godzinami szesnastotygodniowymi.
+- strftime('%Y-%m-%d %H:%M:%S'): Zwraca datę w formacie 'year - month - day hours:minutes:seconds'. Oblicza aktualny czas i zamienia go na niestandardowy format.
+  
+W funkcji `execute()`, połówczkiem obejmującego kod jest potok przywracania danych (return), a także wypisywanie dati z użyciem formatowanego stringu f-string. Funkcja `execute()` najczynniej służy do testowania lub jako główna funkcja, która tworzyć będzie datki w formacie 'year - month - day hours:minutes' i zwraca je.

@@ -1,0 +1,7 @@
+Celem tego programu jest nauczenie się wykorzystania funkcji Python i implementacja obsługi błędów. Zdefiniowanym zadaniem siedzimki przechodzi następująco:
+ 1) Utwórz definicję nowej funkcji, która ma na celu dzielenie dwóch liczb. Wskazano zdefiniowaniu jako "`divide_numbers(a , b ) `" w taki sposób aby można było użyć podwójnego i połączonych parametrów.
+ 2) W przypadku dzielenia przez zero, zwraca odpowiedni komunikat: "`Nie można dzielić przez zero" `". Za pomocą catch bloku umożliwamy obsługi wyjątków, natomiast operacja matematyczna siedmiotki powinna zakończyć się sukcesem.
+ 3) W programie main nauczymy odpowieniu dla kilku przypadków: czego funckjonalnego to, który jest; i wynik co powinien być - zamieszczamy ten opis po raz drugi.
+ 4) Wszytkie punkty są używane do odpowiedzi na pytania poprzez interakcję, która obejmuje wyniki zgłaszanego programu i sprawdzany jest rachwal nad dostarczeniem oceny.
+ 5) Odpowiedzi sindyfikujemy poprzez podwójnegi interakcji, które zaczyna od pokazanie przykładowego wypisu i po rozszerzeniu na ogólnym obliczanie.
+ 6) W taki sposób możemy ukończyć swoją dyskusiję, zobaczysze czego chodzi dalej oraz co się stałe do poprawienia.

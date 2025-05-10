@@ -1,0 +1,2 @@
+def execute(num1, num2):  # Definicja nazwy i typu parametrów. Argumenty są typu int/float oraz zwracany jest wynik równego dozwolonej przez kod (int).
+    return sum(num1, num2)  # Zwraca suma dwóch liczb. Suma to operacja dodawania i oblicza zamiast rosnących wartosci matematycznych na czarno szybszej przesunieciowej sumi (+).

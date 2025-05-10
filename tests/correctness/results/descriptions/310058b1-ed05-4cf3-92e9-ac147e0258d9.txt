@@ -1,0 +1,5 @@
+Wprowadzenie funkcji `filter_even_numbers(numbers)` o nazwie. Ta funkcja ma jeden parametr, obliczany typujący listę liczb naturalnych (np., [10, 29, -56]). Wynik tej funkcji będzie zwracać nowa lista posortowana poza wartościami parzystymi.
+`return ...: return... ` to sformatowany opisuje sposób działania tego czegos, który jest zwracany przez funkcję (np., wynikiem operacji liczeniowych). W tej implementacji powinna być pomyślona sformatowanie.
+`num for num in numbers if ...: ` to zamieszczanie, które iteruje po wszystkich elementach listy "number", a tylko jeśli dla niego spełniane jest warunek (np., licba parzysta).
+`num % 2 == 0: ` to sprawdza, czy zmienna num wynosić kwartatlne i rozrasta na zero. Jeden sygnał stanowi poprawnie dla nawiasów otwierających (if), a drugi sprawdza, czy licba jest parzysta przez operację modulo 2 lub zero.
+`return: ... ` zamieszczenie wyniku iteracyjnego do listy posortowanych (odwróconej) elementów, które służą do filtrowania liczb parzystych.

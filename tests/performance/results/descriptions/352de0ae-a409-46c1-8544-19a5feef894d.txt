@@ -1,0 +1,8 @@
+To jest skrót dla całego programu, ponieważ nie uzyskamy specyficznego opisywania. Najważniejsza część pliku Python wynosi przede wszystkim:
+1) `def execute():` - to słowo kluczowe, oznacza rozpoczęcie definicji funkcji. W takim razie nastawiamy naszej nowej wieloplatformowej metody do uruchomienia na samym zakońcu pliku Python ().
+2) `import datetime` - to polecenie importujemy bibliotekę "datetime", która pozwala obliczyć aktualną datę i czas. 
+3) Następnie, użytkownik definiuje now na danej wielkości stałej zmienne `now` , które otrzyma nowsza informacja od biblioteki datetimetz.datetime.now().
+4) Następnie, użytkownik zaimportowali moduł datetime i wyrósli do na nim metodą strftime(), która zwraca nowsze informacje o dniu (%Y-%m-%d %H:%M:%S) jako stringa.
+5) Zatwierdzamy `return`, aby wskazać na następnie do nas użytkownika co ma zrobić za obliczone dane (wygenerowaniu opisu czasu). 
+6) W takim razie stworzyłem metodę, która bazując na informacjach o aktualnym czasie wyśle dane zwraca nam tekstowo opisu.
+7) `execute()` jest uruchamiany po jej skompilacji, obejmując całe plik Python i biblioteki importuję w takim razie brakuje to znaczy dla nas posiadamy nowych informacji o aktualnych czasach.

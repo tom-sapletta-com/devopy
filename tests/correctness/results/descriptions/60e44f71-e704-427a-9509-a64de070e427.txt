@@ -1,0 +1,29 @@
+Here is a detailed explanation of the provided Python code:
+
+**What does the code do?**
+
+The code defines a function called `divide_numbers` that takes two numbers, `a` and `b`, as inputs. The function divides the first number (`a`) by the second number (`b`) and returns the result.
+
+**How does it work?**
+
+Here's a step-by-step breakdown of what happens when you call this function:
+
+1. When you pass two numbers to the `divide_numbers` function, they are stored in the variables `a` and `b`.
+2. The code then attempts to divide `a` by `b` using the `/` operator.
+3. If the division is successful (i.e., `b` is not zero), the result is returned as a floating-point number.
+
+**What happens when you try to divide by zero?**
+
+But what if you try to divide by zero? Well, that's where the magic of Python comes in!
+
+4. When the code tries to divide `a` by `b`, and `b` is actually zero, Python raises a special kind of error called a `ZeroDivisionError`.
+5. The code catches this error using an `except` block.
+6. Instead of raising another error or crashing, the code returns a friendly message saying "Nie można dzielić przez zero" which means "You can't divide by zero" in Polish.
+
+**What problems does this code solve?**
+
+This code solves a common problem that many programmers face: how to handle division by zero errors. In Python, trying to divide by zero will raise an error, but this code anticipates this situation and provides a user-friendly response instead of crashing the program.
+
+In real-world scenarios, this kind of handling is crucial when working with financial data, scientific calculations, or any other domain where division by zero can occur naturally. By catching and responding to this error, your program can maintain its integrity and continue running smoothly.
+
+That's it! I hope this explanation helped you understand the code better.

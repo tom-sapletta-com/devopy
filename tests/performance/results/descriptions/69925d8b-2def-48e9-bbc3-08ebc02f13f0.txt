@@ -1,0 +1,29 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+The code defines a function called `execute` that takes no arguments. When executed, it analyzes a given text string and returns a list of vowels (vocal sounds) present in the text.
+
+**How does it work?**
+
+The code uses two main components: regular expressions (regex) and string manipulation.
+
+1. **Importing the `re` module**: The first line imports the `re` (regular expression) module, which provides functionality for matching patterns in strings.
+2. **Defining the text**: The second line sets a variable `text` to the string `"Python jest wspaniały"`, which is the text we want to analyze.
+3. **Converting the text to lowercase**: To simplify the analysis, we convert the entire text to lowercase using the `.lower()` method. This ensures that we don't miss any vowels due to case differences (e.g., "a", "A", or "á").
+4. **Finding all vowels in the text**: We use a regular expression pattern `r'[aeiou]'` to search for all occurrences of vowels (both uppercase and lowercase) in the text. The `[aeiou]` part matches any single character that is either "a", "e", "i", "o", or "u". The `re.findall()` method returns a list of all matches found in the text.
+5. **Joining the vowel list**: Finally, we use the `', '.join(vowels)` expression to concatenate the vowel list into a single string, separated by commas.
+
+**What are the main functions?**
+
+1. `execute()`: The main function that performs the analysis and returns the result.
+2. `re.findall(pattern, text)`: Finds all occurrences of a regular expression pattern in a given text.
+3. `text.lower()`: Converts a text string to lowercase.
+
+**What problems does it solve?**
+
+This code solves the problem of extracting a specific type of information (vowels) from a given text. It's useful for natural language processing tasks, such as analyzing texts, identifying patterns, or filtering out certain characters.
+
+**How can you use this code?**
+
+You can call the `execute()` function to analyze any text string and retrieve the list of vowels present in it. This code is a simple example of how regular expressions and string manipulation can be used to extract specific information from text data.

@@ -1,0 +1,33 @@
+Here is the detailed description of the Python code:
+
+**Function Name:** `divide_numbers`
+**Purpose:** To divide two numbers and handle the case where division by zero occurs.
+
+**Code Analysis:**
+
+The function takes two arguments, `a` and `b`, which are expected to be numeric values. The function's main purpose is to perform a simple division operation between these two numbers. However, it also includes error handling to prevent unexpected behavior when dividing by zero.
+
+Here's how the code works:
+
+1. **Try-Except Block:** The code uses a try-except block to catch any potential errors that might occur during the execution of the function.
+2. **Division Operation:** Inside the try block, the code performs the division operation using the `/` operator. This will return the result of the division if both `a` and `b` are non-zero.
+3. **ZeroDivisionError Handling:** If a ZeroDivisionError occurs (i.e., when `b` is zero), the except block is executed. In this case, the function returns a string "Nie można dzielić przez zero", which translates to "Cannot divide by zero" in Polish.
+
+**What the Code Does:**
+
+The code provides a basic arithmetic operation for dividing two numbers. However, it also addresses a common problem that can occur when performing division operations – namely, attempting to divide by zero.
+
+When you call this function with valid input (i.e., non-zero values for both `a` and `b`), it will perform the expected division operation. If, however, you try to divide by zero (e.g., `divide_numbers(10, 0)`), the code will catch the error and return a meaningful message instead of attempting an invalid operation.
+
+**Problems Solved:**
+
+The code solves two main problems:
+
+1. **Division by Zero:** By catching and handling the ZeroDivisionError, the code prevents potential errors or crashes that might occur when attempting to divide by zero.
+2. **Clear Error Messages:** The function returns a clear error message when division by zero occurs, making it easier for users or developers to identify and address issues.
+
+**How It Works:**
+
+The code works by using a try-except block to catch any potential errors during the execution of the division operation. If an error occurs (i.e., when `b` is zero), the except block is executed, and the function returns a string indicating that division by zero is not possible.
+
+In summary, this Python code provides a basic arithmetic operation for dividing two numbers while also addressing the common problem of attempting to divide by zero.

@@ -1,0 +1,5 @@
+W tym kodzie są definiujemy funkcje `add_numbers`, czyli proste operacje dodawania. Nazywamy ona "drugimi" ponieważ ułatwi to przekształcania i odpisywanie się wszystkich konfiguracyjnych, na które mogliby być operowane obliczeniami matematycznymi. 
+
+Funkcja ta jest podstawowa funckija do dodania dwóch liczb naturalnych (`int/float`). Zwraca wynik, czyli sumę zmiennych `(a + b)` na którym następuje operacja.
+ 
+Wywołanie funkcji:  ```add_numbers(5 ,10 )``    --> Wynik wypisuje się jako `15`, ponieważ przechowujemy sumę liczb 5 i 10.

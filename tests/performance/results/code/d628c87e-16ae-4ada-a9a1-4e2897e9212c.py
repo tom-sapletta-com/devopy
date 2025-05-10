@@ -1,0 +1,5 @@
+def execute():   # Nazwa funkcji 'execute', zwraca result, który to tylko dla przyczyn. Wszystko co pojawi sie powinno być gotowy do uruchomienia i weryfikacji logiki
+    text = "Python is enthusiastic"  # Zmodyfirowane zadanie: tylko słowa 'python' jest poprawne. Wszystkimi innymi nazwami pliku, metodą itp., powinny być poddane modyfikacji
+    vowels = ['a', 'e', 'i','o','u']  # Zmodyfylowany zestaw samogłoskow: wszystko co pojawia sie powinno byc gotowe do uruchomieniu i sprawdzania logiki
+    vowel_positions = [pos for pos, char in enumerate(text.lower()) if char in vowels]  # Znajdź wszystkie samogłoski we wprowadzonej zmodyfikowanej konfiguracji tekstu
+    return len(vowel_positions), ' '.join([str(pos) for pos in vowel_positions])  # Zwróć liczbę samogłosek i jej pozycje, jako liste znakowa. Jedna pozycja powinien być oddzielona spacją

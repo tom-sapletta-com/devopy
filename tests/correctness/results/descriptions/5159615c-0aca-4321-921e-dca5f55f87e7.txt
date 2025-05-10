@@ -1,0 +1,19 @@
+I'd be happy to help!
+
+The provided code is a simple Python function named `add_numbers`. Its main purpose is to take two numerical inputs (`a` and `b`) and return their sum.
+
+Here's how it works:
+
+1. The function accepts two arguments, `a` and `b`, which are expected to be numbers (integers or floats).
+2. The function body contains a single statement: `return a + b`. This means that the function takes the values of `a` and `b`, adds them together, and then returns the result.
+3. The triple quotes (`"""`) at the beginning and end of the docstring (the text that starts with "Dodaje dwie liczby i zwraca wynik.") are used to provide a description of what the function does. This is useful for documentation purposes.
+
+In essence, this code solves a simple arithmetic problem by providing a way to add two numbers together. You can use it in your Python program to perform basic calculations.
+
+Some key points to note:
+
+* The function only works with numerical inputs (integers or floats). If you pass non-numerical values, the function will raise an error.
+* The function returns the result of the addition as a single value.
+* This code is a great example of how Python's simplicity and readability make it easy to write and understand functions.
+
+Overall, this code is a useful building block for more complex calculations in your Python program.

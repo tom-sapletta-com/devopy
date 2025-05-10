@@ -1,0 +1,31 @@
+I'd be happy to explain this Python code in a way that's easy to understand.
+
+**What does the code do?**
+
+The code defines a function called `execute()` that takes no input and returns a string. This function is designed to analyze a given text and extract all the vowels (A, E, I, O, U) from it. The resulting list of vowels is then returned as a string.
+
+**How does it work?**
+
+The code uses two main tools:
+
+1. **Regular Expressions (regex)**: The `re` module in Python provides support for regular expressions. Regular expressions are patterns used to match and manipulate text.
+2. **String manipulation**: The code works with strings, which are sequences of characters.
+
+Here's a step-by-step breakdown of what the code does:
+
+1. The function `execute()` is called, which imports the `re` module (short for "regular expression").
+2. A sample text string `"Python jest wspaniały"` is defined.
+3. The regular expression pattern `[aeiou]` is used to find all occurrences of vowels (A, E, I, O, U) in the text. The `findall()` method returns a list of all matches found in the text.
+4. To make the search case-insensitive, the text is converted to lowercase using the `lower()` method.
+5. The resulting list of vowels is then joined into a single string using the `', '.join()` method. This method concatenates the elements of the list with commas and spaces in between.
+6. Finally, the function returns the resulting string.
+
+**What problems does it solve?**
+
+This code helps to:
+
+* Extract specific patterns (in this case, vowels) from text data.
+* Perform case-insensitive searches on text data.
+* Convert lists into human-readable strings for output or further processing.
+
+Overall, this code demonstrates a simple yet effective approach to text analysis using Python's regular expression capabilities.

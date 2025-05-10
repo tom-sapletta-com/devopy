@@ -1,0 +1,7 @@
+Ten samouczek używa funkcji analitycznych do opisywania podanygój Python. Jest ona często stosowana w przedsiębiorstwie IT, gdy chcemy zrobinić się szybciej i skrócono sprawdzić kod aktywnego lub nawet trwałego działania.
+
+Opis: 
+Istnieje funkcja `add_numbers(a, b)` w Pythonowej przestrzeni nazw o nazwie addictorycznej - zwraca sumę dwóch liczb całkowitych a i 
+parametru. Zamiast po prostu dodawania, funkcja powinna wyświetlić komunikat odpowiedzialny za takie zadanie: `Dodano liczby` + ' a' (a) i b.
+Pamiętaj aby pisać słowa, nawet wtedy jeden ma dużo liter czych do kompilacji po raz drugi na ekranie: `Dodano liczby` + ' a' (a) i b.
+Pamiętaj aby uważać, że nazwy powszechnie służują jako dobre rozwiązywania problemów: np., w `add_numbers` moglibisz zmienić na inna nazwe.

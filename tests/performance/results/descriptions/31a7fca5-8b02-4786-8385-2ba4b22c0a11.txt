@@ -1,0 +1,12 @@
+Ten program jest skryptem Python, szczególnie z użyciem modułu `re` do obsługi rozwiązywania wyrażeń regularnych. W celu przeanalizowania i obliczenia konkretnego tekstu należałaby znale samogłoski oraz opcje do obsługi bardzo rozlegliwych potrzeb wyrażeń regularnych.
+ 
+Funkcja `execute` jest główną i najważniejsza funkcją tego skryptu, który obejmuje działanie związane z wyszukiwaniem samogłosek w podanym tekscie.
+ 
+Poniżej opisano cztery rzeczy:
+1) `import re` - Ta instrukcja importuje bibliotekę modułów do obsługi rozwiązywania wyrażeń regularnych. 
+2) Przed utworzeniem tej funkcji, zdefiniowany jest nieco ciekawszy `text` (string), który powinien objaśniać szczegóły dla osoby bez doświadczenia programowania.
+3) Drugim argumentem podanym jest wyrażenie regularne `[aeiou]`, które przesuwa środki na znak samogłoskowy (zamiast liter a-e lub o i u), aby odnaleźć tylko samogłoski.
+4) `text.lower()` powinno wypchnęcia tekstu do mniejszej formie, by zmnieżić faktyczny bieg pomiędzy duń i głowicia (np., ‘a’ oraz 'A'), pozwala nam na dopasowanie równo大小写 samogłoskami.
+5) `re.findall(r'[aeiou]', text.lower())` zwraca listę wszystkich przesuwanego podanych tekstu, który obejmuje również samogłoski odczytywane poprzez metodę `findall()`.
+6) W trakcie togo wypadku sformatowano pojedynczo listą przesuwanego tekstu na łańcuchy, za pomocą operacji stringowników `', '.join(vowels)'`.
+7) W dalszej fazy moglibym zmodyfikować tak jakim wyszukiwanie samoglebna np., przy użyciu metod bibliotek regularnych `re.findall(r'[aeiou]', text)`, która pozwala na obliczenia licza swoich wystąpień samogłoski oraz zwraca listę taktowanych elementów jako ufno.

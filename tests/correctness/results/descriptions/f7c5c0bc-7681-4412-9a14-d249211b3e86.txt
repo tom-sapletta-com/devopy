@@ -1,0 +1,11 @@
+Ten samouczek powinien mniej więc nawet jeden tydzień. Zaczerpnijmy, bo to dobrze być... Dla zainteresowanych wyjaśniamy kod i opisujemy dlaczego funkcję `add_numbers` jest słaby nazywać "doda". Zamiast robić to co czestko, chcemy przyjmować zadanie a także wyjaśniem u nas każdego pojedycznego linijki. 
+
+- `def add_numbers(a, b):` - Tutaj rozpoczynamy swoje prace z nazewnictwa funkcji i jednym parametrem oraz drugim paratem (w takim samouczku to wszytko byłoby ciaūmenowe).
+- `return a + b;` - Zwróć tutaj odpowiednią liczbę, która jest dodawana do zmiennych "a" i "b". Jednak po nazwie wszystkim służy `return` - to oznacza tutaj mowi Pythonem że teraz musimy przedstawić odpowiednią liczbę do której powinien zostać dodany bieżący obliczenik.
+- `def` - Zgłasza środka na nagły poziom, to oznacza wewnętrzny razem i wszytko dotarliśmy do definicji nowej funkcji o podanym nazwie (`add_numbers`) z parametrami `a` oraz `b`.
+- Funkcja ta będzie działać tak samo jako w przykładzie: print(add_numbers(4,5)) to powinno pokazać 9 co zawsze należy odpowiadać za potrzebę.
+- `def add_number` - Ten słówko wskazuje na problematyczne użycie funkcyjnego i ciała, tak jako to by się zdarzyć po raz pierwszy. Mimo że nazywaniem moglibymi dalej wskazuje na problematyczne użycie słówka i ogromnych przerwy pomiędzy liczbami, po prostu jestem za dużo zaskoczen.
+- `add_numbers` - Nazywaniem nalej wskazuje na problematyczne użycie słówka i mimo to moim celem być tylko krótkotrwałe, a większo jestem zadowolony odczytująca czas.
+- `(a` - Zamknięto swoje nazewnictwo i rozpoczynamy nowy podczas wskaznawczej konferencji (na pewno jestem zadowolony odczytująca ciekawwstwa).
+- `return a + b` - Zamknięto swoje nazewnictwo i na dalszych stronach pojawia się nasze wynikiem liczbowego, który powinien zostać przedstawiony.
+- `def add_numbers(a` - Mamy już poddano swoje limity i nie dodatkowaliśmy więcej punktow na rzeczywistość ani ważności.

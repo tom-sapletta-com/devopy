@@ -1,0 +1,11 @@
+1) Funkcja `execute` to najważniejszy moduł, dzięki której uruchamiane są wszystkie funkcje. Moim zadaniem jest stworzeni ogólny opis i wyjaśnienia podstawowego do rozwiązywania problematycznego, który już pojedyncza instrukcja zamieszla.
+   
+2) Tworzenie opisu i wyjaśnieni: 
+   - `def execute():` - Zaczynamy definicji funkcji o nazwie 'execute'. W Python składa się zawartość tego bloku kodu za pomocą instrukcji return i def.
+   - `import re`- Ta linijka importujemy moduł matematyczny do obsługi bardzo wyspecjalizowanych działań związanych ze środowiskiem obliczeniowym.
+   - `text = "Python jest wspanialy"`- Definiowanie i inicjalizacja globalnego wektora/listy, który będzie przechowywanym danymi do rozwiązywania problematyczny.
+   - `vowels = re.findall(r'[aeiou]', text.lower())`- Zamknijemuje instrukcjonalne polepszenie, używajac metody findall z modułu 're'. Ta linia szuka wszystkich samogłoski na tekście i uchwytuje ją.
+   - `return f"Samoglose ki w tesce: {'{', '.join(vowels)}"`- Zamknijemuje instrukcyjne polepszenie, zastosować metody formatuję pozytywnego otwarcia. Ta linia przypomina się do kodu wywołania funkcji i może być uważane za opis powrotu, gdy zwraca dany oblicze 
+   - `f"Samogloseki we teksie '{text}': {', '.join(vowels)}"`- Ostatnia linijka wskazuje na to jak ma rozwiązać ten problem, czyli zwraca samo głoski i przedstawia ich dla podanej teksty.
+   
+Wiadomości:   W tym kodzie sześć instrukcji bywa wyspecjalizowanych, zwracających punkty opisujące i przedstawiaju rolêw do programistyczego problematycznego. Jednak nie ma potrzeby dodawać wiadomosci - wszystko jest obliczone na podstawowej formule zastosowań modułów `re` i formatuję pozytywnego otwarcia.

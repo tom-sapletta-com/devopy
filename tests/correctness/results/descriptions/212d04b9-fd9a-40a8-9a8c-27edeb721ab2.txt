@@ -1,0 +1,27 @@
+Witaj! Teraz będziemy analizować kod Python, który dodaje dwie liczby i zwraca wynik.
+
+**Główna funkcja:** `add_numbers(a, b)`
+
+Funkcja `add_numbers` jest prostą funkcją, która przyjmuje dwa argumenty `a` i `b`, które są liczbami. Funkcja ta dodaje te dwa numery i zwraca wynik jako nową liczbę.
+
+**Działanie:**
+
+1. Funkcja `add_numbers` przyjmuje dwie liczby `a` i `b`.
+2. Wynikiem dodawania tych dwóch liczb jest nowa liczba, która jest równa sumie `a` i `b`.
+3. Funkcja zwraca wynik jako nową liczbę.
+
+**Przykład:**
+
+Jeśli wywołamy funkcję `add_numbers(2, 3)`, to otrzymamy wynik `5`, bo 2 + 3 = 5.
+
+**Rozwiązywanie problemów:**
+
+Ten kod rozwiązuje prosty problem dodawania dwóch liczb. Możesz go wykorzystać w różnych sytuacjach, np. przy tworzeniu kalkulatora, gdy chcesz obliczyć sumę dwóch wartości.
+
+**Działanie:**
+
+Funkcja `add_numbers` działa poprzez wykonanie prostego operacji dodawania liczb. Wszystko, co musisz zrobić, to wywołać funkcję, podając dwie liczby jako argumenty. Funkcja zwróci wynik, który możesz następnie wykorzystać w swoim kodzie.
+
+**Wartości dodawania:**
+
+Funkcja `add_numbers` nie wymaga żadnego specjalnego podejścia. Możesz dodać dowolne liczby i otrzyma wynik, który jest równy sumie tych liczb.

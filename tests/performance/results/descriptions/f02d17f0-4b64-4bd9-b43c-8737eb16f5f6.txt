@@ -1,0 +1,36 @@
+Here's a detailed explanation of the Python code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that takes no arguments. When you call this function, it extracts and counts the vowels (A, E, I, O, U) in a given text string. The text string is hardcoded as `"Python jest wspaniały"`.
+
+**How does the code work?**
+
+The code uses two main components:
+
+1. **Regular Expressions (Regex)**: The `re` module is imported to use regular expressions, which are a powerful tool for searching and manipulating strings.
+2. **String manipulation**: The code works with strings, specifically extracting and counting vowels.
+
+Here's what the code does step-by-step:
+
+* It defines an empty string `text` with the hardcoded value `"Python jest wspaniały"`.
+* It converts this string to lowercase using the `.lower()` method, so that the vowel search is case-insensitive.
+* It uses a regular expression (`r'[aeiou]'`) to find all occurrences of vowels (A, E, I, O, U) in the converted text. The `re.findall()` function returns a list of matches.
+* Finally, it joins the extracted vowels with commas using the `.join()` method and returns this string as the result.
+
+**What are the main functions?**
+
+The main function is `execute()`, which performs the vowel extraction and counting. There are no other explicitly defined functions in this code.
+
+**What problems does the code solve?**
+
+This code solves a simple problem: extracting and counting vowels in a given text string. This can be useful in various applications, such as:
+
+* Text analysis: counting the frequency of vowels in a text to analyze its characteristics.
+* Natural Language Processing (NLP): identifying patterns or trends in text data.
+
+**How does the code handle errors?**
+
+The code does not explicitly handle errors, as it assumes that the input text is valid and well-formed. However, if you were to modify this code to accept user-inputted text, you would need to add error handling to deal with potential issues like invalid input or non-text data.
+
+Overall, this code demonstrates a basic application of regular expressions in Python for extracting and manipulating strings.

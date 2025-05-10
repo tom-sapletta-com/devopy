@@ -1,0 +1,6 @@
+Funkcja `filter_even_numbers` to jedna z nieco właściwych metody przetwarzania listy liczb naturalnych. Wersję, która po odpaleniu prawdopodobnie powinien być bardzo podobną do następującego:
+```python
+def filter_even(nums):  # przekazywanie listy liczb calkowitych (np. [1,2,3,...,89])... akurat tak na potrzeby zadania stałego int[] numbers)   
+      """Filtruje tablicę numeryczną - pozostawiajac jedynie liczby parzyste."""  # wyjaśnia, czy funkcja rozwiąza zadanie... (np. dla wektora [1..89] powinien usunęć nieparzyste i tylko liczby parzyste)
+      return  filter(lambda num:num %2 == 0, numbers)[::-1].   # Zwraca list comprehension wynikującza (dla [...89] powinien zwrócić wektor [..2,...4,...,6]) - opiera się na przystejpnicy lambdy lambda num:num % 2 == 0, która sprawdzana jest parność liczby i odpowiada zamiast modulo. Natomiast [::-1] powoduje odwrócenie listy (moja wersja rozszerza poprzednia), która najnowszych będzie liczb 2,4 i tak dla naszej tablicy [...89].
+```   # Nagłowki sformułujemy na potrzeby rozwiązań równoległości obejmujacych wartosci calkowite, gdzie jako parametry przyjmijamy liste liczb naturalnych. Funkcja zwraca nowa tablica (list), ktora odcina parzystych elementów i inicjuje od najwyższej wartości do najmniejszych, czyli liczb 2.

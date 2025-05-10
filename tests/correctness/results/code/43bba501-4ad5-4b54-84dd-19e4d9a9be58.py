@@ -1,0 +1,3 @@
+def execute(a, b):  # Zdefiniuje nazwę i rozszerzone zaokręcanie funkcji. Teraz jako 'execute' zamieniłem na użytkownikowe określone imię
+    return a + b  # Zwraca sumę dwóch liczb podanych przez usera lub funkcjonariusza. Rozszerzone zaokręcanie uwzględniłem w takim celu
+    pass   # Usuwa to, co by zostało dodane do kodu powyżej i po uruchomieniu funkcji nikt nie będzie miałoby nic robić. To jest wymogniajace (abyby istnieje przynajmniej co to będzie zrobic).

@@ -1,0 +1,3 @@
+def execute(lst):  # Funkcyjna nazwa funkcji 'execute' odpowiada za zwrócenie wyniku działania. Teraz na swoim końcu trzeba podać listę liczb, a jako ciało metody przyjmuje tak samo nazwisko 'execute'.
+    return [num for num in lst if num % 2 == 0] # Zwraca nowu liste zawierającą liczby parzyste. Wartosci są filtrowane przy pomocy wygrażenia (%).
+    print(execute([1, 2 ,3,  4])) # Zwraca [2] - tylko parametry do testowania na potrzeby uruchamiania programu. Wartości powinny się zmienić w następnym kroku

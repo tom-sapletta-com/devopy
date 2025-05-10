@@ -1,0 +1,8 @@
+To jest funkcja, o nazwie `filter_even_numbers`. Taka praca polega na filtracji listy liczb (nazywanej parametrem `numbers`). Funkcja zwróci nową listę wszystkich parzystych elementów, które są obecnie w liście.
+ 
+Funkcjonalność tego co robi: `filter_even_numbers` funguje na podstawie iteracji poza głowem listy liczb naturalnych (wprowadzonego jako parametr). Na każdym etapie pracy, generuje nową parzystość i dodaje do wynikającej siebie obecną listy liczb. Jest to sygnał zwracanych równolegle iterujemy po liście, a następnie kojarzywane elementy do wynikającej siebie obecnej tablici liczb.
+  
+Ze względu na sygnałowanie i iteracje zgodnie ukończone, tak jako filtruja listy parzystej liczby naturalnych podano (`[num for num in numbers if num % 2 == 0]).
+   Funkkcijonalność to że przy pomocy wartości `%` dostajemy listę tylko liczb parzystych zgodnie ze stawianymi regułami (parzysta jest niepowtarzalna reszta przez 2).
+   Ta wartość `num % 2 == 0` sygnia nas co to za filtrujemy liczby parzyty, poza zakresem pierwszych trzech częsci. Dlatego dodajemy je do listy i odejmuje one przed wynikami (obliczone jest na koniecznym etapie iteracji), gdyż poza tego, co znamy tutaj robimy.
+    Niniejszy opis działania powtarzalnie określa nam wszystko na temat funkcjonowanu i pracy sygnałów wewnętrznych tego kodu.

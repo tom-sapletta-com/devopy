@@ -1,0 +1,5 @@
+Dane wejściowe to dwie liczby całkowite (`a, b`). W tym miejscu jest wywołana funkcja `divide_numbers(a,b)`. Oblicza łamchód dla podanych argumentów: liczba a i liczba b.
+
+W przyczynie tego dojścia na te sformułowanie kodu zakłada, że `a` jest rzutką (liczbę całkowitą) i liczeniem b. Przed wywołaniem funckji sprawdza to czy a nie wynosi 0 - dlatego koduje po tym stosunku żeby zabezpieczyć przed rzutkami i zero do dzielenia.
+
+Gdy `a` jest liczbą całkowitą, a nie ma potrzebu odpowiednika b (np., podczas wywołania divide_numbers(10)) lub czy ten parametr to None. W takim razie sprawdza się warunek zbytni przed rozpoczęciem działania i powinien być obsłużony w następnym kroku, czyli implementacja try/except.

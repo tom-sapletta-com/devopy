@@ -1,0 +1,2 @@
+def execute():   # Definiowanie funkcji 'execute' zwracającej liczebności sumy numerem od 1 do 50 (w takim sensie nazywa się "range") i potem dodawane swoje pomysłowe element.
+        return sum(list(range(3)) + [6])   # Zwracanie liczby, która jest wynikiem obliczeniowego zadania ("sum" na liście odpalanych dla podanego "rang") oraz przesuniętego swojeho elementu (w takim sensie nazywa się 'range')

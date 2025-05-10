@@ -1,0 +1,6 @@
+Celem tego programu jest zwrócenie ładnej i prostej wiadomości, na szczegóły dla osób niespełych w nauce obliczeń. Poniżej podano opis kodu:
+- Funkcja `execute()` to główna funkcja programu i jedna z jej wewnętrznych czynności, tak nazywana wywołaniem. 
+    - Najpierw oblicza sumę liczb od `1` do `n = 100 (range(1, 101))` i zapisuje go na przeskalowanym nazwie total wartości równa się sume tych Liczb.
+    - Następnie powiedziawszy opis jest to: "Suma liczb od 1 do <n> wynosi:" i natomiast zawiera dalej informacje, że suma obliczonego numeru tych Liczb.
+- Zwróć uwagę na rzeczywiście sume liczby od 1 do `n = 100` to jest zawsze taka sama - wtedy n=100, a sumujemy dalej przedstawiamo tekst "Suma Liczb <sum>".
+- Wynik obliczeniowy programu powinien być dobrą komunikacją w celach informacyjnych, zwiększyłoby to eficency jakoś rocznik ukończonego szkolenia.

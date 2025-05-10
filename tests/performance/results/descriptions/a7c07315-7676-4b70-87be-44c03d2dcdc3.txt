@@ -1,0 +1,6 @@
+Wyjaśnienie zadanego Pythonowego kodu to funkcje oblicza sumę liczb od 1 do 100. Poniżej opisano, co robi ten samouczek oraz jak działa:
+
+W celu wyjaśnieniu kodu postanowiliśmy zrobić to na podstawie swojego istniejącego rozwiązania. Poniżej uwiednik sposób, jak ten samouczek był wykonany:
+- Zdefiniowaliśmy i inicjalizujemy zmienną `total` o nazwie 'suma liczb od 1 do'. Wynosi to sumaryczna suma tych cyfr, która jest obliczana przez składni `range(start=1, stop=end+1)`.
+- Potem zwracamy wartość otrzymaną od funkcji na podstawie formatowania stringu (f), który pozwala określić jak należy powtarzać, a tak szybko do dostosowaniem. Wynik `{total}` to zmienna wypełniona przez liczbę całkowitą sumarycznie obliczonej od 1 do n (w tym celu, na skrócono jako "suma").
+- Zwracany opis kod powinien być wygoda i znakowy dla osób bez rozumienia programowania. Wynika to od sposobu formacyjnego, podczas czytanie jest proste - użytkownicy mogą bardzo szybko przeanalizować i zrobić ustawienia programowania.

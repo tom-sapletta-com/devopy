@@ -1,0 +1,33 @@
+Here's a detailed explanation of the Python code:
+
+**Function:** `execute()`
+
+The `execute()` function is designed to extract and count vowels (specifically, the letters "a", "e", "i", "o", and "u") from a given text string. The text string in this case is: `"Python jest wspaniały"`.
+
+**Steps:**
+
+1. **Importing `re` module:** The code starts by importing the `re` (regular expressions) module, which provides regular expression matching operations.
+2. **Defining the text:** A variable `text` is assigned a string value: `"Python jest wspaniały"`. This is the text from which we want to extract vowels.
+3. **Converting text to lowercase:** The `lower()` method is used to convert the entire text string to lowercase, so that vowel extraction becomes case-insensitive.
+4. **Finding and counting vowels using regular expressions:** The `re.findall()` function is used with a regular expression pattern (`r'[aeiou]'`) to find all occurrences of vowels (the specified letters) in the modified text. The `findall()` function returns all non-overlapping matches of the pattern in the string as a list.
+5. **Returning the result:** The function returns a formatted string using an f-string (Python 3.6+ feature). The returned string includes:
+	* A header indicating that this is the count of vowels in the original text.
+	* The actual vowel counts, separated by commas and joined into a single string.
+
+**What does the code do?**
+
+The `execute()` function takes a text string as input (in this case, `"Python jest wspaniały"`), extracts all the vowels (a, e, i, o, u) from it, and returns the count of these vowels in a formatted string. The output looks like: "Samogłoski w tekście 'Python jest wspaniały': a, e, i".
+
+**What problems does it solve?**
+
+This code solves the problem of extracting and counting specific characters (vowels) from a given text string. This could be useful in various applications, such as:
+
+* Text analysis or processing
+* Natural Language Processing (NLP)
+* Data extraction
+
+**How does it work?**
+
+The code works by using regular expressions to search for the specified vowel characters within the text string. The `re.findall()` function returns a list of matches, which is then formatted and returned as a string.
+
+In summary, this Python code defines a function that extracts and counts vowels from a given text string using regular expressions. It's a useful tool for text analysis or processing tasks!

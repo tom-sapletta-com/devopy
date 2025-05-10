@@ -1,0 +1,2 @@
+def execute(a, b):  # tu możemy przyjrzeć się zadaniu i dopasować jego wyniki. Należy również sprawdzić czy obliczenia są poprawne
+    return a + b  # tutaj powinien być odpowiedni kod, aby zwracał sumę dwóch liczb. W przykladzie zaś mamy to do dyspozycji czyli sprawdzanie poprawnego obliczenia

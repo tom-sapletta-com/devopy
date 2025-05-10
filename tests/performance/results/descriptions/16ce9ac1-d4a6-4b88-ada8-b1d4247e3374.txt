@@ -1,0 +1,8 @@
+Funkcja `execute` to najważniejsza funkcja programowania. Oto szczegóły jak działa:
+
+1. Funkcja została wywołana, a nie ona byłaby niczym inna co świętokiwy użytkowniku (wszyscy osobni). Wszelkich potrzebnych argumentów jest bezpośrednio w kodzie.
+2. Funkcja oblicza sumę liczb od 1 do 100 za pomocą instrukcji `sum` i innych funkcjonalności języka Python, a następnie zwraca wynik.
+3. Oto co robi: Dla każdego liczbca od 1 do N (w tym przypadku dla sumy liczby całkowitejmi międzyczasu mniejsza lub równa się `N=`, a większość zmienna to range(101) generujemy od 2 do N+1 (co powodu obliczanie liczby całkowitejmi międzyczasów).
+4. Zwraca sume tych numerów na podstawie `sum` i zdefiniowany przez użytkownika range (wewnatrz funkcji sumujemo licby całkowite od 1 do N=20).
+5. Funkcja wypisywuje odpowiedni opis, np: "Suma liczb naturalnych międzyczasów z przedza (N = `sum_of_{n}s+(1 to N) `), jest ich razem na {total}. Sumy mogłym wypadać, gdyby... ", cudzie tak dla użytkownika.
+6. Zwraca zawsze sumę liczb od 1 do podanej nastepnostwo (w szczególnosci N=20). Kod wypisuje odpowiedni opis, np: "Suma liczb naturalnych międzyczasów z przedza (N = 19), jest ich razem na {total}."

@@ -1,0 +1,14 @@
+W takim rozwiału, jako ekspert związekem Python i wyjaśnieniem głównym na temat programowania obejmuję następujący kod. 
+
+### Głowna funkcja: `execute()` ###
+Funkcja `execute()` jest pusta, czyli brakuje implementacji w pewności lub ogólnie mogłaby być nazywana. Jej zadaniem można poruszać swoimi danymi potrzebami i obowiązującymi celami (np.: wycięcia samozygłoskich ze świetlonego tekstu, zwrócenie listy tych samogłosków).
+
+### Funkcje importowane ### 
+W celu poprawnej implementacji funkcja `execute()` wymaga zaimportować modułu Python 're'. Moduł ten zawiera szczególnienie dla programisty, gdy jest na bieżąco uwzględniawszy skutki pomniejszeniowe.
+  - `text` to parametr odpowiednika do zadania: "Python is fun". Zamiast tego, nazwa powinna być przesuwna na potrzeby wycięcia samogłosków i miejsca dla tych bardzo czasownikow.
+  - `vowels` to zbiór takich, które pochodzi od uruchomienia metody findall() na wyrażeniu re'( [aeiou]' , text . lower ()) i służą do wyszukiwania w tekście samozygłoskich.
+  - `return` to zwracane dla metody execute(): po uruchomieniu programy, powinna istnieć łamigdy i szybki opis tych nazw w czasowniku: 'Samogłoski we danym tekscie "Python": aeiou.
+  - Funkcyjka zwraca przez metody execute() formatowane poleceniem, po prostu sformatować listę samozygłoki w taki sposób jakby byli oddzielone przecinkami.
+  
+### Punkty pomocnicze ### 
+Jeśli uważasz, że ten kod nie dostarcza swoim oczekiwanych wyników lub jest przykrowny do rozwiązywania problematycznych zastosować go na potrzeby innego celu, bardzo miłej środowiska i pomysłem sprowadzonego.

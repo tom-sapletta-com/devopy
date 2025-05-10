@@ -1,0 +1,3 @@
+def execute(a, b):  # Funkcja do przesłania dla użytkownika. Nie jest to czyste zadanie dotyczące obliczeń matematycznych w Pythonie i niniejszy kod pojawi się tutaj, aby pokazywać Twoim problemowi odpowiedzi.
+    return a + b   # Niestety zamówiona procedura obliczeń jest przerwanem na nieskończony wzorzec i dlatego to niczego ujawniamy tutaj, aby podać odpowiednią implementację.
+    pass           # Opcjonalnie moje przechowanie (puste kod) zamiast funkcji obliczeniowej w Python programu musimy umieścić to tutaj, aby pokazywać Twoim problemowi odpowiedzi.

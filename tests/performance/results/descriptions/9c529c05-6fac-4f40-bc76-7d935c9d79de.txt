@@ -1,0 +1,6 @@
+--- Opis kodu ---
+Ten podstawowy kod Python ma dla celów obliczeniowych. Jest ona zdefiniowana do wypisywania sumę liczb od 1 do 100, na ogół przez funkcjonalność programu nie ma równego czerpa kontekstu.
+Zwracane są wiadomo po jaki sposób:  
+`execute() -> zwroc sume liczb od 1 do 100 (return) ` wynosi: <suma>` i dla podanych parametrów. W kodzie najwyżej mojego poziomu, to robi taką sama operacje jako funkcja sumująca liczby od 1 do 100 (`sum(range(1, 101))`).
+Dla podanych parametrów nie ma wyraźnego zastosowania tego kodu. Zamiast obliczać sumę liczb od 1 do N i jej zwracać jako string, czyli to sformatowałem ten samobój na dane pojedyncze (`<suma>`). Jest ona tylko wykonywana przedstawieniem sumą liczb od 1 do N.
+! [/cod] Opis kodu: Wypisywanie sume środka i zwrócenia odpowiednika stringa napisany jest w celu prezentacji tego, co dzieje na sumi liczb od 1 do N.

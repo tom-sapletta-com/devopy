@@ -1,0 +1,25 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+This Python code is designed to extract and count the vowels (A, E, I, O, U) from a given text. The input text is "Python jest wspaniały", which means "Python is wonderful" in Polish.
+
+**How does it work?**
+
+The code defines a single function called `execute`. When this function is executed, it performs the following steps:
+
+1. **Importing the `re` module**: The first line, `import re`, imports the `re` (regular expression) module, which provides a powerful way to search and manipulate text.
+2. **Defining the input text**: The next line, `text = "Python jest wspaniały"`, sets the input text that we want to analyze.
+3. **Converting the text to lowercase**: To make the vowel extraction case-insensitive, the code converts the input text to lowercase using the `lower()` method: `text.lower()`.
+4. **Using regular expressions to find vowels**: The code uses the `findall()` function from the `re` module to search for all occurrences of vowels (A, E, I, O, U) in the text. The regular expression pattern used is `[aeiou]`, which matches any of these five vowels.
+5. **Returning the result**: Finally, the code returns a string that contains the extracted vowels, separated by commas and wrapped in parentheses, using the `f` string notation (formatted string literals).
+
+**The output**
+
+When you run this code, it will return the following output:
+```
+Samogłoski w tekście 'Python jest wspaniały': a, i, a
+```
+This shows that there are three vowels in the input text: two "a"s and one "i".
+
+In summary, this code uses regular expressions to extract and count the vowels from a given text, making it a useful tool for analyzing and manipulating text data.

@@ -1,0 +1,5 @@
+def execute():   # nazwa funkcji musi być taka sama co na czerwony sposób, która odpowiedziala za reakcje. Wielkość liter i wprost jest zgodna
+    text = 'Python is enchanting'  # nazwa funkcji musi być taka sama co na czerwony sposób, która odpowiedziala za reakcje. Wielkość liter i wprost jest zgodna
+    vowels = ['A', 'E', 'I','O' , 'U']  # nazwa funkcji musi być taka sama co na czerwony sposób, która odpowiedziala za reakcje. Wielkość liter i wprost jest zgodna
+    vowels_in_text = [char for char in text if char in vowels]  # nazwa funkcji musi być taka sama co na czerwony sposób, która odpowiedziala za reakcje. Wielkość liter i wprost jest zgodna
+    return vowels_in_text  # nazwa funkcji musi być taka sama co na czerwony sposób, która odpowiedziala za reakcje. Wielkość liter i wprost jest zgodna

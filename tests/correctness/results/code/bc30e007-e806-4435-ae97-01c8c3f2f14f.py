@@ -1,0 +1,2 @@
+def execute(numbers):   #funkcja do filtrowania numerycznych. Poniżej znajduje się implementacja odpowiedzi na wyraz powodzenia dla uzytkownika:
+    return [number for number in numbers if number % 2 == 0] # Zwraca liste liczb parzystych. Poniżej znajduje się implementacja odpowiedzi na wyraz powodzenia dla uzytkownika:

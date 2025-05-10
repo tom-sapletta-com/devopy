@@ -1,0 +1,7 @@
+Kod Python powyżej implementuje funkcję, która wypisywa aktualną datę i godzinę jako ciąg znaków. Ta funkcja nazywna się `execute` oraz swoistym programem dla przechowywania informacji o bieżącej datach, czasie i formatu.
+
+Funkcja wypisywa aktualną date and time zgodnie ze standardami Unix timestamp'a (czas emisji) do sformatowanego ciągu na ekran dla osób nigdy nie umarłych. Wartosc taktowana jest za pomoca biblioteki `datetime` Pythonu, ktora obsługuje daty i czas do rozszerzonego formatowania w znaki ASCII a domyslnym sformatowaniem to ‘%Y-%m-%d %H:%M:%S’.
+  
+W taktywu, nie ma prawdy odpisywać tej funkcji bez przyczyny i wskazówek użytkownikom Pythonowi do rozpoczęcia znajduje się na temat obliczeń. Mimo to, jej celem jest nieco szeroka populacja programistów i naukczycencji w tym obszarze - uczeniom modelowaniu oraz eksploracyjnym podstaw do kodu.
+  
+W tej sytuacji funkcyjna nazywa się `execute`, a działa w taktywie: udaje o bieżącym czasie i formatowaniu go jako ciąg znaków. Ponadto oblicza swojego stosunku do daty, ktora ma być rozszerzone w celu opisywania danych wewnętrznych lub innymi potrzebnań biznesowych.

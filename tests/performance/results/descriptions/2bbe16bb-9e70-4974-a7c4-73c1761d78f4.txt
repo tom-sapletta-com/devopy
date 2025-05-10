@@ -1,0 +1,31 @@
+Here's a detailed explanation of the provided Python code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that takes no input and returns a string. When executed, it analyzes a given text to extract all the vowels (A, E, I, O, U) and returns them as a comma-separated list.
+
+**How does the code work?**
+
+Let's break down the code step by step:
+
+1. `import re`: The code imports the `re` module, which stands for "regular expressions". Regular expressions are a powerful tool for searching and manipulating text patterns.
+2. `text = "Python jest wspaniały"`: The code defines a string variable `text` containing a sample sentence in Polish ("Python is wonderful").
+3. `vowels = re.findall(r'[aeiou]', text.lower())`: This line uses the `re.findall()` function to search for all occurrences of vowels (A, E, I, O, U) in the `text`. The regular expression pattern `[aeiou]` matches any single vowel character. The `.lower()` method is used to convert the entire text to lowercase, so that the vowel search is case-insensitive.
+4. `return f"Samogłoski w tekście '{text}': {', '.join(vowels)}"`: This line returns a formatted string using an f-string (a feature introduced in Python 3.6). The returned string includes:
+	* "Samogłoski w tekście '" followed by the original `text` value
+	* The phrase ":", which is a colon and a space
+	* A comma-separated list of vowels extracted from the text, using the `join()` function
+
+**What problems does the code solve?**
+
+The code solves the problem of extracting all the vowels (A, E, I, O, U) from a given text. This can be useful in various situations, such as:
+
+* Text processing and analysis
+* Natural Language Processing (NLP)
+* Data mining and extraction
+
+**How does the code handle errors?**
+
+The code assumes that the input `text` is a string and will work correctly as long as the text contains only valid characters. If the input text contains non-ASCII characters or special characters, the regular expression pattern might not work as expected.
+
+Overall, this code demonstrates a simple yet effective way to extract vowels from a text using Python's built-in regular expressions module.

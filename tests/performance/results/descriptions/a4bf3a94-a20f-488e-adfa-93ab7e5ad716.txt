@@ -1,0 +1,8 @@
+W ramach tego opisu Python-owego zadanie jest obliczeniem sumy liczb między 1 a 100 (obserwujemy, że to słownik w Twoim temacie).
+Poniżej przedstawiono kod i dowód odpowiedzi:
+```python
+# Funkcja obliczająca sumę liczb od 1 do 10. Zadanie wyraża, że to słownik na temat roboczy dla programistów Pythonista i jego praca nadsrodkowa związana with (range(start=...))
+def execute():  # Funkcja oblicza sumy liczb. Zadanie czeka na podejścia do wniosku, że to słownik dla Pythonista i jego praca związana with (sum(range()))
+    total = sum(range(101))  # Zadanie oblicza liczy od -> range() odebrane wartosci pojemnika startowych do nazwanego stopnia. Oto przypadek słowniku, ponieważ zapytania czasowe dla takich funkcji mogą być również wymagane
+    return f"Sum of numbers from 1 to {total} is: {sum(range(101))}" # Zadanie odpisuje na zapytania czasowe. Przyjrze się, jak dlatego wywołano f-string i pracować moglibym doświadczeniem kodera Pythona
+```  # Zamknięto znak nowego linii. Ostateczny opis tego, co jest robione w ramach powyższego przykładu: funkcja oblicza sumę liczb od 1 do n (wysoki poziom), która zostanie sformatowana na podstawie taktycznego wpisywania, a f-string jest praca dla Pythonista odbierających.

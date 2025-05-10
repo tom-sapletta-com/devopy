@@ -1,0 +1,29 @@
+**Kod Python - Obliczanie sumy liczb od 1 do 100**
+
+Ten kod Python wykonuje prostą operację matematyczną, czyli oblicza sumę wszystkich liczb od 1 do 100. Kod ten jest napisany w języku Python i składa się z jednego funkcjonalnego bloku kodu, który zwany jest `execute`.
+
+**Funkcja `execute`**
+
+Funkcja `execute` jest definowana za pomocą słowa kluczowego `def`, następnie pojawia się lista instrukcji. Funkcja ta wykonuje dwa kroki:
+
+1. **Obliczanie sumy liczb od 1 do 100**: Wykorzystując funkcję `sum` i `range`, kod oblicza sumę wszystkich liczb od 1 do 100.
+	* `range(1, 101)` generuje lista liczb naturalnych od 1 do 100 (włączając 100).
+	* `sum` przyjmuje tą listę jako argument i zwraca sumę wszystkich liczb w tej liście.
+2. **Zwrócenie wyniku**: Funkcja `execute` zwraca wynik obliczeń w formacie stringa, korzystając ze słowa kluczowego `f-string`. Wynikiem jest napis: "Suma liczb od 1 do 100 wynosi: [wynik]", gdzie `[wynik]` to rzeczywisty wynik obliczeń.
+
+**Działanie kodu**
+
+Kod Python działa w następujący sposób:
+
+1. Gdy kod jest wykonywany, funkcja `execute` jest uruchomiona.
+2. Funkcja `execute` wykonuje obliczenia sumy liczb od 1 do 100, korzystając z funkcji `sum` i `range`.
+3. Wynik obliczeń jest przekazywany jako argument do konstruktorów stringa `f-string`, tworząc wynikowy napis.
+4. Wynik jest zwrócony przez funkcję `execute`.
+
+**Problemy rozwiązywane**
+
+Kod ten rozwiązuje prostą problemę obliczania sumy liczb od 1 do 100, co może być potrzebne w różnych kontekstach, np. w programowaniu matematycznym lub wykresowaniu danych.
+
+**Dlaczego to jest ważne**
+
+Kod ten pokazuje jak łatwo i skutecznie obliczyć sumę liczb od 1 do 100, co może być potrzebne w różnych sytuacjach. To pokazuje także jak korzystać z różnych funkcji Pythona, takich jak `sum` i `range`, aby wykonać prostą operację matematyczną.

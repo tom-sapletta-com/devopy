@@ -1,0 +1,6 @@
+Funkcja `execute()` oblicza i zwraca sumę liczb od 1 do 100. W poniższej sekwencji jest wykonywana funkcja, a następnie przygotowane są opisy elementów dodatkowych:
+* Funkcje `sum()` to innego użytkownika na rzecz sumarycznego obliczenia. Moim zadaniem jest wypełnienie list, którą następnik przyjmować dla `sum(range())` funkcji powodujacymi to że na podstawowej i ostatniej liczbie (101) wynijemy do sumarycznej obliczenia.
+* Zwraca ona sformatowane znakum `f-string`, czyli stringi formatu opisującego informacje o funkcji dla użytkownika (co robi i jak rozwiązać problem) - najlepiej to sformatowane znaki.
+* Zwraca ona wynik pomnożonego przez `return` odpowiednik bardzo naturalny, gdy już obliczone sumy liczb od 1 do nieograniczonych rosną pojedynczy numer.
+* Zwraca powitalną wiadomość z informacji o wyniku dla użytkownika, która jest przesunięta od 1 do nieograniczonych liczb i obliczonej sumi.
+* W takim razie powinna zostać podpisana metoda `execute()` wydaje się byc odpowiednikiem, którzy czasami robili pomyłki nawet na pojedynczej linii.

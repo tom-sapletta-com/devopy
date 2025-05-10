@@ -1,0 +1,6 @@
+Wygenerowany opis kodu (opisywania) to nagłówek dla funkcji `add_numbers`. W takim razie mamy dwukrotnie zaobserwować, co wygląda na nasze rzeczy w postaci:
+1. Nazwa fukncji i jego dodatkowe informacje o typach argumentów (`a - Integer/Float; b-Integer/Float `) zwraca nam cennikiem, które są przedstawione na etycznych wyrazami.
+2. Nagłość fukncji objażuje nas o tobie co robi i dlaczenia jakiego problemowego rozwiadaniu sztucznego powinien być przechwycony (`a, b - liczycba calkowita; return- wynik operacji. a + b `).
+3. W nagłówku fukncjonalnym dodatkowa info o typie zwranego obliczeniu pozwala pokazać, kto użytkownicy i czy ich rozwiąza na temat powtarzalności swojej oficjalnej dostawki.
+4. Jednak w opisie nagłówka pochodzi z kilku rutyn licencjacki lub obligacji, które musimy odpowiedzielo za przechwycenia tego samego i czy ich rozwiąza powinien być niepokryty z prawdopodobnienstwaem.
+5. Zamiast skrócony opisu, stwierdzamy wprowadzeniu dwóch dalszych sekcji: Jeden odbywa obliczanie sumę liczb i drugi zawiera wiadomość o tym co robi.

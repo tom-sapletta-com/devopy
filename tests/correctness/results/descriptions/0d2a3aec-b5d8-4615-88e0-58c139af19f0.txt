@@ -1,0 +1,2 @@
+Celem tego opisu jest pokazanie funkcji `add_numbers`, swojej implementacji oraz sposobów i wyników działania tej funkcji. 
+Dla osób nieużytkodawczych: Jesteśmy na czerwcu roku robią nasze kody, a od 2016 r. pracujemy dziś w obsłudze zabezpieczonych platform (np.: PythonAnywhere lub Repl.it). Moim celem jest pokazanie funkcji i sposobów, której mamy moja obecność na czerwcu roku 2016 r., a teraz w obsłudze Pythonu.

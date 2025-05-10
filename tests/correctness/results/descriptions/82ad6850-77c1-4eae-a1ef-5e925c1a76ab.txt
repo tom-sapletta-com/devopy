@@ -1,0 +1,1 @@
+Wyjaśnienie kodu powinno pochodzić z dokładnego opisy funkcji i jego działania. Poniżej przedstawiono sześciokrotna wersję, gdzie punkty koncepcyczne (np "funkcja filtrowująca parzyste liczby") zamieniłem na bardzo angielski.

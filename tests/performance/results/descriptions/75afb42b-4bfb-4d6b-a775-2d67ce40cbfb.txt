@@ -1,0 +1,37 @@
+I'd be happy to help you understand this Python code.
+
+**What the code does**
+
+This code defines a function called `execute` that takes no input parameters. When executed, it performs two main tasks:
+
+1. It searches for vowels (specifically, the letters "a", "e", "i", "o", and "u") in a given text.
+2. It returns a string that summarizes the results of the search.
+
+**How the code works**
+
+Let's break down the code step by step:
+
+1. `import re`: The code imports a module called `re`, which stands for "regular expressions". Regular expressions are a powerful way to search and manipulate text patterns.
+2. `text = "Python jest wspaniały"`: This line sets a variable `text` to a string containing the phrase "Python jest wspaniały" (which means "Python is wonderful" in Polish).
+3. `vowels = re.findall(r'[aeiou]', text.lower())`: This line uses the regular expression module to search for vowels in the `text`. The `re.findall()` function returns all non-overlapping matches of a pattern in a string.
+	* `r'[aeiou]'` is the regular expression pattern. It looks for any occurrence of the letters "a", "e", "i", "o", or "u".
+	* `text.lower()` converts the original text to lowercase, so that the search is case-insensitive (i.e., it will find both uppercase and lowercase vowels).
+4. `return f"Samogłoski w tekście '{text}': {', '.join(vowels)}"`: This line returns a string that summarizes the results of the search.
+	* The format string `f"` allows us to create a formatted string using variables.
+	* `Samogłoski w tekście` is a Polish phrase that means "Vowels in text".
+	* `{text}` inserts the original text into the string.
+	* `{', '.join(vowels)}` joins the list of vowels found in the text, separated by commas and spaces.
+
+**What problems does this code solve?**
+
+This code solves the problem of extracting all vowel occurrences from a given text. This can be useful for tasks such as:
+
+* Analyzing the frequency of certain letters or sounds in a text.
+* Preprocessing text data for machine learning models.
+* Generating summaries or reports based on text content.
+
+**How does this code work?**
+
+The code works by using regular expressions to search for vowels in the text. The `re.findall()` function returns all matches of the pattern, which are then joined into a single string and returned as the result. The use of the `f"` string format allows us to create a human-readable summary of the results.
+
+I hope this explanation helps you understand what this code does!

@@ -1,0 +1,8 @@
+W tym miejscu możemy opisywać nasze funkcje `add_numbers`, dlaczego jest on wielkością literarza i niemniej problematyczny. Tak większoobecno zgłaszamy ostrzeszenie po tym kodowaniu Pythonu: 
+```python
+def add_numbers(a, b):   # definicja funkcji (przyjmuje dwa parametry) a i b. Zwraca ono wynik operacji + obliczany przez takie argumenty do których zostaję podawane
+     """Dodaje dwie liczby i zwraca wynik."""  # opis funkcji (opisywamy jego działanie) - przyjmuje cztery argumenty a, b. Zwraca on obliczone rozwiązanie
+     return a + b   # zwracam wynik operacji sumujeczei (+), podanych dwoch parametrow do których służy tak jako argument, lub "return" ustawia odpowiednio
+```    
+Kod powyżej zdefiniowano funkcją `add_numbers`. Jest ona potrzebna do dodania dwóch liczb i wynik jest następnie zwracany bez użycia punktu końcowego (return a + b) - to co przykazano tu. 
+Nasza funkcja `add_numbers` równie dobry jest, gdy chodzi o działanie matematyczne związane z wprowadzeniem i obsłużeniem bardzo szekspanowego problematykom programisty. Jednak niniejszy kod Python jest po prostu przeszedlany do roku matematycznego, obliczającym sumaryty dla dwóch liczb calkowitych wejściowych.

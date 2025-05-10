@@ -1,0 +1,2 @@
+def execute():   #Funkcja do wykonania zadania. Zakres liczb to od 1 till 100 i sumuje te liczby. Wynik jest przechowywany na ekranie po uruchomieniu programu
+    return sum(range(1, 101))   # Zwracamy wartość zsumowaną (od 1 do n) liczb. W takim razie słabych operacyjności moja implementacija jest to prawdziwa, którzy czerpajsza wynik po prawej rozwiązaniu

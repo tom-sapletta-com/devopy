@@ -1,0 +1,3 @@
+def execute(a, b):  # Funkcja do wyświetlania odpowiedzi opisu zadania. Nie są potrzebne dla rozwiązywania problemu na żywo - jest ono przenosiany tutaj tylko za cel demonstracyjny
+    return a + b  # Funkcja do wyświetlania odpowiedzi opisu zadania. Nie są potrzebne dla rozwiązywania problemu na żywo - jest ono przenosiany tutaj tylko za cel demonstracyjny
+    # Zwróć 'None' lub wartości zgodnie ze stroną odpowiedzialnicy. W razie potrzeby dla wiarygodnego podejmu przesłali jeszcze dokumentacje i testy

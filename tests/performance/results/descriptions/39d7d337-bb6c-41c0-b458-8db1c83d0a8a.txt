@@ -1,0 +1,5 @@
+Ten program implementuje funkcję, która znajduje słowa podane w treści tekstu, na których mamy liczbę samogłoski (wybranych jako pierwsze litery) i umieszczony ich według przedziałów.
+- `import re`: Ta linijka importujemy moduł zawierający funkcje wyszukujące regularne podmienniki (regular expressions). Moduł ten umożliwi nam szybko obserwowanie i próbowanie rozpoznaniwania równych dla tabeli znaków.
+- `text = "Python jest wspaniały"`: Ta linijka inicjuje nasze wejściowe źródło tekstu, do którego będziemy się dopasować.
+- `vowels = re.findall(r'[aeiou]', text.lower())`: Ta linijka wyszuka słowa zawierające samogłoski (wybranych jako pierwsze litery) oraz konwertuje tekst na małe litery, aby uniknęć błędów rozpoznawczonych przy porównaniu. 
+- `return f"Samogłoski w tekście '{text}': {', '.join(vowels)}"`: Ta linijka zwraca informację, ile samogłosków (i tak dalej) szczególnienia spodoba się w nim.

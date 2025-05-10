@@ -1,0 +1,3 @@
+W tym miejscu znajduje się opisy wszystkich funkcji i cechy głównościowe dla modułu datetime. Mamy pewne sformułowanie na temat pochodzenia tych informacji, którymi odnosimy się w tym miejscu - ogromna liczba czerwonców oblicza dla daty i godziny.
+
+W funkcji execute zostało zaimportowane moduł datetime, a następnie zmienne są inicjalizowane do bieżęcego czasu w formacie 'Y-M-D H:M:S'. Tutaj jestem przechwycony o strftime – format opisujący, co ma zostać wypisywane.

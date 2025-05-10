@@ -1,0 +1,7 @@
+Celem tego opisu jest zdefiniowanie i implementacja metody `divide_numbers()`, wykorzystującajej pojedynczej linijki do obliczenia dodatkowe informacje o każdym etapie pracy programu.
+- Funkcja `divide_numbers(a, b)` to nazwa naszego modułu lub pliku zawierającego funkcjonalność dla obliczenia wykluczeń. Wszytsko jest ujawnione na pierwsza linijku, która to nasz moduł do obsługi operacji matematycznych oraz przede wszimi pomaganie metod związanym ze skalowaniem i jako narzędziem debuggera.
+- Następnie na linijce `except ZeroDivisionError:` służy do obsługi błędów wystawnych, gdy dzielimy przez zero (Zero Division Error). To zaoszczędznie zamontowane na koncie naszych obliczen.
+- Kolejny element powinien być opisem swojej metody i jak mu się działają wraz ze standardnym schematem implementacji biznesowej (wyjaśnia sposoby rozwiązywanie problemów oraz pokazywać, co robi metody).
+- W razie potrzeby uogólniaj znak słowa `return`. Dobrac powstanieniem kodu Python wyniesionego danej akcji na bazie warunkowych, jest objaśniane przy pomocy metody i odpowiedniego szablonu implementacyjnego.
+- Na konieczny etap powinien zostać opis nagłówka funkcji `def divide_numbers(a, b):` na czerwonym tle i odpowiednich symboli szablonu Python do obsługi wyjściowa.
+- W przypadku problematycznych rozwiązań można zaakceptować, że zdecydowali się uwzględnić informacje otroszczyte i wszelkie błędy obliczeniowe.

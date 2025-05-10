@@ -1,0 +1,3 @@
+Wygenerowany opis dla tego kodu w języku Python to funkcja, która zwraca obecną datę i godzinę. Zmienna 'now' bazujemy na aktualnej date i czasie dnia lub urodzeniu osoby (nie jest to wystarczający, ponieważ niedopratyczalnych potrzeb), aby zwrócić obecną datę oraz godzinę.
+Funkcja `strftime('%Y-%m-%d  %H:%M:%S')` używa standardu formatowania czasu do przechowywania obecnego daty i godziny w postaci dnia, miesiąca, roku oraz godziny. W zadaniu jest stosowana data '%Y-%m-%d  %H:%M:%S', która reprezentuje obecną datę w formacie RFC3339 i dla godzin, minut oraz sekund.
+Wywołanie funkcji `execute()` uruchamia tę aktualizowaną logikę - zwraca obecną datę w formacie 'Rok-Miesiąc-Dzien_rok  Godzina:Minuta:Sekunda'.

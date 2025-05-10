@@ -1,0 +1,4 @@
+## Opis kodu Python
+Ten skrypt jest implementacją metody przechwytywania samogłosek w tekście. Poniżej znajduje się opisy również dzialania i rozwiązywanie tych problemów:
+### Opis Metody Przechwytywania Samogłosek w Tekscie 
+Metoda ta służy do przechwytywania samogłosek (a tak jako "sahi") znajdujących się na ciągach tekstowych. Wynikiem działania metody ta są nazwane `vowels` i pochodne do funkcji, która oblicza samogłoski w podanym zbiorze tekstu (wyślijajac ich na liście), jak również opisująca i działać metoda.

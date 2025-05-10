@@ -1,0 +1,7 @@
+Funkcja `filter_even_number` jest definiowana w Pythonie. Ta funkcja przyjmuje listę liczb (numbers) i zwraca nową liść, taki sam jak inputu, ale filtrujących poza tych tej samej dokładnie ostatni elementów. 
+Jest to oparta na wzorzec listy comprehension `[expression for item in iterable]` czyli poniżej jest definicja zastosowana przez nasza funkcja: dla każdego elementu (num) wewnętrznego do bieżącej pozycji w tablicy(item), sprawdzamy czy to liczba parzysta, a jeśli jest, zwraca go na liście ostatecznym.
+Wszelak problem rozwiązałoby by nastawić wartości do list swojego iterablem (liczy od 0 a czasem jest to tylko dla liczebności tablicy), mimo że powinien zostać uwzględiony wskaźnik na poprawnie definiowanego typu iterable (np. list, tuple lub array).
+Wszelkim problemom rozwiązywaniu byłaby sprawdzana czy liczebność wejściowa jest większa od 0 i przede wszystkim równa się zero to zwracany będzie pusty list.
+W obliczeniu tego kodu należy skupić się na odpowiednich warunkach i posługujemy sie praktycznych wzorców programowania, czyli swojej listownik zadań. 
+Jeśli liczebność wejściowa jest równa zero to sprawdzonego elementu nie ma tego do wyboru (na konferencji lub na dysku, ale bym go przypominałem). 
+Czyli powinien uwierzytelniać się czołgowe sprawdzanie dla liczebności listy do odczytania i w zależnosti od tych informacji nastawiamo równa swojemu iterablem, aby sprzedawać go jako nowego wektor.

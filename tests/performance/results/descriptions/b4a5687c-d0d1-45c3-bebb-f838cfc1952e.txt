@@ -1,0 +1,10 @@
+Ten plik Python zawiera dwie funkcje, `execute()` i działa jako interfejs do obliczeniwania aktualnej daty oraz godziny.  Wszyscy użytkownicy mogą wywołać tej funkcji, zgodnie z definicją jego głównym:
+```python
+def execute():...
+    ...     import datetime          # Importuje biblioteki do obsługi dat i czasu. 
+                                        # Tworzy obiekt 'now' w którym zapamiętanemy aktualną date, godzinę oraz dni.    datetime moduł ma funkcje do obsluge dat i czasow 
+                                        # na podstawie formatach (strftime).   %Y - rok liczone w formacie YYYY ,%m- miesiące z numerem, %d- dni tygodnia numerowane od 0 i tak samo jako day.
+    ...     now = datetime.datetime.now() # Uzyskuje obecną datę oraz godzinę .   "Now" to zmienna do przechowywania tej informacji, biora on jeden wpis teraz i wraca na stan powrotny.
+    ...     return f"Aktualna data i czas:  {now.strftime('%Y-%m-%d %H:%M:%S')} " # Zwraca aktualną datę, godzinę oraz czasowiczny formatu RRRR - rok ,MM - miesiąc numerowany od 0 i tak samo jako month .%d- dni w formacie numarycznym znumerewane. %H: Modyfikujemy godzinne na format HH, czyli kiedy mamy trwanie dobrymi 
+    ...     # i tak samo jako hour in Python (24).%M - minute liczone w formacie numerycznym. %S Modyfikuje sekundę na format numerowany od0, a teraz znumerewane 
+```    Jeden problem to poprawna implementacja modułu datetime do obslugi dat i godzin sformatujemy jako 'strftime'. Wersje różne mogą być w formie rocznika, tygodniowego itd. Aby dostać to samopoczuciwych użytkownikom moja implementacja jest podstawiona na standardze ISO 8601 rano i data będzie zwracała się w formularzu RRRR-MMM-DDTHH:mm:ss .

@@ -1,0 +1,32 @@
+Here is a detailed explanation of the code:
+
+**What does the code do?**
+
+This Python code defines a function called `execute()` that takes a text string as input and returns the vowels (vocalic sounds) present in the text. The output is a string that lists all the vowels found in the original text, separated by commas.
+
+**How does it work?**
+
+The code uses two main components:
+
+1. **Regular Expressions (regex)**: The `re` module allows us to search for patterns in text using regular expressions. In this case, we're looking for vowel characters (`[aeiou]`) in the input text.
+2. **String manipulation**: We convert the input text to lowercase using the `lower()` method and then use the `findall()` function from the `re` module to find all occurrences of vowels in the text.
+
+Here's a step-by-step breakdown:
+
+1. The `execute()` function is defined, which imports the `re` module.
+2. A sample text string `"Python jest wspaniały"` is defined as the input text.
+3. We use the `findall()` function from `re` to search for all occurrences of vowels (`[aeiou]`) in the input text, converted to lowercase using the `lower()` method.
+4. The resulting list of vowels is then joined together into a single string, separated by commas, using the `join()` method.
+
+**What are the main functions doing?**
+
+The two main functions used in this code are:
+
+1. **`re.findall(pattern, text)`**: Searches for all occurrences of the given pattern (`[aeiou]`) in the input text and returns a list of matches.
+2. **`str.lower()`**: Converts a string to lowercase.
+
+**What problems does the code solve?**
+
+This code solves the problem of extracting vowels from a given text string, which is useful in various applications such as natural language processing, text analysis, or even educational purposes (e.g., teaching students about vowel sounds).
+
+In summary, this code provides a simple and efficient way to extract vowels from a text string using regular expressions, making it a great tool for anyone working with text data!

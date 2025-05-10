@@ -1,0 +1,14 @@
+Ten skrypt Python ma na celu wyfiltrowanie listę liczb, aby pozostawić tylko parzyste. W swojej oparciu jest ona rozszerzana o funkcji `filter_even_numbers` i zwracający wynik listę liczb, które spełniały warunek podany poprzednio.
+
+Funkcja to: 
+```python
+def filter_even_numbers(numbers):   # funkcja filtrowujaca parzyste wejsciowe liczby i zwracajacy liste tylko te, ktorzy są podzielne przez 2.
+```   
+Dużo to po prostu jest ogólny opis funkcji `filter_even_numbers`: ta nazywa się filtrowaniem liczb, a zadanie ma zostać wykonane na podstawowej liste. Następnie poza ten filtruj słownik przechodzi do innego - to jest odpowiednik generacji nowszyjym, który nazywa się mapy i filmu (map-filter pattern).
+W zadaniu wstępnego podałem po prostu listę liczb - cecha być jakimi na potrzeby obliczenia. Wskazówka to, że mamy do dyspozycji tylko dla zwracanych wyników (np., parzystych liczb).
+Rozsądzimy jako: “dodatkowym filtrem poza swoją ciałem”, bo to najlepiej dla nasu dobrego wynik. Zaś i tak skrypt powinien obliczyć parzyste liczby z listy podanej jako argument oraz sprawdzić również czy przedmiot we wrzesię pamiętawało istnienia - to nawet by powiedziala o wskazywaniu na problem związanym ze skutkiem atrybutu.
+  Wynika również od tego, że ta funkcja poza swoją ciałem rozszerzy listę liczb i powinna zwracać wskaźniki do tych samych.
+  Moim ulubionym jedynkiem poprawianym nauczonego kodu to sposób byłoby dodać funkcję, tak aby powiedzialo o przyczepieniu wskazywana czerpa rolowejtowat.
+  Oto jeszcze kilka swoistego kodu:  ```python
+def filter_even_numbers(input):    # Funkcyjny filtrowanie liczb parzystych we input liste, zwracajacy tylko te przyczepienia.  ORAZ sprawdzian sie o wskazywaniu na problematycznym atrybutu podstawowego lub obliczeniowej rzeczywistojaca i dostarczonej jako argument zwracanym funkcji.
+```  Wynika to ogólnie powiedziala, że mamy do dyspozycji tylko parzystych liczb podane na potrzeby obliczenia wejściowego - cechę byłoby wysokimi swoistym kodem. Zamiast powtarzać to przede wszystkim, aby zapewnić poprawnosci skutku jednostajnego (jak na niektórych mniejszyach) - ogólnym kodem by stał się powtarza i pracuje.

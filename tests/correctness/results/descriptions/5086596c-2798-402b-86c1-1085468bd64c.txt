@@ -1,0 +1,10 @@
+Celem tej implementacji jest filtrowanie listy cyfr zwraca tylko liczby parzyste. W Python składa się ona za pośrednictwem wstawiania, filtrowania i przechodzeniem do następnego elementu tablicy jak pokazano powyżej:
+ 1. Definiujesz funkcje `filter_even_numbers(numbers)` która zakończona będzie się odbywało na podstawie argumentu, w tym przyjmuje tablicę liczb naturalnych (np: [10, 23456789]).
+ - Utwórz nowy listikt zwracanym będziemy obejrwać to wyniki `return`. Nie jest on czas przechodzi do następnego elementu tablicy, lecz tylko doda się tutaj nowe liczby poza range 0-9 (np: [10])
+ - W pętli for uruchomisz szybki sprawdzanie czy jest parzysta. Zwraca listy, a następnie dodaj do jej wynik zgłoszenia tylko liczby potrzebnym na tej operacji (np: num % 2 == 0).
+ - Gdy po próbce sprawdzaniu czy Liczba jest parzysta, nie dodawany do listy wyniku. Jeśli liczba była równoległna z zero lub inaczej (np: num % 2 != 0), then added to the returned result -> Dopisywamy tylko te Liczby ktore sa parami i chcemy wyciągnęcie liczy.
+   Zatem gdy próbujesz uruchomić ten sam skrypt, można połowa to co dla mniejszej listy: 10376589 i zobaczysz że ta lista jest tylko liczy parami.
+   (Masz wizorycznych uwagi na próbki sformułowane dla mniejszej listy, która po prostu obejrwać będzie byśmy cofaniu liczy parami: [10376589])
+  - Poniżej wszystkim jest praca na najbardzo podstawowym etapie, który to sformułujemy teraz. Przechodzeniem będziemy odliczać liczy po 10 i obserwować czy znak jest parami (np: "par"), co sprawdzi się w ostatniej linii kodu, gdybyśmy szukało lini na następnym obrazie.
+  - Najpierw musimy znaleźć liczy poza tablicami i oddaje go do listki wynikowej (np: [10376589]) tak jak sformułujemy tutaj powyżej.
+  - Poniżej przeprowadzeniem sprawdzanie, podsumowamy co znaczy i komentarze dodatkowe do skrypta w razie potrzeby pojawią się następne linijki.

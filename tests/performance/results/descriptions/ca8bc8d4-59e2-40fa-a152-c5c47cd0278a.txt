@@ -1,0 +1,33 @@
+**Kod Python: Wykonaj teraz**
+
+W tym kodzie, zdefiniowano funkcję `execute`, która wykonuje pewne zadanie. Funkcja ta ładuje moduł `datetime` (daty i czasy) i korzysta z niego do wygenerowania aktualnej daty i czasu.
+
+**Główne funkcje:**
+
+1. `execute()`: Główna funkcja, która wykonuje zadanie.
+2. `import datetime`: Ładuj moduł `datetime`, który umożliwia korzystanie z jego funkcji.
+3. `now = datetime.datetime.now()`: Korzysta ze współczesnej daty i czasu, wygenerowanej przez moduł `datetime`.
+
+**Działanie:**
+
+Kod wykonuje następujące zadania:
+
+1. Ładuj moduł `datetime`, aby móc korzystać z jego funkcji.
+2. Wygeneruj aktualną datę i czas, używając metody `now()` modułu `datetime`.
+3. Zwróć wynik w formacie stringa, który wygląda na: "Aktualna data i czas: YYYY-MM-DD HH:MM:SS", gdzie:
+	* `YYYY` - rok
+	* `MM` - miesiąc
+	* `DD` - dzień
+	* `HH` - godzina
+	* `MM` - minuta
+	* `SS` - sekunda
+
+**Problemy rozwiązane:**
+
+Ten kod rozwiązuje problem dotyczący wygenerowania aktualnej daty i czasu. Można go użyć w różnych aplikacjach, np. jako część systemu logowania, czy jako sposób weryfikacji daty i czasu.
+
+**Jak działa:**
+
+Kod działa poprzez ładunek modułu `datetime`, a następnie korzystanie z jego metody `now()` do wygenerowania aktualnej daty i czasu. Wynik jest następnie zwrotowany w formacie stringa, co pozwala na łatwe wykorzystanie go w różnych kontekstach.
+
+W sumie, ten kod jest prostym, ale przydatnym rozwiązaniem do wygenerowania aktualnej daty i czasu.

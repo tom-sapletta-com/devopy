@@ -1,0 +1,1 @@
+Funkcja `execute` to najwyższy poziom, a swoje działanie jest obliczeniem sumy liczb od 1 do 100 za pomocą funkcji Pythonowej. Wynikiem tej operacji zostaje wypisywany opisujący taktowane komunikat o sumie liczb oraz jeżeli to jest potrzebne, moimi uogólniać przedstawiam.

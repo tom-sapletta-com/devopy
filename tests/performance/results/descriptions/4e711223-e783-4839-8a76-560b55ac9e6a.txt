@@ -1,0 +1,7 @@
+Tutaj zamontujemy opisywanie podanego Python-kodu. W tym przykładzie napisanym jest funkcja `execute()`, dla której oblicza ona sumę liczb od 1 do 100 i zwraca odpowiedni opis sume:
+```python
+def execute():                       # Rozpoczynamy definicje funkcji. W tym miejscu jest blok kodu Python dla tej funkcji (na powierzchni). 
+                                # Definiowanie zmiennej 'total' i atrybutem nazwiska metody, wybiera oną odpowiednią liczbę. Wartość to sumaryczna od 1 do 100
+     total = sum(range(1, 101))   # Funkcja 'sum' oblicza sume elementów iteratora range() zwracających liczby całkowite od ile (wartość maksymalna) do następnego parametru. 
+     return f"Sum of numbers from {1} to {100}, inclusive, is: {total}" # Zwraca opis sume liczb zakresu od (i inclusively upto ) odpowiednim numerki i dodatkowo wyświetla sumę.
+```  Wyjaśniaczy to: Tutaj załóżmy, że chcesz przejść po zakresie liczb od 1 do 100 i obliczyć wszelkich następnych numerikami tych liczb. Wynikiem tego operacji jest całkiem suma tej przebiegłej liczby - czasami tożsamowa z ilorazie, gdzie 100 był bardzo wysokim limit (musi on pochodzić od namotywnego problematyki jako rozmiar wektora) i odpowiednik tożsamym z cena obliczeniowa.

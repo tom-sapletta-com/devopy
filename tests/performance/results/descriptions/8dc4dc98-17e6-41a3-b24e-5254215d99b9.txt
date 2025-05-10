@@ -1,0 +1,8 @@
+Dane zadanie polega na wygenerowaniu aktualnej daty i godziny obecnego. Tworzeniem jest użycie biblioteki `datetime`, szybkich metod manipulacji danymi oraz formatującego tekstu za pomocą współrzędnych daty i czasowej.
+
+Poniżej znajduje się szybki opis kodu:
+- Funkcja `execute()` - to nie jest odpowiednik wielobarwnego, ponieważ ten skrypt był obliczany do uruchomienia pojedynczo. Jedyne czynięto tutaj stworzeniem funkcji `execute()` - nie jest on zastosowany w kodzie produktu, ale można go potraktować tak samo dla innych celów.
+- Wiersze powyżej i poniżej są dokumentacjami dotyczącymi funckji wywołanej przez `execute()`, które zostały niepisane dla środowiska reagenta.
+- Następnije powinien się pokazać pojedynczy blok wielubarwny: Zamieszczamy import `datetime`, tworzymy obiekt typu Datetime o nazwie now i zaktualizujemy go na aktualne dane.
+- Następnie użytkownik ma wypisać tekst „Aktualna data i godzina: {now}”, czyli podaj nam obecną datę (przedział od `%Y` do akturowanych dni) oraz zegar.
+- Za każdym razem powinien się pokazać wygenerowane opisy, ponieważ jest to niepisana części funkcji `execute()` do ostatecznego obliczenia.

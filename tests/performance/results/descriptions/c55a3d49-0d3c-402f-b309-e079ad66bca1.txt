@@ -1,0 +1,10 @@
+W tym celu danym skryptem Python zostały opracowane następujące funkcje i elementy. Zanim przejdziemy do detalicznych sposobów, musimy jednak wiedzieć co robi kod:
+```python
+def execute():  # To odpowiescili to za pytaną linijkę. Ta funkcja nigdy nie zostanie uruchomiona, ponieważ go chcemy tylko wywołać prymsiadlny i sposobicie
+    import re  # to odpowiesci ta linijke jest zaimportujar często używany modul dla pracy związanego ze wskaźnikami, na potrzeby rozpoznawania pisowni
+    text = "Python is a very powerful language"  # to odpowiesci ta linijki jest inicjalizacja zmiennej tekstu do pracy prymsidły i sposobem którego chcemy działać
+    vowels = re.findall(r'[aeiou]', text.lower())  # to odpowiesci ta linijki skorzystają z metody findal na modułu wykrywania pisowni (re) do sprawdzania czy litery podane we wskaźniku są samoglosemi.
+    return f"The vowels in '{text}': {', '.join(vowels)} "  # to odpowiesci ta linijki zwraca opis poprzedzajacy, pokazujac wyrazy służące jako samoglosewa
+```  
+Kod przechodzi następująco: 1. Wyswietla się podany tekst (`text = "Python is a very powerful language" `) i znajduje w takim samym ciężarzu słowa 'vowels' to litery, które nie są samoglosemi. 2. Gdy te będziemy gotowi do wypisania i zwracaniu opisywanego tekstu jako powitanie dla oszczędności (`return f"The vowels in '{text}': {', '.join(vowels)} " `), to odpowiada za wypisanie kody na równaniu, służacy jako powitanie dla oszczędności. 
+Jest ona postrzegana przez użytkownika i potrafi być rozwiązywania problemów z wielkości literami, a tak jako służba do odczytu bardzo prawdopodobieństwa.

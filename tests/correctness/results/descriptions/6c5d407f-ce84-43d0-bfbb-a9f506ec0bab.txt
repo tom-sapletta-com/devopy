@@ -1,0 +1,9 @@
+Celem tego programu jest podstawieniem dokumentacji funkcjonalnej wygenerowanego za pomocą narzędzia Sphinx. Jednakże, mimo to moja odpowała być na pytanie po kolei:
+## Opis zadania – Wymagane w Python Developer Expert Programme ##  
+Naszą rolę jest najpierw przygotowanie dokumentacji funkcjonalnej potrzebna na kodu Pythona. Następnie, zgłoszeniem możemy wprowadzić szczegółowe informace o tym jak dalej się rozszerzyć nasza dokumentacja i przechwycić głupcy.
+## Dokumentujmy kod ##  
+Za pomocą narzędzia Sphinx, możemy zamontować szczegółowe informace o tym jak dalej się rozszerzyć nasza dokumentacja i przechwycić głupcy. W każdej chwili możemy podstawić swoje wnioski, a zatem nie dajmy sobie radosnych problemów dotyczących poprawnego odpisywania tych pytań.
+## Wprowadzamy głowe przykłady ##  
+Dla pomocników, na wspaniałym zawsze poinformujmy sobie co robiący kod i jak to działać bardzo szeroko. W tego maksimum możemy przedstawić prostszy sposób, ale w oparciu o dokumentację zespołu Python Developer Expert Programme – to jest najpierw potrzeba.
+## Zamieszczamy informujemy kompromisy ##  
+Wszelkie pytania powinny być odpowiednimi i pozytywnym, a w oparciu o zgodę mogliśmy przedstawić następujące kompromisy: Pychamy się na sprawdzanie mojego rozwiązania i pokażemy swoje znane dla programistów, w takim celu dokumentacja jest rygelna.

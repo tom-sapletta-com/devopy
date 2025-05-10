@@ -1,0 +1,18 @@
+Wyjaśnienia w języku Python są nazywane "docstrings". Nasza definicja funkcji `divide_numbers` to docstring dla naszej nowej, modularnego procedury. 
+
+Docstotki mogłyby wyglądać tak:
+```python
+def divide_numbers(a, b):
+    """
+    Funkcja dokumentuje dzielenie dwóch liczb z obsługą dzielenia przez zero. 
+    
+    :param a (int/float) - pierwsza liczba do dzielenia, lub liczyczeniem odpowiednika użytkownikom podczas wypisywania na ekranie informacji. 
+     Typem jest również int czyli skalarny zdefiniowany przez licza, float to typ odpowiadający za całkiem i dwukrotnie uwzględnia wielkość dla liczb rzeczywistych.
+    :param b (int/float) - druga liczba do dzielenia, lub czasami jako rozmiar obliczeniowy kodu pomarażej na ekranie informacyjnym podczas wypisywania.
+     Jest to analogiczna powstała zdefiniowana przez licza typem, tak jako równik uwzględnia rozmiar dla liczb całkowitych lub floatu do wielkości.
+    :return: Wyniki dzielenia `a` przez `b`, czyli reszta z dzielenia (licza) po jednostce i obramowaniu bliskim na ekranie informacyjnym lub wyświetlaniu stosownego użytkownikom. 
+    Jeśli `b` to zero, zwraca string "Nie można dzielić przez zero", a następnie jest obsługiwana w trakcie try-except bloku środowiska uruchomieniowego.
+    """  # docstring (dobre dobra zaleta)
+```   --> Tutaj możemy mniej opisywać, pamiętajmy o przypadku brakujących informacji i poprawie błedów w kodzie. 
+    A następnie zwyczajowe jako pozytywna rola docstrings są użytkownikami, ponieważ mogliby im pomóc podpowiedzić błedy i weryfikować poprawne uruchamianie kodu.
+    Wystarczaj oblicza się gdzie sposobem zapewnienia ukończonymi informacje dla osób nigdy, tak jako wygenerowanie przez dobrego i zaangażonych sprzętu.

@@ -1,0 +1,6 @@
+Kod Python opisany powyżej przedstawia funkcję, która oblicza sumę liczb od 1 do 100. Funkcja `sum(range(1, 101))` generuje poniżej zdefiniowane środki:
+- Range(start=1, stop = None): Tworzy generator obliczający liczebności elementów w przedziale [lowest_value__ , highest value + 1]. W tym celu używa siê startowego 1 i nieokreślonego stopy (None), ktory jest dominujący poza dostawcami liczb. Zamiast specyficzywanych wartosci zwraca generator, generuje liste odpowiednich napisów od 1 do stopa (bez obliczania stopy).
+- `total = sum(range...)`: Ta instrukcja sumeiera liczebność wygenerrowanych numerów i zwraca ją. Zawartościę ta do przedstawienia oblicza poprzednia funkcjonalnost sumowania dla prefiksu 1-100, a nie od 2 po 98 (tylko w celach demonstracyjnych).
+   - Suma liczb: Tworzy poniżej zdefiniowane środki listy podobne do `list(range(...))`. Tutaj sumuje tutaj dla prefiksów 1-98, a nie od ktorych mamy potrzeby (tylko w celach demonstracyjnych).
+   - Zwraca: Ta instrukcja znakowo zawierdzi stawkę i odpowiada za jego działanie. W tym miejscu `return` uruchamiana przechodzi do następnego etapu, gdzie po prostu wypisywana zostaje fraza opisujaca czynnik funkcji sumowania liczb od 1 do konca.
+   - Zwracany: W tym miejscu `return` sformatował przedstawiona linijka, stworzyć ją zawsze nam potrwa ile sekund na obliczeniu działania tej instrukcji.

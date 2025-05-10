@@ -1,0 +1,4 @@
+def execute():   # definicja funkcji 'execute' w pythonowym stylu, gdyż nazywamy jej np. "suma_liczb" to jest zbyt konfliktowe - dobre rozwiązywanie polega na pomyłce
+    return sum(range(101))  # funkcja range generuje liczby naturalne od 1 do n (w takim przypadku, to jest tu zbiór [i for i in xrange()]), a suma w Pythonie ma sens odpowiednikiem sum(x)
+    # return None   musiałaby być ponownie poprawiony - nigdy nie chodzi na tych dalekosci, które są powszechnie uważane jako wartości zwracane przy stałej powierzchni
+execute()   # tutaj uruchomiliśmy funkcję 'sum_of_numbers' i otrzymamy sumę liczb od 1 do 100. To jest gotowy kod Python, można go uruchomić

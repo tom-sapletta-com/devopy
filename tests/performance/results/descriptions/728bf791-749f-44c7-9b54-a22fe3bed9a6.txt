@@ -1,0 +1,11 @@
+Tutaj jest opis użytkownika skrypty Pythonowego, działa on następująco. W zadanym szablonie robią one to co w przykładzie:
+```python
+def execute():  # Zaczynamy definicję funkcji, która ma odczytywać aktualną datę i godzinę.
+    import datetime  	# Wymagane do obsługi biblioteki zainstalowana w module `datetime` dla Pythonu 3 by pomóc obliczać data, czas oraz formatować go jako stringa - opisywany sześcioktnowym.
+    now = datetime.datetime.now()   # Zwraca aktualną datę i godzinę w formacie ISO 8601 (np.: '2023-04-15 19:47:48') dla bieranej platformy.
+    return f"Aktualna data i czas: {now.strftime('%Y-%m-%d %H:%M:%S')}"   # Zwraca datę w formacie 'rok-miesiąc-dzień hour_minute minute second'.
+``` 
+Jeśli uruchomimy ten skrypt, powinien zostać wypisywany nastawionym komunikatem na ekranzie informacyjnym. Wynika to po co-powiedzialnej definicji funkcji:
+```python
+print(execute())  # Wywołuje przedstawione w szablonie kodu, a następnie zwraca opublikowany na ekran. Wypisywane jest ono do standardnego wejścia systemu.
+```  Sześciokrotnowym miarkiem wyglada tak: "Aktualna data i czas (numer roku), godzina, minuta oraz sekunda."   Zamiast liczyć zegar oblicza aktualnych dat na rzecz użytkowników.

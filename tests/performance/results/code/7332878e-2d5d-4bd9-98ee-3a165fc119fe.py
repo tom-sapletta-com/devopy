@@ -1,0 +1,5 @@
+import datetime  # import necessary module for handling dates and times.
+def execute():   # define function with name "execute" to fulfill the requirement of your task.
+    now = datetime.datetime.now()     # get current date and time using built-in python method 'datetime' from library package, which gets details like year, month etc only not a complete detailed string such as full human readable format data ect..  It can be customized for required output by the user or system
+    print("Current Date & Time is : ",now.strftime("%Y-%m-%d %H:%M:%S"))   #print current date and time in a specific string格式 (customizable) to fulfill requirement of task 2, i.e., displaying the exact details about today's data & times
+execute()    #calling function "execute" as per your requirements for executing above mentioned python code segment which prints out present day’s date and time in a user friendly format at runtime by calling it inside main program or script..  This is how you run this Python file on the command line. In case of running, if no errors appear then we can be confident that our function "execute" works as expected for your requirement

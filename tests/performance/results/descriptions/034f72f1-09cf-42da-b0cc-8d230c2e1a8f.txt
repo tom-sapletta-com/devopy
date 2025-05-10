@@ -1,0 +1,29 @@
+Here is a detailed explanation of the given Python code:
+
+**What does the code do?**
+
+The code defines a function called `execute()` that analyzes a given text to extract and print out all the vowels (vocal sounds) present in the text. The text itself is hardcoded as "Python jest wspaniały" but it can be easily modified or replaced with any other text.
+
+**How does it work?**
+
+The code uses two main components:
+
+1. **Regular Expressions (regex)**: The `re` module, which stands for "regular expressions", is used to search and extract the vowels from the given text.
+2. **String manipulation**: The code uses string methods like `.lower()` to convert the text to lowercase and `.join()` to combine the extracted vowels into a single output string.
+
+Here's a step-by-step breakdown:
+
+* The `execute()` function is called, which imports the `re` module (regular expressions) at the beginning.
+* The text "Python jest wspaniały" is assigned to the variable `text`.
+* The `re.findall()` method is used with a regular expression pattern (`r'[aeiou]'`) to search for all occurrences of vowels (a, e, i, o, u) in the given text. The `.lower()` method converts the text to lowercase before searching, so that the search is case-insensitive.
+* The `re.findall()` method returns a list of matched vowels, which are then returned as a string using the `f-string` formatting (`return f"..."`) and joined with commas (`, `) using the `.join()` method.
+
+**What problems does it solve?**
+
+This code solves the problem of extracting specific patterns (vowels in this case) from text data. It can be useful in various applications, such as:
+
+* Text analysis: Analyzing texts to extract relevant information, like sentiment analysis or topic modeling.
+* Data preprocessing: Preprocessing text data for machine learning models by removing stop words or extracting specific features.
+* Natural Language Processing (NLP): NLP is a field that deals with the interaction between computers and natural language. This code can be used as a building block in more complex NLP applications.
+
+Overall, this code demonstrates a fundamental concept in programming: using regular expressions to extract specific patterns from text data.

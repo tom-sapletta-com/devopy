@@ -1,0 +1,14 @@
+Ten kod pochodzi od definicji funkcji `execute`, często wywoływana zarówno przez użytkownika jak i systemowi. W tym miejscu można rdzeń pomyłek lub inne ograniczenia, ale najwyraźniejsza wersja kodu będzie zawsze obniżona do jednego samogłosku.
+ 
+Większo ważna równoważność to, że pojawia się `vowels` listy szukane znaki (samogłoski), które występują we wczytanej frazie tekstu. W takim razie, pamiętaj o regule dobrych pisania i nawigacji po listach zwraca słowa "a", na które sprawdzone są wszytkie samogłoski (bez reszty), a także rozwiązać to problem. 
+  
+Oto jednymi najważniejsze funkcjonalności kodu:
+- `import re` - ta linijka zainstaluje moduł Pythonowy biblioteki do wyszukiwania ciągów w tekście (regex). 
+  
+- 're.findall' to funkcja, która dla wewnetrznego znaku szuka tego samego przy użyciu regularnych表达式 w parametrze podanym do niej (`[aeiou]+`). Wynik oblicza listę odpytowan dopasowanych elementów. 
+  
+- 'text.lower()' to metoda, która zamienia wszystkie litery ostateczny tekst na małe (aby nie ryzykać sobie przepełnianiu samogłoski). 
+  
+- `return f"Samoglosekwiwte w teskcie '{text}': {', '.join(vowels)}"}` to odpisywanie kodu na ekran, po czym są listy samogłoski. Wynikiem jest opis zwróconego łańcuchem (polecam), w takim razie nalezy rozerwienić i ujrza na odpisywaniu kodu, ponieważ czasami problemy są bardzo obniżone do jednego samogłosku.
+  
+Mimo innego powody pochodzenia takiego zadania (nawigacja wypowiedzi), uwagi równoważności są nalepane na każdej nowej sprawie. Jestem odpisywaniem, że jedna liczba popularyizuję i pomagają w rozerwianiu programowania oraz eksperymentami z Pythonu na temat obliczeń statystycznych.

@@ -1,0 +1,3 @@
+Ten Python skrypt wykonywać jest zadaniem obliczania aktualnej daty i czasu. Po uruchomieniu funkcji `execute`, program generuję nowa linijke tekstowa na ekranie informacyjnym o moment aczego sie zdarzyłe (w formacie: rok-miesiąc-dzień  godzina:minuta:sekunda).
+
+W dalszej fazy opisu kodu, skrypt wyglada następująco. W tym miejscu funguje moduł datetime i oblicza aktualną datę lub czas siebie zapomniać (tzn., bierze o nowej dacie/godzinach).

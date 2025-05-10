@@ -1,0 +1,6 @@
+Ten Python skrypt oblicza i zwraca ciągły opis sumi liczb od 1 do 100. Oto gdzie moja dlaśnina, a tak wiem jaki powinien być ten kod przechowalny:
+```python
+def summarize_numbers():   # Definiowanie funkcji 'summarize' zwraca opis. 
+    total = sum(range(1, 101))     # Zaimportujemy range i dołączamy jeden (na mianownik), tak by odliczyć liczby naturalne pomiędzy nimi - w przypadku naśladu sum(range()) zwróci 101-1, a range() to generator stworzonego ciągu.
+    return f"Suma liczb od {min_num} do {max_num} (inclusive) wynosi: {total}"     # Zmodyfikujemy tak aby móc przyjrzeć i nie powtarzać ten samo kod dla różnych zakresów.
+```  Kilka słów, gdy wskazuje to zaimportowanie modułi 'range' oraz definiowanej funkcji i przesyłany do następnego kroku - oto co robimy.

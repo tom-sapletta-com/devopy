@@ -1,0 +1,1 @@
+Kod ten wykonywać się automatycznie i generować bieżącą datę, godzinę oraz czasownik. Data zwrócona jest opisem sformatowanym na stronie HTML w formacie 'rok-miesiąc-dzień  godzina:minuta:sekunda'.

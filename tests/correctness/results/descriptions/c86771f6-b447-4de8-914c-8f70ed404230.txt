@@ -1,0 +1,1 @@
+Wygenerowany opis zawiera podstawowe informacje o wprowadzeniu funkcji, obejrtywaniej metody `divide_numbers` i jego działaniu. Następnie przechodzi do detali programu uruchomionego kodowania ogólnego pozytywna wniosku, a następnie opisano problemy i rozwiązań zwracanymi dla funkcji `divide_numbers`.

@@ -1,0 +1,5 @@
+Wyjaśnienie głównego funkcji `filter_even_numbers(numbers)` w Pythonowym programie zbędzi się do dyscypliny, ponieważ pozwala na filtrowanie listy liczb parzystych. Funkcja ta obejmuje jednak czytanie parametru `numbers` i zwraca odpowiednią wartość, która będzie potrzebna do dalszego programowania.
+
+Najważniejsza linijka tutaj to jeden podstawiony obliczeniany metody zakodzonej w Pythonu: `return [num for num in numbers if num % 2 == 0]`, która reprezentuje listę tworzoną przez iterujemy po liście liczb i sprawdzamy czy na nim dzieli się bity. Jeżeli wynik jest równy 0 to zignifikuje, że numeral (liczba) mamy parność a dokładniej po prostu sprobowaliśmy co nie dodatkowo czy licza ta byla przechowywana w `numbers`. 
+
+Rozwiązanie to zabawa: Zakójamy, że nasza funkcja jest podobna do filtrowania list (np., [x for x in numbers if condition]), a tylko w swojej formie pracujemy na liście liczb. Jednak zdecydowaliśmy o nazwę `filter_even_numbers(numbers)`, ponieważ funkcja powinna filtrować tylko parzyste wartości (liczy od 0 licba mamy kolejnosc).

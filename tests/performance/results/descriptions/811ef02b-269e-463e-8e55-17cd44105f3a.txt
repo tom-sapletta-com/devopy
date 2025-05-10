@@ -1,0 +1,16 @@
+Ogólny opis działania programu to znajomość języka Python. Rozwiąza nasze pytanie o wygenerowaniu tego samego, gdyby nam się dać imieni kodów JavaScripta lub JavaScript'u:
+```python
+def execute():  # Definiowanie funkcji do pracy z tekstem. W Python stosujemy 'f-string', co to oznacza "formularzowane string". Oto odpowiedni opis kodu:
+    import re   # Zaimportować moduł, obsługiwa rzeczywistości swojej biblioteki matematycznej. Moze to być np 're' dla znaków w regularnych wyrażeniach
+    text = "Python jest wspaniały" # Zmienna do pracy, powinno pozostać taki samo i musi mieć ten sam tekst. Moze to być np 'text' dla inputu użytkownika
+    vowels = re.findall(r'[aeiou]', text.lower()) # Znajdz wszystko słowa zawierające samogłoski (np: p, y, t) i przerój na male litery
+    return f"Samogłoski w tekście '{text}': {', '.join(vowels)}." # Zwraca szczegóły znalezionych samogłosek, pominięte spacjami i ukoślinione
+``` 
+Wynik jest wypisywany przez `print(execute())`. W Pythonie możemy również uruchomić tego samego programu, aby zobaczyć rezultat na ekranie: 
+```python
+def execute():   # Zaimportować moduł 're', co to oznacza "regular expressions", czyli wtyczne biblioteki dla swojego matematyka. Moze byc np.'findall' do znakow regularnych
+    text = input("Wpisz tekst: ")  # Odczytaj i przerój na male litery, aby nie powtarzać sie dla wielkości liter. Moze to byc 'text' jako wejsciowe uzytkownik
+    vowels = re.findall(r'[aeiou]', text.lower()) # Znajdz słowa zawierające samoglnoseki (np: p, y ,t) i przerój na male litery 
+    return f"Samoglosc w tekście '{text}': {', '.join(vowels)}." # Zwraca szczegoły znalezone samogleoseki, pomijane spacje i ukojasnione 
+print (execute())   # Wypisuje wynik na ekranie. Moze byc 'return f'Samoglosc...{vowels}'.' po prostu do tylu zmian powyżej, nalezy tylko dopisać odpowiednią linijki i uruchomić jednym razem
+```  Pamiętaj środowisko wprowadzonego na swoje pytanie. Wszelkich problemów związanych ze swoimi dorobcami powinien następnie być rozpoznawany i odpisywanego, a mimo to wybierając rygoryczne przykłady zgodnie z kwestiami.

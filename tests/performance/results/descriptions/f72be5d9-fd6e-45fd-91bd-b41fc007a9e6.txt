@@ -1,0 +1,32 @@
+Here's a detailed explanation of the given Python code:
+
+**What the code does**
+
+The provided code defines a function called `execute()` that takes no input and returns a string. When executed, it analyzes a given text to identify and extract all vowels (a, e, i, o, u) from it.
+
+**How the code works**
+
+Let's break down the code step by step:
+
+1. The first line, `import re`, imports the regular expression module (`re`) in Python. This module provides support for regular expressions, which are a powerful way to search and manipulate text.
+2. The next line, `text = "Python jest wspaniały"`, sets the input text that we want to analyze.
+3. The third line, `vowels = re.findall(r'[aeiou]', text.lower())`, uses regular expressions to find all vowels (a, e, i, o, u) in the given text. Here's what happens:
+	* `re.findall()` is a function that searches for all occurrences of a pattern in a given text.
+	* The pattern `r'[aeiou]'` matches any single character that is either 'a', 'e', 'i', 'o', or 'u' (the vowels).
+	* `text.lower()` converts the input text to lowercase, so we can match both uppercase and lowercase vowels. This is done to ensure that our search is case-insensitive.
+4. The final line, `return f"Samogłoski w tekście '{text}': {', '.join(vowels)}"`, returns a string that summarizes the results of the vowel extraction. Here's what happens:
+	* `f-string` (the `f` before the quote) is used to create a formatted string.
+	* The first part, `"Samogłoski w tekście '{text}': "`, provides a descriptive phrase for the extracted vowels.
+	* The second part, `{', '.join(vowels)}` , joins the extracted vowels with commas and spaces, creating a comma-separated list of all found vowels.
+
+**What problems does the code solve?**
+
+The code solves the problem of extracting specific characters (vowels in this case) from a given text. This is useful in various scenarios, such as:
+
+* Text analysis: Identifying patterns or features in large texts.
+* Natural Language Processing (NLP): Extracting relevant information from unstructured text data.
+* Data preprocessing: Cleaning and preparing text data for further processing.
+
+**How does the code work?**
+
+The code works by using regular expressions to search for specific patterns (in this case, vowels) within a given text. The `re` module provides powerful pattern-matching capabilities, making it easy to extract relevant information from text data.

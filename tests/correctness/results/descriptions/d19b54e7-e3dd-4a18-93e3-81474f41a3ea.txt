@@ -1,0 +1,14 @@
+Wygenerowany opis kodu to funkcja `add_numbers`, do której przekazywano dwa parametry. Zdefiniowana jest tylko po prostu definicja i nie ma żadnych innejkci programistycznego w Pythoniu np.:
+```python
+# add_numbers(a, b) to funkcji zwracającej sumę liczb a oraz b.  # Zdefiniowana jest tylko po prostu definicja i nie ma żadnych innejkci programistycznego w Pythoniu
+```
+Dla parametrów `a`, przyjmuje sie liczba calkowita. Dostępna jest również zmienna lokalna nazywania się a (argument). Wartość tej zmiennej podstawiana byłaby wynikem dodawania `a` i b. Funkcja pomija przekazanie inicjatywu lub niewyperektowanych argumentów, a jeśli chcesz robić to zrobięm tak:
+```python
+# add_numbers(x) – powinien otrzymać wartości x i rzuć błąd. W przypadku podstawiania nieistotnych argumentów sprowadza do zgody na dane brakujące
+``` 
+Sposoby rozwiązywania problematyczne: Jednym sposobem jest wtedy, gdy użytkownik chce podać parametry bez przesłanie niewyperektowanych argumentów.
+```python 
+def add_numbers(x):   # powinien otrzymać a jako wynik, gdy użytkownicy chcą podać liczby do dodania bez przesłanie niewyperektowanych argumentów.
+    return x + 0  # Zastosować bilety sprowadzone byly wystarczy jeśli użytkownicy chcą podać liczby, którym nie ma żadnej inicjatywy.
+```  
+Wynik:  Zwraca sumę dodatnich parametrów (`x + a) ` zgodnie ze wskazaniem na przykładowe argumentu i powrotna jest liczba całkowita, która reprezentuje sume tych dwóch dodatnich parametrów.

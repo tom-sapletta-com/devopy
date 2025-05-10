@@ -1,0 +1,25 @@
+Here's a detailed explanation of the code:
+
+**What does the code do?**
+
+The code defines a single function called `execute` that returns the current date and time in a specific format. When you run this code, it will output something like "Aktualna data i czas: 2023-03-17 14:30:00" (which translates to "Current date and time: 2023-03-17 14:30:00").
+
+**How does the code work?**
+
+Let's break down what happens when you run this code:
+
+1. `import datetime`: This line imports the `datetime` module, which provides classes for working with dates and times in Python.
+2. `now = datetime.datetime.now()`: This line creates a new `datetime` object representing the current date and time using the `now()` method from the `datetime` class. Think of it like taking a snapshot of the clock!
+3. `return f"Aktualna data i czas: {now.strftime('%Y-%m-%d %H:%M:%S')}": This line returns a formatted string containing the current date and time. Here's what's happening:
+	* The `f` before the string is called an "f-string" (a new way of formatting strings in Python). It allows you to embed expressions inside a string, which will be replaced with their values when evaluated.
+	* `{now.strftime('%Y-%m-%d %H:%M:%S')}` is the expression being embedded. `strftime()` is a method that formats a `datetime` object into a string using a specific format string (in this case, `%Y-%m-%d %H:%M:%S`, which stands for "year-month-day hour:minute:second").
+
+**What problem does the code solve?**
+
+The code solves the problem of getting the current date and time in a human-readable format. This can be useful in various situations, such as:
+
+* Logging events that need to include a timestamp
+* Displaying the current time in a user interface (e.g., a web page or desktop app)
+* Creating reports or logs that require accurate timestamps
+
+Overall, this code provides a simple and efficient way to obtain the current date and time in Python.

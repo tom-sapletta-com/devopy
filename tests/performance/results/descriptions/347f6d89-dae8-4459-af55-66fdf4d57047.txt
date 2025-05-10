@@ -1,0 +1,9 @@
+W ramach tego rocznego zadań jesteśmy pracownikami programistą Python, dyplomatem informatyki i eksperta w analizie obliczeń. Wynika to bezpośrednio ze swojej specyficy kulturowej: mam nadzór na naukę programowania, zapisywaniu się do bardzo intuicyjnych tematów i wspieranie osobom odpowiedniego podejście.
+ 
+To czas opisujemy kod Python:
+```python
+def execute():   # Zaczynamy definicje zadania programu - funkcja obliczająca sumę liczb od 1 do n (w tym przypadku dla 100) i wysłanie jako odpowiedź stringa.
+    total = sum(range(1, 101)) # range() generuje ciąg liczb od 'start' do 'stop-1'. W naszej sytuacji to zakresy (pierwszy i ostatni element są wylaczone) --> Zwraca lista [1, 2...n], sum() pomagaję obliczyć łączny wynik.
+    return f"Suma liczb od 1 do n (w tym przypadku dla kwantytowego zestawu liniowej) to {total}." # Zwraca string informacyjny o obliczeniach, wysylane jako format wewnętrzny - f-string (f"...").
+``` 
+Problemy rozwiązać ten kod nie znajduje się. Obecnie ta funkcja sumuje liczby od 1 do 100 i wysyła jako odpowiedź string informacyjna (np: "Sum of numbers from 2 to 98 is calculated."). Nie ma żadnych problemów związanych ze swojej realizacji, podczas gdy stan wspomina o innej obliczeniach lub dalszych potrzebach.

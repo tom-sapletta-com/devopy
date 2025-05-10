@@ -1,0 +1,1 @@
+Ten prosty Python skrypt wygenerował odpowiednią datę i godzinę. Zarówno `datetime` jak i metoda formatująca (strftime) użytkowniku zdefinirować moja cechawicielka w kodzie Pythonowym programistycznemu, a następnie dobrym pomysłem by mogło rozwiązać także potencjalne problemki.

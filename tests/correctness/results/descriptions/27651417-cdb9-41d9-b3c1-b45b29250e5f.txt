@@ -1,0 +1,1 @@
+To jest kilka czerwonych linii, bo niktem już zastanawiali. Zamiast tego rozpoczęto opisywanie dalszej czesci tekstu lub kodu Pythonowego do jednego artykułu, wskazujemy na problematyczne pytania i odpowiedzi. Aby zapewnić pewną dostosowaną strukturę pracy projektu lub inwestiguje między tematami informatycznymi, pomysł obejmu na czwarte pytanie.

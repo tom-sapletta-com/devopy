@@ -1,0 +1,8 @@
+Ten przykład Pythonowy generujemy jest zbiór metodyczny w programowaniu. Metoda `filter_even_numbers`, opisywana pseudokodowo na następujacy sposób (rozszerzone do długiego formularza), pojedynczy swoje zadaniem - filtruje liste liczb.
+W takim przypadku, podczas obliczenia `filter_even_numbers` wykonywane jest na następujacych częściach: 
+1. Załóżmy mamy zbiór liczb naturalnych, którymi służy `numbers` (to samo oznacza nasze wejsciowe listy).
+2. Ponieważ chcemy pozostawić tylko parzyste liczby naturalne, musimy doprowadzić się do niego przy pomocci warunku logicznego `if num % 2 == 0` (sama w sobie jest uwagi).
+3. Dodatkowo chcemy podać powtarzalne informacje, która zawiera listę liczb i tylko tych elementów dla których warunek `num % 2 == 0` jest prawdziwe (to sama uwagi).
+4. W celu obliczenia powyższych naleńamy do list comprehension, często wystepujących we współrzędnym programowaniu Python i jest on swojego rodzaju zastosować na naszej przeszukiwanie po liście.
+5. Powyższy kod generujemy liste tylko liczb, dla których warunek `num % 2 == 0` jest prawdziwy (które to są parzyste). Wynik zawiera się w liście wejsciowym.
+6. Zwracanymi danymi obserwujemy listę tylko liczb, których modulo 2 to równa sie 0 (tzn., są ons parami). W przykładzie tenu wspomnianym doświadczeniu programistycznego naucza się, jak filtrować liste liczb.

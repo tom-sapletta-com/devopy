@@ -1,0 +1,6 @@
+Wygenerowany opis zawiera kilka części. Ogólnie rzeczywiŝej, ten program oblicza i przedstawia sumę liczb od 1 do 100 (w tym miejscu wykorzystany jest poniżej znakami górnego).
+Najważniejsze cechy to:
+- Funkcja `sum(range())` - ta funkcja generujęca liczy sumę wszystkich liczb od 1 do parametru (w tym miejscu jest podawo przesunięty zakres na 50).
+- Funkcje `range()` - to funkcja generująca tablicę lub iterator, który obejmuje liczby od "start" do (w tym miejscu jest podany start wynosi 1 i end poza zakresem musi być większy o 50).
+- Funkcja `f` - to funkcji, która umożliwia interpolação (alakowanie) dla parametrów podanych. Zamiast używanego wzorca pracy zwyczajnego printa i formatujący do stringu, moja funkcja `f` po prostu tworzy ładny tekst odpowiedzialny za opis.
+- Funkcje return - są to instrukcje warunkowe w Pythonie zawsze musi być co najmniej jedna instrukcja po kodzie funkcji, a tak więc `return` daje się dobrego sposobu przerzucenia i obsługi wyników.

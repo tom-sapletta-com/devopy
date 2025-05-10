@@ -1,0 +1,7 @@
+Kod powyżej jest prostym programem Python używanym do dodawania dwóch liczb. Jego zadaniem było wypisywanie sumi tych liczb, czyli "opisu" każdego naszej funkcji i jaką prelekacja rozwiązałe się.
+
+Opisanego przedmiotowego: 
+- `def add_numbers(a, b):` - Roiwijamy definicje naszej funkcji o nazwie 'add_number' i dla dwóch parametrów. W Pythonu tych jest oznaczony przez symbole szerokości (:).
+- `return a + b` - Zdefiniowana funkcja zwraca wynik operacji arytmetycznej 'dodawania' liczb podanych jako parametry. W takim przykladzie, jeśli wejdziemy do `add_numbers(3, 4)` i po wywołaniu funkcji zwróci będziemo mieli otrzymanie liczb 'a' na liście powyżej jest równa do `7 (5 + 3).
+- Znaczenie kodu: 2 przekształcami linii zakodowanych są wypisywane nastawieniem. Wszystko, co robimy to jest sprawdzone i umieszczone na dole tych samej liście powyżej każdego rzędu znakowego (#).
+- Kod Python nazywa się "skryptem" w jargonu programowania obliczeniowego. Zamiast pisaniem kodu, mamy taki sposób go uruchamiania i rozwiązywanie problemów z oparciem na danych wejściowych (np: liczbach naturalnych).

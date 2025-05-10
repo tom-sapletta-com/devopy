@@ -1,0 +1,5 @@
+Funkcja `divide_numbers` jest zdefiniowana do obliczenia ilorazu dwóch liczb. Dwie liczby są dostępne w postaci argumentów funkcji i przechowywane wewnętrznie na nazwy `a` oraz `b`, zgodnie ze specyfikacją. 
+
+Ze względu na problematyczne środowisko Pythonu (słownikiem jako klucze) i ograniczeniach standardowego biblioteki matematycznej, nie ma możliwości dzielenia przez zero. Wtedy występuje `ZeroDivisionError` exception oraz jest trafionym do obsługi takich sytuacji i zwrócona wiadomość o której nie mogliśmy czerpać informacji.
+ 
+Pozorny uwagę na wysokity poziom słownika jest łatwy - Python, a tak zawodowo obniża przychód dla programistów i korzystanycywni podczas pisania niektórych skryptów. W ramach tej dyskusji wyjaśniam, że tak jest zrobić...

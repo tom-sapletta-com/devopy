@@ -1,0 +1,28 @@
+Here's a detailed explanation of the provided Python code:
+
+**What does the code do?**
+
+The code defines a function called `divide_numbers` that takes two arguments, `a` and `b`, which are expected to be numbers. The function divides the first number (`a`) by the second number (`b`) and returns the result.
+
+However, before performing the division, the code checks if the second number (`b`) is zero. If it is, the code raises a `ZeroDivisionError` exception, indicating that division by zero is not possible.
+
+**How does the code work?**
+
+The code uses a `try-except` block to handle the potential error of dividing by zero. Here's what happens:
+
+1. The function is called with two arguments, `a` and `b`.
+2. The code attempts to perform the division using the expression `a / b`. This is the "try" part of the `try-except` block.
+3. If the division is successful (i.e., `b` is not zero), the function returns the result of the division.
+4. If the division fails because `b` is zero, the code catches the `ZeroDivisionError` exception raised by the division operation.
+5. Instead of propagating the error further up the call stack, the code handles the exception by returning a custom error message: `"Nie można dzielić przez zero"` (which translates to "Cannot divide by zero").
+
+**What problems does the code solve?**
+
+The code solves two main problems:
+
+1. **Error handling**: By using a `try-except` block, the code ensures that it can handle the specific error of dividing by zero. This prevents the program from crashing or producing unexpected results.
+2. **Input validation**: The code checks if the input values are valid (i.e., not zero) before performing the division. This helps prevent errors and ensures that the function behaves predictably.
+
+**In simple terms**
+
+The `divide_numbers` function is designed to divide two numbers, but it's smart enough to handle the special case of dividing by zero. It returns a helpful error message instead of crashing or producing unexpected results.

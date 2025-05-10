@@ -1,0 +1,28 @@
+Here's a detailed description of the Python code:
+
+**What the code does**
+
+This code defines a function called `execute()` that takes no input and returns a string. When you run this function, it will analyze a given text and extract all the vowels (A, E, I, O, U) from it. The resulting list of vowels is then returned as a string.
+
+**How the code works**
+
+Let's break down what happens when we call the `execute()` function:
+
+1. **Importing the `re` module**: The first line inside the `execute()` function imports the `re` (regular expressions) module, which provides functions for searching and manipulating text using patterns.
+2. **Defining the input text**: We set a string variable `text` to the value `"Python jest wspaniały"`, which is the text we want to analyze.
+3. **Converting the text to lowercase**: To make our vowel extraction case-insensitive, we convert the entire `text` to lowercase using the `.lower()` method.
+4. **Using regular expressions to extract vowels**: We use the `re.findall()` function to search for all occurrences of vowels (defined by the pattern `[aeiou]`) in the converted text. The `findall()` function returns a list of all matches.
+5. **Returning the result as a string**: Finally, we return a formatted string that includes the original text and the extracted vowels, separated by commas using the `', '.join(vowels)` expression.
+
+**What problems does the code solve**
+
+This code solves the problem of extracting all the vowels from a given text. This can be useful in various applications, such as:
+
+* Text analysis: Extracting vowels can help with analyzing linguistic patterns or identifying specific features in texts.
+* Data processing: Vowel extraction can aid in data cleaning and preprocessing for natural language processing tasks.
+
+**How does the code work efficiently**
+
+The code uses regular expressions to extract vowels, which is an efficient way to search for patterns in text. The `re.findall()` function returns all matches at once, making it suitable for large texts. Additionally, using a single line of code to convert the text to lowercase and extract vowels makes the code concise and easy to maintain.
+
+Overall, this code demonstrates how Python's regular expressions can be used to extract specific patterns from text, making it a useful tool for text analysis and processing tasks.

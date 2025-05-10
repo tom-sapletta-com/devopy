@@ -1,0 +1,3 @@
+Funkcja `execute` jest obliczana do zwrócenia odpowiedzi po wykonaniu metody. Wynikiem tej funkcji są samogłoski wystepujące we wprowadzonej frazie, która jest przechowywana i zwracanym do programu odbiorcy (`return f"Samoglosekw tekst '{text}' : {', '.join(vowels)}")).
+Dodatkowo funkcja wyszuka samogłoski wewencjowe, które znajdują się na różnych miejscach poza nimi i jako drugie polegać od samego rozpoznanego wyrazu.
+Jeden problem to: Wspominałem, że metoda powinna zwracać tylko podsumowanie samoglosek obecnych we wprowadzonej frazie (dobrze byśmy mieli uważniono odpowiednią nazwę funkcji i rozmiar zwracanych danych), ale czyli podsumowanie wszystkich samoglosek we wprowadzonej frazie.
