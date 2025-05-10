@@ -6,7 +6,34 @@ const state = {
     },
     matrixMode: false,
     expandedPanel: null,
-    menuData: null
+    menuData: null,
+    currentMode: 'development',
+    panelContents: {
+        development: {
+            'media-panel': { title: 'Okno Mediów (Dev)', content: '<ul class="file-list" id="file-list"><li class="active" data-file="main.py">main.py</li></ul>' },
+            'edit-panel': { title: 'Okno Edycji (Dev)', content: '<div class="tab-container"><div class="tab active" data-panel="code-panel">Kod</div><div class="tab" data-panel="command-panel">Polecenia</div></div><div class="panel active" id="code-panel"><textarea id="editor" spellcheck="false"></textarea></div><div class="panel" id="command-panel"><input type="text" id="command-input" placeholder="Wprowadź polecenie bash (np. ls -la)"><button id="run-command-btn">Wykonaj</button></div>' },
+            'preview-panel': { title: 'Okno Podglądu (Dev)', content: '<div id="preview-content">Podgląd zaznaczonych mediów w trybie Development.</div>' },
+            'communication-panel': { title: 'Okno Komunikacji (Dev)', content: '<pre id="output"></pre><div class="controls"><button id="clear-output-btn">Wyczyść wyjście</button></div>' }
+        },
+        testing: {
+            'media-panel': { title: 'Testy Jednostkowe', content: '<div class="test-list"><h4>Testy do uruchomienia</h4><ul id="test-list"><li>test_main.py</li><li>test_utils.py</li></ul><button id="run-tests-btn" class="action-btn">Uruchom testy</button></div>' },
+            'edit-panel': { title: 'Edytor Testów', content: '<div class="tab-container"><div class="tab active" data-panel="test-editor-panel">Edytor testów</div></div><div class="panel active" id="test-editor-panel"><textarea id="test-editor" spellcheck="false">import unittest\n\nclass TestMain(unittest.TestCase):\n    def test_example(self):\n        self.assertTrue(True)\n\nif __name__ == "__main__":\n    unittest.main()\n</textarea></div>' },
+            'preview-panel': { title: 'Pokrycie Kodu', content: '<div id="coverage-report"><h4>Raport pokrycia kodu</h4><div class="coverage-stats"><div>Pokrycie: <span class="coverage-value">87%</span></div><div class="coverage-bar"><div class="coverage-fill" style="width: 87%"></div></div></div><div class="file-coverage"><div class="file-item"><span>main.py</span><span>92%</span></div><div class="file-item"><span>utils.py</span><span>82%</span></div></div></div>' },
+            'communication-panel': { title: 'Wyniki Testów', content: '<pre id="test-output" class="test-results">Uruchom testy, aby zobaczyć wyniki...</pre>' }
+        },
+        monitoring: {
+            'media-panel': { title: 'Zasoby Systemu', content: '<div class="monitoring-panel"><div class="resource-monitor"><h4>Wykorzystanie CPU</h4><div class="gauge"><div class="gauge-fill" style="width: 45%"></div></div><span>45%</span></div><div class="resource-monitor"><h4>Wykorzystanie RAM</h4><div class="gauge"><div class="gauge-fill" style="width: 60%"></div></div><span>60%</span></div><div class="resource-monitor"><h4>Dysk</h4><div class="gauge"><div class="gauge-fill" style="width: 25%"></div></div><span>25%</span></div></div>' },
+            'edit-panel': { title: 'Konfiguracja Monitoringu', content: '<div class="config-editor"><h4>Ustawienia monitoringu</h4><div class="config-form"><div class="form-group"><label>Interwał odświeżania (s)</label><input type="number" value="5" min="1" max="60"></div><div class="form-group"><label>Próg alertu CPU (%)</label><input type="number" value="80" min="1" max="100"></div><div class="form-group"><label>Próg alertu RAM (%)</label><input type="number" value="90" min="1" max="100"></div><button class="save-config-btn">Zapisz ustawienia</button></div></div>' },
+            'preview-panel': { title: 'Logi Systemu', content: '<div class="logs-container"><div class="log-controls"><select class="log-level-filter"><option value="all">Wszystkie poziomy</option><option value="error">Błędy</option><option value="warning">Ostrzeżenia</option><option value="info">Informacje</option></select><button class="refresh-logs-btn">Odśwież</button></div><div class="logs-output"><div class="log-entry error"><span class="timestamp">2023-05-10 18:45:23</span><span class="level">ERROR</span><span class="message">Failed to connect to database</span></div><div class="log-entry warning"><span class="timestamp">2023-05-10 18:44:15</span><span class="level">WARNING</span><span class="message">High memory usage detected</span></div><div class="log-entry info"><span class="timestamp">2023-05-10 18:43:01</span><span class="level">INFO</span><span class="message">Application started successfully</span></div></div></div>' },
+            'communication-panel': { title: 'Powiadomienia', content: '<div class="notifications-panel"><div class="notification error"><div class="notification-header"><span class="notification-title">Błąd połączenia</span><span class="notification-time">18:45</span></div><div class="notification-body">Nie można połączyć się z bazą danych. Sprawdź konfiguracje połączenia.</div></div><div class="notification warning"><div class="notification-header"><span class="notification-title">Wysokie zużycie pamięci</span><span class="notification-time">18:44</span></div><div class="notification-body">Wykryto wysokie zużycie pamięci (90%). Rozważ restart aplikacji.</div></div></div>' }
+        },
+        production: {
+            'media-panel': { title: 'Status Wdrożenia', content: '<div class="deployment-status"><div class="status-item success"><span class="status-label">Serwer produkcyjny</span><span class="status-value">Online</span></div><div class="status-item success"><span class="status-label">Baza danych</span><span class="status-value">Połączona</span></div><div class="status-item warning"><span class="status-label">Cache Redis</span><span class="status-value">Wysoki load</span></div><div class="deployment-info"><div>Wersja: <strong>v1.2.3</strong></div><div>Ostatnie wdrożenie: <strong>10.05.2023 15:30</strong></div></div></div>' },
+            'edit-panel': { title: 'Zarządzanie Wdrożeniem', content: '<div class="deployment-manager"><div class="version-selector"><label>Wybierz wersję do wdrożenia:</label><select><option value="v1.2.4">v1.2.4 (Staging)</option><option value="v1.2.3">v1.2.3 (Produkcja)</option><option value="v1.2.2">v1.2.2</option></select></div><div class="deployment-options"><button class="deploy-btn primary">Wdrożenie</button><button class="deploy-btn rollback">Rollback</button></div><div class="deployment-checklist"><h4>Lista kontrolna wdrożenia</h4><div class="checklist-item"><input type="checkbox" id="check1"><label for="check1">Testy zostały przeprowadzone</label></div><div class="checklist-item"><input type="checkbox" id="check2"><label for="check2">Backup został wykonany</label></div><div class="checklist-item"><input type="checkbox" id="check3"><label for="check3">Dokumentacja została zaktualizowana</label></div></div></div>' },
+            'preview-panel': { title: 'Metryki Produkcyjne', content: '<div class="metrics-panel"><div class="metric-card"><h4>Użytkownicy online</h4><div class="metric-value">1,245</div><div class="metric-trend positive">+12% ↑</div></div><div class="metric-card"><h4>Średni czas odpowiedzi</h4><div class="metric-value">235ms</div><div class="metric-trend negative">+15ms ↓</div></div><div class="metric-card"><h4>Błędy / min</h4><div class="metric-value">0.3</div><div class="metric-trend positive">-0.1 ↑</div></div></div>' },
+            'communication-panel': { title: 'Alerty Produkcyjne', content: '<div class="alerts-panel"><div class="alert-card warning"><div class="alert-header"><span class="alert-title">Wysoki czas odpowiedzi API</span><span class="alert-time">18:30</span></div><div class="alert-body">Endpoint /api/users wykazuje podwyższony czas odpowiedzi (>500ms)</div><div class="alert-actions"><button class="alert-btn">Szczegóły</button><button class="alert-btn">Ignoruj</button></div></div><div class="alert-card info"><div class="alert-header"><span class="alert-title">Zaplanowana konserwacja</span><span class="alert-time">20:00</span></div><div class="alert-body">Zaplanowana konserwacja bazy danych o 22:00</div><div class="alert-actions"><button class="alert-btn">Szczegóły</button></div></div></div>' }
+        }
+    }
 };
 
 // Elementy DOM
@@ -574,6 +601,119 @@ function initializeApp() {
     
     // Load menu data
     loadMenuData();
+    
+    // Initialize isEditing state
+    state.isEditing = false;
+}
+
+// Mode switching functionality
+function switchAppMode(mode) {
+    // Update state
+    state.currentMode = mode;
+    
+    // Update body data attribute for CSS styling
+    document.body.setAttribute('data-mode', mode);
+    
+    // Update panel contents based on the mode
+    updatePanelContentsForMode(mode);
+    
+    // Reset panel sizes when switching modes
+    resetPanels();
+    
+    console.log(`Switched to ${mode} mode`);
+}
+
+function updatePanelContentsForMode(mode) {
+    const modeContents = state.panelContents[mode];
+    if (!modeContents) return;
+    
+    // Update each panel's title and content
+    Object.keys(modeContents).forEach(panelId => {
+        const panel = document.getElementById(panelId);
+        if (!panel) return;
+        
+        const panelData = modeContents[panelId];
+        
+        // Update panel title
+        const headerElement = panel.querySelector('.panel-header h3');
+        if (headerElement && panelData.title) {
+            headerElement.textContent = panelData.title;
+        }
+        
+        // Only update content if we're not in the middle of editing something
+        // This prevents losing user input when switching modes
+        if (!state.isEditing) {
+            const contentElement = panel.querySelector('.panel-content');
+            if (contentElement && panelData.content) {
+                // Store original content if this is the first mode switch
+                if (!panel.dataset.originalContent && mode === 'development') {
+                    panel.dataset.originalContent = contentElement.innerHTML;
+                }
+                
+                // Update content
+                contentElement.innerHTML = panelData.content;
+            }
+        }
+    });
+    
+    // Reinitialize necessary event listeners and elements
+    initializePanelElements();
+}
+
+function initializePanelElements() {
+    // Reinitialize editor if it exists in the current mode
+    const editorElement = document.getElementById('editor');
+    if (editorElement) {
+        editorElement.value = state.files[state.currentFile] || '';
+    }
+    
+    // Reinitialize file list if it exists
+    updateFileList();
+    
+    // Reinitialize tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const panelId = this.dataset.panel;
+            activateTab(this, panelId);
+        });
+    });
+    
+    // Activate first tab in each tab container
+    document.querySelectorAll('.tab-container').forEach(container => {
+        const firstTab = container.querySelector('.tab');
+        if (firstTab) {
+            const panelId = firstTab.dataset.panel;
+            activateTab(firstTab, panelId);
+        }
+    });
+}
+
+function activateTab(tabElement, panelId) {
+    // Deactivate all tabs in the same container
+    const tabContainer = tabElement.closest('.tab-container');
+    if (!tabContainer) return;
+    
+    tabContainer.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Activate the clicked tab
+    tabElement.classList.add('active');
+    
+    // Hide all panels related to this tab container
+    const panelContainer = tabContainer.closest('.panel-content');
+    if (!panelContainer) return;
+    
+    panelContainer.querySelectorAll('.panel').forEach(panel => {
+        panel.classList.remove('active');
+    });
+    
+    // Show the selected panel
+    const targetPanel = document.getElementById(panelId);
+    if (targetPanel) {
+        targetPanel.classList.add('active');
+    }
 }
 
 function setupMatrixLayout() {
@@ -582,6 +722,14 @@ function setupMatrixLayout() {
     
     // Set up matrix mode toggle
     matrixToggleButton.addEventListener('click', toggleMatrixMode);
+    
+    // Set up app mode selector
+    const modeSelector = document.getElementById('app-mode-selector');
+    if (modeSelector) {
+        modeSelector.addEventListener('change', function() {
+            switchAppMode(this.value);
+        });
+    }
     
     // Set up panel headers for expanding/minimizing
     const panelHeaders = document.querySelectorAll('.panel-header');
@@ -612,6 +760,9 @@ function setupMatrixLayout() {
     matrixContainer.style.gridTemplateRows = '50% 50%';
     intersectionPoint.style.left = '50%';
     intersectionPoint.style.top = '50%';
+    
+    // Set initial mode
+    document.body.setAttribute('data-mode', state.currentMode);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
