@@ -94,6 +94,51 @@ class DockerSandbox:
         os.makedirs(self.sandbox_dir, exist_ok=True)
         logger.info(f"Utworzono piaskownicę Docker: {self.sandbox_id} w {self.sandbox_dir}")
 
+    def extract_dependencies(self, code: str) -> List[str]:
+        """
+        Ekstrahuje zależności z kodu Python
+
+        Args:
+            code: Kod Python do analizy
+
+        Returns:
+            List[str]: Lista zależności
+        """
+        try:
+            # Próba wyodrębnienia importów za pomocą AST
+            import ast
+            tree = ast.parse(code)
+            imports = []
+            
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    for name in node.names:
+                        imports.append(name.name.split('.')[0])
+                elif isinstance(node, ast.ImportFrom):
+                    if node.module:
+                        imports.append(node.module.split('.')[0])
+            
+            # Filtruj standardowe moduły Pythona
+            standard_libs = [
+                'abc', 'argparse', 'array', 'ast', 'asyncio', 'base64', 'binascii',
+                'builtins', 'collections', 'concurrent', 'contextlib', 'copy', 'csv',
+                'datetime', 'decimal', 'difflib', 'enum', 'errno', 'fnmatch', 'functools',
+                'gc', 'getopt', 'getpass', 'glob', 'gzip', 'hashlib', 'hmac', 'html',
+                'http', 'importlib', 'inspect', 'io', 'itertools', 'json', 'logging',
+                'math', 'mimetypes', 'multiprocessing', 'operator', 'os', 'pathlib',
+                'pickle', 'platform', 'pprint', 'queue', 're', 'random', 'shutil',
+                'signal', 'socket', 'sqlite3', 'statistics', 'string', 'struct',
+                'subprocess', 'sys', 'tempfile', 'textwrap', 'threading', 'time',
+                'traceback', 'types', 'typing', 'unittest', 'urllib', 'uuid', 'warnings',
+                'weakref', 'xml', 'zipfile', 'zlib'
+            ]
+            
+            # Zwróć tylko zewnętrzne zależności
+            return [imp for imp in imports if imp not in standard_libs]
+        except Exception as e:
+            logger.warning(f"Błąd podczas ekstrahowania zależności: {e}")
+            return []
+    
     def prepare_code(self, code: str, filename: str = "user_code.py") -> Path:
         """
         Przygotowuje kod do wykonania w piaskownicy
@@ -107,7 +152,32 @@ class DockerSandbox:
         """
         # Napraw brakujące zależności w kodzie użytkownika
         code = fix_code_dependencies(code)
+        
+        # Ekstrahuj zależności
+        dependencies = self.extract_dependencies(code)
 
+        # Utwórz plik z zależnościami
+        requirements_file = self.sandbox_dir / "requirements.txt"
+        with open(requirements_file, "w") as f:
+            f.write("\n".join(dependencies))
+        
+        # Utwórz skrypt instalacji zależności
+        install_script = self.sandbox_dir / "install_dependencies.sh"
+        with open(install_script, "w") as f:
+            f.write("""#!/bin/bash
+# Skrypt instalacji zależności
+if [ -s /app/requirements.txt ]; then
+    echo "Instalacja zależności..."
+    pip install --no-cache-dir -r /app/requirements.txt
+    echo "Zależności zainstalowane."
+else
+    echo "Brak zależności do instalacji."
+fi
+""")
+        
+        # Nadaj uprawnienia wykonywania
+        os.chmod(install_script, 0o755)
+        
         code_file = self.sandbox_dir / filename
 
         # Dodaj wrapper do przechwytywania wyjścia i błędów
@@ -264,18 +334,17 @@ print(json.dumps(result))
             # Utwórz kontener Docker
             container_name = f"devopy-sandbox-{self.sandbox_id}"
 
-            # Uruchom kontener
+            # Uruchom kontener z instalacją zależności
             cmd = [
                 "docker", "run",
                 "--name", container_name,
                 "--rm",  # Usuń kontener po zakończeniu
                 "-v", f"{self.sandbox_dir}:/app",
                 "-w", "/app",
-                "--network", "none",  # Brak dostępu do sieci
                 "--memory", "512m",  # Limit pamięci
                 "--cpus", "0.5",  # Limit CPU
                 self.docker_image,
-                "python", "/app/user_code.py"
+                "bash", "-c", "/app/install_dependencies.sh && python /app/user_code.py"
             ]
 
             logger.info(f"Uruchamianie kodu w piaskownicy: {container_name}")
@@ -426,10 +495,10 @@ print(json.dumps(result))
             if expose_port:
                 cmd.extend(["-p", f"{port}:{port}"])
 
-            # Dodaj obraz i komendę
+            # Dodaj obraz i komendę z instalacją zależności
             cmd.extend([
                 self.docker_image,
-                "python", "/app/service.py"
+                "bash", "-c", "/app/install_dependencies.sh && python /app/service.py"
             ])
 
             logger.info(f"Uruchamianie usługi w piaskownicy: {container_name}")

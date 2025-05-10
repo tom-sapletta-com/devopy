@@ -5,6 +5,8 @@ logs
 sandbox_envs
 docker_sandbox_envs
 .venv
+.windsurfrules
+.tox
 data/
 docs/vendor
 performance/results

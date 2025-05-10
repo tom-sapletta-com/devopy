@@ -1,7 +1,7 @@
 # requirements.txt
-# Wymagania dla Ewolucyjnego Asystenta i narzędzi testowych/debugujących
+# Wymagania dla projektu Devopy
 
-# Podstawowe zależności dla asystenta
+# Podstawowe zależności
 httpx>=0.23.0
 readline>=8.1.0; sys_platform == 'darwin'
 pyreadline3>=3.4.1; sys_platform == 'win32'
@@ -9,14 +9,22 @@ pyreadline3>=3.4.1; sys_platform == 'win32'
 # Zależności dla skryptu testującego
 pexpect>=4.8.0
 
-# Zależności dla monitora debugowania
+# Zależności dla monitora zasobów
 psutil>=5.9.0
 docker>=6.0.0
 pyshark>=0.5.3; platform_machine != 'arm64' and platform_machine != 'aarch64'
 
 # Devopy API/CLI core dependencies
-devopy[api]
 flask>=2.2.0
 matplotlib>=3.5.0
 openpyxl>=3.1.0
 requests>=2.28.0
+
+# Zależności dla piaskownicy Docker
+docker>=6.0.0
+
+# Zależności dla konwertera tekstu na kod
+ollama>=0.1.0; python_version >= '3.8'
+
+# Zależności dla analizy kodu
+# ast jest wbudowanym modułem Pythona i nie wymaga instalacji
