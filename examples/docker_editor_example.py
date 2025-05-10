@@ -1,268 +1,479 @@
 #!/usr/bin/env python3
-"""
-Example showing how to use the editor_sandbox decorator for automatic Docker sandbox setup
+"""Example showing how to use the editor_sandbox decorator for automatic Docker sandbox setup
 """
 import os
 import sys
 import json
-from flask import Flask, jsonify, request, render_template_string
-
-# Add project root to path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Import the editor_sandbox decorator
-from devopy.decorators.editor_sandbox import editor_sandbox
-
-# Define required packages
-REQUIRED_PACKAGES = [
-    "flask==2.0.1",
-    "requests==2.28.1"
-]
-
-# Simple HTML template for testing
-HTML_TEMPLATE = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Docker Sandbox Example</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .container {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        .output {
-            background-color: #f5f5f5;
-            padding: 10px;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            font-family: monospace;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        input[type="text"] {
-            padding: 8px;
-            width: 70%;
-            margin-right: 10px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Docker Sandbox Example</h1>
-    
-    <div class="container">
-        <h2>Sandbox Status</h2>
-        <div class="output" id="status">Loading...</div>
-        <button onclick="checkStatus()">Refresh Status</button>
-    </div>
-    
-    <div class="container">
-        <h2>Execute Command</h2>
-        <input type="text" id="command" placeholder="Enter command (e.g., ls -la)">
-        <button onclick="executeCommand()">Execute</button>
-        <div class="output" id="commandOutput"></div>
-    </div>
-    
-    <div class="container">
-        <h2>Python Code Execution</h2>
-        <textarea id="pythonCode" rows="6" style="width: 100%; margin-bottom: 10px;">
-import platform
-import sys
-
-print(f"Python version: {sys.version}")
-print(f"Platform: {platform.platform()}")
-print("Hello from Docker sandbox!")</textarea>
-        <button onclick="executePython()">Run Python</button>
-        <div class="output" id="pythonOutput"></div>
-    </div>
-    
-    <script>
-        // Check sandbox status
-        function checkStatus() {
-            fetch('/api/docker-status')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('status').innerText = JSON.stringify(data, null, 2);
-                })
-                .catch(error => {
-                    document.getElementById('status').innerText = "Error: " + error;
-                });
-        }
-        
-        // Execute command in sandbox
-        function executeCommand() {
-            const command = document.getElementById('command').value;
-            if (!command) return;
-            
-            fetch('/api/docker-execute', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    command: command
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                let output = "";
-                if (data.success) {
-                    output = data.stdout || "Command executed successfully (no output)";
-                } else {
-                    output = "Error: " + (data.stderr || data.error || "Unknown error");
-                }
-                document.getElementById('commandOutput').innerText = output;
-            })
-            .catch(error => {
-                document.getElementById('commandOutput').innerText = "Error: " + error;
-            });
-        }
-        
-        // Execute Python code in sandbox
-        function executePython() {
-            const code = document.getElementById('pythonCode').value;
-            if (!code) return;
-            
-            // Create a temporary Python file
-            fetch('/api/execute-python', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    code: code
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                let output = "";
-                if (data.success) {
-                    output = data.stdout || "Code executed successfully (no output)";
-                    if (data.stderr) {
-                        output += "\n\nStderr:\n" + data.stderr;
-                    }
-                } else {
-                    output = "Error: " + (data.stderr || data.error || "Unknown error");
-                }
-                document.getElementById('pythonOutput').innerText = output;
-            })
-            .catch(error => {
-                document.getElementById('pythonOutput').innerText = "Error: " + error;
-            });
-        }
-        
-        // Initialize
-        window.onload = function() {
-            checkStatus();
-        };
-    </script>
-</body>
-</html>
-"""
+import traceback
+from flask import Flask, request, jsonify, render_template, send_from_directory, url_for
+from devopy.decorators.editor_sandbox import editor_sandbox, EditorDockerSandbox
 
 @editor_sandbox(
     base_image="python:3.12-slim",
-    packages=REQUIRED_PACKAGES,
+    packages=["flask", "requests", "numpy", "pandas", "matplotlib"],
     ports={5001: 5001},
-    volumes={os.path.dirname(os.path.dirname(os.path.abspath(__file__))): "/app"},
-    env_vars={"FLASK_ENV": "development", "FLASK_DEBUG": "1"},
-    auto_start=True
+    volumes={os.path.dirname(os.path.abspath(__file__)): "/app/examples"},
+    env_vars={"PYTHONUNBUFFERED": "1", "FLASK_ENV": "development"}
 )
 def create_app(sandbox=None):
-    """
-    Create a Flask application with Docker sandbox integration
-    """
-    app = Flask(__name__)
+    """Creates a Flask application with Docker sandbox integration"""
+    app = Flask(__name__, 
+                template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates'),
+                static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static'))
     
     @app.route('/')
     def index():
-        return render_template_string(HTML_TEMPLATE)
+        """Main page with the editor interface"""
+        return render_template('editor.html')
     
     @app.route('/api/docker-status')
     def docker_status():
-        """Return the status of the Docker sandbox"""
-        if sandbox:
+        """Endpoint returning Docker sandbox status"""
+        if not sandbox or not sandbox.ready:
             return jsonify({
-                'ready': sandbox.ready,
-                'status': sandbox.status,
-                'id': sandbox.sandbox_id,
-                'container_id': sandbox.container_id,
-                'base_image': sandbox.base_image,
-                'packages': sandbox.packages
+                'ready': False,
+                'error': 'Docker sandbox is not ready'
             })
-        else:
-            return jsonify({'ready': False, 'status': 'not_initialized'})
+        
+        return jsonify({
+            'ready': True,
+            'status': sandbox.status,
+            'container_id': sandbox.container_id,
+            'base_image': sandbox.base_image
+        })
     
     @app.route('/api/docker-execute', methods=['POST'])
     def docker_execute():
-        """Execute a command in the Docker sandbox"""
+        """Endpoint for executing commands in the Docker sandbox"""
         if not sandbox or not sandbox.ready:
-            return jsonify({'error': 'Docker sandbox not ready'}), 400
+            return jsonify({
+                'error': 'Docker sandbox is not ready'
+            })
         
-        data = request.json
-        command = data.get('command')
-        workdir = data.get('workdir', '/app')
-        
-        if not command:
-            return jsonify({'error': 'No command provided'}), 400
-        
-        # Execute command in the container
-        if isinstance(command, str):
-            command = command.split()
-        
-        result = sandbox.execute(command, workdir)
-        return jsonify(result)
+        try:
+            data = request.json
+            command = data.get('command', '')
+            
+            if not command:
+                return jsonify({'error': 'No command provided'})
+            
+            # Split command into arguments list
+            command_args = command.split()
+            
+            # Execute command in container
+            result = sandbox.execute(command_args)
+            
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
     
     @app.route('/api/execute-python', methods=['POST'])
     def execute_python():
-        """Execute Python code in the Docker sandbox"""
+        """Endpoint for executing Python code in the Docker sandbox"""
         if not sandbox or not sandbox.ready:
-            return jsonify({'error': 'Docker sandbox not ready'}), 400
-        
-        data = request.json
-        code = data.get('code')
-        
-        if not code:
-            return jsonify({'error': 'No code provided'}), 400
-        
-        # Create a temporary Python file in the container
-        code_escaped = code.replace("'", "'\\''")
-        setup_result = sandbox.execute([
-            "bash", "-c", f"echo '{code_escaped}' > /tmp/temp_code.py"
-        ])
-        
-        if not setup_result['success']:
             return jsonify({
-                'success': False,
-                'error': 'Failed to create temporary file',
-                'stderr': setup_result['stderr']
+                'error': 'Docker sandbox is not ready'
             })
         
-        # Execute the Python code
-        result = sandbox.execute(["python", "/tmp/temp_code.py"])
+        try:
+            data = request.json
+            code = data.get('code', '')
+            
+            if not code:
+                return jsonify({'error': 'No code provided'})
+            
+            # Save code to temporary file in container
+            code_escaped = code.replace("'", "'\\''")
+            setup_result = sandbox.execute([
+                "bash", "-c", f"echo '{code_escaped}' > /tmp/temp_code.py"
+            ])
+            
+            if setup_result.get('returncode', 1) != 0:
+                return jsonify({
+                    'error': 'Failed to create temporary file',
+                    'stderr': setup_result.get('stderr', '')
+                })
+            
+            # Execute Python code
+            result = sandbox.execute(["python", "/tmp/temp_code.py"])
+            
+            # Remove temporary file
+            sandbox.execute(["rm", "/tmp/temp_code.py"])
+            
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/restart-container', methods=['POST'])
+    def restart_container():
+        """Endpoint for restarting the Docker container"""
+        if not sandbox:
+            return jsonify({
+                'success': False,
+                'error': 'Docker sandbox is not available'
+            })
         
-        # Clean up
-        sandbox.execute(["rm", "/tmp/temp_code.py"])
+        try:
+            # Stop current container
+            sandbox.cleanup()
+            
+            # Start new container
+            sandbox.start()
+            
+            return jsonify({
+                'success': True,
+                'container_id': sandbox.container_id
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/save-file', methods=['POST'])
+    def save_file():
+        """Endpoint for saving files in the container"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'success': False,
+                'error': 'Docker sandbox is not ready'
+            })
         
-        return jsonify(result)
+        try:
+            data = request.json
+            filename = data.get('filename', '')
+            content = data.get('content', '')
+            
+            if not filename:
+                return jsonify({
+                    'success': False,
+                    'error': 'No filename provided'
+                })
+            
+            # Security check to prevent directory traversal
+            if '..' in filename or filename.startswith('/'):
+                return jsonify({
+                    'success': False,
+                    'error': 'Invalid filename'
+                })
+            
+            # Save file in container
+            content_escaped = content.replace("'", "'\\''")
+            result = sandbox.execute([
+                "bash", "-c", f"echo '{content_escaped}' > /app/{filename}"
+            ])
+            
+            if result.get('returncode', 1) != 0:
+                return jsonify({
+                    'success': False,
+                    'error': 'Failed to save file',
+                    'stderr': result.get('stderr', '')
+                })
+            
+            return jsonify({
+                'success': True,
+                'filename': filename
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/get-example')
+    def get_example():
+        """Endpoint for getting example files"""
+        try:
+            example_file = request.args.get('file', '')
+            
+            if not example_file:
+                return jsonify({
+                    'success': False,
+                    'error': 'No file specified'
+                })
+            
+            # Security check to prevent directory traversal
+            if '..' in example_file or example_file.startswith('/'):
+                return jsonify({
+                    'success': False,
+                    'error': 'Invalid filename'
+                })
+            
+            # Get example file path
+            example_path = os.path.join(app.static_folder, 'examples', example_file)
+            
+            # Check if file exists
+            if not os.path.isfile(example_path):
+                return jsonify({
+                    'success': False,
+                    'error': f'Example file {example_file} not found'
+                })
+            
+            # Read file content
+            with open(example_path, 'r') as f:
+                content = f.read()
+            
+            return jsonify({
+                'success': True,
+                'content': content,
+                'filename': example_file
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
     
     return app
 
 if __name__ == '__main__':
     app = create_app()
-    print(f"Starting Docker Sandbox Example on http://localhost:5001")
+    app.run(host='0.0.0.0', port=5001, debug=True)
+    app = Flask(__name__)
+    
+    @app.route('/')
+    def index():
+        """Strona główna edytora"""
+        return render_template_string(HTML_TEMPLATE)
+    
+    @app.route('/api/docker-status')
+    def docker_status():
+        """Endpoint zwracający status piaskownicy Docker"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'ready': False,
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        return jsonify({
+            'ready': True,
+            'status': sandbox.status,
+            'container_id': sandbox.container_id,
+            'base_image': sandbox.base_image
+        })
+    
+    @app.route('/api/docker-execute', methods=['POST'])
+    def docker_execute():
+        """Endpoint do wykonywania poleceń w piaskownicy Docker"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        try:
+            data = request.json
+            command = data.get('command', '')
+            
+            if not command:
+                return jsonify({'error': 'Nie podano polecenia'})
+            
+            # Podziel polecenie na listę argumentów
+            command_args = command.split()
+            
+            # Wykonaj polecenie w kontenerze
+            result = sandbox.execute(command_args)
+            
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/execute-python', methods=['POST'])
+    def execute_python():
+        """Endpoint do wykonywania kodu Python w piaskownicy Docker"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        try:
+            data = request.json
+            code = data.get('code', '')
+            
+            if not code:
+                return jsonify({'error': 'Nie podano kodu'})
+            
+            # Zapisz kod do tymczasowego pliku w kontenerze
+            code_escaped = code.replace("'", "'\\''")
+            setup_result = sandbox.execute([
+                "bash", "-c", f"echo '{code_escaped}' > /tmp/temp_code.py"
+            ])
+            
+            if setup_result.get('returncode', 1) != 0:
+                return jsonify({
+                    'error': 'Nie udało się utworzyć pliku tymczasowego',
+                    'stderr': setup_result.get('stderr', '')
+                })
+            
+            # Wykonaj kod Python
+            result = sandbox.execute(["python", "/tmp/temp_code.py"])
+            
+            # Usuń tymczasowy plik
+            sandbox.execute(["rm", "/tmp/temp_code.py"])
+            
+            return jsonify(result)
+        except Exception as e:
+            return jsonify({
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/restart-container', methods=['POST'])
+    def restart_container():
+        """Endpoint do restartowania kontenera Docker"""
+        if not sandbox:
+            return jsonify({
+                'success': False,
+                'error': 'Piaskownica Docker nie jest dostępna'
+            })
+        
+        try:
+            # Zatrzymaj bieżący kontener
+            sandbox.cleanup()
+            
+            # Uruchom nowy kontener
+            sandbox.start()
+            
+            return jsonify({
+                'success': True,
+                'container_id': sandbox.container_id
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/save-file', methods=['POST'])
+    def save_file():
+        """Endpoint do zapisywania plików w kontenerze"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'success': False,
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        try:
+            data = request.json
+            filename = data.get('filename', '')
+            content = data.get('content', '')
+            
+            if not filename:
+                return jsonify({
+                    'success': False,
+                    'error': 'Nie podano nazwy pliku'
+                })
+            
+            # Zabezpieczenie przed wyjściem poza katalog
+            if '..' in filename or filename.startswith('/'):
+                return jsonify({
+                    'success': False,
+                    'error': 'Nieprawidłowa nazwa pliku'
+                })
+            
+            # Zapisz plik w kontenerze
+            content_escaped = content.replace("'", "'\\''")
+            result = sandbox.execute([
+                "bash", "-c", f"echo '{content_escaped}' > /app/{filename}"
+            ])
+            
+            if result.get('returncode', 1) != 0:
+                return jsonify({
+                    'success': False,
+                    'error': 'Nie udało się zapisać pliku',
+                    'stderr': result.get('stderr', '')
+                })
+            
+            return jsonify({
+                'success': True,
+                'filename': filename
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/list-files', methods=['GET'])
+    def list_files():
+        """Endpoint do listowania plików w kontenerze"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'success': False,
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        try:
+            # Listuj pliki w katalogu /app
+            result = sandbox.execute(["ls", "-la", "/app"])
+            
+            if result.get('returncode', 1) != 0:
+                return jsonify({
+                    'success': False,
+                    'error': 'Nie udało się wylistować plików',
+                    'stderr': result.get('stderr', '')
+                })
+            
+            return jsonify({
+                'success': True,
+                'files': result.get('stdout', '')
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    @app.route('/api/install-package', methods=['POST'])
+    def install_package():
+        """Endpoint do instalowania pakietów Python w kontenerze"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({
+                'success': False,
+                'error': 'Piaskownica Docker nie jest gotowa'
+            })
+        
+        try:
+            data = request.json
+            package = data.get('package', '')
+            
+            if not package:
+                return jsonify({
+                    'success': False,
+                    'error': 'Nie podano nazwy pakietu'
+                })
+            
+            # Instalacja pakietu
+            result = sandbox.execute(["pip", "install", package])
+            
+            return jsonify({
+                'success': result.get('returncode', 1) == 0,
+                'stdout': result.get('stdout', ''),
+                'stderr': result.get('stderr', '')
+            })
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': str(e),
+                'traceback': traceback.format_exc()
+            })
+    
+    return app
+
+if __name__ == '__main__':
+    app = create_app()
     app.run(host='0.0.0.0', port=5001, debug=True)

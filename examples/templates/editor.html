@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devopy Docker Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Devopy Docker Editor</h1>
+    <div class="status-bar">
+        <div>
+            <span class="status-indicator" id="status-indicator"></span>
+            <span>Status: <span id="status-text">Sprawdzanie...</span></span>
+        </div>
+        <div>
+            <span>Kontener: <span id="container-id">-</span></span>
+            <button id="check-status-btn" class="small-btn">Odśwież</button>
+            <button id="restart-btn" class="small-btn">Restart</button>
+            <button id="matrix-toggle-btn" class="small-btn matrix-toggle-btn">Tryb Matrix</button>
+            <select id="app-mode-selector" class="mode-selector">
+                <option value="development">Tryb Development</option>
+                <option value="testing">Tryb Testowania</option>
+                <option value="monitoring">Tryb Monitorowania</option>
+                <option value="production">Tryb Produkcyjny</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="toolbar">
+            <button id="new-file-btn">Nowy plik</button>
+            <button id="save-btn">Zapisz</button>
+            <button id="run-btn">Uruchom</button>
+            <select id="example-select">
+                <option value="">-- Wybierz przykład --</option>
+                <option value="hello_world.py">Hello World</option>
+                <option value="data_analysis.py">Analiza danych</option>
+                <option value="visualization.py">Wizualizacja</option>
+            </select>
+        </div>
+        
+        <div class="matrix-container">
+            <!-- Top-left panel: Media Window -->
+            <div class="matrix-panel" id="media-panel">
+                <div class="panel-header">
+                    <h3>Okno Mediów</h3>
+                    <button class="panel-maximize-btn" data-panel="media-panel">⛶</button>
+                </div>
+                <div class="panel-content">
+                    <ul class="file-list" id="file-list">
+                        <li class="active" data-file="main.py">main.py</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Top-right panel: Edit Window -->
+            <div class="matrix-panel" id="edit-panel">
+                <div class="panel-header">
+                    <h3>Okno Edycji</h3>
+                    <button class="panel-maximize-btn" data-panel="edit-panel">⛶</button>
+                </div>
+                <div class="panel-content">
+                    <div class="tab-container">
+                        <div class="tab active" data-panel="code-panel">Kod</div>
+                        <div class="tab" data-panel="command-panel">Polecenia</div>
+                    </div>
+                    
+                    <div class="panel active" id="code-panel">
+                        <textarea id="editor" spellcheck="false"></textarea>
+                    </div>
+                    
+                    <div class="panel" id="command-panel">
+                        <input type="text" id="command-input" placeholder="Wprowadź polecenie bash (np. ls -la)">
+                        <button id="run-command-btn">Wykonaj</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom-left panel: Preview Window -->
+            <div class="matrix-panel" id="preview-panel">
+                <div class="panel-header">
+                    <h3>Okno Podglądu</h3>
+                    <button class="panel-maximize-btn" data-panel="preview-panel">⛶</button>
+                </div>
+                <div class="panel-content">
+                    <div id="preview-content">Podgląd zaznaczonych mediów.</div>
+                </div>
+            </div>
+            
+            <!-- Bottom-right panel: Communication Window -->
+            <div class="matrix-panel" id="communication-panel">
+                <div class="panel-header">
+                    <h3>Okno Komunikacji</h3>
+                    <button class="panel-maximize-btn" data-panel="communication-panel">⛶</button>
+                </div>
+                <div class="panel-content">
+                    <pre id="output"></pre>
+                    <div class="controls">
+                        <button id="clear-output-btn">Wyczyść wyjście</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Intersection point / resize handle -->
+            <div class="intersection-point" id="intersection-point">
+                <div class="intersection-handle"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom panel with application controls -->
+    <div class="co-panel">
+        <div class="co-logo">CoDialog</div>
+        <div class="co-buttons">
+            <button id="upload-btn">Upload</button>
+            <button id="run-app-btn">Run</button>
+            <button id="edit-btn">Edit</button>
+        </div>
+    </div>
+    
+    <!-- Menu overlay for panel selection -->
+    <div class="menu-overlay" id="menu-overlay">
+        <div class="menu-container">
+            <div class="menu-section">
+                <h4>Select Media Name</h4>
+                <ul class="menu-list" id="media-menu-list"></ul>
+            </div>
+            <div class="menu-section">
+                <h4>Select Edit Name</h4>
+                <ul class="menu-list" id="edit-menu-list"></ul>
+            </div>
+            <div class="menu-section">
+                <h4>Select Preview Name</h4>
+                <ul class="menu-list" id="preview-menu-list"></ul>
+            </div>
+            <div class="menu-section">
+                <h4>Select Communication Name</h4>
+                <ul class="menu-list" id="communication-menu-list"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+</body>
+</html>

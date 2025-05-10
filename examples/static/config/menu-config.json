@@ -1,0 +1,26 @@
+{
+  "media": [
+    { "id": "filesystem", "name": "Filesystem" },
+    { "id": "nextcloud", "name": "NextCloud" },
+    { "id": "dropbox", "name": "Dropbox" },
+    { "id": "google-drive", "name": "Google Drive" }
+  ],
+  "edit": [
+    { "id": "code", "name": "Code" },
+    { "id": "nocode", "name": "NoCode" },
+    { "id": "visual", "name": "Visual Editor" },
+    { "id": "markdown", "name": "Markdown" }
+  ],
+  "preview": [
+    { "id": "video-camera", "name": "Video Camera" },
+    { "id": "3d-render", "name": "3D Render" },
+    { "id": "image-preview", "name": "Image Preview" },
+    { "id": "data-visualization", "name": "Data Visualization" }
+  ],
+  "communication": [
+    { "id": "chat", "name": "Chat" },
+    { "id": "terminal", "name": "Terminal" },
+    { "id": "video-call", "name": "Video Call" },
+    { "id": "email", "name": "Email" }
+  ]
+}
