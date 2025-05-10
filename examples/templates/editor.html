@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devopy Docker Editor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/intersection.css') }}">
+    
 </head>
 <body>
     <h1>Devopy Docker Editor</h1>
@@ -77,6 +79,24 @@
                 </div>
             </div>
             
+            <!-- Bottom-left panel: Communication Window -->
+            <div id="communication-panel" class="matrix-panel">
+                <div class="panel-header">Komunikacja</div>
+                <div class="panel-content">
+                    <div id="chat-container">
+                        <div id="chat-messages"></div>
+                        <div id="chat-input-container">
+                            <input type="text" id="chat-input" placeholder="Wpisz wiadomość...">
+                            <button id="chat-send">Wyślij</button>
+                        </div>
+                    </div>
+                    <div class="output-container">
+                        <div class="output-header">Console Logs</div>
+                        <div id="output"></div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Bottom-left panel: Preview Window -->
             <div class="matrix-panel" id="preview-panel">
                 <div class="panel-header">
@@ -103,8 +123,9 @@
             </div>
             
             <!-- Intersection point / resize handle -->
-            <div class="intersection-point" id="intersection-point">
+            <div id="intersection-point" class="intersection-point">
                 <div class="intersection-handle"></div>
+                <div id="intersection-status" class="intersection-status">Position: 50% × 50%</div>
             </div>
         </div>
     </div>

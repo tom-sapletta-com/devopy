@@ -45,6 +45,7 @@ const statusText = document.getElementById('status-text');
 const containerId = document.getElementById('container-id');
 const container = document.querySelector('.container');
 const matrixContainer = document.querySelector('.matrix-container');
+const matrixToggleButton = document.getElementById('matrix-toggle-btn');
 
 // Matrix panels
 const mediaPanel = document.getElementById('media-panel');
@@ -70,7 +71,6 @@ const restartButton = document.getElementById('restart-btn');
 const runCommandButton = document.getElementById('run-command-btn');
 const commandInput = document.getElementById('command-input');
 const exampleSelect = document.getElementById('example-select');
-const matrixToggleButton = document.getElementById('matrix-toggle-btn');
 const panelMaximizeButtons = document.querySelectorAll('.panel-maximize-btn');
 const panelHeaders = document.querySelectorAll('.panel-header');
 
@@ -81,69 +81,487 @@ const panels = document.querySelectorAll('.panel');
 // Matrix mode functions
 function toggleMatrixMode() {
     state.matrixMode = !state.matrixMode;
+    logToConsole(`TOGGLE: Matrix mode switched to: ${state.matrixMode ? 'ON' : 'OFF'}`);
     
     if (state.matrixMode) {
+        logToConsole(`UI: Changing button text to 'Tryb Normalny'`);
         matrixToggleButton.textContent = 'Tryb Normalny';
+        
+        logToConsole(`DOM: Adding matrix-mode class to body`);
+        document.body.classList.add('matrix-mode');
+        
+        logToConsole(`LAYOUT: Setting initial grid to 50/50 split`);
+        matrixContainer.style.gridTemplateColumns = '50fr 50fr';
+        matrixContainer.style.gridTemplateRows = '50fr 50fr';
+        
+        logToConsole(`CSS: Setting intersection point to center (50%, 50%)`);
+        intersectionPoint.style.left = '50%';
+        intersectionPoint.style.top = '50%';
+        intersectionPoint.style.display = 'block';
+        intersectionPoint.style.zIndex = '1000';
+        
+        // Force a reflow to ensure the position is updated
+        void intersectionPoint.offsetWidth;
+        
+        // Update status display
+        const statusDisplay = document.getElementById('intersection-status');
+        if (statusDisplay) {
+            statusDisplay.textContent = 'Position: 50% × 50%';
+            logToConsole(`UI: Updated intersection status display`);
+        }
+        
+        // Force matrix mode to be active and log all panels
+        setTimeout(() => {
+            logToConsole(`STATE: Matrix mode active, current state: ${state.matrixMode}`);
+            logToConsole(`PANELS: media-panel: ${mediaPanel ? 'found' : 'missing'}`);
+            logToConsole(`PANELS: edit-panel: ${editPanel ? 'found' : 'missing'}`);
+            logToConsole(`PANELS: preview-panel: ${previewPanel ? 'found' : 'missing'}`);
+            logToConsole(`PANELS: communication-panel: ${communicationPanel ? 'found' : 'missing'}`);
+        }, 100);
     } else {
+        logToConsole(`LAYOUT: Resetting all panels to default state`);
         resetPanels();
+        
+        logToConsole(`UI: Changing button text to 'Tryb Matrix'`);
         matrixToggleButton.textContent = 'Tryb Matrix';
+        
+        logToConsole(`DOM: Removing matrix-mode class from body`);
+        document.body.classList.remove('matrix-mode');
+        
+        logToConsole(`UI: Hiding intersection point`);
+        intersectionPoint.style.display = 'none';
     }
+    
+    logToConsole(`STATE: Matrix mode is now: ${state.matrixMode ? 'ON' : 'OFF'}`);
 }
 
 function resetPanels() {
-    // Reset all panels to their original state
-    mediaPanel.classList.remove('panel-expanded', 'panel-minimized');
-    editPanel.classList.remove('panel-expanded', 'panel-minimized');
-    previewPanel.classList.remove('panel-expanded', 'panel-minimized');
-    communicationPanel.classList.remove('panel-expanded', 'panel-minimized');
+    logToConsole('LAYOUT: Resetting all panels to default state');
+    
+    // Remove all panel-specific classes
+    if (mediaPanel.classList.contains('panel-expanded') || mediaPanel.classList.contains('panel-active')) {
+        logToConsole('DOM: Removing expanded/active classes from media-panel');
+    }
+    mediaPanel.classList.remove('panel-expanded', 'panel-minimized', 'panel-active');
+    
+    if (editPanel.classList.contains('panel-expanded') || editPanel.classList.contains('panel-active')) {
+        logToConsole('DOM: Removing expanded/active classes from edit-panel');
+    }
+    editPanel.classList.remove('panel-expanded', 'panel-minimized', 'panel-active');
+    
+    if (previewPanel.classList.contains('panel-expanded') || previewPanel.classList.contains('panel-active')) {
+        logToConsole('DOM: Removing expanded/active classes from preview-panel');
+    }
+    previewPanel.classList.remove('panel-expanded', 'panel-minimized', 'panel-active');
+    
+    if (communicationPanel.classList.contains('panel-expanded') || communicationPanel.classList.contains('panel-active')) {
+        logToConsole('DOM: Removing expanded/active classes from communication-panel');
+    }
+    communicationPanel.classList.remove('panel-expanded', 'panel-minimized', 'panel-active');
+    
+    // Reset the expanded panel state
+    if (state.expandedPanel) {
+        logToConsole(`STATE: Clearing expanded panel state (was: ${state.expandedPanel})`);
+    }
     state.expandedPanel = null;
+    logToConsole('LAYOUT: All panels reset complete');
 }
 
 function togglePanelSize(panel) {
-    if (!state.matrixMode) return;
+    // Make sure we're in matrix mode
+    if (!state.matrixMode) {
+        console.log('Not in matrix mode');
+        return;
+    }
     
-    const panelElement = panel.closest('.matrix-panel');
+    // Get the panel element
+    let panelElement;
+    if (panel.classList && panel.classList.contains('matrix-panel')) {
+        panelElement = panel;
+    } else {
+        panelElement = panel.closest('.matrix-panel');
+    }
+    
+    if (!panelElement) {
+        console.error('No panel element found');
+        return;
+    }
+    
     const panelId = panelElement.id;
+    console.log('Toggling panel:', panelId);
     
     if (state.expandedPanel === panelId) {
         // If clicking on already expanded panel, reset all panels
+        console.log('Resetting panel:', panelId);
         resetPanels();
+        
+        // Reset the grid to 50/50 split
+        matrixContainer.style.gridTemplateColumns = '50fr 50fr';
+        matrixContainer.style.gridTemplateRows = '50fr 50fr';
+        
+        // Reset the intersection point position
+        intersectionPoint.style.left = '50%';
+        intersectionPoint.style.top = '50%';
+        
+        // Update status display
+        updateIntersectionStatus('50', '50');
     } else {
         // Reset previous expanded panel if any
         resetPanels();
         
-        // Minimize all panels
-        mediaPanel.classList.add('panel-minimized');
-        editPanel.classList.add('panel-minimized');
-        previewPanel.classList.add('panel-minimized');
-        communicationPanel.classList.add('panel-minimized');
+        // Determine which panel was clicked and adjust the grid accordingly
+        let colTemplate, rowTemplate, pointLeft, pointTop;
         
-        // Expand the clicked panel
-        panelElement.classList.remove('panel-minimized');
-        panelElement.classList.add('panel-expanded');
+        switch(panelId) {
+            case 'media-panel': // Top-left panel
+                colTemplate = '80fr 20fr';
+                rowTemplate = '80fr 20fr';
+                pointLeft = '80%';
+                pointTop = '80%';
+                updateIntersectionStatus('80', '80');
+                console.log('Expanding top-left panel');
+                break;
+            case 'edit-panel': // Top-right panel
+                colTemplate = '20fr 80fr';
+                rowTemplate = '80fr 20fr';
+                pointLeft = '20%';
+                pointTop = '80%';
+                updateIntersectionStatus('20', '80');
+                console.log('Expanding top-right panel');
+                break;
+            case 'preview-panel': // Bottom-left panel
+                colTemplate = '80fr 20fr';
+                rowTemplate = '20fr 80fr';
+                pointLeft = '80%';
+                pointTop = '20%';
+                updateIntersectionStatus('80', '20');
+                console.log('Expanding bottom-left panel');
+                break;
+            case 'communication-panel': // Bottom-right panel
+                colTemplate = '20fr 80fr';
+                rowTemplate = '20fr 80fr';
+                pointLeft = '20%';
+                pointTop = '20%';
+                updateIntersectionStatus('20', '20');
+                console.log('Expanding bottom-right panel');
+                break;
+            default:
+                colTemplate = '50fr 50fr';
+                rowTemplate = '50fr 50fr';
+                pointLeft = '50%';
+                pointTop = '50%';
+                updateIntersectionStatus('50', '50');
+                console.log('Unknown panel, using default layout');
+        }
+        
+        // Update the grid template
+        console.log('Setting grid template:', colTemplate, rowTemplate);
+        matrixContainer.style.gridTemplateColumns = colTemplate;
+        matrixContainer.style.gridTemplateRows = rowTemplate;
+        
+        // Update the intersection point position
+        intersectionPoint.style.left = pointLeft;
+        intersectionPoint.style.top = pointTop;
+        
+        // Add visual classes for the expanded panel
+        panelElement.classList.add('panel-expanded', 'panel-active');
         state.expandedPanel = panelId;
+        console.log('Panel expanded:', panelId);
     }
+}
+
+// Helper function to update the intersection status display
+function updateIntersectionStatus(x, y) {
+    const statusDisplay = document.getElementById('intersection-status');
+    if (statusDisplay) {
+        statusDisplay.textContent = `Position: ${x}% × ${y}%`;
+    }
+}
+
+// Initialize event listeners for the matrix panels
+function initializeMatrixPanels() {
+    logToConsole('INIT: Setting up matrix panel click handlers');
+    
+    // Add specific click handlers for panel headers
+    const panelHeaders = document.querySelectorAll('.panel-header');
+    panelHeaders.forEach(header => {
+        header.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons
+            if (e.target.closest('button')) {
+                return;
+            }
+            
+            // Find the parent panel
+            const parentPanel = this.closest('.matrix-panel');
+            if (parentPanel) {
+                logToConsole(`CLICK: Panel header clicked for ${parentPanel.id}`);
+                expandSpecificPanel(parentPanel.id);
+                e.stopPropagation(); // Prevent event bubbling
+            }
+        });
+        logToConsole(`EVENT: Added click handler to panel header for ${header.closest('.matrix-panel')?.id || 'unknown'}`);
+    });
+    
+    // Add click event listeners to each panel individually for better control
+    if (mediaPanel) {
+        mediaPanel.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons or other interactive elements
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                return;
+            }
+            
+            logToConsole('CLICK: Media panel clicked');
+            expandSpecificPanel('media-panel');
+        });
+        logToConsole('EVENT: Added click handler to media-panel');
+    }
+    
+    if (editPanel) {
+        editPanel.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons or other interactive elements
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                return;
+            }
+            
+            logToConsole('CLICK: Edit panel clicked');
+            expandSpecificPanel('edit-panel');
+        });
+        logToConsole('EVENT: Added click handler to edit-panel');
+    }
+    
+    if (previewPanel) {
+        previewPanel.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons or other interactive elements
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea')) {
+                return;
+            }
+            
+            logToConsole('CLICK: Preview panel clicked');
+            expandSpecificPanel('preview-panel');
+        });
+        logToConsole('EVENT: Added click handler to preview-panel');
+    }
+    
+    if (communicationPanel) {
+        communicationPanel.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons or other interactive elements
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea') || 
+                e.target.closest('#output') || e.target.closest('#chat-messages')) {
+                return;
+            }
+            
+            logToConsole('CLICK: Communication panel clicked');
+            expandSpecificPanel('communication-panel');
+        });
+        logToConsole('EVENT: Added click handler to communication-panel');
+    }
+    
+    // Add click handlers to panel content divs specifically
+    document.querySelectorAll('.panel-content').forEach(content => {
+        content.addEventListener('click', function(e) {
+            // Don't handle clicks on buttons or other interactive elements
+            if (e.target.closest('button') || e.target.closest('input') || e.target.closest('textarea') ||
+                e.target.closest('#output') || e.target.closest('#chat-messages')) {
+                return;
+            }
+            
+            // Find the parent panel
+            const parentPanel = this.closest('.matrix-panel');
+            if (parentPanel) {
+                logToConsole(`CLICK: Panel content clicked for ${parentPanel.id}`);
+                expandSpecificPanel(parentPanel.id);
+                e.stopPropagation(); // Prevent event bubbling
+            }
+        });
+    });
+    
+    logToConsole('INIT: All panel click handlers have been initialized');
+}
+
+// Function to log to both console and output panel
+function logToConsole(message, isError = false) {
+    const timestamp = new Date().toLocaleTimeString();
+    const formattedMessage = `[${timestamp}] ${message}`;
+    console.log(formattedMessage);
+    
+    // Also append to output panel if it exists
+    const outputPanel = document.getElementById('output');
+    if (outputPanel) {
+        const logLine = document.createElement('div');
+        logLine.className = isError ? 'log-error' : 'log-info';
+        logLine.textContent = formattedMessage;
+        outputPanel.appendChild(logLine);
+        outputPanel.scrollTop = outputPanel.scrollHeight; // Auto-scroll to bottom
+    }
+}
+
+// Function to directly expand a specific panel by ID
+function expandSpecificPanel(panelId) {
+    logToConsole(`ACTION: Directly expanding panel: ${panelId}`);
+    
+    // Make sure we're in matrix mode
+    if (!state.matrixMode) {
+        logToConsole(`STATE: Matrix mode was OFF, activating now...`);
+        toggleMatrixMode();
+    }
+    
+    // Log current state
+    logToConsole(`STATE: Matrix mode: ${state.matrixMode ? 'ON' : 'OFF'}`);
+    logToConsole(`STATE: Previously expanded panel: ${state.expandedPanel || 'none'}`);
+    
+    // Reset any previously expanded panels
+    resetPanels();
+    
+    // Set grid template and intersection point based on panel ID
+    let colTemplate, rowTemplate, pointLeft, pointTop;
+    
+    switch(panelId) {
+        case 'media-panel': // Top-left panel
+            colTemplate = '80fr 20fr';
+            rowTemplate = '80fr 20fr';
+            pointLeft = '80%';
+            pointTop = '80%';
+            updateIntersectionStatus('80', '80');
+            logToConsole(`LAYOUT: Expanding top-left panel to 80/20 split`);
+            break;
+        case 'edit-panel': // Top-right panel
+            colTemplate = '20fr 80fr';
+            rowTemplate = '80fr 20fr';
+            pointLeft = '20%';
+            pointTop = '80%';
+            updateIntersectionStatus('20', '80');
+            logToConsole(`LAYOUT: Expanding top-right panel to 20/80 horizontal, 80/20 vertical`);
+            break;
+        case 'preview-panel': // Bottom-left panel
+            colTemplate = '80fr 20fr';
+            rowTemplate = '20fr 80fr';
+            pointLeft = '80%';
+            pointTop = '20%';
+            updateIntersectionStatus('80', '20');
+            logToConsole(`LAYOUT: Expanding bottom-left panel to 80/20 horizontal, 20/80 vertical`);
+            break;
+        case 'communication-panel': // Bottom-right panel
+            colTemplate = '20fr 80fr';
+            rowTemplate = '20fr 80fr';
+            pointLeft = '20%';
+            pointTop = '20%';
+            updateIntersectionStatus('20', '20');
+            logToConsole(`LAYOUT: Expanding bottom-right panel to 20/80 split`);
+            break;
+        default:
+            colTemplate = '50fr 50fr';
+            rowTemplate = '50fr 50fr';
+            pointLeft = '50%';
+            pointTop = '50%';
+            updateIntersectionStatus('50', '50');
+            logToConsole(`LAYOUT: Unknown panel, using default 50/50 layout`, true);
+    }
+    
+    // Update the grid template
+    logToConsole(`CSS: Setting grid template columns: ${colTemplate}`);
+    logToConsole(`CSS: Setting grid template rows: ${rowTemplate}`);
+    matrixContainer.style.gridTemplateColumns = colTemplate;
+    matrixContainer.style.gridTemplateRows = rowTemplate;
+    
+    // Update the intersection point position
+    logToConsole(`CSS: Moving intersection point to left: ${pointLeft}, top: ${pointTop}`);
+    intersectionPoint.style.left = pointLeft;
+    intersectionPoint.style.top = pointTop;
+    
+    // Ensure the intersection point is visible
+    intersectionPoint.style.display = 'block';
+    
+    // Force a reflow to ensure the position is updated
+    void intersectionPoint.offsetWidth;
+    
+    // Add visual classes for the expanded panel
+    const panelElement = document.getElementById(panelId);
+    if (panelElement) {
+        logToConsole(`DOM: Adding panel-expanded and panel-active classes to ${panelId}`);
+        panelElement.classList.add('panel-expanded', 'panel-active');
+        state.expandedPanel = panelId;
+        logToConsole(`STATE: Panel expanded: ${panelId}`);
+    } else {
+        logToConsole(`ERROR: Could not find panel element with ID: ${panelId}`, true);
+    }
+    
+    // Log final state
+    logToConsole(`STATE: Matrix mode: ${state.matrixMode ? 'ON' : 'OFF'}`);
+    logToConsole(`STATE: Current expanded panel: ${state.expandedPanel || 'none'}`);
 }
 
 // Intersection point dragging functionality
 function setupIntersectionPoint() {
     let isDragging = false;
-    let startX, startY;
-    let startLeft, startTop;
+    let startX, startY, startLeft, startTop;
     
+    logToConsole('SETUP: Initializing intersection point dragging functionality');
+    
+    // Update the intersection point position based on the current grid template
+    function updateIntersectionPosition() {
+        const colTemplate = matrixContainer.style.gridTemplateColumns;
+        const rowTemplate = matrixContainer.style.gridTemplateRows;
+        
+        logToConsole(`GRID: Current template - columns: ${colTemplate}, rows: ${rowTemplate}`);
+        
+        // Extract the values from the grid template
+        const colMatch = colTemplate.match(/([\d.]+)fr\s+([\d.]+)fr/);
+        const rowMatch = rowTemplate.match(/([\d.]+)fr\s+([\d.]+)fr/);
+        
+        let percentX = 50;
+        let percentY = 50;
+        
+        if (colMatch && colMatch.length >= 3) {
+            const col1 = parseFloat(colMatch[1]);
+            const col2 = parseFloat(colMatch[2]);
+            percentX = (col1 / (col1 + col2)) * 100;
+            logToConsole(`CALC: Horizontal position calculated as ${percentX.toFixed(1)}% (${col1}fr / ${col1+col2}fr)`);
+        } else {
+            logToConsole('ERROR: Could not parse column template', true);
+        }
+        
+        if (rowMatch && rowMatch.length >= 3) {
+            const row1 = parseFloat(rowMatch[1]);
+            const row2 = parseFloat(rowMatch[2]);
+            percentY = (row1 / (row1 + row2)) * 100;
+            logToConsole(`CALC: Vertical position calculated as ${percentY.toFixed(1)}% (${row1}fr / ${row1+row2}fr)`);
+        } else {
+            logToConsole('ERROR: Could not parse row template', true);
+        }
+        
+        // Update the intersection point position
+        logToConsole(`CSS: Setting intersection point position to ${percentX.toFixed(1)}% × ${percentY.toFixed(1)}%`);
+        intersectionPoint.style.left = `${percentX}%`;
+        intersectionPoint.style.top = `${percentY}%`;
+        updateIntersectionStatus(percentX.toFixed(0), percentY.toFixed(0));
+    }
+    
+    // Add the intersection point position update to window resize event
+    window.addEventListener('resize', updateIntersectionPosition);
+    
+    // Add mousedown event listener to the intersection point
     intersectionPoint.addEventListener('mousedown', function(e) {
         isDragging = true;
         startX = e.clientX;
         startY = e.clientY;
+        
+        logToConsole(`DRAG: Started dragging intersection point`);
         
         // Get the current position of the intersection point
         const rect = intersectionPoint.getBoundingClientRect();
         startLeft = rect.left + window.scrollX;
         startTop = rect.top + window.scrollY;
         
+        logToConsole(`DRAG: Initial position - X: ${startLeft.toFixed(0)}px, Y: ${startTop.toFixed(0)}px`);
+        
+        // Add visual indication of dragging
+        intersectionPoint.classList.add('dragging');
+        logToConsole(`UI: Added 'dragging' class to intersection point`);
+        
         // Add event listeners for dragging
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
+        logToConsole(`EVENT: Added mousemove and mouseup event listeners`);
         
         // Prevent default behavior
         e.preventDefault();
@@ -156,31 +574,84 @@ function setupIntersectionPoint() {
         const deltaX = e.clientX - startX;
         const deltaY = e.clientY - startY;
         
-        // Get the container dimensions
+        // Get the matrix container dimensions
         const containerRect = matrixContainer.getBoundingClientRect();
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
         
-        // Calculate percentage position within the container
-        const percentX = ((startLeft + deltaX - containerRect.left) / containerRect.width) * 100;
-        const percentY = ((startTop + deltaY - containerRect.top) / containerRect.height) * 100;
+        // Calculate the new position as a percentage of the container
+        let newLeft = ((startLeft + deltaX - containerRect.left) / containerWidth) * 100;
+        let newTop = ((startTop + deltaY - containerRect.top) / containerHeight) * 100;
         
-        // Limit the position to stay within the container (with some margin)
-        const limitedX = Math.max(10, Math.min(90, percentX));
-        const limitedY = Math.max(10, Math.min(90, percentY));
+        // Log raw position before constraints
+        logToConsole(`DRAG: Raw position - X: ${newLeft.toFixed(1)}%, Y: ${newTop.toFixed(1)}%`);
         
-        // Update the grid template
-        matrixContainer.style.gridTemplateColumns = `${limitedX}% ${100-limitedX}%`;
-        matrixContainer.style.gridTemplateRows = `${limitedY}% ${100-limitedY}%`;
+        // Constrain to 20-80% range
+        const originalLeft = newLeft;
+        const originalTop = newTop;
+        newLeft = Math.max(20, Math.min(80, newLeft));
+        newTop = Math.max(20, Math.min(80, newTop));
+        
+        // Log if constraints were applied
+        if (originalLeft !== newLeft || originalTop !== newTop) {
+            logToConsole(`CONSTRAINT: Position constrained to 20-80% range`);
+        }
         
         // Update the intersection point position
-        intersectionPoint.style.left = `${limitedX}%`;
-        intersectionPoint.style.top = `${limitedY}%`;
+        intersectionPoint.style.left = `${newLeft}%`;
+        intersectionPoint.style.top = `${newTop}%`;
+        logToConsole(`CSS: Intersection point moved to ${newLeft.toFixed(1)}% × ${newTop.toFixed(1)}%`);
+        
+        // Update the grid template
+        const rightCol = 100 - newLeft;
+        const bottomRow = 100 - newTop;
+        matrixContainer.style.gridTemplateColumns = `${newLeft}fr ${rightCol}fr`;
+        matrixContainer.style.gridTemplateRows = `${newTop}fr ${bottomRow}fr`;
+        logToConsole(`GRID: Updated template - columns: ${newLeft.toFixed(1)}fr ${rightCol.toFixed(1)}fr, rows: ${newTop.toFixed(1)}fr ${bottomRow.toFixed(1)}fr`);
+        
+        // Update the status display
+        updateIntersectionStatus(newLeft.toFixed(0), newTop.toFixed(0));
+    }
     }
     
     function onMouseUp() {
+        if (!isDragging) return;
+        
+        // Stop dragging
         isDragging = false;
+        logToConsole('DRAG: Stopped dragging intersection point');
+        
+        // Get the current position
+        const left = parseFloat(intersectionPoint.style.left);
+        const top = parseFloat(intersectionPoint.style.top);
+        logToConsole(`DRAG: Final position - X: ${left.toFixed(1)}%, Y: ${top.toFixed(1)}%`);
+        
+        // Remove visual indication of dragging
+        intersectionPoint.classList.remove('dragging');
+        logToConsole('UI: Removed dragging class from intersection point');
+        
+        // Remove event listeners
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mouseup', onMouseUp);
+        logToConsole('EVENT: Removed mousemove and mouseup event listeners');
+        
+        // Log the final grid template
+        const colTemplate = matrixContainer.style.gridTemplateColumns;
+        const rowTemplate = matrixContainer.style.gridTemplateRows;
+        logToConsole(`GRID: Final template - columns: ${colTemplate}, rows: ${rowTemplate}`);
     }
+    
+    // Initialize MutationObserver to watch for changes to the grid template
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'style') {
+                updateIntersectionPosition();
+            }
+        });
+    });
+    
+    // Start observing the matrix container for style changes
+    observer.observe(matrixContainer, { attributes: true });
 }
 
 // Menu functionality
@@ -748,6 +1219,11 @@ function setupMatrixLayout() {
         });
     });
     
+    // Initialize event listeners for the matrix panels
+    initializeMatrixPanels();
+    
+    // Panel click handlers are now set up in initializeMatrixPanels function
+    
     // Set up CoPanel buttons
     const uploadBtn = document.getElementById('upload-btn');
     const runAppBtn = document.getElementById('run-app-btn');
@@ -756,10 +1232,16 @@ function setupMatrixLayout() {
     if (uploadBtn) uploadBtn.addEventListener('click', toggleMenuOverlay);
     
     // Initialize the intersection point at the center
-    matrixContainer.style.gridTemplateColumns = '50% 50%';
-    matrixContainer.style.gridTemplateRows = '50% 50%';
+    matrixContainer.style.gridTemplateColumns = '50fr 50fr';
+    matrixContainer.style.gridTemplateRows = '50fr 50fr';
     intersectionPoint.style.left = '50%';
     intersectionPoint.style.top = '50%';
+    
+    // Initialize the status display
+    const statusDisplay = document.getElementById('intersection-status');
+    if (statusDisplay) {
+        statusDisplay.textContent = 'Position: 50% × 50%';
+    }
     
     // Set initial mode
     document.body.setAttribute('data-mode', state.currentMode);

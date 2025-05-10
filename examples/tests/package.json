@@ -1,0 +1,25 @@
+{
+  "name": "matrix-layout-tests",
+  "version": "1.0.0",
+  "description": "Browser tests for Matrix Layout functionality",
+  "main": "matrix_layout_tests.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:matrix": "playwright test matrix_layout_tests.js",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report test-results"
+  },
+  "keywords": [
+    "testing",
+    "playwright",
+    "matrix-layout"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
