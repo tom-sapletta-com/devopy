@@ -24,7 +24,7 @@ Devopy to modularny system AI do automatyzacji zadań programistycznych, konwers
 
 ```bash
 # Sklonuj repozytorium
-git clone https://github.com/tom-sapletta-com/evopy.git
+git clone https://github.com/tom-sapletta-com/devopy.git
 cd evopy
 
 # (Opcjonalnie) Utwórz środowisko wirtualne

@@ -5,6 +5,9 @@ from pathlib import Path
 import shutil
 import pytest
 
+# Dodaj ścieżkę głównego katalogu projektu do sys.path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 def run_shell_command(cmd, cwd=None, env=None, input_data=None):
     """Helper to run shell command and capture output."""
     result = subprocess.run(

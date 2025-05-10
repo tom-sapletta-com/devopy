@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devopy"
+version = "0.1.0"
+description = "Modularny asystent AI do automatyzacji kodu i środowisk Python"
+readme = "README.md"
+authors = [{name = "tom-sapletta-com"}]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "flask",
+    "matplotlib",
+    "openpyxl",
+    "requests",
+]
+
+[project.scripts]
+devopy-cli = "devopy.cli:main"
+devopy-api = "devopy.api:main"

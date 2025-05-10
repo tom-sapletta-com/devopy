@@ -10,6 +10,21 @@ class AutoHealer:
     def __init__(self, llm_analyze_error=None):
         # llm_analyze_error: funkcja LLM (np. z devopy.llm) do analizy błędów
         self.llm_analyze_error = llm_analyze_error
+        
+    @staticmethod
+    def heal_from_log(log_row):
+        """
+        Statyczna metoda do naprawy błędu na podstawie wiersza logu.
+        
+        Args:
+            log_row: tuple z LogDB.fetch_recent(), zawiera m.in. error, request, response
+            
+        Returns:
+            bool: True jeśli naprawa się powiodła, False w przeciwnym razie
+        """
+        healer = AutoHealer()
+        success, _ = healer.analyze_and_heal(log_row)
+        return success
 
     def analyze_and_heal(self, log_row):
         """

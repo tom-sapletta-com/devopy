@@ -1,0 +1,49 @@
+# FEATURES.TODO.TXT
+# Lista funkcjonalności projektu devopy do implementacji i rozwijania
+
+## FUNKCJONALNOŚCI PODSTAWOWE (CORE)
+- [x] Automatyczna instalacja zależności
+- [x] Interaktywny shell z obsługą poleceń
+- [x] API REST (Flask) do zdalnego uruchamiania zadań
+- [x] CLI do uruchamiania zadań z linii poleceń
+- [x] Sandbox w środowisku wirtualnym (venv)
+- [x] Sandbox w kontenerach Docker
+- [x] Rejestr pakietów PyPI
+- [x] System logowania błędów i operacji
+- [x] Auto-healing dla typowych błędów
+
+## FUNKCJONALNOŚCI DO ROZWINIĘCIA
+- [ ] Integracja z modelami LLM (DeepSeek, Ollama)
+- [ ] Konwersja tekstu na kod Python (text2python)
+- [ ] Konwersja kodu Python na tekst (python2text)
+- [ ] Konwersja tekstu na polecenia shell (text2shell)
+- [ ] Automatyczna dokumentacja generowanego kodu
+- [ ] Generowanie testów dla kodu
+- [ ] Analiza i optymalizacja kodu
+- [ ] Integracja z systemami CI/CD
+- [ ] Wsparcie dla innych języków programowania
+- [ ] Interfejs webowy dla API
+
+## FUNKCJONALNOŚCI ZAAWANSOWANE
+- [ ] Orkiestracja wielu sandboxów
+- [ ] Zarządzanie zależnościami między modułami
+- [ ] Automatyczna aktualizacja pakietów
+- [ ] Generowanie raportów z wykonania zadań
+- [ ] Mechanizm wtyczek (plugins)
+- [ ] Obsługa baz danych (SQL, NoSQL)
+- [ ] Integracja z Git i systemami kontroli wersji
+- [ ] Wsparcie dla GPU i akceleracji obliczeń
+- [ ] Rozproszone środowisko wykonawcze
+- [ ] Mechanizm cache dla powtarzalnych zadań
+
+## FUNKCJONALNOŚCI UŻYTKOWE
+- [ ] Kreator projektów (scaffolding)
+- [ ] Szablony dla typowych zadań
+- [ ] Wizualizacja danych i wyników
+- [ ] Eksport wyników do różnych formatów
+- [ ] Automatyczne raportowanie błędów
+- [ ] System pomocy i podpowiedzi
+- [ ] Tryb offline z ograniczoną funkcjonalnością
+- [ ] Profil użytkownika i preferencje
+- [ ] Historia wykonanych zadań
+- [ ] Mechanizm udostępniania kodu i wyników

@@ -1,10 +1,14 @@
 import sys
 from pathlib import Path
-from log_db import LogDB
-from auto_heal import AutoHealer
 import os
 import subprocess
+
+# Dodajemy ścieżkę do katalogu nadrzędnego, aby importy działały poprawnie
 sys.path.insert(0, str(Path(__file__).parent.resolve()))
+
+# Importy lokalne - używamy względnych importów w pakiecie
+from devopy.log_db import LogDB
+from devopy.auto_heal import AutoHealer
 
 # Automatyczny import i instalacja zależności
 def ensure_dependencies():
@@ -264,7 +268,7 @@ if __name__ == "__main__":
     port = int(os.environ.get("DEVOPY_PORT", get_free_port()))
 
     try:
-        from auto_diag_import import auto_diag_import
+        from devopy.auto_diag_import import auto_diag_import
     except ImportError:
         from devopy.auto_diag_import import auto_diag_import
     auto_diag_import(app.run, debug=True, port=port)

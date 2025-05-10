@@ -1,0 +1,41 @@
+# REQUIREMENTS.TODO.TXT
+# Lista wymagań, które musi spełniać projekt devopy
+
+## WYMAGANIA SYSTEMOWE
+- Python 3.8+ (preferowany 3.10+)
+- Docker (opcjonalnie, do uruchamiania sandboxów)
+- Dostęp do internetu (do pobierania pakietów i komunikacji z API)
+- Uprawnienia do tworzenia środowisk wirtualnych
+
+## WYMAGANIA FUNKCJONALNE
+- Automatyczna instalacja zależności bez ingerencji użytkownika
+- Obsługa błędów importu i brakujących pakietów
+- Izolacja środowisk wykonawczych (venv, Docker)
+- Modułowa struktura umożliwiająca rozszerzanie funkcjonalności
+- API REST do zdalnego uruchamiania zadań
+- CLI do uruchamiania zadań z linii poleceń
+- Automatyczne leczenie błędów (auto-healing)
+- Rejestr pakietów do zarządzania zależnościami
+
+## WYMAGANIA NIEFUNKCJONALNE
+- Minimalistyczna, kompaktowa forma paczki Python
+- Brak zależności od zewnętrznych usług (poza PyPI)
+- Szybki czas uruchomienia i odpowiedzi
+- Odporność na błędy i automatyczne odzyskiwanie
+- Dokumentacja użytkownika i developera
+- Testy jednostkowe i integracyjne
+- Zgodność z PEP 8 i innymi standardami Python
+
+## WYMAGANIA DO IMPLEMENTACJI
+- Aktualizacja funkcji install_package w PyPIRegistry, aby obsługiwała parametr venv_path
+- Dodanie metody heal_from_log do klasy AutoHealer
+- Rozwiązanie problemu z ścieżkami do autoheal_logs.py
+- Aktualizacja testów e2e do nowej struktury projektu
+- Dodanie brakujących plików z projektu evopy
+
+## WYMAGANIA DOKUMENTACYJNE
+- Aktualizacja README.md do nowej struktury projektu
+- Dokumentacja API (Swagger/OpenAPI)
+- Przykłady użycia dla CLI i API
+- Instrukcja instalacji i konfiguracji
+- Opis architektury i modułów
