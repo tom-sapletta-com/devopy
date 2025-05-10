@@ -39,3 +39,5 @@
 - Przykłady użycia dla CLI i API
 - Instrukcja instalacji i konfiguracji
 - Opis architektury i modułów
+
+

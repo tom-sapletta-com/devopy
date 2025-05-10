@@ -1,5 +1,4 @@
 .idea
-.env
 logs
 .devopy_venv
 sandbox_envs
@@ -39,7 +38,6 @@ wheels/
 MANIFEST
 
 # Środowiska wirtualne
-.env
 .venv
 env/
 venv/

@@ -19,9 +19,24 @@ Moduł `text2python` to zaawansowane narzędzie w projekcie Devopy, które umoż
 
 ## Wymagania
 
-Moduł wymaga zainstalowania i skonfigurowania narzędzia Ollama z odpowiednim modelem językowym. Domyślnie używany jest model `codellama:7b-code`, ale można skonfigurować dowolny inny model.
+Moduł może działać z różnymi modelami językowymi (LLM) w zależności od dostępności:
 
-### Instalacja Ollama
+1. **Ollama (zalecane)**
+   - Lokalne uruchamianie modeli LLM bez konieczności połączenia z internetem
+   - Domyślnie używany model: `codellama:7b-code`
+   - Inne dostępne modele: `llama3:8b`, `mistral:7b`, `codellama:13b-code`, `codellama:34b-code`
+
+2. **OpenAI API (opcjonalnie)**
+   - Wymaga klucza API i połączenia z internetem
+   - Dostępne modele: `gpt-3.5-turbo`, `gpt-4`
+   - Wymaga zainstalowania pakietu `openai`
+
+3. **Tryb fallback**
+   - Działa nawet bez dostępu do modeli LLM
+   - Generuje szablony kodu i podstawowe analizy
+   - Nie wymaga dodatkowych zależności
+
+### Instalacja Ollama (zalecane)
 
 ```bash
 # Linux
@@ -31,6 +46,16 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama pull codellama:7b-code
 ```
 
+### Instalacja pakietu OpenAI (opcjonalnie)
+
+```bash
+# Instalacja pakietu OpenAI
+pip install openai
+
+# Konfiguracja klucza API (można również podać bezpośrednio w kodzie)
+export OPENAI_API_KEY="twoj-klucz-api"
+```
+
 ## Użycie
 
 ### Jako moduł w kodzie Python
@@ -38,12 +63,23 @@ ollama pull codellama:7b-code
 ```python
 from devopy.converters.text2python import Text2Python, convert_text_to_python, explain_python_code, improve_python_code
 
-# Przykład 1: Konwersja opisu na kod
+# Przykład 1: Konwersja opisu na kod z użyciem domyślnego modelu
 prompt = "Napisz funkcję, która oblicza n-ty wyraz ciągu Fibonacciego"
 code = convert_text_to_python(prompt)
 print(code)
 
-# Przykład 2: Wyjaśnienie kodu
+# Przykład 2: Konwersja z użyciem konkretnego modelu
+prompt = "Napisz funkcję, która sortuje listę liczb algorytmem quicksort"
+code = convert_text_to_python(prompt, model_name="llama3:8b")
+print(code)
+
+# Przykład 3: Konwersja z użyciem OpenAI API
+prompt = "Napisz funkcję, która analizuje plik CSV i generuje wykres"
+converter = Text2Python(model_name="gpt-3.5-turbo", api_key="twoj-klucz-api")
+result = converter.text_to_python(prompt)
+print(result["code"])
+
+# Przykład 4: Wyjaśnienie kodu
 code = """
 def fibonacci(n):
     if n <= 1:
@@ -272,3 +308,40 @@ Konwerter tekstu na kod współpracuje z innymi modułami Devopy:
 - **Menedżer zależności**: Automatyczne dodawanie importów do wygenerowanego kodu
 - **Piaskownice (Sandboxes)**: Bezpieczne uruchamianie wygenerowanego kodu
 - **API**: Udostępnianie funkcji konwersji przez API REST
+
+## Tryb Fallback (Awaryjny)
+
+Konwerter tekstu na kod posiada wbudowany tryb fallback, który działa nawet gdy żaden model LLM nie jest dostępny. Jest to przydatne w środowiskach bez dostępu do internetu lub gdy nie można zainstalować Ollama.
+
+### Przykład użycia trybu fallback
+
+```python
+# Gdy żaden model LLM nie jest dostępny, konwerter automatycznie użyje trybu fallback
+from devopy.converters.text2python import Text2Python
+
+# Inicjalizacja z nieistniejącym modelem (wymusi tryb fallback)
+converter = Text2Python(model_name="nieistniejacy_model")
+
+# Generowanie kodu w trybie fallback
+prompt = "Napisz funkcję, która sprawdza czy liczba jest pierwsza"
+result = converter.text_to_python(prompt)
+
+# Wynik będzie zawierał szablon funkcji, który można dostosować
+print(result["code"])
+```
+
+Wygenerowany kod w trybie fallback:
+```python
+def execute(*args, **kwargs):
+    # Funkcja wygenerowana na podstawie opisu: Napisz funkcję, która sprawdza czy liczba jest pierwsza
+    # TODO: Zaimplementuj funkcję zgodnie z opisem
+    
+    result = None
+    print("Wykonuję zadanie: Napisz funkcję, która sprawdza czy liczba jest pierwsza")
+    print("Argumenty: " + str(args) + ", " + str(kwargs))
+    
+    # Przykładowa implementacja - do zastąpienia
+    result = "Wynik dla zadania: Napisz funkcję, która sprawdza czy liczba jest pierwsza"
+    
+    return result
+```

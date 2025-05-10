@@ -70,14 +70,14 @@ def check_docker_available() -> Tuple[bool, str]:
 class DockerSandbox:
     """Klasa do zarządzania piaskownicami Docker dla kodu użytkownika"""
 
-    def __init__(self, base_dir: Optional[Path] = None, docker_image: str = "python:3.9-slim", timeout: int = 30):
+    def __init__(self, base_dir: Optional[Path] = None, docker_image: str = "python:3.9-slim", timeout: int = 60):
         """
         Inicjalizacja piaskownicy Docker
 
         Args:
             base_dir: Katalog bazowy dla plików piaskownicy (opcjonalny)
             docker_image: Obraz Docker do użycia
-            timeout: Limit czasu wykonania w sekundach
+            timeout: Limit czasu wykonania w sekundach (domyślnie 60s)
         """
         if base_dir is None:
             # Użyj katalogu tymczasowego, jeśli nie podano katalogu bazowego
@@ -166,12 +166,15 @@ class DockerSandbox:
         with open(install_script, "w") as f:
             f.write("""#!/bin/bash
 # Skrypt instalacji zależności
+echo "Instalacja podstawowych zależności..."
+pip install --no-cache-dir numpy matplotlib pandas flask requests
+
 if [ -s /app/requirements.txt ]; then
-    echo "Instalacja zależności..."
+    echo "Instalacja dodatkowych zależności z requirements.txt..."
     pip install --no-cache-dir -r /app/requirements.txt
     echo "Zależności zainstalowane."
 else
-    echo "Brak zależności do instalacji."
+    echo "Brak dodatkowych zależności do instalacji."
 fi
 """)
         
@@ -671,13 +674,13 @@ print(json.dumps(result))
 
 
 # Funkcje pomocnicze do użycia w innych modułach
-def run_code_in_sandbox(code: str, timeout: int = 30) -> Dict[str, Any]:
+def run_code_in_sandbox(code: str, timeout: int = 60) -> Dict[str, Any]:
     """
     Uruchamia kod Python w piaskownicy Docker
     
     Args:
         code: Kod Python do wykonania
-        timeout: Limit czasu wykonania w sekundach
+        timeout: Limit czasu wykonania w sekundach (domyślnie 60s)
         
     Returns:
         Dict[str, Any]: Wynik wykonania kodu

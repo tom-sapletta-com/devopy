@@ -22,19 +22,19 @@ show_help() {
 # Funkcja uruchamiająca serwer modułów w tle
 run_modules_server() {
     echo "Uruchamianie serwera modułów w tle..."
-    if [ -f "$MODULES_SERVER" ]; then
+    if [ -f "$SCRIPT_DIR/sandbox/run_server.sh" ]; then
         # Sprawdź, czy serwer już nie działa
-        if pgrep -f "python.*modules/server.py" > /dev/null; then
+        if pgrep -f "python.*sandbox/server.py" > /dev/null; then
             echo "Serwer modułów już działa."
         else
             # Uruchom serwer modułów w tle
-            bash "$MODULES_SERVER" > /dev/null 2>&1 &
+            bash "$SCRIPT_DIR/sandbox/run_server.sh" > /dev/null 2>&1 &
             # Poczekaj chwilę, aby serwer mógł się uruchomić
             sleep 2
             echo "Serwer modułów uruchomiony. Dostępny pod adresem: http://localhost:5000"
         fi
     else
-        echo "Ostrzeżenie: Nie znaleziono skryptu serwera modułów: $MODULES_SERVER"
+        echo "Ostrzeżenie: Nie znaleziono skryptu serwera modułów: $SCRIPT_DIR/sandbox/run_server.sh"
     fi
 }
 
@@ -51,6 +51,8 @@ else
     fi
 fi
 
+SANDBOX_PY="$SCRIPT_DIR/sandbox/server.py"
+
 # Przetwórz argumenty
 case "$1" in
     "-h"|"--help")
@@ -66,12 +68,12 @@ case "$1" in
     -n|--no-modules)
         # Uruchom tylko asystenta bez serwera modułów
         echo "Uruchamianie asystenta bez serwera modułów..."
-        $PYTHON_CMD "$SCRIPT_DIR/evo.py" "${@:2}"
+        $PYTHON_CMD "$SANDBOX_PY" "${@:2}"
         ;;
     *)
         # Domyślnie uruchom serwer modułów i asystenta
         run_modules_server
         echo "Uruchamianie asystenta Evopy..."
-        $PYTHON_CMD "$SCRIPT_DIR/evo.py" "$@"
+        $PYTHON_CMD "$SANDBOX_PY" "$@"
         ;;
 esac

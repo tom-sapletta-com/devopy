@@ -21,28 +21,74 @@ Moduł piaskownicy Docker (Docker Sandbox) to zaawansowane narzędzie w projekci
 
 ## Wymagania
 
-Moduł wymaga zainstalowanego i działającego Dockera na maszynie hosta.
+1. **Docker**
+   - Zainstalowany i działający Docker na maszynie hosta
+   - Minimalna wersja: Docker 19.03 lub nowszy
+
+2. **Python**
+   - Python 3.8 lub nowszy
+   - Zainstalowane pakiety: `docker`, `psutil`
+
+3. **Zależności dla kodu w piaskownicy**
+   - Podstawowe pakiety są automatycznie instalowane w kontenerze: `numpy`, `matplotlib`, `pandas`, `flask`, `requests`
+   - Dodatkowe pakiety można zainstalować poprzez dodanie ich do pliku requirements.txt w katalogu piaskownicy
 
 ### Sprawdzenie wymagań
 
 ```bash
-# Sprawdź, czy Docker jest zainstalowany
+# Sprawdź, czy Docker jest zainstalowany i jego wersję
 docker --version
 
 # Sprawdź, czy Docker działa
 docker info
+
+# Sprawdź, czy wymagane pakiety Python są zainstalowane
+pip list | grep docker
+pip list | grep psutil
 ```
 
 ## Instalacja
 
-Piaskownica Docker jest wbudowana w projekt Devopy i nie wymaga dodatkowej instalacji poza samym Dockerem.
+Piaskownica Docker jest wbudowana w projekt Devopy i nie wymaga dodatkowej instalacji poza samym Dockerem i wymaganymi pakietami Python.
+
+```bash
+# Instalacja wymaganych pakietów Python
+pip install docker psutil
+
+# Opcjonalnie: Instalacja dodatkowych pakietów dla pełnej funkcjonalności
+pip install numpy matplotlib pandas flask requests
+```
+
+### Konfiguracja
+
+Piaskownica Docker może być skonfigurowana poprzez parametry inicjalizacji klasy `DockerSandbox`:
+
+```python
+from devopy.sandbox.docker_sandbox import DockerSandbox
+
+# Domyślna konfiguracja
+sandbox = DockerSandbox()
+
+# Niestandardowa konfiguracja
+sandbox = DockerSandbox(
+    base_dir="/sciezka/do/katalogu/piaskownicy",  # Katalog dla plików piaskownicy
+    docker_image="python:3.10-slim",             # Niestandardowy obraz Docker
+    timeout=120                                  # Limit czasu wykonania w sekundach
+)
+```
 
 ## Użycie
 
 ### Jako moduł w kodzie Python
 
 ```python
-from devopy.sandbox.docker_sandbox import DockerSandbox, run_code_in_sandbox, run_service_in_sandbox
+from devopy.sandbox.docker_sandbox import DockerSandbox, run_code_in_sandbox, run_service_in_sandbox, check_docker_available
+
+# Sprawdź, czy Docker jest dostępny
+docker_available, message = check_docker_available()
+if not docker_available:
+    print(f"Docker nie jest dostępny: {message}")
+    exit(1)
 
 # Przykład 1: Uruchomienie prostego kodu
 code = """
