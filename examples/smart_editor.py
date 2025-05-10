@@ -11,10 +11,16 @@ import subprocess
 import threading
 import queue
 from typing import Dict, List, Any, Optional, Tuple, Union
-from flask import Flask, render_template, request, jsonify, Response, stream_with_context, send_from_directory
+from flask import Flask, request, jsonify, Response, stream_with_context, send_from_directory, render_template
+import uuid
+import logging
 
 # Dodanie ścieżki do katalogu głównego projektu
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Import devopy modules
+from devopy.decorators.editor_sandbox import editor_sandbox
+from devopy.sandbox.docker import DockerSandbox
 
 # Katalog na wizualizacje
 VISUALIZATION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visualizations")
@@ -37,14 +43,45 @@ METADATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "metadat
 os.makedirs(METADATA_DIR, exist_ok=True)
 
 # Katalog na środowiska wirtualne
-VENV_BASE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "venvs")
-os.makedirs(VENV_BASE_DIR, exist_ok=True)
+VENV_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "venvs")
+os.makedirs(VENV_DIR, exist_ok=True)
 
 # Rejestr funkcji
 function_registry = {}
 
 # Kolejka logów
 log_queue = queue.Queue()
+
+# Lista słuchaczy logów
+log_listeners = []
+
+# Podstawowe zależności dla aplikacji
+CORE_DEPENDENCIES = [
+    'flask==2.0.1',
+    'requests==2.28.1',
+    'jinja2==3.0.1',
+    'werkzeug==2.0.1',
+    'markupsafe==2.0.1'
+]
+
+# Zależności dla poszczególnych modułów
+MODULE_DEPENDENCIES = {
+    'code_generation': [
+        'openai==0.27.0',
+        'tiktoken==0.3.0'
+    ],
+    'docker': [
+        'docker==6.0.1',
+        'pyyaml==6.0'
+    ],
+    'testing': [
+        'pytest==7.0.1',
+        'coverage==6.3.2'
+    ]
+}
+
+# Logger
+logger = logging.getLogger(__name__)
 
 # Funkcja do generowania kodu na podstawie promptu
 def generate_code_from_prompt(prompt: str) -> Tuple[str, str]:
@@ -379,220 +416,117 @@ def run_example(example_name, args=None):
         add_log(f"[ERROR] Błąd podczas uruchamiania przykładu {example_name}: {str(e)}")
         return f"Błąd: {str(e)}"
 
+# Funkcja do sprawdzania i instalacji zależności
+def ensure_dependencies(dependencies, venv_path=None):
+    """
+    Sprawdza i instaluje brakujące zależności w środowisku wirtualnym
+    
+    Args:
+        dependencies: Lista zależności do zainstalowania
+        venv_path: Ścieżka do środowiska wirtualnego (opcjonalnie)
+    
+    Returns:
+        bool: True jeśli wszystkie zależności są dostępne
+    """
+    if venv_path is None:
+        venv_path = VENV_DIR
+    
+    venv_pip = os.path.join(venv_path, 'bin', 'pip')
+    
+    # Sprawdź, czy środowisko wirtualne istnieje
+    if not os.path.exists(venv_path):
+        logger.info(f"Tworzenie środowiska wirtualnego w {venv_path}")
+        subprocess.run([sys.executable, '-m', 'venv', venv_path], check=True)
+    
+    # Pobierz listę zainstalowanych pakietów
+    try:
+        installed = subprocess.check_output([venv_pip, 'freeze']).decode('utf-8')
+        installed_packages = {pkg.split('==')[0].lower() for pkg in installed.splitlines()}
+    except subprocess.CalledProcessError:
+        installed_packages = set()
+    
+    # Sprawdź i zainstaluj brakujące zależności
+    to_install = []
+    for dep in dependencies:
+        pkg_name = dep.split('==')[0].lower()
+        if pkg_name not in installed_packages:
+            to_install.append(dep)
+    
+    if to_install:
+        logger.info(f"Instalowanie brakujących zależności: {', '.join(to_install)}")
+        try:
+            subprocess.run([venv_pip, 'install'] + to_install, check=True)
+            return True
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Błąd podczas instalacji zależności: {e}")
+            return False
+    
+    return True
+
+# Inicjalizacja aplikacji z sprawdzeniem zależności
+def init_app():
+    """
+    Inicjalizuje aplikację z sprawdzeniem zależności
+    """
+    # Sprawdź podstawowe zależności
+    ensure_dependencies(CORE_DEPENDENCIES)
+    
+    # Załaduj metadane przykładów
+    init_examples_metadata()
+    
+    logger.info("Aplikacja zainicjalizowana pomyślnie")
+
 # Aplikacja Flask
 app = Flask(__name__, static_folder=STATIC_DIR, template_folder=STATIC_DIR)
 
-# Globals
-current_process = None
-examples_metadata = None
-
-# Initialize examples metadata
-def init_examples_metadata():
-    global examples_metadata
-    examples_metadata = load_examples_metadata()
-    
-    # If no metadata exists, discover examples and create metadata
-    if not examples_metadata or not examples_metadata.get('examples'):
-        print("Discovering examples and creating metadata...")
-        examples = discover_examples()
-        examples_metadata = {
-            'examples': {},
-            'categories': {}
-        }
+# Endpoint do strumieniowania logów w czasie rzeczywistym
+@app.route('/log-stream')
+def log_stream():
+    """
+    Endpoint do strumieniowania logów w czasie rzeczywistym
+    """
+    def generate():
+        listener_id = str(uuid.uuid4())
+        queue = queue.Queue()
+        log_listeners.append((listener_id, queue))
         
-        for example_name, example_path in examples.items():
-            metadata = get_example_metadata(example_path)
-            if metadata:
-                examples_metadata['examples'][example_name] = metadata
-                
-                # Add to category
-                category = metadata.get('category', 'Uncategorized')
-                if category not in examples_metadata['categories']:
-                    examples_metadata['categories'][category] = []
-                examples_metadata['categories'][category].append(example_name)
-    
-    return examples_metadata
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/matrix')
-def matrix():
-    return render_template('matrix.html')
-
-@app.route('/static/<path:path>')
-def serve_static(path):
-    return send_from_directory(STATIC_DIR, path)
-
-@app.route('/api/generate', methods=['POST'])
-def generate_code():
-    data = request.json
-    prompt = data.get('prompt', '')
-    
-    # Placeholder for actual code generation
-    generated_code = f"# Generated from: {prompt}\n\ndef example_function():\n    \"\"\"{prompt}\"\"\"\n    # TODO: Implement the function\n    print(\"Function called: {prompt}\")\n    return True"
-    
-    return jsonify({'code': generated_code})
-
-@app.route('/api/run', methods=['POST'])
-def run_code():
-    global current_process
-    
-    data = request.json
-    code = data.get('code', '')
-    
-    # Save code to a temporary file
-    with open('temp_code.py', 'w') as f:
-        f.write(code)
-    
-    # Run the code
-    try:
-        # Kill previous process if exists
-        if current_process and current_process.poll() is None:
-            current_process.terminate()
-            time.sleep(0.5)
-        
-        # Start new process
-        current_process = subprocess.Popen(
-            [sys.executable, 'temp_code.py'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            bufsize=1
-        )
-        
-        # Start threads to read output
-        def read_output(stream, prefix):
-            for line in stream:
-                log_queue.put(f"{prefix}: {line.strip()}")
-            
-        threading.Thread(target=read_output, args=(current_process.stdout, "OUT"), daemon=True).start()
-        threading.Thread(target=read_output, args=(current_process.stderr, "ERR"), daemon=True).start()
-        
-        return jsonify({'status': 'running'})
-    except Exception as e:
-        return jsonify({'error': str(e)})
-
-@app.route('/api/logs')
-def get_logs():
-    logs = []
-    while not log_queue.empty():
         try:
-            logs.append(log_queue.get_nowait())
-        except queue.Empty:
-            break
+            while True:
+                message = queue.get()
+                if message is None:  # None oznacza zakończenie
+                    break
+                yield f"data: {json.dumps({'message': message})}\n\n"
+                time.sleep(0.1)
+        finally:
+            # Usuń słuchacza z listy
+            log_listeners[:] = [(id, q) for id, q in log_listeners if id != listener_id]
     
-    return jsonify({'logs': logs})
+    response = Response(stream_with_context(generate()), mimetype="text/event-stream")
+    response.headers["Cache-Control"] = "no-cache"
+    response.headers["X-Accel-Buffering"] = "no"
+    return response
 
-@app.route('/api/execute', methods=['POST'])
-def execute_command():
-    data = request.json
-    command = data.get('command', '')
-    
-    try:
-        result = subprocess.run(
-            command,
-            shell=True,
-            capture_output=True,
-            text=True
-        )
-        
-        output = result.stdout
-        error = result.stderr
-        
-        return jsonify({
-            'output': output,
-            'error': error,
-            'exitCode': result.returncode
+# Endpoint zwracający listę dostępnych funkcji
+@app.route('/function-list')
+def function_list():
+    """
+    Endpoint zwracający listę dostępnych funkcji
+    """
+    functions = []
+    for name, func_info in function_registry.items():
+        functions.append({
+            'name': name,
+            'description': func_info.get('description', ''),
+            'parameters': func_info.get('parameters', [])
         })
-    except Exception as e:
-        return jsonify({'error': str(e)})
-
-@app.route('/api/save', methods=['POST'])
-def save_code():
-    data = request.json
-    code = data.get('code', '')
-    filename = data.get('filename', 'saved_code.py')
-    
-    try:
-        with open(filename, 'w') as f:
-            f.write(code)
-        return jsonify({'status': 'saved', 'filename': filename})
-    except Exception as e:
-        return jsonify({'error': str(e)})
-
-@app.route('/api/functions')
-def get_functions():
-    # Placeholder for actual function list
-    functions = [
-        {'id': 1, 'name': 'example_function', 'description': 'An example function'},
-        {'id': 2, 'name': 'another_function', 'description': 'Another example function'}
-    ]
     
     return jsonify({'functions': functions})
 
-# New API endpoints for the example loading system
-@app.route('/examples')
-def get_examples():
-    """Return the list of available examples with their metadata"""
-    global examples_metadata
-    
-    # Make sure examples metadata is initialized
-    if examples_metadata is None:
-        init_examples_metadata()
-    
-    return jsonify(examples_metadata)
-
-@app.route('/run-example', methods=['POST'])
-def api_run_example():
-    """Run a specified example"""
-    data = request.json
-    example_name = data.get('name')
-    args = data.get('args', [])
-    
-    if not example_name:
-        return jsonify({'error': 'Example name is required'})
-    
-    try:
-        # Get the example metadata
-        global examples_metadata
-        if examples_metadata is None:
-            init_examples_metadata()
-        
-        if example_name not in examples_metadata.get('examples', {}):
-            return jsonify({'error': f'Example {example_name} not found'})
-        
-        # Run the example
-        result = run_example(example_name, args)
-        return jsonify({'result': f'Example {example_name} executed successfully', 'output': result})
-    except Exception as e:
-        return jsonify({'error': str(e)})
-
-@app.route('/example-code/<path:example_name>')
-def get_example_code(example_name):
-    """Return the code of a specified example"""
-    global examples_metadata
-    
-    # Make sure examples metadata is initialized
-    if examples_metadata is None:
-        init_examples_metadata()
-    
-    if example_name not in examples_metadata.get('examples', {}):
-        return jsonify({'error': f'Example {example_name} not found'})
-    
-    example_path = examples_metadata['examples'][example_name]['path']
-    
-    try:
-        with open(example_path, 'r') as f:
-            code = f.read()
-        return jsonify({'code': code})
-    except Exception as e:
-        return jsonify({'error': str(e)})
+# ... (reszta kodu)
 
 if __name__ == '__main__':
-    # Initialize examples metadata
-    init_examples_metadata()
+    # Inicjalizacja aplikacji
+    init_app()
     
-    # Start the Flask app
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    # Uruchomienie serwera Flask
+    app.run(host='0.0.0.0', port=5000, debug=True)
