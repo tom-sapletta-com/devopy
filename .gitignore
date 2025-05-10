@@ -1,6 +1,7 @@
 .idea
 logs
 .devopy_venv
+venvs
 sandbox_envs
 docker_sandbox_envs
 .venv

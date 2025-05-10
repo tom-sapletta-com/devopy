@@ -3,7 +3,7 @@ from devopy.converters.restapi_task import restapi_task
 from devopy.converters.graphql_task import graphql_task
 from devopy.converters.grpc_task import grpc_task
 
-@text2python_task("Napisz funkcję, która oblicza n-ty wyraz ciągu Fibonacciego")
+@text2python_task("Oblicz n-ty wyraz ciągu Fibonacciego")
 @restapi_task("GET http://localhost:8000/fibonacci")
 @graphql_task("type Query { fibonacci(n: Int!): Int! }")
 @grpc_task('service Fibonacci { rpc Compute (FiboRequest) returns (FiboResponse); }', service='Fibonacci')

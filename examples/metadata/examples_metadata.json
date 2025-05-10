@@ -1,0 +1,346 @@
+{
+  "examples": {
+    "html_visualization": {
+      "name": "html_visualization",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/html_visualization.py",
+      "description": "Dekorator do oznaczania funkcji generowanych z promptu tekstowego",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/html_visualization"
+    },
+    "cli_example": {
+      "name": "cli_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/cli_example.py",
+      "description": "!/usr/bin/env python3 Przyk\u0142ad u\u017cycia CLI bezpo\u015brednio z kodu Python",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "General",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/cli_example"
+    },
+    "grpc_integration_example": {
+      "name": "grpc_integration_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/grpc_integration_example.py",
+      "description": "syntax = \"proto3\";\n\nmessage FibonacciRequest {\n    int32 n = 1;\n}\n\nmessage FibonacciResponse {\n    int32 result = 1;\n}\n\nservice FibonacciService {\n    rpc Compute (FibonacciRequest) returns (FibonacciResponse);\n}",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/grpc_integration_example"
+    },
+    "devopy_examples": {
+      "name": "devopy_examples",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/devopy_examples.py",
+      "description": "Pobiera dane z API i przekszta\u0142ca je do formatu JSON\n    \n    Args:\n        url: URL API\n        params: Parametry zapytania\n        \n    Returns:\n        Dict[str, Any]: Dane w formacie JSON",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "General",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/devopy_examples"
+    },
+    "visualization_example": {
+      "name": "visualization_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/visualization_example.py",
+      "description": "Pobiera dane z zewn\u0119trznego API",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests",
+        "matplotlib"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/visualization_example"
+    },
+    "auto_install_examples": {
+      "name": "auto_install_examples",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/auto_install_examples.py",
+      "description": "Example 1: Explicit package list",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "General",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/auto_install_examples"
+    },
+    "text2python_decorator_docker_example": {
+      "name": "text2python_decorator_docker_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_docker_example.py",
+      "description": "Generuje pliki aplikacji dla ka\u017cdej funkcji",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_docker_example"
+    },
+    "text2python_decorator_restapi_example": {
+      "name": "text2python_decorator_restapi_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_restapi_example.py",
+      "description": "Example: text2python_decorator_restapi_example",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_restapi_example"
+    },
+    "api_example": {
+      "name": "api_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/api_example.py",
+      "description": "!/usr/bin/env python3 Przyk\u0142ad wys\u0142ania zadania do API devopy",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "Docker",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/api_example"
+    },
+    "modules_demo": {
+      "name": "modules_demo",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/modules_demo.py",
+      "description": "Demonstracja u\u017cycia przeniesionych modu\u0142\u00f3w z projektu evopy do devopy\n\nTen skrypt pokazuje, jak korzysta\u0107 z nast\u0119puj\u0105cych modu\u0142\u00f3w:\n1. Mened\u017cer zale\u017cno\u015bci (dependency_manager)\n2. Konwerter tekstu na kod (text2python)\n3. Piaskownica Docker (docker_sandbox)",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "numpy",
+        "flask",
+        "matplotlib"
+      ],
+      "category": "Docker",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/modules_demo"
+    },
+    "text2python_decorator_multiapi_example": {
+      "name": "text2python_decorator_multiapi_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_multiapi_example.py",
+      "description": "Example: text2python_decorator_multiapi_example",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_multiapi_example"
+    },
+    "text2python_decorator_docker_compose_example": {
+      "name": "text2python_decorator_docker_compose_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_docker_compose_example.py",
+      "description": "Generuje pliki aplikacji dla ka\u017cdej funkcji",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_docker_compose_example"
+    },
+    "flask_integration_example": {
+      "name": "flask_integration_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/flask_integration_example.py",
+      "description": "Oblicza n-ty wyraz ci\u0105gu Fibonacciego",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/flask_integration_example"
+    },
+    "docker_examples": {
+      "name": "docker_examples",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/docker_examples.py",
+      "description": "Wczytuje konfiguracj\u0119 Docker z pliku YAML dla danej funkcji",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/docker_examples"
+    },
+    "interactive_visualization": {
+      "name": "interactive_visualization",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/interactive_visualization.py",
+      "description": "Uniwersalny dekorator Devopy, kt\u00f3ry automatycznie interpretuje parametry\n    w zale\u017cno\u015bci od ich typu i formatu.\n    \n    Przyk\u0142ady:\n    @devopy(\"Napisz funkcj\u0119, kt\u00f3ra pobiera dane z API\") - prompt dla text2python\n    @devopy(\"GET /api/data\") - endpoint REST API\n    @devopy(\"run.sh\") - skrypt do uruchomienia\n    @devopy(\"docker:python:3.9\") - konfiguracja Dockera",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/interactive_visualization"
+    },
+    "smart_editor_layouts": {
+      "name": "smart_editor_layouts",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/smart_editor_layouts.py",
+      "description": "Smart Editor Layouts - r\u00f3\u017cne warianty layout\u00f3w dla Smart Editora",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "Editor",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/smart_editor_layouts"
+    },
+    "text2python_decorator_example": {
+      "name": "text2python_decorator_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_example.py",
+      "description": "Example: text2python_decorator_example",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_example"
+    },
+    "graphql_integration_example": {
+      "name": "graphql_integration_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/graphql_integration_example.py",
+      "description": "Oblicza n-ty wyraz ci\u0105gu Fibonacciego",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/graphql_integration_example"
+    },
+    "smart_editor": {
+      "name": "smart_editor",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/smart_editor.py",
+      "description": "Generuje kod funkcji i konfiguracj\u0119 Docker na podstawie promptu\n    \n    Args:\n        prompt: Opis funkcji\n        \n    Returns:\n        Tuple[str, str]: Wygenerowany kod i konfiguracja Docker",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "Editor",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/smart_editor"
+    },
+    "standalone_visualization": {
+      "name": "standalone_visualization",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/standalone_visualization.py",
+      "description": "Dekorator do oznaczania funkcji generowanych z promptu tekstowego",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests",
+        "matplotlib"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/standalone_visualization"
+    },
+    "text2python_decorator_examples_more": {
+      "name": "text2python_decorator_examples_more",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/text2python_decorator_examples_more.py",
+      "description": "Example: text2python_decorator_examples_more",
+      "dependencies": [
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "pyyaml",
+        "flask"
+      ],
+      "category": "Code Generation",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/text2python_decorator_examples_more"
+    },
+    "simple_visualization_example": {
+      "name": "simple_visualization_example",
+      "path": "/home/tom/github/tom-sapletta-com/devopy/examples/simple_visualization_example.py",
+      "description": "Pobiera dane z zewn\u0119trznego API",
+      "dependencies": [
+        "grpcio-tools",
+        "grpcio",
+        "-e /home/tom/github/tom-sapletta-com/devopy",
+        "graphql-core",
+        "pyyaml",
+        "flask",
+        "requests",
+        "matplotlib"
+      ],
+      "category": "API",
+      "venv_path": "/home/tom/github/tom-sapletta-com/devopy/venvs/simple_visualization_example"
+    }
+  },
+  "categories": {
+    "API": [
+      "html_visualization",
+      "grpc_integration_example",
+      "visualization_example",
+      "flask_integration_example",
+      "docker_examples",
+      "interactive_visualization",
+      "graphql_integration_example",
+      "standalone_visualization",
+      "simple_visualization_example"
+    ],
+    "General": [
+      "cli_example",
+      "devopy_examples",
+      "auto_install_examples"
+    ],
+    "Code Generation": [
+      "text2python_decorator_docker_example",
+      "text2python_decorator_restapi_example",
+      "text2python_decorator_multiapi_example",
+      "text2python_decorator_docker_compose_example",
+      "text2python_decorator_example",
+      "text2python_decorator_examples_more"
+    ],
+    "Docker": [
+      "api_example",
+      "modules_demo"
+    ],
+    "Editor": [
+      "smart_editor_layouts",
+      "smart_editor"
+    ]
+  }
+}

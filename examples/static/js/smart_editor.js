@@ -426,45 +426,171 @@ Content-Type: application/json
     }
 }
 
+// Funkcja do wczytywania listy przykładów
+function loadExamples() {
+    fetch('/examples')
+        .then(response => response.json())
+        .then(data => {
+            const examplesContainer = document.getElementById('examples-container');
+            if (!examplesContainer) return;
+            
+            displayExamples(data, examplesContainer);
+        })
+        .catch(error => {
+            console.error('Błąd podczas wczytywania przykładów:', error);
+            const examplesContainer = document.getElementById('examples-container');
+            if (examplesContainer) {
+                examplesContainer.innerHTML = '<div class="error-message">Nie udało się wczytać przykładów</div>';
+            }
+        });
+}
+
+// Funkcja do wyświetlania przykładów
+function displayExamples(data, container) {
+    container.innerHTML = '';
+    
+    // Wyświetl przykłady pogrupowane według kategorii
+    const categories = data.categories || {};
+    
+    for (const category in categories) {
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'example-category';
+        
+        const categoryTitle = document.createElement('div');
+        categoryTitle.className = 'category-title';
+        categoryTitle.textContent = category;
+        categoryDiv.appendChild(categoryTitle);
+        
+        const examples = categories[category] || [];
+        
+        for (const exampleName of examples) {
+            const example = data.examples[exampleName];
+            if (!example) continue;
+            
+            const exampleDiv = document.createElement('div');
+            exampleDiv.className = 'example-item';
+            
+            const exampleNameDiv = document.createElement('div');
+            exampleNameDiv.className = 'example-name';
+            exampleNameDiv.textContent = example.name;
+            exampleDiv.appendChild(exampleNameDiv);
+            
+            const exampleDescDiv = document.createElement('div');
+            exampleDescDiv.className = 'example-description';
+            exampleDescDiv.textContent = example.description;
+            exampleDiv.appendChild(exampleDescDiv);
+            
+            const exampleActionsDiv = document.createElement('div');
+            exampleActionsDiv.className = 'example-actions';
+            
+            const runButton = document.createElement('button');
+            runButton.className = 'button';
+            runButton.textContent = 'Uruchom';
+            runButton.onclick = function() {
+                runExample(example.name);
+            };
+            exampleActionsDiv.appendChild(runButton);
+            
+            const viewButton = document.createElement('button');
+            viewButton.className = 'button secondary';
+            viewButton.textContent = 'Pokaż kod';
+            viewButton.onclick = function() {
+                viewExampleCode(example.path);
+            };
+            exampleActionsDiv.appendChild(viewButton);
+            
+            exampleDiv.appendChild(exampleActionsDiv);
+            categoryDiv.appendChild(exampleDiv);
+        }
+        
+        container.appendChild(categoryDiv);
+    }
+    
+    // Jeśli nie ma przykładów, wyświetl komunikat
+    if (Object.keys(categories).length === 0) {
+        container.innerHTML = '<div class="error-message">Brak dostępnych przykładów</div>';
+    }
+}
+
+// Funkcja do uruchamiania przykładu
+function runExample(exampleName) {
+    const consoleOutput = document.getElementById('console-output');
+    if (consoleOutput) {
+        consoleOutput.innerHTML += `<span style='color: #4CAF50;'>[INFO] Uruchamianie przykładu: ${exampleName}</span>\n`;
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+    
+    fetch('/run-example', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: exampleName
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (consoleOutput) {
+            if (data.error) {
+                consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] ${data.error}</span>\n`;
+            } else {
+                consoleOutput.innerHTML += `<span style='color: #4CAF50;'>[INFO] ${data.result}</span>\n`;
+            }
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+    })
+    .catch(error => {
+        if (consoleOutput) {
+            consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] Błąd podczas uruchamiania przykładu: ${error}</span>\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+    });
+}
+
+// Funkcja do wyświetlania kodu przykładu
+function viewExampleCode(examplePath) {
+    fetch(examplePath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Nie udało się pobrać kodu przykładu');
+            }
+            return response.text();
+        })
+        .then(code => {
+            if (window.codeEditor) {
+                window.codeEditor.setValue(code);
+                
+                // Przełącz na zakładkę z kodem
+                const codePanel = document.querySelector('.panel:nth-child(2)');
+                if (codePanel) {
+                    codePanel.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        })
+        .catch(error => {
+            const consoleOutput = document.getElementById('console-output');
+            if (consoleOutput) {
+                consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] ${error.message}</span>\n`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+        });
+}
+
 // Inicjalizacja po załadowaniu strony
 document.addEventListener("DOMContentLoaded", function() {
     // Inicjalizacja edytorów
     const codeEditorElement = document.getElementById("code-editor");
     if (codeEditorElement) {
         window.codeEditor = initCodeEditor("code-editor");
-        window.codeEditor.setSize("100%", "100%");
     }
     
     const dockerEditorElement = document.getElementById("docker-editor");
     if (dockerEditorElement) {
         window.dockerEditor = initDockerEditor("docker-editor");
-        window.dockerEditor.setSize("100%", "100%");
     }
     
-    // Dodanie obsługi zdarzeń
-    const promptInput = document.getElementById("prompt-input");
-    if (promptInput) {
-        promptInput.addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-                generateCode();
-            }
-        });
-    }
-    
-    const consoleInput = document.getElementById("console-input");
-    if (consoleInput) {
-        consoleInput.addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-                executeCommand();
-            }
-        });
-    }
-    
-    const newFunctionBtn = document.getElementById("new-function-btn");
-    if (newFunctionBtn) {
-        newFunctionBtn.addEventListener("click", newFunction);
-    }
-    
+    // Dodanie obsługi przycisków
     const saveBtn = document.getElementById("save-btn");
     if (saveBtn) {
         saveBtn.addEventListener("click", saveCode);
@@ -485,24 +611,64 @@ document.addEventListener("DOMContentLoaded", function() {
         deployBtn.addEventListener("click", deployFunction);
     }
     
-    const endpointTestBtn = document.getElementById("endpoint-test-btn");
-    if (endpointTestBtn) {
-        endpointTestBtn.addEventListener("click", runEndpointTest);
+    const newFunctionBtn = document.getElementById("new-function-btn");
+    if (newFunctionBtn) {
+        newFunctionBtn.addEventListener("click", newFunction);
     }
     
-    // Wczytaj listę funkcji przy starcie
+    // Wczytanie listy funkcji
     loadFunctionList();
     
-    // Rozpocznij nasłuchiwanie logów
+    // Wczytanie listy przykładów
+    loadExamples();
+    
+    // Uruchomienie strumienia logów
     startLogStream();
     
-    // Dodaj obsługę błędów
-    window.onerror = function(message, source, lineno, colno, error) {
-        console.error("Błąd JavaScript:", message, "w", source, "linia:", lineno);
-        const consoleOutput = document.getElementById("console-output");
-        if (consoleOutput) {
-            consoleOutput.innerHTML += `<span style='color: red;'>[ERROR] ${message} (${source}:${lineno})</span>\n`;
-            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    // Obsługa klawisza Enter w konsoli
+    const consoleInput = document.getElementById("console-input");
+    if (consoleInput) {
+        consoleInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                executeCommand();
+            }
+        });
+    }
+    
+    // Obsługa klawisza Enter w polu promptu
+    const promptInput = document.getElementById("prompt-input");
+    if (promptInput) {
+        promptInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                generateCode();
+            }
+        });
+    }
+    
+    // Dodatkowa inicjalizacja dla układu matrix
+    const mainContainer = document.querySelector('.main');
+    if (mainContainer && mainContainer.classList.contains('grid')) {
+        // Funkcja do automatycznego dostosowywania rozmiaru paneli
+        function resizePanels() {
+            const windowHeight = window.innerHeight;
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            
+            // Ustaw wysokość głównego kontenera
+            mainContainer.style.height = `${windowHeight - headerHeight - 10}px`;
         }
-    };
+        
+        // Wywołaj funkcję przy załadowaniu i zmianie rozmiaru okna
+        resizePanels();
+        window.addEventListener('resize', resizePanels);
+    }
 });
+
+// Funkcja do obsługi błędów
+window.onerror = function(message, source, lineno, colno, error) {
+    console.error("Błąd JavaScript:", message, "w", source, "linia:", lineno);
+    const consoleOutput = document.getElementById("console-output");
+    if (consoleOutput) {
+        consoleOutput.innerHTML += `<span style='color: red;'>[ERROR] ${message} (${source}:${lineno})</span>\n`;
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+};

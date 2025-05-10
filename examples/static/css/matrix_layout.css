@@ -1,0 +1,342 @@
+/* Matrix Layout CSS */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+.header {
+    padding: 10px;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+    flex-grow: 1;
+    padding: 5px;
+    background-color: #34495e;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.main.has-expanded-panel {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    position: relative;
+}
+
+.panel {
+    background-color: #2c3e50;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0; /* Important for Firefox */
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Panel expansion styles */
+.panel.expanded {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    z-index: 10;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transform: scale(1);
+}
+
+.panel.minimized {
+    opacity: 0.85;
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    z-index: 5;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.panel.minimized .panel-header {
+    padding: 5px;
+    font-size: 0.9em;
+}
+
+.panel.minimized .panel-content {
+    opacity: 0.7;
+}
+
+.panel.minimized:hover {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.8);
+    z-index: 6;
+}
+
+.panel.minimized:hover .panel-content {
+    opacity: 1;
+}
+
+.panel.minimized-top-left {
+    top: 10px;
+    left: 10px;
+}
+
+.panel.minimized-top-right {
+    top: 10px;
+    right: 10px;
+}
+
+.panel.minimized-bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+.panel.minimized-bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Overlay for expanded panel mode */
+.main.has-expanded-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.panel-header {
+    background-color: #1a2530;
+    color: white;
+    padding: 8px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.panel-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.panel-control-btn {
+    background: none;
+    border: none;
+    color: #95a5a6;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.panel-control-btn:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.panel-control-btn.expand-btn {
+    color: #3498db;
+}
+
+.panel-content {
+    flex-grow: 1;
+    overflow: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Important for Firefox */
+}
+
+/* Make CodeMirror fill the available space */
+.code-editor-container, .docker-editor-container {
+    flex-grow: 1;
+    height: 100%;
+    overflow: hidden;
+}
+
+.CodeMirror {
+    height: 100% !important;
+    font-size: 14px;
+}
+
+/* Tabs styling */
+.tabs {
+    display: flex;
+    background-color: #1a2530;
+    border-bottom: 1px solid #34495e;
+}
+
+.tab {
+    background-color: transparent;
+    border: none;
+    color: #95a5a6;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9em;
+}
+
+.tab:hover {
+    background-color: #2c3e50;
+    color: white;
+}
+
+.tab.active {
+    background-color: #2c3e50;
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+}
+
+.tab-content {
+    display: none;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.tab-content.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Examples panel styling */
+.examples-container {
+    padding: 10px;
+    color: white;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.example-category {
+    margin-bottom: 15px;
+}
+
+.category-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #3498db;
+}
+
+.example-item {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    background-color: #1a2530;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.example-item:hover {
+    background-color: #2c3e50;
+}
+
+.example-name {
+    font-weight: bold;
+}
+
+.example-description {
+    font-size: 0.9em;
+    color: #95a5a6;
+    margin-top: 3px;
+}
+
+.example-actions {
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.example-actions button {
+    font-size: 0.8em;
+    padding: 3px 8px;
+}
+
+.loading-examples {
+    color: #95a5a6;
+    font-style: italic;
+    padding: 10px;
+}
+
+.error-message {
+    color: #e74c3c;
+    padding: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+/* Animation for panel transitions */
+.panel {
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for panels */
+.panel:hover {
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a2530;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}

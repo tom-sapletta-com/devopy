@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Editor - Devopy (Matrix)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="/static/css/smart_editor_base.css">
+    <link rel="stylesheet" href="/static/css/matrix_layout.css">
+    <style>
+        /* Additional styles for examples panel */
+        .examples-container {
+            padding: 10px;
+            color: white;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .example-category {
+            margin-bottom: 15px;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+        
+        .example-item {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            background-color: #1a2530;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .example-item:hover {
+            background-color: #2c3e50;
+        }
+        
+        .example-name {
+            font-weight: bold;
+        }
+        
+        .example-description {
+            font-size: 0.9em;
+            color: #95a5a6;
+            margin-top: 3px;
+        }
+        
+        .example-actions {
+            margin-top: 5px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .example-actions button {
+            font-size: 0.8em;
+            padding: 3px 8px;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        .header {
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        
+        .button.secondary {
+            background-color: #7f8c8d;
+        }
+        
+        .layout-select {
+            padding: 8px;
+            border-radius: 3px;
+            border: none;
+            margin-right: 10px;
+        }
+        
+        .main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 5px;
+            flex-grow: 1;
+            padding: 5px;
+            background-color: #34495e;
+            height: calc(100vh - 60px);
+        }
+        
+        .panel {
+            background-color: #2c3e50;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .panel-header {
+            background-color: #1a2530;
+            color: white;
+            padding: 8px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .panel-header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #3498db;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .panel:not(.expanded):hover .panel-header::after {
+            opacity: 1;
+        }
+        
+        .panel.expanded .panel-header::after {
+            background-color: #e74c3c;
+            opacity: 1;
+        }
+        
+        .panel-content {
+            flex-grow: 1;
+            overflow: auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Code editor styles */
+        .CodeMirror {
+            height: 100% !important;
+            font-size: 14px;
+        }
+        
+        /* Function list styles */
+        .function-list {
+            overflow-y: auto;
+            height: 100%;
+            color: white;
+        }
+        
+        .function-item {
+            padding: 8px;
+            border-bottom: 1px solid #34495e;
+            cursor: pointer;
+        }
+        
+        .function-item:hover {
+            background-color: #34495e;
+        }
+        
+        /* Console styles */
+        .console-output {
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #1a2530;
+            color: #ecf0f1;
+            padding: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        .console-input {
+            display: flex;
+            padding: 5px;
+            background-color: #2c3e50;
+        }
+        
+        .console-input input {
+            flex-grow: 1;
+            padding: 8px;
+            border: none;
+            background-color: #1a2530;
+            color: white;
+        }
+        
+        /* Tabs styles */
+        .tabs {
+            display: flex;
+            background-color: #1a2530;
+        }
+        
+        .tab {
+            padding: 8px 15px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            background-color: #2c3e50;
+            border-top: 2px solid #3498db;
+        }
+        
+        .tab-content {
+            display: none;
+            height: 100%;
+        }
+        
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        /* Prompt input styles */
+        .prompt-container {
+            padding: 5px;
+            background-color: #2c3e50;
+        }
+        
+        .prompt-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: none;
+            background-color: #1a2530;
+            color: white;
+        }
+        
+        /* Endpoints styles */
+        .endpoints-container {
+            padding: 10px;
+            color: white;
+            overflow-y: auto;
+            height: 100%;
+        }
+        
+        .endpoint-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #1a2530;
+            border-radius: 3px;
+        }
+        
+        .endpoint-method {
+            display: inline-block;
+            padding: 3px 6px;
+            background-color: #27ae60;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+        
+        .logs-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #1a2530;
+            color: #ecf0f1;
+            padding: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        
+        /* Resizable panels */
+        .resizable {
+            position: relative;
+        }
+        
+        .panel-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .panel-control-btn {
+            padding: 5px;
+            border: none;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .expand-btn {
+            font-size: 1.2em;
+        }
+        
+        .panel.expanded {
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
+        
+        .panel.minimized {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        
+        .panel.minimized-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            height: 20%;
+        }
+        
+        .panel.minimized-top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 20%;
+        }
+        
+        .panel.minimized-bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 20%;
+            height: 20%;
+        }
+        
+        .panel.minimized-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20%;
+            height: 20%;
+        }
+        
+        .main.has-expanded-panel {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 0.2fr 1fr;
+        }
+        
+        /* Additional styles for animations */
+        .panel-transition {
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/yaml/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Editor - Devopy (Matrix)</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="layout-selector">
+                    <select id="layout-select" class="layout-select" onchange="changeLayout()">
+                        <option value="standard">Standardowy</option>
+                        <option value="developer">Deweloperski</option>
+                        <option value="monitoring">Monitorowanie</option>
+                        <option value="testing">Testowanie</option>
+                        <option value="matrix" selected>Matrix</option>
+                    </select>
+                </div>
+                <button id="new-function-btn" class="button">Nowa</button>
+                <button id="save-btn" class="button">Zapisz</button>
+                <button id="run-btn" class="button">Uruchom</button>
+                <button id="test-btn" class="button secondary">Test</button>
+                <button id="deploy-btn" class="button secondary">Wdróż</button>
+            </div>
+        </div>
+        <div class="main">
+            <!-- Panel 1: Function List -->
+            <div class="panel" id="panel-1">
+                <div class="panel-header">
+                    <span>Funkcje</span>
+                    <div class="panel-controls">
+                        <button id="generate-btn" class="button">Generuj</button>
+                        <button class="panel-control-btn expand-btn" onclick="togglePanelExpansion(1)">⤢</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="prompt-container">
+                        <input type="text" id="prompt-input" class="prompt-input" placeholder="Opisz funkcję (np. 'Pobierz dane z API', 'Przetwórz dane JSON', 'Zapisz dane do bazy')">
+                    </div>
+                    <div class="tabs">
+                        <button class="tab active" onclick="openTab(event, 'functions-tab')">Funkcje</button>
+                        <button class="tab" onclick="openTab(event, 'examples-tab')">Przykłady</button>
+                    </div>
+                    <div id="functions-tab" class="tab-content active">
+                        <div class="function-list" id="function-list">
+                            <!-- Lista funkcji będzie generowana dynamicznie -->
+                        </div>
+                    </div>
+                    <div id="examples-tab" class="tab-content">
+                        <div class="examples-container" id="examples-container">
+                            <!-- Lista przykładów będzie generowana dynamicznie -->
+                            <div class="loading-examples">Ładowanie przykładów...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 2: Code Editor -->
+            <div class="panel" id="panel-2">
+                <div class="panel-header">
+                    <span>Kod Python</span>
+                    <div class="panel-controls">
+                        <button class="panel-control-btn expand-btn" onclick="togglePanelExpansion(2)">⤢</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="code-editor-container">
+                        <textarea id="code-editor"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 3: Console -->
+            <div class="panel" id="panel-3">
+                <div class="panel-header">
+                    <span>Konsola</span>
+                    <div class="panel-controls">
+                        <button class="panel-control-btn expand-btn" onclick="togglePanelExpansion(3)">⤢</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="console-output" id="console-output"></div>
+                    <div class="console-input">
+                        <input type="text" id="console-input" placeholder="Wprowadź komendę...">
+                        <button onclick="executeCommand()">Wykonaj</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Panel 4: Docker & Endpoints -->
+            <div class="panel" id="panel-4">
+                <div class="panel-header">
+                    <span>Docker & Endpoints</span>
+                    <div class="panel-controls">
+                        <button class="panel-control-btn expand-btn" onclick="togglePanelExpansion(4)">⤢</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="tabs">
+                        <button class="tab active" onclick="openTab(event, 'docker-tab')">Docker</button>
+                        <button class="tab" onclick="openTab(event, 'endpoints-tab')">Endpoints</button>
+                        <button class="tab" onclick="openTab(event, 'logs-tab')">Logi</button>
+                    </div>
+                    <div id="docker-tab" class="tab-content active">
+                        <div class="docker-editor-container">
+                            <textarea id="docker-editor"></textarea>
+                        </div>
+                    </div>
+                    <div id="endpoints-tab" class="tab-content">
+                        <div class="endpoints-container" id="endpoints-container">
+                            <!-- Lista endpointów będzie generowana dynamicznie -->
+                        </div>
+                    </div>
+                    <div id="logs-tab" class="tab-content">
+                        <div class="logs-container" id="logs-output"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/smart_editor.js"></script>
+    <script>
+        // Additional JavaScript code for matrix layout
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add event listener for generate button
+            const generateBtn = document.getElementById("generate-btn");
+            if (generateBtn) {
+                generateBtn.addEventListener("click", function() {
+                    generateCode();
+                });
+            }
+            
+            // Function to automatically adjust panel sizes
+            function resizePanels() {
+                const mainContainer = document.querySelector('.main');
+                const windowHeight = window.innerHeight;
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                
+                // Set main container height
+                mainContainer.style.height = `${windowHeight - headerHeight - 10}px`;
+            }
+            
+            // Call function on load and window resize
+            resizePanels();
+            window.addEventListener('resize', resizePanels);
+            
+            // Load examples list
+            loadExamples();
+            
+            // Add event listener for panel headers
+            setupPanelHeaderClicks();
+            
+            // Add observer for panel class changes
+            setupPanelObserver();
+            
+            // Add event listener for Escape key
+            setupEscapeKeyHandler();
+            
+            // Refresh code editors after load
+            setTimeout(() => {
+                if (window.codeEditor) {
+                    window.codeEditor.refresh();
+                }
+                if (window.dockerEditor) {
+                    window.dockerEditor.refresh();
+                }
+            }, 100);
+        });
+        
+        // Function to toggle panel expansion
+        function togglePanelExpansion(panelId) {
+            const panel = document.getElementById(`panel-${panelId}`);
+            const allPanels = document.querySelectorAll('.panel');
+            const mainContainer = document.querySelector('.main');
+            
+            // If panel is already expanded, reset all panels to normal size
+            if (panel.classList.contains('expanded')) {
+                // Reset main container layout
+                mainContainer.classList.remove('has-expanded-panel');
+                
+                allPanels.forEach(p => {
+                    p.classList.remove('expanded');
+                    p.classList.remove('minimized');
+                    p.classList.remove('minimized-top-left');
+                    p.classList.remove('minimized-top-right');
+                    p.classList.remove('minimized-bottom-left');
+                    p.classList.remove('minimized-bottom-right');
+                    
+                    // Reset default styles
+                    p.style.width = '';
+                    p.style.height = '';
+                    p.style.position = '';
+                    p.style.top = '';
+                    p.style.left = '';
+                    p.style.right = '';
+                    p.style.bottom = '';
+                    p.style.margin = '';
+                    p.style.transform = '';
+                    p.style.zIndex = '';
+                });
+                
+                // Add transition class to all panels
+                allPanels.forEach(p => {
+                    p.classList.add('panel-transition');
+                    setTimeout(() => {
+                        p.classList.remove('panel-transition');
+                    }, 400);
+                });
+            } else {
+                // Change main container layout
+                mainContainer.classList.add('has-expanded-panel');
+                
+                // Expand selected panel and minimize others
+                let minimizedPanelIndex = 0;
+                const positions = ['minimized-top-left', 'minimized-top-right', 'minimized-bottom-left', 'minimized-bottom-right'];
+                
+                allPanels.forEach(p => {
+                    // Add transition class
+                    p.classList.add('panel-transition');
+                    
+                    if (p.id === `panel-${panelId}`) {
+                        // Expand selected panel
+                        p.classList.add('expanded');
+                        p.classList.remove('minimized');
+                        p.classList.remove('minimized-top-left');
+                        p.classList.remove('minimized-top-right');
+                        p.classList.remove('minimized-bottom-left');
+                        p.classList.remove('minimized-bottom-right');
+                        
+                        // Set styles for expanded panel
+                        p.style.position = 'absolute';
+                        p.style.top = '10%';
+                        p.style.left = '10%';
+                        p.style.width = '80%';
+                        p.style.height = '80%';
+                        p.style.zIndex = '10';
+                    } else {
+                        // Minimize other panels
+                        p.classList.remove('expanded');
+                        p.classList.add('minimized');
+                        
+                        // Remove all position classes
+                        p.classList.remove('minimized-top-left');
+                        p.classList.remove('minimized-top-right');
+                        p.classList.remove('minimized-bottom-left');
+                        p.classList.remove('minimized-bottom-right');
+                        
+                        // Add corresponding position class
+                        p.classList.add(positions[minimizedPanelIndex]);
+                        
+                        // Increment index for next panel
+                        minimizedPanelIndex = (minimizedPanelIndex + 1) % positions.length;
+                    }
+                    
+                    // Remove transition class after transition
+                    setTimeout(() => {
+                        p.classList.remove('panel-transition');
+                    }, 400);
+                });
+            }
+            
+            // Refresh code editors after transition
+            setTimeout(() => {
+                if (window.codeEditor) {
+                    window.codeEditor.refresh();
+                }
+                if (window.dockerEditor) {
+                    window.dockerEditor.refresh();
+                }
+            }, 400);
+        }
+        
+        // Function to handle clicks on minimized panels
+        function setupMinimizedPanelClicks() {
+            const panels = document.querySelectorAll('.panel');
+            
+            panels.forEach(panel => {
+                panel.addEventListener('click', function(event) {
+                    // If panel is minimized, expand it on click
+                    if (panel.classList.contains('minimized')) {
+                        const panelId = panel.id.split('-')[1];
+                        togglePanelExpansion(panelId);
+                        event.stopPropagation();
+                    }
+                });
+            });
+        }
+        
+        // Add observer for panel class changes
+        function setupPanelObserver() {
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        setupMinimizedPanelClicks();
+                    }
+                });
+            });
+            
+            const panels = document.querySelectorAll('.panel');
+            panels.forEach(panel => {
+                observer.observe(panel, { attributes: true });
+            });
+            
+            // Initialize
+            setupMinimizedPanelClicks();
+        }
+        
+        // Function to handle Escape key press
+        function setupEscapeKeyHandler() {
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const expandedPanel = document.querySelector('.panel.expanded');
+                    if (expandedPanel) {
+                        const panelId = expandedPanel.id.split('-')[1];
+                        togglePanelExpansion(panelId);
+                    }
+                }
+            });
+        }
+        
+        // Function to load examples list
+        function loadExamples() {
+            fetch('/examples')
+                .then(response => response.json())
+                .then(data => {
+                    displayExamples(data);
+                })
+                .catch(error => {
+                    console.error('Error loading examples:', error);
+                    const examplesContainer = document.getElementById('examples-container');
+                    if (examplesContainer) {
+                        examplesContainer.innerHTML = '<div class="error-message">Failed to load examples</div>';
+                    }
+                });
+        }
+        
+        // Function to display examples list
+        function displayExamples(data) {
+            const examplesContainer = document.getElementById('examples-container');
+            if (!examplesContainer) return;
+            
+            examplesContainer.innerHTML = '';
+            
+            // Display examples grouped by category
+            const categories = data.categories || {};
+            
+            for (const category in categories) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'example-category';
+                
+                const categoryTitle = document.createElement('div');
+                categoryTitle.className = 'category-title';
+                categoryTitle.textContent = category;
+                categoryDiv.appendChild(categoryTitle);
+                
+                const examples = categories[category] || [];
+                
+                for (const exampleName of examples) {
+                    const example = data.examples[exampleName];
+                    if (!example) continue;
+                    
+                    const exampleDiv = document.createElement('div');
+                    exampleDiv.className = 'example-item';
+                    
+                    const exampleNameDiv = document.createElement('div');
+                    exampleNameDiv.className = 'example-name';
+                    exampleNameDiv.textContent = example.name;
+                    exampleDiv.appendChild(exampleNameDiv);
+                    
+                    const exampleDescDiv = document.createElement('div');
+                    exampleDescDiv.className = 'example-description';
+                    exampleDescDiv.textContent = example.description;
+                    exampleDiv.appendChild(exampleDescDiv);
+                    
+                    const exampleActionsDiv = document.createElement('div');
+                    exampleActionsDiv.className = 'example-actions';
+                    
+                    const runButton = document.createElement('button');
+                    runButton.className = 'button';
+                    runButton.textContent = 'Run';
+                    runButton.onclick = function() {
+                        runExample(example.name);
+                    };
+                    exampleActionsDiv.appendChild(runButton);
+                    
+                    const viewButton = document.createElement('button');
+                    viewButton.className = 'button secondary';
+                    viewButton.textContent = 'View Code';
+                    viewButton.onclick = function() {
+                        viewExampleCode(example.path);
+                    };
+                    exampleActionsDiv.appendChild(viewButton);
+                    
+                    exampleDiv.appendChild(exampleActionsDiv);
+                    categoryDiv.appendChild(exampleDiv);
+                }
+                
+                examplesContainer.appendChild(categoryDiv);
+            }
+            
+            // If no examples, display message
+            if (Object.keys(categories).length === 0) {
+                examplesContainer.innerHTML = '<div class="error-message">No examples available</div>';
+            }
+        }
+        
+        // Function to run example
+        function runExample(exampleName) {
+            const consoleOutput = document.getElementById('console-output');
+            if (consoleOutput) {
+                consoleOutput.innerHTML += `<span style='color: #4CAF50;'>[INFO] Running example: ${exampleName}</span>\n`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+            
+            fetch('/run-example', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: exampleName
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (consoleOutput) {
+                    if (data.error) {
+                        consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] ${data.error}</span>\n`;
+                    } else {
+                        consoleOutput.innerHTML += `<span style='color: #4CAF50;'>[INFO] ${data.result}</span>\n`;
+                    }
+                    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                }
+            })
+            .catch(error => {
+                if (consoleOutput) {
+                    consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] Error running example: ${error}</span>\n`;
+                    consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                }
+            });
+        }
+        
+        // Function to view example code
+        function viewExampleCode(examplePath) {
+            fetch(examplePath)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load example code');
+                    }
+                    return response.text();
+                })
+                .then(code => {
+                    window.codeEditor.setValue(code);
+                    
+                    // Switch to code tab
+                    const codePanel = document.querySelector('.panel:nth-child(2)');
+                    if (codePanel) {
+                        codePanel.scrollIntoView({ behavior: 'smooth' });
+                    }
+                })
+                .catch(error => {
+                    const consoleOutput = document.getElementById('console-output');
+                    if (consoleOutput) {
+                        consoleOutput.innerHTML += `<span style='color: #e74c3c;'>[ERROR] ${error.message}</span>\n`;
+                        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
