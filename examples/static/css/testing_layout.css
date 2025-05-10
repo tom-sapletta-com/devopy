@@ -1,0 +1,231 @@
+/* Testing Layout CSS */
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-panel {
+    display: flex;
+    height: 250px;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bottom-panel {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.code-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.test-panel {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.results-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.test-list {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+}
+
+.test-item {
+    padding: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.test-item:hover {
+    background-color: #444;
+}
+
+.test-item.success {
+    border-left: 3px solid #4CAF50;
+}
+
+.test-item.failure {
+    border-left: 3px solid #F44336;
+}
+
+.test-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.test-description {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.test-status {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.test-status.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.test-status.failure {
+    background-color: #F44336;
+    color: white;
+}
+
+.test-result {
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.test-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.test-result-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.test-result-time {
+    color: #888;
+    font-size: 12px;
+}
+
+.test-result-details {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre-wrap;
+}
+
+.test-controls {
+    display: flex;
+    padding: 10px;
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+.test-summary {
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.test-summary-item {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.test-summary-label {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.test-summary-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.test-summary-value.success {
+    color: #4CAF50;
+}
+
+.test-summary-value.failure {
+    color: #F44336;
+}
+
+.test-summary-value.total {
+    color: #2196F3;
+}
+
+.endpoint-test-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.endpoint-test-form {
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-size: 14px;
+    box-sizing: border-box;
+    min-height: 100px;
+    font-family: monospace;
+}
+
+.form-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-size: 14px;
+    box-sizing: border-box;
+}

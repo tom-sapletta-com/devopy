@@ -1,0 +1,147 @@
+/* Monitoring Layout CSS */
+.main {
+    flex-direction: column;
+}
+
+.top-panel {
+    display: flex;
+    height: 300px;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.bottom-panel {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.code-panel {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.logs-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.metrics-panel {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.endpoints-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.metric-item {
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.metric-title {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.metric-description {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.log-filters {
+    display: flex;
+    padding: 10px;
+    background-color: #333;
+    border-bottom: 1px solid #444;
+}
+
+.log-filter {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #444;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.log-filter.active {
+    background-color: #4CAF50;
+}
+
+.log-entry {
+    padding: 5px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.log-entry.info {
+    border-left: 3px solid #4CAF50;
+}
+
+.log-entry.warning {
+    border-left: 3px solid #FFC107;
+}
+
+.log-entry.error {
+    border-left: 3px solid #F44336;
+}
+
+.log-timestamp {
+    color: #888;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.log-level {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.log-level.info {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.log-level.warning {
+    background-color: #FFC107;
+    color: black;
+}
+
+.log-level.error {
+    background-color: #F44336;
+    color: white;
+}
+
+.log-message {
+    color: #ddd;
+}

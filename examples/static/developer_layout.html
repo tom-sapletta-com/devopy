@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Editor - Devopy (Deweloperski)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="/static/css/smart_editor_base.css">
+    <link rel="stylesheet" href="/static/css/developer_layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/yaml/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Editor - Devopy (Deweloperski)</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="layout-selector">
+                    <select id="layout-select" class="layout-select" onchange="changeLayout()">
+                        <option value="standard">Standardowy</option>
+                        <option value="developer" selected>Deweloperski</option>
+                        <option value="monitoring">Monitorowanie</option>
+                        <option value="testing">Testowanie</option>
+                    </select>
+                </div>
+                <button id="new-function-btn" class="button">Nowa</button>
+                <button id="save-btn" class="button">Zapisz</button>
+                <button id="run-btn" class="button">Uruchom</button>
+                <button id="test-btn" class="button secondary">Test</button>
+                <button id="deploy-btn" class="button secondary">Wdróż</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="left-panel">
+                <div class="panel-header">Funkcje</div>
+                <div class="function-list" id="function-list">
+                    <!-- Lista funkcji będzie generowana dynamicznie -->
+                </div>
+            </div>
+            <div class="center-panel">
+                <div class="prompt-container">
+                    <input type="text" id="prompt-input" class="prompt-input" placeholder="Opisz funkcję (np. 'Pobierz dane z API', 'Przetwórz dane JSON', 'Zapisz dane do bazy')">
+                </div>
+                <div class="editor-panel">
+                    <div class="code-panel">
+                        <div class="panel-header">Kod Python</div>
+                        <div class="code-editor-container">
+                            <textarea id="code-editor"></textarea>
+                        </div>
+                    </div>
+                    <div class="docker-panel">
+                        <div class="panel-header">Docker</div>
+                        <div class="docker-editor-container">
+                            <textarea id="docker-editor"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-container">
+                    <div class="panel-header">Konsola</div>
+                    <div class="console-output" id="console-output"></div>
+                    <div class="console-input">
+                        <input type="text" id="console-input" placeholder="Wprowadź komendę...">
+                        <button onclick="executeCommand()">Wykonaj</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="panel-header">Endpoints & Logi</div>
+                <div class="tabs">
+                    <button class="tab active" onclick="openTab(event, 'endpoints-tab')">Endpoints</button>
+                    <button class="tab" onclick="openTab(event, 'logs-tab')">Logi</button>
+                    <button class="tab" onclick="openTab(event, 'debug-tab')">Debug</button>
+                </div>
+                <div id="endpoints-tab" class="tab-content active">
+                    <div class="endpoints-container" id="endpoints-container">
+                        <!-- Lista endpointów będzie generowana dynamicznie -->
+                    </div>
+                </div>
+                <div id="logs-tab" class="tab-content">
+                    <div class="logs-container" id="logs-output"></div>
+                </div>
+                <div id="debug-tab" class="tab-content">
+                    <div class="debug-container">
+                        <div class="debug-controls">
+                            <button class="button secondary" onclick="runTests()">Uruchom testy</button>
+                            <button class="button secondary" onclick="deployFunction()">Wdróż funkcję</button>
+                        </div>
+                        <div class="debug-output" id="debug-output">
+                            <!-- Dane debugowania będą generowane dynamicznie -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/smart_editor.js"></script>
+</body>
+</html>

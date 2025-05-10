@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Editor - Devopy (Testowanie)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="/static/css/smart_editor_base.css">
+    <link rel="stylesheet" href="/static/css/testing_layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/yaml/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Editor - Devopy (Testowanie)</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="layout-selector">
+                    <select id="layout-select" class="layout-select" onchange="changeLayout()">
+                        <option value="standard">Standardowy</option>
+                        <option value="developer">Deweloperski</option>
+                        <option value="monitoring">Monitorowanie</option>
+                        <option value="testing" selected>Testowanie</option>
+                    </select>
+                </div>
+                <button id="new-function-btn" class="button">Nowa</button>
+                <button id="save-btn" class="button">Zapisz</button>
+                <button id="run-btn" class="button">Uruchom</button>
+                <button id="test-btn" class="button">Test</button>
+                <button id="deploy-btn" class="button secondary">Wdróż</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="top-panel">
+                <div class="code-panel">
+                    <div class="panel-header">Kod Python</div>
+                    <div class="code-editor-container">
+                        <textarea id="code-editor"></textarea>
+                    </div>
+                </div>
+                <div class="test-panel">
+                    <div class="panel-header">Testy</div>
+                    <div class="test-controls">
+                        <button class="button" onclick="runTests()">Uruchom wszystkie testy</button>
+                    </div>
+                    <div class="test-summary">
+                        <div class="test-summary-item">
+                            <div class="test-summary-label">Wszystkie</div>
+                            <div class="test-summary-value total">8</div>
+                        </div>
+                        <div class="test-summary-item">
+                            <div class="test-summary-label">Sukces</div>
+                            <div class="test-summary-value success">6</div>
+                        </div>
+                        <div class="test-summary-item">
+                            <div class="test-summary-label">Błędy</div>
+                            <div class="test-summary-value failure">2</div>
+                        </div>
+                    </div>
+                    <div class="test-list">
+                        <div class="test-item success">
+                            <span class="test-name">test_fetch_data</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test pobierania danych z API</div>
+                        </div>
+                        <div class="test-item success">
+                            <span class="test-name">test_transform_data</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test transformacji danych</div>
+                        </div>
+                        <div class="test-item failure">
+                            <span class="test-name">test_save_data</span>
+                            <span class="test-status failure">FAIL</span>
+                            <div class="test-description">Test zapisywania danych do bazy</div>
+                        </div>
+                        <div class="test-item success">
+                            <span class="test-name">test_analyze_data</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test analizy danych</div>
+                        </div>
+                        <div class="test-item success">
+                            <span class="test-name">test_api_endpoint_get</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test endpointu GET /api/data</div>
+                        </div>
+                        <div class="test-item success">
+                            <span class="test-name">test_api_endpoint_post</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test endpointu POST /api/data</div>
+                        </div>
+                        <div class="test-item success">
+                            <span class="test-name">test_error_handling</span>
+                            <span class="test-status success">OK</span>
+                            <div class="test-description">Test obsługi błędów</div>
+                        </div>
+                        <div class="test-item failure">
+                            <span class="test-name">test_performance</span>
+                            <span class="test-status failure">FAIL</span>
+                            <div class="test-description">Test wydajności</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="results-panel">
+                    <div class="panel-header">Wyniki testów</div>
+                    <div class="test-result">
+                        <div class="test-result-header">
+                            <span class="test-result-name">test_save_data</span>
+                            <span class="test-result-time">2025-05-10 17:50:12</span>
+                        </div>
+                        <div class="test-result-details">
+Traceback (most recent call last):
+  File "test_functions.py", line 45, in test_save_data
+    result = save_data(test_data)
+  File "/home/user/functions/data_functions.py", line 78, in save_data
+    db.connect()
+  File "/home/user/lib/database.py", line 23, in connect
+    raise ConnectionError("Cannot connect to database")
+ConnectionError: Cannot connect to database
+                        </div>
+                    </div>
+                    <div class="test-result">
+                        <div class="test-result-header">
+                            <span class="test-result-name">test_performance</span>
+                            <span class="test-result-time">2025-05-10 17:50:15</span>
+                        </div>
+                        <div class="test-result-details">
+FAIL: Performance test failed
+Expected execution time: < 0.5s
+Actual execution time: 1.2s
+                        </div>
+                    </div>
+                </div>
+                <div class="endpoint-test-panel">
+                    <div class="panel-header">Test Endpointu</div>
+                    <div class="endpoint-test-form">
+                        <div class="form-group">
+                            <label class="form-label">Metoda</label>
+                            <select id="endpoint-method" class="form-select">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">URL</label>
+                            <input type="text" id="endpoint-url" class="form-input" value="/api/data">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nagłówki</label>
+                            <textarea id="endpoint-headers" class="form-textarea">Content-Type: application/json
+Accept: application/json</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Body</label>
+                            <textarea id="endpoint-body" class="form-textarea">{
+  "key": "value"
+}</textarea>
+                        </div>
+                        <button id="endpoint-test-btn" class="button">Testuj Endpoint</button>
+                    </div>
+                    <div class="panel-header">Wyniki</div>
+                    <div id="endpoint-result" class="test-result-details">
+                        <!-- Wyniki testu endpointu będą generowane dynamicznie -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/smart_editor.js"></script>
+</body>
+</html>

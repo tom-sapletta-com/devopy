@@ -1,0 +1,50 @@
+/* Developer Layout CSS */
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.center-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-panel {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.editor-panel {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.code-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.docker-panel {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.console-container {
+    height: 250px;
+}

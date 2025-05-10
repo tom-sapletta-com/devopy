@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Editor - Devopy (Monitorowanie)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="/static/css/smart_editor_base.css">
+    <link rel="stylesheet" href="/static/css/monitoring_layout.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/yaml/yaml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/selection/active-line.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart Editor - Devopy (Monitorowanie)</h1>
+            <div style="display: flex; align-items: center;">
+                <div class="layout-selector">
+                    <select id="layout-select" class="layout-select" onchange="changeLayout()">
+                        <option value="standard">Standardowy</option>
+                        <option value="developer">Deweloperski</option>
+                        <option value="monitoring" selected>Monitorowanie</option>
+                        <option value="testing">Testowanie</option>
+                    </select>
+                </div>
+                <button id="new-function-btn" class="button">Nowa</button>
+                <button id="save-btn" class="button">Zapisz</button>
+                <button id="run-btn" class="button">Uruchom</button>
+                <button id="test-btn" class="button secondary">Test</button>
+                <button id="deploy-btn" class="button secondary">Wdróż</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="top-panel">
+                <div class="code-panel">
+                    <div class="panel-header">Kod Python</div>
+                    <div class="code-editor-container">
+                        <textarea id="code-editor"></textarea>
+                    </div>
+                </div>
+                <div class="logs-panel">
+                    <div class="panel-header">Logi</div>
+                    <div class="log-filters">
+                        <div id="filter-all" class="log-filter active" onclick="filterLogs('all')">Wszystkie</div>
+                        <div id="filter-info" class="log-filter" onclick="filterLogs('info')">Info</div>
+                        <div id="filter-warning" class="log-filter" onclick="filterLogs('warning')">Ostrzeżenia</div>
+                        <div id="filter-error" class="log-filter" onclick="filterLogs('error')">Błędy</div>
+                    </div>
+                    <div class="logs-container" id="logs-output">
+                        <div class="log-entry info">
+                            <span class="log-timestamp">2025-05-10 17:45:12</span>
+                            <span class="log-level info">INFO</span>
+                            <span class="log-message">Aplikacja uruchomiona</span>
+                        </div>
+                        <div class="log-entry info">
+                            <span class="log-timestamp">2025-05-10 17:45:13</span>
+                            <span class="log-level info">INFO</span>
+                            <span class="log-message">Załadowano konfigurację</span>
+                        </div>
+                        <div class="log-entry warning">
+                            <span class="log-timestamp">2025-05-10 17:45:14</span>
+                            <span class="log-level warning">WARN</span>
+                            <span class="log-message">Brak dostępu do niektórych zasobów</span>
+                        </div>
+                        <div class="log-entry error">
+                            <span class="log-timestamp">2025-05-10 17:45:15</span>
+                            <span class="log-level error">ERROR</span>
+                            <span class="log-message">Nie można połączyć z bazą danych</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="metrics-panel">
+                    <div class="panel-header">Metryki</div>
+                    <div class="metric-item">
+                        <div class="metric-title">Zapytania</div>
+                        <div class="metric-value">1,245</div>
+                        <div class="metric-description">Całkowita liczba zapytań</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-title">Czas odpowiedzi</div>
+                        <div class="metric-value">0.32s</div>
+                        <div class="metric-description">Średni czas odpowiedzi</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-title">Błędy</div>
+                        <div class="metric-value">12</div>
+                        <div class="metric-description">Liczba błędów</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-title">Użycie CPU</div>
+                        <div class="metric-value">28%</div>
+                        <div class="metric-description">Średnie użycie CPU</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div class="endpoints-panel">
+                    <div class="panel-header">Endpoints</div>
+                    <div class="endpoints-container" id="endpoints-container">
+                        <div class="endpoint-item">
+                            <div><span class="endpoint-method">GET</span> <span class="endpoint-url">/api/data</span></div>
+                            <div class="endpoint-description">Pobiera dane z funkcji</div>
+                            <div class="endpoint-test">
+                                <button class="button secondary" onclick="testEndpoint('GET', '/api/data')">Test</button>
+                            </div>
+                        </div>
+                        <div class="endpoint-item">
+                            <div><span class="endpoint-method">POST</span> <span class="endpoint-url">/api/data</span></div>
+                            <div class="endpoint-description">Wysyła dane do funkcji</div>
+                            <div class="endpoint-test">
+                                <button class="button secondary" onclick="testEndpoint('POST', '/api/data')">Test</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="console-container">
+                    <div class="panel-header">Konsola</div>
+                    <div class="console-output" id="console-output"></div>
+                    <div class="console-input">
+                        <input type="text" id="console-input" placeholder="Wprowadź komendę...">
+                        <button onclick="executeCommand()">Wykonaj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/smart_editor.js"></script>
+</body>
+</html>

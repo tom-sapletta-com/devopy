@@ -1,0 +1,269 @@
+/* Base styles for Smart Editor */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+}
+
+.panel-header {
+    background-color: #333;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.button {
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+.button.secondary {
+    background-color: #555;
+}
+
+.button.secondary:hover {
+    background-color: #444;
+}
+
+.layout-selector {
+    margin-right: 10px;
+}
+
+.layout-select {
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+/* Editor styles */
+.editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.code-editor-container, .docker-editor-container {
+    flex: 1;
+    position: relative;
+    min-height: 200px;
+}
+
+/* Console styles */
+.console-container {
+    height: 200px;
+    background-color: #252525;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.console-output {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #1e1e1e;
+    color: #ddd;
+    white-space: pre-wrap;
+}
+
+.console-input {
+    display: flex;
+    padding: 5px;
+    background-color: #333;
+}
+
+.console-input input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-family: monospace;
+}
+
+/* Tabs styles */
+.tabs {
+    display: flex;
+    background-color: #333;
+}
+
+.tab {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #333;
+    border: none;
+    outline: none;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.tab.active {
+    background-color: #252525;
+    color: #fff;
+    border-bottom: 2px solid #4CAF50;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    flex: 1;
+    overflow: auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Function list styles */
+.function-list {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+}
+
+.function-item {
+    padding: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.function-item:hover {
+    background-color: #444;
+}
+
+.function-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.function-description {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Logs styles */
+.logs-container {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #1e1e1e;
+    color: #ddd;
+    white-space: pre-wrap;
+}
+
+/* Prompt styles */
+.prompt-container {
+    padding: 10px;
+    background-color: #333;
+}
+
+.prompt-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Endpoints styles */
+.endpoints-container {
+    flex: 1;
+    overflow: auto;
+    padding: 10px;
+}
+
+.endpoint-item {
+    padding: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.endpoint-url {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.endpoint-method {
+    display: inline-block;
+    padding: 2px 5px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.endpoint-description {
+    color: #ccc;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.endpoint-test {
+    margin-top: 5px;
+    text-align: right;
+}
