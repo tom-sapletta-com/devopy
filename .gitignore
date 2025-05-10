@@ -1,3 +1,18 @@
+.idea
+.env
+logs
+.devopy_venv
+sandbox_envs
+docker_sandbox_envs
+.venv
+data/
+docs/vendor
+performance/results
+tests/correctness
+tests/performance
+test_results
+.sqlite3
+devopy_logs.sqlite3
 # Python
 __pycache__/
 *.py[cod]
