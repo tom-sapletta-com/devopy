@@ -4,6 +4,7 @@ logs
 sandbox_envs
 docker_sandbox_envs
 .venv
+devopy_venv
 .windsurfrules
 .tox
 data/
@@ -38,7 +39,6 @@ wheels/
 MANIFEST
 
 # Środowiska wirtualne
-.venv
 env/
 venv/
 ENV/

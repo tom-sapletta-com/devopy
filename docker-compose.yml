@@ -1,0 +1,160 @@
+version: '3'
+
+services:
+  # Główna aplikacja Flask
+  interactive-visualization:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: bash -c "pip install -r requirements.txt && python examples/interactive_visualization.py"
+    ports:
+      - "5050:5050"
+    environment:
+      - PYTHONPATH=/app
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    networks:
+      - devopy-network
+
+  # Baza danych PostgreSQL
+  database:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=devopy
+      - POSTGRES_PASSWORD=devopy123
+      - POSTGRES_DB=devopy_data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - devopy-network
+
+  # Sandbox dla funkcji fetch_data
+  fetch-data:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+    working_dir: /app
+    command: python -c "from examples.interactive_visualization import fetch_data; print(fetch_data('https://api.example.com/data', 50))"
+    environment:
+      - PYTHONPATH=/app
+      - API_KEY=example_key
+      - MAX_REQUESTS=100
+      - TIMEOUT=30
+    ports:
+      - "8001:8001"
+    depends_on:
+      - interactive-visualization
+    networks:
+      - devopy-network
+    labels:
+      - "devopy.function=fetch_data"
+      - "devopy.type=data_source"
+
+  # Sandbox dla funkcji filter_data
+  filter-data:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+    working_dir: /app
+    command: python -c "from examples.interactive_visualization import filter_data; print(filter_data([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))"
+    environment:
+      - PYTHONPATH=/app
+      - FILTER_THRESHOLD=0.75
+      - INCLUDE_METADATA=true
+      - DEBUG=false
+    ports:
+      - "8002:8002"
+    depends_on:
+      - fetch-data
+    networks:
+      - devopy-network
+    labels:
+      - "devopy.function=filter_data"
+      - "devopy.type=data_processor"
+
+  # Sandbox dla funkcji transform_data
+  transform-data:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+    working_dir: /app
+    command: python -c "from examples.interactive_visualization import transform_data; print(transform_data({'data': [1, 2, 3, 4, 5]}))"
+    environment:
+      - PYTHONPATH=/app
+      - OUTPUT_FORMAT=json
+      - COMPRESSION=true
+      - INCLUDE_METADATA=true
+    ports:
+      - "8003:8003"
+    depends_on:
+      - filter-data
+    networks:
+      - devopy-network
+    labels:
+      - "devopy.function=transform_data"
+      - "devopy.type=data_transformer"
+
+  # Sandbox dla funkcji save_data
+  save-data:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+      - ./db:/app/db
+    working_dir: /app
+    command: python -c "from examples.interactive_visualization import save_data; print(save_data({'transformed_data': {'values': [1, 2, 3, 4, 5]}}))"
+    environment:
+      - PYTHONPATH=/app
+      - DB_HOST=database
+      - DB_PORT=5432
+      - DB_USER=devopy
+      - DB_PASSWORD=devopy123
+      - DB_NAME=devopy_data
+    ports:
+      - "8004:8004"
+    depends_on:
+      - transform-data
+      - database
+    networks:
+      - devopy-network
+    labels:
+      - "devopy.function=save_data"
+      - "devopy.type=data_storage"
+
+  # Sandbox dla funkcji analyze_data
+  analyze-data:
+    image: python:3.9-slim
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+      - ./reports:/app/reports
+    working_dir: /app
+    command: python -c "from examples.interactive_visualization import analyze_data; print(analyze_data({'saved_data': {'id': 123, 'status': 'success'}}))"
+    environment:
+      - PYTHONPATH=/app
+      - ANALYSIS_TYPE=statistical
+      - GENERATE_CHARTS=true
+      - REPORT_FORMAT=html
+      - EMAIL_REPORT=false
+    ports:
+      - "8005:8005"
+    depends_on:
+      - save-data
+    networks:
+      - devopy-network
+    labels:
+      - "devopy.function=analyze_data"
+      - "devopy.type=data_analyzer"
+
+networks:
+  devopy-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

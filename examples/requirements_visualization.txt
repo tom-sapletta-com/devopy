@@ -1,0 +1,6 @@
+flask==2.0.1
+graphviz==0.17
+matplotlib==3.5.1
+networkx==2.6.3
+pyvis==0.1.9
+pygments==2.10.0

@@ -1,0 +1,29 @@
+service:
+  name: save-data
+  image: python:3.9-slim
+  description: "Serwis do zapisywania przetransformowanych danych"
+  ports:
+    - "8004:8004"
+  environment:
+    - DB_HOST=database
+    - DB_PORT=5432
+    - DB_USER=devopy
+    - DB_PASSWORD=devopy123
+    - DB_NAME=devopy_data
+  volumes:
+    - ./data:/app/data
+    - ./db:/app/db
+  command: "python -c 'from examples.interactive_visualization import save_data; print(save_data({\"transformed_data\": {\"values\": [1, 2, 3, 4, 5]}}))'"
+  dependencies:
+    - transform-data
+    - database
+  labels:
+    - "devopy.function=save_data"
+    - "devopy.type=data_storage"
+  logs:
+    - "[INFO] Uruchamianie serwisu save-data"
+    - "[INFO] Otrzymano przetransformowane dane z transform-data"
+    - "[INFO] Łączenie z bazą danych"
+    - "[INFO] Zapisywanie danych do bazy"
+    - "[INFO] Dane zapisane pomyślnie"
+    - "[INFO] Przekazywanie potwierdzenia do analyze-data"

@@ -1,0 +1,24 @@
+service:
+  name: fetch-data
+  image: python:3.9-slim
+  description: "Serwis do pobierania danych z zewnętrznych API"
+  ports:
+    - "8001:8001"
+  environment:
+    - API_KEY=example_key
+    - MAX_REQUESTS=100
+    - TIMEOUT=30
+  volumes:
+    - ./data:/app/data
+  command: "python -c 'from examples.interactive_visualization import fetch_data; print(fetch_data(\"https://api.example.com/data\", 50))'"
+  dependencies:
+    - transform-data
+  labels:
+    - "devopy.function=fetch_data"
+    - "devopy.type=data_source"
+  logs:
+    - "[INFO] Uruchamianie serwisu fetch-data"
+    - "[INFO] Łączenie z zewnętrznym API"
+    - "[INFO] Pobieranie danych (limit: 50)"
+    - "[INFO] Pobrano 50 rekordów"
+    - "[INFO] Przekazywanie danych do transform-data"

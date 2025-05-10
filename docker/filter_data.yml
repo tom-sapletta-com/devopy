@@ -1,0 +1,24 @@
+service:
+  name: filter-data
+  image: python:3.9-slim
+  description: "Serwis do filtrowania danych według określonych kryteriów"
+  ports:
+    - "8002:8002"
+  environment:
+    - FILTER_THRESHOLD=0.75
+    - INCLUDE_METADATA=true
+    - DEBUG=false
+  volumes:
+    - ./data:/app/data
+  command: "python -c 'from examples.interactive_visualization import filter_data; print(filter_data([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))'"
+  dependencies:
+    - fetch-data
+  labels:
+    - "devopy.function=filter_data"
+    - "devopy.type=data_processor"
+  logs:
+    - "[INFO] Uruchamianie serwisu filter-data"
+    - "[INFO] Otrzymano dane z fetch-data"
+    - "[INFO] Filtrowanie danych (threshold: 0.75)"
+    - "[INFO] Odfiltrowano 4 rekordy"
+    - "[INFO] Przekazywanie przefiltrowanych danych do transform-data"

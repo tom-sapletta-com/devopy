@@ -1,0 +1,24 @@
+service:
+  name: transform-data
+  image: python:3.9-slim
+  description: "Serwis do transformacji danych do określonego formatu"
+  ports:
+    - "8003:8003"
+  environment:
+    - OUTPUT_FORMAT=json
+    - COMPRESSION=true
+    - INCLUDE_METADATA=true
+  volumes:
+    - ./data:/app/data
+  command: "python -c 'from examples.interactive_visualization import transform_data; print(transform_data({\"data\": [1, 2, 3, 4, 5]}))'"
+  dependencies:
+    - filter-data
+  labels:
+    - "devopy.function=transform_data"
+    - "devopy.type=data_transformer"
+  logs:
+    - "[INFO] Uruchamianie serwisu transform-data"
+    - "[INFO] Otrzymano dane z filter-data"
+    - "[INFO] Transformacja danych do formatu JSON"
+    - "[INFO] Kompresja danych"
+    - "[INFO] Przekazywanie przetransformowanych danych do save-data"

@@ -1,0 +1,28 @@
+service:
+  name: analyze-data
+  image: python:3.9-slim
+  description: "Serwis do analizy zapisanych danych i generowania raportów"
+  ports:
+    - "8005:8005"
+  environment:
+    - ANALYSIS_TYPE=statistical
+    - GENERATE_CHARTS=true
+    - REPORT_FORMAT=html
+    - EMAIL_REPORT=false
+  volumes:
+    - ./data:/app/data
+    - ./reports:/app/reports
+  command: "python -c 'from examples.interactive_visualization import analyze_data; print(analyze_data({\"saved_data\": {\"id\": 123, \"status\": \"success\"}}))'"
+  dependencies:
+    - save-data
+  labels:
+    - "devopy.function=analyze_data"
+    - "devopy.type=data_analyzer"
+  logs:
+    - "[INFO] Uruchamianie serwisu analyze-data"
+    - "[INFO] Otrzymano potwierdzenie zapisu danych z save-data"
+    - "[INFO] Pobieranie danych z bazy do analizy"
+    - "[INFO] Przeprowadzanie analizy statystycznej"
+    - "[INFO] Generowanie wykresów"
+    - "[INFO] Tworzenie raportu HTML"
+    - "[INFO] Raport wygenerowany pomyślnie"

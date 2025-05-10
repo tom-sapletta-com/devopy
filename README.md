@@ -10,6 +10,26 @@ Devopy to modularny system AI do automatyzacji zadań programistycznych, konwers
 - Przykłady użycia: generowanie kodu, konwersje, automatyzacja poleceń shell, obsługa wielu języków
 - Integracja z LLM (np. DeepSeek, Ollama) do generowania i poprawy kodu
 
+## Struktura projektu
+
+Projekt Devopy ma nową przejrzystą strukturę katalogów:
+
+```
+devopy/
+├── bin/                # Skrypty wykonywalne do uruchamiania głównych komponentów
+├── devopy/             # Główny kod źródłowy projektu
+│   ├── converters/     # Konwertery (np. text2python)
+│   ├── sandbox/        # Piaskownice do bezpiecznego uruchamiania kodu
+│   ├── utils/          # Narzędzia pomocnicze
+├── docs/               # Dokumentacja
+├── examples/           # Przykłady użycia
+├── tests/              # Testy jednostkowe i integracyjne
+├── tools/              # Narzędzia i skrypty pomocnicze
+    ├── docker/         # Narzędzia związane z konteneryzacją
+    ├── monitoring/     # Narzędzia do monitorowania zasobów
+    ├── scripts/        # Różne skrypty pomocnicze
+```
+
 ## Jak zacząć?
 
 ### 1. Wymagania
@@ -25,27 +45,34 @@ Devopy to modularny system AI do automatyzacji zadań programistycznych, konwers
 ```bash
 # Sklonuj repozytorium
 git clone https://github.com/tom-sapletta-com/devopy.git
-cd evopy
+cd devopy
 
-# (Opcjonalnie) Utwórz środowisko wirtualne
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+# Utwórz środowisko wirtualne
+python3 -m venv venv
+source venv/bin/activate
+
+# Zainstaluj projekt w trybie deweloperskim
+pip install -e .
 ```
 
 ### 3. Uruchamianie zadań przez CLI
 
 ```bash
-python3 -m devopy.cli run "pobierz dane z api i zapisz do excela"
+# Użyj skryptu z katalogu bin
+./bin/run_cli.sh "pobierz dane z api i zapisz do excela"
+
+# Lub bezpośrednio przez moduł Python
 python3 -m devopy.cli run "stwórz wykres z pliku excel" --docker
 ```
 
 ### 4. API REST (Flask)
 
 ```bash
+# Użyj skryptu z katalogu bin
+./bin/run_api.sh
+
+# Lub bezpośrednio
 python3 devopy/api.py
-# lub
-FLASK_APP=devopy/api.py flask run --host=0.0.0.0 --port=5001
 ```
 
 Wyślij zadanie przez curl:
