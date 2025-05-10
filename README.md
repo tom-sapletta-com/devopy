@@ -2,6 +2,88 @@
 
 Devopy to modularny system AI do automatyzacji zadań programistycznych, konwersji tekstu na kod, zarządzania zależnościami i uruchamiania modularnych bibliotek Python. Pozwala na interaktywną pracę w shellu, automatyczną instalację wymaganych modułów oraz szybkie prototypowanie, testowanie i integrację z narzędziami DevOps.
 
+## Nowe podejście do generowania i uruchamiania kodu
+
+Devopy odwraca tradycyjne podejście do generowania kodu przez modele LLM. Zamiast generować statyczny kod, który następnie musi być ręcznie integrowany z projektem, Devopy umożliwia **dynamiczne tworzenie i uruchamianie usług** bezpośrednio z poziomu kodu poprzez system dekoratorów.
+
+### Kluczowe zalety tego podejścia:
+
+1. **Zachowanie struktury projektu** - dekoratory pozwalają wzbogacić istniejący kod o nowe funkcjonalności bez konieczności zmiany jego struktury
+2. **Dynamiczne usługi** - kod jest uruchamiany jako usługa zgodnie ze strukturą narzuconą przez projekt
+3. **Kontekstowa adaptacja** - usługi mogą być dynamicznie dostosowywane do danych i kontekstu wykonania
+4. **Izolacja środowiska** - każda usługa działa w izolowanym środowisku (Docker), co zwiększa bezpieczeństwo i niezawodność
+
+### Dla kogo jest Devopy?
+
+- **Programistów** szukających sposobów na wzbogacenie projektów o dynamiczne funkcje zależne od danych
+- **Zespołów DevOps** potrzebujących elastycznych rozwiązań do automatyzacji zadań
+- **Architektów systemów** projektujących rozwiązania, gdzie trudno o jedno uniwersalne podejście
+- **Badaczy AI** eksperymentujących z integracją modeli językowych z systemami produkcyjnymi
+
+## Przykłady zastosowań
+
+### 1. Dynamiczne API na podstawie danych
+
+```python
+from devopy import api_decorator
+
+@api_decorator(
+    base_model="gpt-4",
+    data_source="/path/to/data",
+    api_type="rest"
+)
+def dynamic_api(context):
+    # API jest automatycznie generowane na podstawie struktury danych
+    # i uruchamiane jako usługa
+    return context.api
+```
+
+### 2. Automatyczne przetwarzanie danych w piaskownicy
+
+```python
+from devopy import editor_sandbox
+
+@editor_sandbox(
+    base_image="python:3.12-slim",
+    packages=["pandas", "scikit-learn"],
+    volumes={"/data": "/app/data"}
+)
+def process_data(data_path, sandbox=None):
+    # Kod jest wykonywany w izolowanym środowisku Docker
+    result = sandbox.execute([
+        "python", "-c", 
+        f"import pandas as pd; df = pd.read_csv('{data_path}'); print(df.describe())"
+    ])
+    return result["stdout"]
+```
+
+### 3. Dynamiczne generowanie i uruchamianie mikrousług
+
+```python
+from devopy import service_decorator
+
+@service_decorator(
+    service_type="microservice",
+    port=8080,
+    dependencies=["redis", "postgres"]
+)
+def user_service(spec):
+    # Mikrousługa jest generowana na podstawie specyfikacji
+    # i uruchamiana jako kontener Docker
+    return spec.service
+```
+
+## Doświadczenia z projektu
+
+W trakcie rozwoju projektu Devopy ewoluowaliśmy od prostego generowania kodu przez LLM do bardziej zaawansowanego podejścia opartego na dekoratorach. Nasze doświadczenia pokazują, że:
+
+1. **Generowanie statycznego kodu ma ograniczenia** - wygenerowany kod często wymaga ręcznych modyfikacji i dostosowania do projektu
+2. **Dynamiczne usługi są bardziej elastyczne** - mogą adaptować się do zmiennych warunków i danych
+3. **Dekoratory upraszczają integrację** - pozwalają zachować czystą strukturę projektu przy dodawaniu nowych funkcjonalności
+4. **Izolacja w kontenerach zwiększa bezpieczeństwo** - każda usługa działa w swoim własnym środowisku
+
+Najnowsze rozwiązanie z dekoratorem `editor_sandbox` pozwala nie tylko generować kod, ale także automatycznie tworzyć i zarządzać całym środowiskiem wykonawczym, co znacząco upraszcza proces rozwoju i wdrażania.
+
 **Główne możliwości Devopy:**
 
 - Interaktywny shell z automatyczną instalacją zależności Python
@@ -415,61 +497,41 @@ Przykładowe użycie:
 
 Szczegółowa dokumentacja systemu testowego znajduje się w pliku [docs/TESTING.md](docs/TESTING.md).
 
-### Specyfikacja systemu konwersji tekst-na-kod
+### Dekorator Editor Sandbox
 
-System konwersji tekst-na-kod działa w następujących krokach:
+Nowy dekorator `editor_sandbox` umożliwia automatyczne tworzenie i zarządzanie piaskownicami Docker dla aplikacji edytora:
 
-#### 1. Konwersja tekstu na kod Python
+```python
+from devopy import editor_sandbox
 
-- **Wejście**: Zapytanie użytkownika w języku naturalnym
-- **Proces**: Model językowy analizuje zapytanie i generuje odpowiedni kod Python
-- **Wyjście**: Funkcja `execute()` zawierająca kod realizujący zapytanie
+@editor_sandbox(
+    base_image="python:3.12-slim",
+    packages=["flask", "requests"],
+    ports={5000: 5000},
+    volumes={"/local/path": "/container/path"},
+    env_vars={"DEBUG": "true"}
+)
+def my_app(sandbox=None):
+    # Kod aplikacji
+    # Parametr sandbox jest automatycznie wstrzykiwany
+    
+    # Przykład: wykonanie polecenia w piaskownicy
+    result = sandbox.execute(["ls", "-la"])
+    print(result["stdout"])
+    
+    return "Aplikacja uruchomiona w piaskownicy Docker"
+```
 
-#### 2. Weryfikacja intencji użytkownika
+Główne funkcje dekoratora `editor_sandbox`:
 
-- **Wejście**: Wygenerowany kod Python
-- **Proces**: Model językowy analizuje kod i generuje jego wyjaśnienie w języku naturalnym
-- **Wyjście**: Tekstowe wyjaśnienie działania kodu
+- **Automatyczne tworzenie piaskownicy Docker**: Tworzy i zarządza kontenerami Docker z określoną konfiguracją
+- **Zarządzanie pakietami**: Automatycznie instaluje wymagane pakiety Python w piaskownicy
+- **Mapowanie portów**: Mapuje porty hosta na porty kontenera dla aplikacji webowych
+- **Montowanie woluminów**: Montuje lokalne katalogi w kontenerze
+- **Wykonywanie poleceń**: Udostępnia API do wykonywania poleceń w piaskownicy
+- **Zarządzanie zasobami**: Automatycznie czyści kontenery po zakończeniu działania aplikacji
 
-#### 3. Analiza logiczna kodu
-
-- **Wejście**: Wygenerowany kod Python i zapytanie użytkownika
-- **Proces**: Model językowy przeprowadza analizę logiczną kodu, sprawdzając jego poprawność i zgodność z intencją użytkownika
-- **Wyjście**: Raport JSON zawierający pola:
-  - `correctness` - ocena poprawności kodu (0-1)
-  - `completeness` - ocena kompletności kodu (0-1)
-  - `efficiency` - ocena wydajności kodu (0-1)
-  - `security` - ocena bezpieczeństwa kodu (0-1)
-  - `issues` - lista wykrytych problemów
-  - `suggestions` - sugestie ulepszeń
-
-#### 4. Autonaprawa zależności
-
-- **Wejście**: Wygenerowany kod Python
-- **Proces**: System analizuje kod i wykrywa brakujące importy
-- **Wyjście**: Poprawiony kod z dodanymi importami
-
-### Specyfikacja systemu piaskownic Docker
-
-System piaskownic Docker zapewnia bezpieczne środowisko do wykonywania kodu:
-
-#### 1. Tworzenie piaskownicy
-
-- **Wejście**: Wygenerowany kod Python
-- **Proces**: System generuje pliki Docker Compose i konfiguruje środowisko
-- **Wyjście**: Gotowa piaskownica Docker
-
-#### 2. Wykonanie kodu
-
-- **Wejście**: Kod Python i piaskownica Docker
-- **Proces**: System uruchamia kod w izolowanym kontenerze
-- **Wyjście**: Wyniki wykonania kodu
-
-#### 3. Zarządzanie zależnościami
-
-- **Wejście**: Kod Python z zależnościami
-- **Proces**: System automatycznie instaluje wymagane pakiety
-- **Wyjście**: Środowisko z zainstalowanymi zależnościami
+Szczegółowa dokumentacja dekoratora `editor_sandbox` znajduje się w [docs/editor_sandbox.md](docs/editor_sandbox.md).
 
 ## Wymagania systemowe
 
@@ -614,6 +676,94 @@ Ten projekt jest udostępniany na licencji Apache 2.0. Szczegóły w pliku [LICE
 - Zespół Meta AI za model Llama 3
 - Zespół Bielik za pomoc i wsparcie na Discord
 
+### Specyfikacja systemu konwersji tekst-na-kod
 
-- Windsurf za czujność:
-![alt text](image.png)
+System konwersji tekst-na-kod działa w następujących krokach:
+
+#### 1. Konwersja tekstu na kod Python
+
+- **Wejście**: Zapytanie użytkownika w języku naturalnym
+- **Proces**: Model językowy analizuje zapytanie i generuje odpowiedni kod Python
+- **Wyjście**: Funkcja `execute()` zawierająca kod realizujący zapytanie
+
+#### 2. Weryfikacja intencji użytkownika
+
+- **Wejście**: Wygenerowany kod Python
+- **Proces**: Model językowy analizuje kod i generuje jego wyjaśnienie w języku naturalnym
+- **Wyjście**: Tekstowe wyjaśnienie działania kodu
+
+#### 3. Analiza logiczna kodu
+
+- **Wejście**: Wygenerowany kod Python i zapytanie użytkownika
+- **Proces**: Model językowy przeprowadza analizę logiczną kodu, sprawdzając jego poprawność i zgodność z intencją użytkownika
+- **Wyjście**: Raport JSON zawierający pola:
+  - `correctness` - ocena poprawności kodu (0-1)
+  - `completeness` - ocena kompletności kodu (0-1)
+  - `efficiency` - ocena wydajności kodu (0-1)
+  - `security` - ocena bezpieczeństwa kodu (0-1)
+  - `issues` - lista wykrytych problemów
+  - `suggestions` - sugestie ulepszeń
+
+#### 4. Autonaprawa zależności
+
+- **Wejście**: Wygenerowany kod Python
+- **Proces**: System analizuje kod i wykrywa brakujące importy
+- **Wyjście**: Poprawiony kod z dodanymi importami
+
+### Specyfikacja systemu piaskownic Docker
+
+System piaskownic Docker zapewnia bezpieczne środowisko do wykonywania kodu:
+
+#### 1. Tworzenie piaskownicy
+
+- **Wejście**: Wygenerowany kod Python
+- **Proces**: System generuje pliki Docker Compose i konfiguruje środowisko
+- **Wyjście**: Gotowa piaskownica Docker
+
+#### 2. Wykonanie kodu
+
+- **Wejście**: Kod Python i piaskownica Docker
+- **Proces**: System uruchamia kod w izolowanym kontenerze
+- **Wyjście**: Wyniki wykonania kodu
+
+#### 3. Zarządzanie zależnościami
+
+- **Wejście**: Kod Python z zależnościami
+- **Proces**: System automatycznie instaluje wymagane pakiety
+- **Wyjście**: Środowisko z zainstalowanymi zależnościami
+
+### Dekorator Editor Sandbox
+
+Nowy dekorator `editor_sandbox` umożliwia automatyczne tworzenie i zarządzanie piaskownicami Docker dla aplikacji edytora:
+
+```python
+from devopy import editor_sandbox
+
+@editor_sandbox(
+    base_image="python:3.12-slim",
+    packages=["flask", "requests"],
+    ports={5000: 5000},
+    volumes={"/local/path": "/container/path"},
+    env_vars={"DEBUG": "true"}
+)
+def my_app(sandbox=None):
+    # Kod aplikacji
+    # Parametr sandbox jest automatycznie wstrzykiwany
+    
+    # Przykład: wykonanie polecenia w piaskownicy
+    result = sandbox.execute(["ls", "-la"])
+    print(result["stdout"])
+    
+    return "Aplikacja uruchomiona w piaskownicy Docker"
+```
+
+Główne funkcje dekoratora `editor_sandbox`:
+
+- **Automatyczne tworzenie piaskownicy Docker**: Tworzy i zarządza kontenerami Docker z określoną konfiguracją
+- **Zarządzanie pakietami**: Automatycznie instaluje wymagane pakiety Python w piaskownicy
+- **Mapowanie portów**: Mapuje porty hosta na porty kontenera dla aplikacji webowych
+- **Montowanie woluminów**: Montuje lokalne katalogi w kontenerze
+- **Wykonywanie poleceń**: Udostępnia API do wykonywania poleceń w piaskownicy
+- **Zarządzanie zasobami**: Automatycznie czyści kontenery po zakończeniu działania aplikacji
+
+Szczegółowa dokumentacja dekoratora `editor_sandbox` znajduje się w [docs/editor_sandbox.md](docs/editor_sandbox.md).
