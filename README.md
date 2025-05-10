@@ -9,6 +9,7 @@ Devopy to modularny system AI do automatyzacji zadań programistycznych, konwers
 - Automatyczne zarządzanie środowiskiem wirtualnym i katalogiem zależności
 - Przykłady użycia: generowanie kodu, konwersje, automatyzacja poleceń shell, obsługa wielu języków
 - Integracja z LLM (np. DeepSeek, Ollama) do generowania i poprawy kodu
+- Automatyczne tworzenie piaskownic Docker dla aplikacji edytora poprzez dekorator `editor_sandbox`
 
 ## Struktura projektu
 
@@ -19,6 +20,7 @@ devopy/
 ├── bin/                # Skrypty wykonywalne do uruchamiania głównych komponentów
 ├── devopy/             # Główny kod źródłowy projektu
 │   ├── converters/     # Konwertery (np. text2python)
+│   ├── decorators/     # Dekoratory (np. editor_sandbox)
 │   ├── sandbox/        # Piaskownice do bezpiecznego uruchamiania kodu
 │   ├── utils/          # Narzędzia pomocnicze
 ├── docs/               # Dokumentacja
