@@ -19,6 +19,45 @@ try:
     
     # Importujemy piaskownice
     from devopy.sandbox.docker_sandbox import DockerSandbox, run_code_in_sandbox
+    
+    # Importujemy nowe komponenty
+    from .api import *
+    from .api_extensions import *
+    from .auto_diag_import import *
+    from .auto_heal import *
+    from .auto_import import *
+    from .bootstrap import *
+    from .cli import *
+    from .config import *
+    from .dependency import *
+    from .evolution import *
+    from .llm import *
+    from .log_db import *
+    from .logger import *
+    from .main import *
+    from .orchestrator import *
+    from .output_utils import *
+    
+    # Importujemy nowy dekorator editor_sandbox
+    from .decorators.editor_sandbox import editor_sandbox, EditorDockerSandbox, get_sandbox, list_sandboxes, cleanup_all_sandboxes
+
+    __all__ = [
+        'editor_sandbox',
+        'EditorDockerSandbox',
+        'get_sandbox',
+        'list_sandboxes',
+        'cleanup_all_sandboxes',
+        'app',
+        'cli_main',
+        'Orchestrator',
+        'ResourceMonitor',
+        'DependencyManager',
+        'fix_code_dependencies',
+        'Text2Python',
+        'convert_text_to_python',
+        'DockerSandbox',
+        'run_code_in_sandbox',
+    ]
 except ImportError:
     # W przypadku błędu importu (np. podczas instalacji) nie robimy nic
     pass

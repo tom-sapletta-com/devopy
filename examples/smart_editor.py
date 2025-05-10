@@ -463,70 +463,240 @@ def ensure_dependencies(dependencies, venv_path=None):
     
     return True
 
-# Inicjalizacja aplikacji z sprawdzeniem zależności
-def init_app():
+# Funkcja do sprawdzania i instalacji zależności
+def ensure_dependencies(dependencies, venv_path=None):
     """
-    Inicjalizuje aplikację z sprawdzeniem zależności
+    Sprawdza i instaluje brakujące zależności w środowisku wirtualnym.
     """
-    # Sprawdź podstawowe zależności
+    if venv_path is None:
+        venv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "venv")
+    
+    # Ścieżka do pip w środowisku wirtualnym
+    if sys.platform == "win32":
+        pip_path = os.path.join(venv_path, "Scripts", "pip.exe")
+    else:
+        pip_path = os.path.join(venv_path, "bin", "pip")
+    
+    # Sprawdź, czy środowisko wirtualne istnieje
+    if not os.path.exists(pip_path):
+        print(f"Tworzenie środowiska wirtualnego w {venv_path}")
+        subprocess.check_call([sys.executable, "-m", "venv", venv_path])
+    
+    # Instaluj brakujące zależności
+    for dep in dependencies:
+        try:
+            # Próba importu pakietu
+            module_name = dep.split("==")[0].split(">")[0].split("<")[0].strip()
+            __import__(module_name)
+            print(f"Pakiet {module_name} jest już zainstalowany")
+        except ImportError:
+            print(f"Instalacja pakietu {dep}")
+            subprocess.check_call([pip_path, "install", dep])
+
+# Definicja zależności
+CORE_DEPENDENCIES = [
+    "flask==2.0.1",
+    "requests==2.28.1",
+    "jinja2==3.0.1",
+    "werkzeug==2.0.1",
+    "markupsafe==2.0.1"
+]
+
+MODULE_DEPENDENCIES = {
+    "openai": ["openai==0.27.0"],
+    "docker": ["docker==6.0.1"],
+    "testing": ["pytest==7.0.0", "coverage==6.3.2"]
+}
+
+# Główna funkcja aplikacji
+@editor_sandbox(
+    base_image="python:3.12-slim",
+    packages=CORE_DEPENDENCIES,
+    ports={5000: 5000},
+    volumes={os.path.dirname(os.path.dirname(os.path.abspath(__file__))): "/app"},
+    env_vars={"FLASK_ENV": "development", "FLASK_DEBUG": "1"},
+    auto_start=True
+)
+def create_app(sandbox=None):
+    """
+    Tworzy i konfiguruje aplikację Flask.
+    """
+    # Upewnij się, że wszystkie zależności są zainstalowane
     ensure_dependencies(CORE_DEPENDENCIES)
     
-    # Załaduj metadane przykładów
-    init_examples_metadata()
+    app = Flask(__name__, 
+                static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"),
+                template_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"))
     
-    logger.info("Aplikacja zainicjalizowana pomyślnie")
-
-# Aplikacja Flask
-app = Flask(__name__, static_folder=STATIC_DIR, template_folder=STATIC_DIR)
-
-# Endpoint do strumieniowania logów w czasie rzeczywistym
-@app.route('/log-stream')
-def log_stream():
-    """
-    Endpoint do strumieniowania logów w czasie rzeczywistym
-    """
-    def generate():
-        listener_id = str(uuid.uuid4())
-        queue = queue.Queue()
-        log_listeners.append((listener_id, queue))
+    # Konfiguracja aplikacji
+    app.config['SECRET_KEY'] = str(uuid.uuid4())
+    app.config['JSON_SORT_KEYS'] = False
+    app.config['SANDBOX'] = sandbox
+    
+    # Logowanie
+    log_queue = queue.Queue()
+    log_handler = QueueHandler(log_queue)
+    app.logger.addHandler(log_handler)
+    app.logger.setLevel(logging.INFO)
+    
+    # Rejestracja tras
+    @app.route('/')
+    def index():
+        return render_template('matrix_layout.html')
+    
+    @app.route('/matrix')
+    def matrix():
+        return render_template('matrix.html')
+    
+    @app.route('/api/examples')
+    def get_examples():
+        examples_dir = os.path.dirname(os.path.abspath(__file__))
+        examples = []
         
-        try:
+        for filename in os.listdir(examples_dir):
+            if filename.endswith('.py') and filename != 'smart_editor.py':
+                example_path = os.path.join(examples_dir, filename)
+                with open(example_path, 'r') as f:
+                    content = f.read()
+                
+                examples.append({
+                    'name': filename,
+                    'path': example_path,
+                    'content': content
+                })
+        
+        return jsonify(examples)
+    
+    @app.route('/api/run-example', methods=['POST'])
+    def run_example_endpoint():
+        data = request.json
+        example_path = data.get('path')
+        
+        if not example_path or not os.path.exists(example_path):
+            return jsonify({'error': 'Invalid example path'}), 400
+        
+        # Uruchom przykład w kontenerze Docker, jeśli sandbox jest dostępny
+        if sandbox and sandbox.ready:
+            # Kopiuj plik do kontenera
+            container_path = f"/app/examples/{os.path.basename(example_path)}"
+            result = sandbox.execute(["python", container_path])
+            
+            return jsonify({
+                'success': result['success'],
+                'output': result['stdout'],
+                'error': result['stderr']
+            })
+        else:
+            # Fallback - uruchom lokalnie
+            try:
+                output = subprocess.check_output([sys.executable, example_path], 
+                                               stderr=subprocess.STDOUT,
+                                               text=True)
+                return jsonify({'success': True, 'output': output})
+            except subprocess.CalledProcessError as e:
+                return jsonify({'success': False, 'error': e.output})
+    
+    @app.route('/api/view-example/<path:example_name>')
+    def viewExampleCode(example_name):
+        examples_dir = os.path.dirname(os.path.abspath(__file__))
+        example_path = os.path.join(examples_dir, example_name)
+        
+        if not os.path.exists(example_path) or not example_path.endswith('.py'):
+            return jsonify({'error': 'Example not found'}), 404
+        
+        with open(example_path, 'r') as f:
+            content = f.read()
+        
+        return jsonify({'name': example_name, 'content': content})
+    
+    @app.route('/log-stream')
+    def log_stream():
+        """Endpoint do strumieniowania logów"""
+        def generate():
             while True:
-                message = queue.get()
-                if message is None:  # None oznacza zakończenie
-                    break
-                yield f"data: {json.dumps({'message': message})}\n\n"
-                time.sleep(0.1)
-        finally:
-            # Usuń słuchacza z listy
-            log_listeners[:] = [(id, q) for id, q in log_listeners if id != listener_id]
+                try:
+                    record = log_queue.get(block=False)
+                    yield f"data: {json.dumps({'message': record.getMessage(), 'level': record.levelname})}\n\n"
+                except queue.Empty:
+                    yield f"data: {json.dumps({'heartbeat': True})}\n\n"
+                time.sleep(0.5)
+        
+        return Response(stream_with_context(generate()), 
+                       mimetype='text/event-stream')
     
-    response = Response(stream_with_context(generate()), mimetype="text/event-stream")
-    response.headers["Cache-Control"] = "no-cache"
-    response.headers["X-Accel-Buffering"] = "no"
-    return response
-
-# Endpoint zwracający listę dostępnych funkcji
-@app.route('/function-list')
-def function_list():
-    """
-    Endpoint zwracający listę dostępnych funkcji
-    """
-    functions = []
-    for name, func_info in function_registry.items():
-        functions.append({
-            'name': name,
-            'description': func_info.get('description', ''),
-            'parameters': func_info.get('parameters', [])
-        })
+    @app.route('/function-list')
+    def function_list():
+        """Endpoint zwracający listę dostępnych funkcji"""
+        functions = []
+        
+        # Dodaj funkcje z bieżącego modułu
+        for name, obj in globals().items():
+            if callable(obj) and not name.startswith('_'):
+                functions.append({
+                    'name': name,
+                    'doc': obj.__doc__ or 'No documentation available'
+                })
+        
+        # Dodaj informacje o sandboxie Docker
+        if sandbox and sandbox.ready:
+            functions.append({
+                'name': 'docker_sandbox',
+                'doc': 'Docker sandbox is available for running code in isolation',
+                'status': 'ready',
+                'id': sandbox.sandbox_id
+            })
+        
+        return jsonify(functions)
     
-    return jsonify({'functions': functions})
+    @app.route('/api/docker-status')
+    def docker_status():
+        """Endpoint zwracający status sandboxa Docker"""
+        if sandbox:
+            return jsonify({
+                'ready': sandbox.ready,
+                'status': sandbox.status,
+                'id': sandbox.sandbox_id,
+                'container_id': sandbox.container_id
+            })
+        else:
+            return jsonify({'ready': False, 'status': 'not_initialized'})
+    
+    @app.route('/api/docker-execute', methods=['POST'])
+    def docker_execute():
+        """Endpoint do wykonywania poleceń w sandboxie Docker"""
+        if not sandbox or not sandbox.ready:
+            return jsonify({'error': 'Docker sandbox not ready'}), 400
+        
+        data = request.json
+        command = data.get('command')
+        workdir = data.get('workdir', '/app')
+        
+        if not command:
+            return jsonify({'error': 'No command provided'}), 400
+        
+        # Wykonaj polecenie w kontenerze
+        if isinstance(command, str):
+            command = command.split()
+        
+        result = sandbox.execute(command, workdir)
+        return jsonify(result)
+    
+    return app
 
-# ... (reszta kodu)
+# Klasa do obsługi logów
+class QueueHandler(logging.Handler):
+    def __init__(self, log_queue):
+        super().__init__()
+        self.log_queue = log_queue
+    
+    def emit(self, record):
+        self.log_queue.put(record)
 
+# Uruchomienie aplikacji
 if __name__ == '__main__':
-    # Inicjalizacja aplikacji
-    init_app()
+    # Upewnij się, że wszystkie zależności są zainstalowane
+    ensure_dependencies(CORE_DEPENDENCIES)
     
-    # Uruchomienie serwera Flask
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Utwórz i uruchom aplikację
+    app = create_app()
+    app.run(debug=True, host='0.0.0.0', port=5000)
